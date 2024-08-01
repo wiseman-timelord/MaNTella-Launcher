@@ -62,25 +62,29 @@ pause_threshold = 1.5
 ------------------------------------------------------------------------------
 
 Admin Mode: Correct
-Current Directory: D:\GamesVR\Mantella-0.11.4
+Current Directory: D:\GamesVR\Mantella-0.12_preview
 Checking for running xVASynth.exe process...
 xVASynth.exe is already running. Closing it now...
 xVASynth.exe has been closed.
 Running VASynth and Mantella...
-Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163). Mantella mod located in D:\GamesVR\Fallout4_163\Data
-20:48:22.420 INFO: Running Mantella with local language model
-20:48:22.420 WARNING: Local language model has a low token count of 4096. For better NPC memories, try changing to a model with a higher token count
+Mantella.exe running in:
+D:\GamesVR\Mantella-0.12_preview
+config.ini, logging.log, and conversation histories available in:
+C:\Users\Mastar\Documents\My Games\Mantella\
+Mantella currently running for Fallout4. Mantella mod files located in:
+D:\GamesVR\Fallout4_163\Data\Sound\Voice\Mantella.esp
 
-Mantella v0.11.4
-20:48:22.647 TTS: Connecting to xVASynth...
-20:48:23.807 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
-20:48:23.807 STT: If the mic is not picking up your voice, try setting this audio_threshold value manually in MantellaSoftware/config.ini.
+Mantella v0.12 Preview
+20:50:40.793 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+Running Mantella with 'Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix'. The language model can be changed in MantellaSoftware/config.ini
+20:50:44.182 TTS: Connecting to xVASynth...
+20:50:44.498 INFO: Mantella settings can be changed via this link: http://localhost:4999/ui?__theme=dark
 
-
-"NPC not added. Please try again after your next response"? See here:
+Conversations not starting when you select an NPC? See here:
 https://art-from-the-machine.github.io/Mantella/pages/issues_qna
 
 Waiting for player to select an NPC...
+
 ```
 
 # Disclaimer
