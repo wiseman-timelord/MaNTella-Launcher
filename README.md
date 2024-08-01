@@ -6,9 +6,7 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 1. requiring 3 versions of the characters .csv and prompts.
 2. we would use the better quality one after 2 of shorter one so as, for the time taken to increase gradually, as well as, the quality of the output, thereabouts the user sets the maximum context it will dynamically use. A flag will be reset when convo ends..
 3. Smaller but dynamic, consolidated information at end of convo. The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, this is likely being lopped off on 4k, either way its too much for local models at 8k.
-4. Some of the inputs, can actually be dynamic, and not present at all in user interaction.
-5. Most/some of this could scale based on context size and be reasonable settings?
-- For examples...
+4. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, For examples...
 ```
 2048
 max_tokens = 100
