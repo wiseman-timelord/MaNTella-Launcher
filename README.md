@@ -1,8 +1,10 @@
 # Mantella-WT - Wiseman-Timelords Mantella Fork
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
-# Updated
-- Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, for minimal hastle, however, this requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`. It could have looked in the config.ini to find where xVASynth is, however, this will move in Official Mantella v12, and its not moving to the correct directory so far, so likely it will move again, and then I will asses things. I dont think 99% of people will use xVASynth with other things, so it should probs go in mantella dir somewhere. When I say they havnt got it right; I moved my documents folder from `C:\users\username\my documents\` to a different drive, and for some reason Mantella insists upon using the vanilla windows docs dir.
+# Completed
+1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, for minimal hastle...
+- This requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`, but I dont think 99% of people will use xVASynth with other things, so it should probs go in mantella dir somewhere, then its still good for, skyrim or fallout, etc.
+- Mantella v11 saves the config.ini in a safe location of the mantella dir, however, with regards to v12, I moved my documents folder from `C:\users\username\my documents\` to a different drive, and for some reason Mantella v12 insists upon using the vanilla windows docs dir on C: for `config.ini`, otherwise, my launcher could have looked in the config.ini to find where xVASynth is. So likely it will move again in v12.1 or whatever when they correct it. Personally I would not mess with non-local folders, and just, for example `.\ExampleMantellaDir\Data\config.ini`.
 
 # Development 
 - Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
