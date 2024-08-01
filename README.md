@@ -41,7 +41,7 @@ resummarize_prompt = Summarize the conversation history between {name} (assistan
 ```
 - Some new code to enhance local model ease of use.
 ```
-Llama.Cpp Pre-Compiled Vulkan binaries? All I can think of.
+Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for now. 
 ```
 - sensible base settings...
 ```
