@@ -1,7 +1,7 @@
 # Mantella-WT - Wiseman-Timelords Mantella Fork
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
-# Updates
+# Updated
 - Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, for minimal hastle, however, this requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`. It could have looked in the config.ini to find where xVASynth is, however, this will move in Official Mantella v12, and its not moving to the correct directory so far, so likely it will move again, and then I will asses things. I dont think 99% of people will use xVASynth with other things, so it should probs go in mantella dir somewhere. When I say they havnt got it right; I moved my documents folder from `C:\users\username\my documents\` to a different drive, and for some reason Mantella insists upon using the vanilla windows docs dir.
 
 # Development 
