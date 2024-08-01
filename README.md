@@ -7,6 +7,7 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 - Mantella v11 saves the config.ini in a safe location of the mantella dir, however, with regards to v12, I moved my documents folder from `C:\users\username\my documents\` to a different drive, and for some reason Mantella v12 insists upon using the vanilla windows docs dir on C: for `config.ini`, otherwise, my launcher could have looked in the config.ini to find where xVASynth is. So likely it will move again in v12.1 or whatever when they correct it. Personally I would not mess with non-local folders, and just, for example `.\ExampleMantellaDir\Data\config.ini`.
 
 # Development 
+- I have created the batch launcher, but The edits to actual mantella code will be, paused or for v11, until they get v12 figured out, something wrong with the communication between the, fallout 4 mod and the main, possibly they are using some development version of the Fallout 4 mod I am not, or the fallout 4 side needs updating. Either way I cant test v12 properly without init of convo.
 - Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
 1. Potentially requiring 3 versions of the characters .csv and prompts.
 2. we would use the better quality one after 2 of shorter one so as, for the time taken to increase gradually, as well as, the quality of the output, thereabouts the user sets the maximum context it will dynamically use. A flag will be reset when convo ends..
@@ -53,6 +54,9 @@ Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for n
 ```
 pause_threshold = 1.5 
 ```
+
+# Description
+- These edits will be, paused or for v11, until they get v12 figured out, something wrong with the communication between the, fallout 4 mod and the main, possibly they are using some development version of the Fallout 4 mod I am not, or the fallout 4 side needs updating.
 
 # Preview
 - Uh, theres the batch launcher...
