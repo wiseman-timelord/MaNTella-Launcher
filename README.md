@@ -2,23 +2,30 @@
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
-- Implement dynamic code from, llm and mql5, experience. From reducing inputs in EAs, we learn that many of the inputs, can actually be dynamic, and not present at all in user interaction. Most/some of this could scale based on context size and be reasonable settings?
+- Dynamic switching between prompt sets for differing context, depenting upon the maximum context set for the model, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time...
+1. requiring 3 versions of the characters .csv and prompts.
+2. we would use the better quality one after 2 of shorter one so as, for the time taken to increase gradually, as well as, the quality of the output, thereabouts the user sets the maximum context it will dynamically use. A flag will be reset when convo ends..
+3. Smaller but dynamic, consolidated information at end of convo. The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, this is likely being lopped off on 4k, either way its too much for local models at 8k.
+4. Some of the inputs, can actually be dynamic, and not present at all in user interaction.
+5. Most/some of this could scale based on context size and be reasonable settings?
+- For examples...
 ```
+2048
+max_tokens = 100
+max_response_sentences = 1
+temperature = 0.4
+
+4096
 max_tokens = 125
-max_response_sentences = 2 
+max_response_sentences = 1
+temperature = 0.5
+
+8192
+max_tokens = 150
+max_response_sentences = 2
+temperature = 0.6
 ```
-- Something about making content that was for 4096 context, that would require updating of prompts to use less data, or csv character sheets, though there are thousands of lines in the character sheet, so maybe process the file with AI in sections...
-``` 
-Try using a context length of 4096, despite the warning. Lower is faster, It's not about whether your cards or the model can handle it. Llama 3.1 is designed for higher contexts, it works much faster with 8192, because its limits are 100,000 context or something. Mantella was designed for 8192 or more contexts, such as in GPT-4, for optimal results. This should improve as older models phase out and more uncensored Llama 3.1, where 8192 context will become a simpler task, its just a matter of days/weeks currently.
-The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, its mainly the can be made concise. Mantella needs cut down versions of prompts. Its a possibility I will create a 4096k version, no promises, may wait til v12 is released. best idea would be to fork on the github, and if it uses <8k then use the alternate prompts/settings.
-```
-- Some new code to enhance local model use.
-```
-"Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix" in q3 XXS (3.27GB), responses be like....
-The Player: I want ammo weapons and messy death!
-Cricket: Messy death, huh? Well, I got just the thing for ya... Here's a nice .44 revolver with some JHPs, some 9mm SMGs with buckshot, and a few of them nasty acid rounds. All good for some messy business. You lookin' to spend caps or trade somethin'?
-```
-- Dynamic switching between prompt sets for differing context preference. Not a matter of max model context, more Fast or Quality, possibly, we would use the quality one after so many shorter ones, like 3, after 3 interactions, its probably a serious conversation, so quality and wait times will increase, it would make more sense too because the conversation is longer. Thereabouts consolidation prompts should be more concise generally, so as to be able to be inputted easier into what will be a smaller context, and be able to be remembered in the conversation better.
+- This is the more concise code for the ini from Nexus.
 ```
 skyrim_multi_npc_prompt = Not needed.
 
@@ -33,14 +40,14 @@ radiant_end_prompt = Wrap up the current topic naturally. No need for formal goo
 memory_prompt = Summarize the conversation between {name} (assistant) and the player (user)/others in {game}. Ignore communication mix-ups like mishearings. Summarize in {language}, capturing the essence of in-game events.
 
 resummarize_prompt = Summarize the conversation history between {name} (assistant) and the player (user)/others in {game}. Each paragraph is a separate conversation. Condense into a single paragraph in {language}.
-
-...Its kinda wierd by default, with the npcs outputting up to 999 sentences, when the player is inputting 1-2 sentences, which ends up with 5x more than the player in most cases, and the more the ai generates, the more likelyhood it will mess something up anyhow.
+```
+- Some new code to enhance local model ease of use.
+```
+Llama.Cpp Pre-Compiled Vulkan binaries? All I can think of.
 ```
 - sensible base settings...
 ```
-temperature = 0.5
 pause_threshold = 1.5 
-
 ```
 
 # Disclaimer
