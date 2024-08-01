@@ -49,4 +49,4 @@ pause_threshold = 1.5
 ```
 
 # Disclaimer
-- Main is (here)[https://github.com/art-from-the-machine/Mantella], most of the work is there.
+- We will see.
