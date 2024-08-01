@@ -2,7 +2,7 @@
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
-- Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time...
+- Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
 1. Potentially requiring 3 versions of the characters .csv and prompts.
 2. we would use the better quality one after 2 of shorter one so as, for the time taken to increase gradually, as well as, the quality of the output, thereabouts the user sets the maximum context it will dynamically use. A flag will be reset when convo ends..
 3. Smaller but dynamic, consolidated information at end of convo. The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, this is likely being lopped off on 4k, either way its too much for local models at 8k.
