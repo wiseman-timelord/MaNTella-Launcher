@@ -1,5 +1,5 @@
 # Mantella-WT - Wiseman-Timelords Mantella Fork
-This is a fork, main is (here)[https://github.com/art-from-the-machine/Mantella]
+This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
 - Implement dynamic code from, llm and mql5, experience. From reducing inputs in EAs, we learn that many of the inputs, can actually be dynamic, and not present at all in user interaction. Most/some of this could scale based on context size and be reasonable settings?
