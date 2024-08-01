@@ -50,3 +50,4 @@ pause_threshold = 1.5
 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
+- My forks sometimes just up and dissapear, this tends to happen when I no longer use the relating program, to neaten up things a little.
