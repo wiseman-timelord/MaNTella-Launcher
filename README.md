@@ -49,4 +49,4 @@ pause_threshold = 1.5
 ```
 
 # Disclaimer
-- We will see.
+- This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
