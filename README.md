@@ -17,7 +17,7 @@ temperature = 0.4
 
 4096
 max_tokens = 125
-max_response_sentences = 1
+max_response_sentences = 2
 temperature = 0.5
 
 8192
