@@ -1,49 +1,49 @@
-# Mantella <a href="https://www.nexusmods.com/skyrimspecialedition/mods/98631" target="_blank"><img src="./img/nexus_mods_link.png" alt="Mantella Nexus Mods link" width="auto" height="28"/></a>
+# Mantella-WT - Wiseman-Timelords Mantella Fork
+This is a fork, main is (here)[https://github.com/art-from-the-machine/Mantella]
 
-<img src="./img/mantella_logo_github.png" align="right" alt="Mantella logo" width="150" height="auto">
+# Development 
+- Implement dynamic code from, llm and mql5, experience. From reducing inputs in EAs, we learn that many of the inputs, can actually be dynamic, and not present at all in user interaction. All this could scale based on context size?
+```
+temperature = 0.5
+max_tokens = 125
+max_response_sentences = 2 
+pause_threshold = 1.5 
+```
+- We will see. Maybe there are some other things I mentioned on Nexus...lets see..I drag it here...maybe thats what I was trying to do...
+``` 
+- Context
+Try using a context length of 4096, despite the warning. Lower is faster, It's not about whether your cards or the model can handle it. Llama 3.1 is designed for higher contexts, it works much faster with 8192, because its limits are 100,000 context or something. Mantella was designed for 8192 or more contexts, such as in GPT-4, for optimal results. This should improve as older models phase out and more uncensored Llama 3.1, where 8192 context will become a simpler task, its just a matter of days/weeks currently.
 
-> Bring Skyrim and Fallout 4 NPCs to life with AI
+- Advised model...
+"Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix" in q3 XXS (3.27GB), responses be like....
+The Player: I want ammo weapons and messy death!
+Cricket: Messy death, huh? Well, I got just the thing for ya... Here's a nice .44 revolver with some JHPs, some 9mm SMGs with buckshot, and a few of them nasty acid rounds. All good for some messy business. You lookin' to spend caps or trade somethin'?
 
-Mantella is a Skyrim and Fallout 4 mod which allows you to naturally speak to NPCs using [Whisper](https://github.com/openai/whisper) (speech-to-text), LLMs (text generation), and [xVASynth](https://github.com/DanRuta/xVA-Synth) / [XTTS](https://www.nexusmods.com/skyrimspecialedition/mods/113445) (text-to-speech).  
+- The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, its mainly the can be made concise. Mantella needs cut down versions of prompts. Its a possibility I will create a 4096k version, no promises, may wait til v12 is released. best idea would be to fork on the github, and if it uses <8k then use the alternate prompts/settings.
 
-Click below or [here](https://youtu.be/FLmbd48r2Wo?si=QLe2_E1CogpxlaS1) to see the full trailer:
+- Concise prompts for config.ini (testing these, but just a matter of telling GPT to make less or more, concise from the original, where this below is not the original, its my edit).
+[Prompt]
+skyrim_prompt = Not needed.
 
-<a href="https://youtu.be/FLmbd48r2Wo?si=QLe2_E1CogpxlaS1
-" target="_blank"><img src="./img/mantella_trailer.gif"
-alt="Mantella trailer link" width="auto" height="220"/></a>
+skyrim_multi_npc_prompt = Not needed.
 
-# Installation
-See [art-from-the-machine.github.io/Mantella](https://art-from-the-machine.github.io/Mantella/)
+fallout4_prompt = You are {name} in the post-apocalyptic Commonwealth of Fallout. This is your background: {bio}. In-game events will be shown between ** symbols for context. You're having a conversation with {trust} (the player) in {location}. The time is {time} {time_group}. This script will be spoken aloud, so keep responses concise. Avoid, numbered lists or text-only formatting or descriptions, instead speech ONLY. If the player is offensive, start with 'Offended:'. If they apologize or to end combat, start with 'Forgiven:'. If convinced to follow, start with 'Follow:'. The The conversation is in {language}. {conversation_summary}
 
-# Issues Q&A
-See [art-from-the-machine.github.io/Mantella/pages/issues_qna.html](https://art-from-the-machine.github.io/Mantella/pages/issues_qna.html)
+fallout4_multi_npc_prompt = The following conversation in {location} in the post-apocalyptic Commonwealth of Fallout is between {names_w_player}. Their backgrounds: {bios}. Their conversation histories: {conversation_summaries}. The time is {time} {time_group}. This script will be spoken aloud, so keep responses concise. Avoid, numbered lists or text-only formatting or descriptions, instead speech ONLY. Provide NPC responses, starting with the speaker's name, e.g., '{name}: Good evening.' Decide who should speak as needed (sometimes all NPCs). Respond only as {names}. Use full names. The conversation is in {language}.
 
-# Skyrim
-See [art-from-the-machine.github.io/Mantella/pages/installation.html#skyrim](https://art-from-the-machine.github.io/Mantella/pages/installation.html#skyrim)
+radiant_start_prompt = Start or continue a conversation topic (skip greetings). Shift topics if current ones lose steam. Steer toward character revelations or drive previous conversations forward.
 
-# Contribute
-The source code for Mantella is included in this repo. Please note that this development version of Mantella is prone to error and is not recommended for general use. See [here](https://www.nexusmods.com/skyrimspecialedition/mods/98631) for the latest stable release.
+radiant_end_prompt = Wrap up the current topic naturally. No need for formal goodbyes as no one is leaving.
 
-Here are the quick steps to get set up:
+memory_prompt = Summarize the conversation between {name} (assistant) and the player (user)/others in {game}. Ignore communication mix-ups like mishearings. Summarize in {language}, capturing the essence of in-game events.
 
-1. Clone the repo to your machine
-2. Create a virtual environment via `py -3.11 -m venv MantellaEnv` in your console (Mantella requires Python 3.11)
-3. Start the environment in your console (`.\MantellaEnv\Scripts\Activate`)
-4. Install the required packages via `pip install -r requirements.txt`
-5. Create a file called `GPT_SECRET_KEY.txt` and paste your secret key in this file
-6. Set up your paths / any other required settings in the `config.ini`
-7. Run Mantella via `main.py` in the parent directory
+resummarize_prompt = Summarize the conversation history between {name} (assistant) and the player (user)/others in {game}. Each paragraph is a separate conversation. Condense into a single paragraph in {language}.
 
-If you have any trouble in getting the repo set up, please reach out on [Discord](https://discord.gg/Q4BJAdtGUE)!
+...Its kinda wierd by default, with the npcs outputting up to 999 sentences, when the player is inputting 1-2 sentences, which ends up with 5x more than the player in most cases, and the more the ai generates, the more likelyhood it will mess something up anyhow.
 
-Related repos:
-- Mantella Spell (Skyrim): [https://github.com/art-from-the-machine/Mantella-Spell](https://github.com/art-from-the-machine/Mantella-Spell)
-- Mantella Gun (Fallout 4): [https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod](https://github.com/YetAnotherModder/Fallout-4-Mantella-Mod)
-- Mantella Gun (Fallout 4 VR): [https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod](https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod)
+- Unrelated, but this should be more like a min of 1.5, or 2 to be safe (If you feel like you are being cut off before you finish your response, increase this value)...
 
-Updates made on one repo are often intertwined with the other, so it is best to ensure you have the latest versions of each when developing.
+```
 
-The source files for the [Mantella docs](https://art-from-the-machine.github.io/Mantella) are stored in the [gh-pages branch](https://github.com/art-from-the-machine/Mantella/tree/gh-pages).
-
-# Attributions
-Mantella uses material from the "[Skyrim: Characters](https://elderscrolls.fandom.com/wiki/Category:Skyrim:_Characters)" articles on the [Elder Scrolls wiki](https://elderscrolls.fandom.com/wiki/The_Elder_Scrolls_Wiki) at [Fandom](https://www.fandom.com/) and is licensed under the [Creative Commons Attribution-Share Alike License](https://creativecommons.org/licenses/by-sa/3.0/).
+# Disclaimer
+- Main is (here)[https://github.com/art-from-the-machine/Mantella], most of the work is there.
