@@ -15,7 +15,7 @@ echo ===========================================================================
 echo                          Mantella / xVASynth Launcher
 echo ------------------------------------------------------------------------------
 echo.
-echo Admin Mode: Correct
+echo Administrator Mode.
 echo Current Directory: %cd%
 
 :: Check if xVASynth.exe is running
@@ -36,7 +36,7 @@ timeout /t 1 >nul
 
 :: Start VASynth using PowerShell to avoid admin elevation
 powershell -Command ^
-    Start-Process ".\xVASynth\xVASynth.exe" -WorkingDirectory "D:\GamesVR\Mantella-0.12_preview\xVASynth" -NoNewWindow 
+    Start-Process ".\xVASynth\xVASynth.exe" -WorkingDirectory ".\xVASynth" -NoNewWindow 
 timeout /t 1 >nul
 
 :: Run the main script
