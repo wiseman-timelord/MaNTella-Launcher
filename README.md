@@ -2,19 +2,20 @@
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
-- Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
-1. Potentially requiring 3 versions of the characters .csv and prompts.
-2. we would use the better quality one after 2 of shorter one so as, for the time taken to increase gradually, as well as, the quality of the output, thereabouts the user sets the maximum context it will dynamically use. A flag will be reset when convo ends..
-3. Smaller but dynamic, consolidated information at end of convo. The main delay is feeding in the Initial prompt for each character, at the start of the convo, again, this is optimized for 8192 context, this is likely being lopped off on 4k, either way its too much for local models at 8k.
-4. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, For examples...
+- The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily. this may involve...
+- Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. 
+- Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character.
+- Context could also be dynamic, in that we would use the 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history?? A flag will be reset when convo ends, thus enabling quick interactions to begin as required.
+- Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
 
 # Description
-- The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12. I cant test it otherwise, and I will be producing significant edits.
+- The edits to actual mantella code will be intended for v11, until they get v12 relesaed, but may also be compatible with v12. Currently there is something wrong with the communication between the, fallout 4 mod and mantella, in v12, so I cant test it for that, nor skyrim (though I am programming it for both as I go). So these updates are to be considered for speeding up Mantella in Fallout 4.
 
 # Features
 Work done currently includes...
 1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around.
 2. Concise Chararacter details. The Skyrim character details were non-standardized, and generally both had too much info.
+3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
 
 # Preview
 - Uh, theres the batch launcher...
@@ -54,10 +55,11 @@ Waiting for player to select an NPC...
 2. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
 3. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
 4. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. 
-5. Run the `Mantella-WT.Bat` batch once, to generate the "config.ini" file, then close mantella, and...
-5a. For v11, configure the ".\config.ini" after its created. Ensure to replace the prompts section from `.\config_ini_optimization.txt` to ".\config.ini".
-5b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
-6. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
+5. Ensure you have LM Studio or whatever with a kickass model. I currently advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). I also advise a, q3/q4 (lower is faster) and gguf, version of a model, and run it on 4096 context (this is the default for unrecognised models), even if it has a =>8k context, because speed. 
+6. Run the `Mantella-WT.Bat` batch once, to generate the "config.ini" file, then close mantella, and...
+6a. For v11, configure the ".\config.ini" after its created. Ensure to replace the prompts section from `.\config_ini_updates.txt` to ".\config.ini".
+6b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
+7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
 # Other Notes
 - Dynamic Context
@@ -98,11 +100,6 @@ resummarize_prompt = Summarize the conversation history between {name} (assistan
 ```
 Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for now. 
 ```
-- sensible base settings...
-```
-pause_threshold = 1.5 
-```
-
 
 
 # Disclaimer
