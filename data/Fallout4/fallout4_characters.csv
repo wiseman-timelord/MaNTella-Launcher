@@ -1,0 +1,633 @@
+bio_url,bio,name,voice_model,advanced_voice_model,fallout4_voice_folder,race,gender,species,refid_int,baseid_int,author and notes,base_id,ref_id
+/wiki/Blake_Abernathy,Blake Abernathy is a man living and farming at Abernathy farm in 2287.,Blake Abernathy,MaleBoston,,MaleBoston,Human,Male,,447394,439507,YetAnotherModder,06B4D3,06D3A2
+/wiki/Connie_Abernathy,Connie Abernathy is a merchant living at Abernathy farm in 2287.,Connie Abernathy,FemaleBoston,,FemaleBoston,Human,Female,,447395,439505,YetAnotherModder,06B4D1,06D3A3
+/wiki/Lucy_Abernathy,Lucy Abernathy is a young woman living at Abernathy farm in 2287.,Lucy Abernathy,FemaleEvenToned,,FemaleEvenToned,Human,Female,,447396,439506,YetAnotherModder,06B4D2,06D3A4
+/wiki/Maisie,Maisie is a house cat found at Abernathy farm in 2287.,Maisie,femaleghoul,,crcat,House cat,Female,,1080044,1080041,YetAnotherModder,107AE9,107AEC
+/wiki/Clarabell_(Fallout_4),Clarabell is a brahmin found on the Abernathy farm in 2287.,Clarabell,femaleboston,,CrBrahminVoice,Brahmin,Female,,1080044,1080041,YetAnotherModder,107AE9,107AEC
+/wiki/Chancer,Chancer is a raider living in the Commonwealth in 2287.,Chancer,FemaleRaider01,,RaiderFemale01,Human,Female,,640900,713029,YetAnotherModder,0AE145,09C784
+/wiki/Eddie_Winter,Edward L.,Eddie Winter,MaleRaider01,,NPCMEddieWinter,Human(pre-War)Ghoul,Male,,1359652,616902,YetAnotherModder,0969C6,14BF24
+/wiki/Bluejay,Bluejay is a member of the Atom Cats in the year 2287.,Bluejay,MaleEvenToned,,MaleEvenToned,Human,Male,,296509,296507,YetAnotherModder,04863B,04863D
+/wiki/Duke_(Fallout_4),Duke is a power armor-wearing member of the Atom Cats living in the Commonwealth in 2287.,Duke,MaleEvenToned,,MaleEvenToned,Human,Male,,296508,1140842,YetAnotherModder,11686A,04863C
+/wiki/Johnny_D.,Johnny D.,Johnny D.,MaleEvenToned,,MaleEvenToned,Human,Male,,1139960,1139958,YetAnotherModder,1164F6,1164F8
+/wiki/Peepers,Peepers is a named Eyebot found in the Commonwealth in 2287.,Peepers,robot_assaultron,,dlc01robotcompanionmaledefault,Eyebot,Male,,766458,766457,YetAnotherModder,0BB1F9,0BB1FA
+/wiki/Rowdy,Rowdy is a power armor merchant and member of the Atom Cats in 2287.,Rowdy,TinaDeLuca,,NPCFRowdy,Human,Female,,1140828,121686,YetAnotherModder,01DB56,11685C
+/wiki/Roxy,Roxy is the newest member of the Atom Cats.,Roxy,FemaleEvenToned,,FemaleEvenToned,Human,Female,,2393972,1139959,YetAnotherModder,1164F7,248774
+/wiki/Zeke_(Fallout_4),Zeke is the founder of the Atom Cats living in the Commonwealth in 2287.,Zeke,maleboston,,NPCMZeke,Human,Male,,1140827,296482,YetAnotherModder,48622,11685B
+/wiki/Dutchman,Dutchman is a dead Railroad agent located in the Commonwealth in 2287.,Dutchman,maleboston,,NPCMDutchman,Human,Male,,584771,253814,YetAnotherModder,03DF76,08EC43
+/wiki/Helena_(Fallout_4),Helena is a deceased woman whose body may be found at Bedford Station in 2287.,Helena,FemaleEvenToned,,FemaleEvenToned,Human,Female,,885960,253813,YetAnotherModder,03DF75,0D84C8
+/wiki/Gavil,Knight Sergeant Gavil is a Brotherhood soldier at the Boston Airport.,Knight Sergeant Gavil,knight_gavil,,NPCMBosKnightGavil,Human,Male,,770277,730863,YetAnotherModder,0B26EF,0BC0E5
+/wiki/Lucia,Knight Lucia is a Brotherhood soldier at the Boston Airport.,Knight Lucia,knight_lucia,,NPCFBoSKnightLucia,Human,Female,,770279,730864,YetAnotherModder,0B26F0,0BC0E7
+/wiki/Rylan,Knight Rylan is a deceased member of the Brotherhood of Steel.,Knight Rylan,MaleBoS01,,BoSMale01,Human,Male,,801068,801067,YetAnotherModder,0C392B,0C392C
+/wiki/D._Clarke,Initiate D.,Initiate Clarke,initiate_clarke,,NPCMBoSInitiateClarke,Human,Male,,770278,730862,YetAnotherModder,0B26EE,0BC0E6
+/wiki/Liberty_Prime,Liberty Prime or Liberty Prime Mark II is a unique U.,Liberty Prime,robot_assaultron,,RobotLibertyPrime,Robot,,,1137488,1259506,YetAnotherModder,1337F2,115B50
+/wiki/Givens,"Along with Dalen, Shelby and a number of other people, Givens was part of a team whose goal was to retrieve and preserve any surviving books in Boston Public Library.",Curator Givens,MaleEvenToned,,MaleEvenToned,Human,Male,,1047670,591967,YetAnotherModder,09085F,0FFC76
+/wiki/Dalen,Dalen is a dead man found in the Boston Public Library in 2287.,Dalen,MaleEvenToned,,MaleEvenToned,Human,Male,,1054128,1054129,YetAnotherModder,1015B1,1015B0
+/wiki/Cricket,Cricket is a traveling merchant operating in the Commonwealth in 2287.,Cricket,TinaDeLuca,,NPCFCricket,Human,Female,,1244368,1244366,YetAnotherModder,12FCCE,12FCD0
+/wiki/Deb,"Deb grew up with caravans, feeling at home in Bunker Hill,[1] and she uses her skills in machining and construction to produce wares for her shop, stating there is ""no such thing as junk.",Deb,FemaleBoston,,FemaleBoston,Human,Female,,104829,104824,YetAnotherModder,19978,01997D
+/wiki/Weathers_(Fallout_4),Doc Weathers is a traveling doctor and caravaneer operating out of Bunker Hill.,Doc Weathers,maleboston,,NPCMDocWeathers,Human,Male,,1244364,1244363,YetAnotherModder,12FCCB,12FCCC
+/wiki/Edward_Deegan,Edward Deegan is a ghoul and an associate of the Cabot family in 2287.,Edward Deegan,maleghoul,,NPCMEdwardDeegan,Ghoul,Male,,294593,294592,YetAnotherModder,047EC0,047EC1
+/wiki/Joe_Savoldi,Joe Savoldi is the bartender in Bunker Hill in 2287.,Joe Savoldi,MaleBoston,,MaleBoston,Human,Male,,104836,104835,YetAnotherModder,19983,19984
+/wiki/Kay,Kay is a doctor and a merchant at Bunker Hill in 2287.,Kay,FemaleEvenToned,,FemaleEvenToned,Human,Female,,104828,104826,YetAnotherModder,01997A,01997C
+/wiki/Kessler,Kessler oversees the caravans and merchants of Bunker Hill and ensures that trade can continue to flow through the settlement.,Kessler,FemaleRough,,FemaleRough,Human,Female,,104798,104796,YetAnotherModder,01995C,01995E
+/wiki/Meg,She can be located wandering around on Bunker Hill.,Meg,femaleboston,,FemaleChild,Human,Female,,117979,104831,YetAnotherModder,01997F,01CCDB
+/wiki/Old_Man_Stockton,Old Man Stockton is a Bunker Hill-based caravan boss and Railroad operative in the Commonwealth in 2287.,Old Man Stockton,maleold,,NPCMOldManStockton,Human,Male,,237544,237515,YetAnotherModder,039FCB,039FE8
+/wiki/Tony_Savoldi,Tony Savoldi is the innkeeper of Bunker Hill in 2287.,Tony Savoldi,MaleEvenToned,,MaleEvenToned,Human,Male,,392495,392494,YetAnotherModder,05FD2E,05FD2F
+/wiki/Trashcan_Carla,Trashcan Carla is a local caravan merchant traveling the Commonwealth in 2287.,Trashcan Carla,FemaleOld,,FemaleOld,Human,Female,,903481,903478,YetAnotherModder,0DC936,0DC939
+/wiki/B2-57,B2-57 is an escaped synth in the Commonwealth in 2287.,B2-57,femaleeventoned,,SynthGen3Female01,Synth,Female,,876622,876617,YetAnotherModder,0D6049,0D604E
+/wiki/F6-33,F6-33 is an escaped synth in the Commonwealth in 2287.,F6-33,MaleEvenToned,,SynthGen3Male01,Synth,Male,,876624,876623,YetAnotherModder,0D604F,0D6050
+/wiki/X4-18,X4-18 is an Institute courser in the Commonwealth in 2287.,X4-18,institutecoursermale,,SynthGen3Male01,Synth,Male,,979491,979490,YetAnotherModder,0EF222,0EF223
+/wiki/Y9-15,Y9-15 is an escaped synth in the Commonwealth in 2287.,Y9-15,MaleEvenToned,,SynthGen3Male02,Synth,Male,,876626,876625,YetAnotherModder,0D6051,0D6052
+/wiki/Z3-22,Z3-22 is an escaped synth in the Commonwealth in 2287.,Z3-22,MaleEvenToned,,SynthGen3Male01,Synth,Male,,876628,876627,YetAnotherModder,0D6053,0D6054
+/wiki/Jack_Cabot,Jack Cabot is a member of the Cabot family living in the Cabot House in Boston in 2287.,Jack Cabot,JackCabot,,NPCMJackCabot,Human,Male,,294594,294583,YetAnotherModder,047EB7,047EC2
+/wiki/Wilhelmina_Cabot,Wilhelmina Cabot is the matriarch of the Cabot family living in the Cabot House in Boston in 2287.,Wilhelmina Cabot,femaleboston,,NPCFWilhelminaCabot,Human,Female,,294595,294591,YetAnotherModder,047EBF,047EC3
+/wiki/H2-22,H2-22 is a synth living in the Commonwealth in 2287.,H2-22,Deacon,,NPCMH2-22,Synth,Male,,392960,392957,YetAnotherModder,05FEFD,05FF00
+/wiki/High_Rise,"High Rise grew up with a troubled past, though it is never said why or what he did.",High Rise,maleboston,,NPCMLowRoadFranklin,Human,Male,,511403,511352,YetAnotherModder,07CD78,07CDAB
+/wiki/Rhys,Knight L.,Knight Rhys,knight_rhys,,NPCMKnightRhys,Human,Male,,384588,384576,YetAnotherModder,05DE40,05DE4C
+/wiki/Danse,"Paladin Danse (unit designation M7-97,[1] registration DN-407P) is the commanding officer of Recon Squad Gladius, a Brotherhood of Steel unit deployed to the Commonwealth in 2287.",Paladin Danse,danse,,NPCMPaladinDanse,Synth,Male,,384589,161411,YetAnotherModder,27683,05DE4D
+/wiki/Haylen,"Scribe Haylen, registration HN-118FS,[1] is a field scribe of the Brotherhood of Steel, stationed at the Cambridge Police Station in Fallout.",Scribe Haylen,ScribeHaylen,,NPCFScribeHaylen,Human,Female,,384587,384575,YetAnotherModder,05DE3F,05DE4B
+/wiki/Jon_Elwood,Jon Elwood (known in-game as the Director) is a feral ghoul in the Commonwealth in 2287.,Director,maleghoul,,maleghoul,Feral ghoul,Male,,167855,167854,YetAnotherModder,028FAE,028FAF
+/wiki/Molly_(Fallout_4),Molly is a Miss Nanny robot at the Cambridge Polymer Labs in 2287.,Molly,robotcompanionfemaledefault,,RobotMolly,Miss Nanny,Female,,167853,167852,YetAnotherModder,028FAC,028FAD
+/wiki/Wilfred_Bergman,"Doctor Wilfred ""Wil"" Bergman was a CIT graduate and security administrator, co-owner of Cambridge Polymer Labs, LLC, and a veteran of the U.",Feral Ghoul,maleghoul,,maleghoul,Feral ghoul,Male,,667250,1769927,YetAnotherModder,1B01C7,0A2E72
+/wiki/Thomas_(Fallout_4),"Brother Thomas (named Brother Andrew, Brother Simon, Brother James or Brother Matthew before Emogene Takes a Lover) is the leader of the ""Pillars of the Community"" cult located at the Charles View Amphitheater in Boston in 2287.",Brother Andrew,maleboston,,NPCMDN019CultLeader,Human,Male,,337157,807313,YetAnotherModder,0C5191,52505
+/wiki/Thomas_(Fallout_4),"Brother Thomas (named Brother Andrew, Brother Simon, Brother James or Brother Matthew before Emogene Takes a Lover) is the leader of the ""Pillars of the Community"" cult located at the Charles View Amphitheater in Boston in 2287.",Brother James,maleboston,,NPCMDN019CultLeader,Human,Male,,337157,807315,YetAnotherModder,0C5193,52505
+/wiki/Thomas_(Fallout_4),"Brother Thomas (named Brother Andrew, Brother Simon, Brother James or Brother Matthew before Emogene Takes a Lover) is the leader of the ""Pillars of the Community"" cult located at the Charles View Amphitheater in Boston in 2287.",Brother Matthew,maleboston,,NPCMDN019CultLeader,Human,Male,,337157,807314,YetAnotherModder,0C5192,52505
+/wiki/Thomas_(Fallout_4),"Brother Thomas (named Brother Andrew, Brother Simon, Brother James or Brother Matthew before Emogene Takes a Lover) is the leader of the ""Pillars of the Community"" cult located at the Charles View Amphitheater in Boston in 2287.",Brother Simon,maleboston,,NPCMDN019CultLeader,Human,Male,,337157,807316,YetAnotherModder,0C5194,52505
+/wiki/Thomas_(Fallout_4),"Brother Thomas (named Brother Andrew, Brother Simon, Brother James or Brother Matthew before Emogene Takes a Lover) is the leader of the ""Pillars of the Community"" cult located at the Charles View Amphitheater in Boston in 2287.",Brother Thomas,maleboston,,NPCMDN019CultLeader,Human,Male,,780631,780630,YetAnotherModder,0BE956,0BE957
+/wiki/Emogene_Cabot,Emogene Cabot is a member of the Cabot family living in Boston in 2287.,Emogene Cabot,femaleboston,,NPCFEmogeneCabot,Human,Female,,294596,294590,YetAnotherModder,047EBE,047EC4
+/wiki/Cait,"Cait is a cage fighter trapped in the Combat Zone in Fallout, fighting for the amusement of the raiders that have occupied the arena.",Cait,Cait,,NPCFCait,Human,Female,,496389,496201,YetAnotherModder,79249,79305
+/wiki/Tommy_Lonegan,"Tommy Lonegan is the proprietor of the Combat Zone arena, living in the Commonwealth in 2287.",Tommy Lonegan,maleghoul,,NPCMTommyLonegan,Ghoul,Male,,132941,132940,YetAnotherModder,02074C,02074D
+/wiki/Gristle,"Gristle is one of the top lieutenants of Jared, the leader of a raider gang headquartered in the Corvega assembly plant in Lexington.",Raider Veteran,MaleRaider01,,RaiderMale01,Human,Male,,4836,103783,YetAnotherModder,19567,120000
+/wiki/Jun_Long,Jun Long is a settler traveling with Preston Garvey and his group in the Commonwealth in 2287.,Jun Long,maleeventoned,,NPCMJunLong,Human,Male,,107739,106459,YetAnotherModder,019FDB,01A4DB
+/wiki/Mama_Murphy,"Mama Murphy is a chem-addicted fortune teller, traveling with Preston Garvey and his group of settlers in the Commonwealth in 2287.",Mama Murphy,femaleold,,NPCFMamaMurphy,Human(psychic),Female,,107737,106456,YetAnotherModder,019FD8,01A4D9
+/wiki/Marcy_Long,Marcy Long is a settler traveling with Preston Garvey and his group in the Commonwealth in 2287.,Marcy Long,femaleboston,,NPCFMarcyLong,Human,Female,,107738,106460,YetAnotherModder,019FDC,01A4DA
+/wiki/Preston_Garvey,"Preston Garvey is one of the last surviving members of the Commonwealth Minutemen, a volunteer defense militia operating in the Commonwealth in 2287.",Preston Garvey,Preston,,NPCMPrestonGarvey,Human,Male,,107735,106457,YetAnotherModder,019FD9,01A4D7
+/wiki/Sturges,Sturges is a handyman from Quincy traveling with Preston Garvey's group in the Commonwealth in 2287.,Sturges,Sturges,,NPCMSturges,Synth,Male,,107736,106458,YetAnotherModder,019FDA,01A4D8
+/wiki/Brian_Fitzgerald,Brian Fitzgerald is a man living in the Commonwealth in 2287.,Brian Fitzgerald,MaleTriggerman,,NPCMBrianFitzgerald,Human,Male,,561473,237517,YetAnotherModder,039FCD,89141
+/wiki/Deezer,Deezer is a unique Mister Handy living in the Commonwealth in 2287.,Deezer,robot_mrhandy,,RobotDeezer,Mister Handy,Male,,561489,561345,YetAnotherModder,0890C1,89151
+/wiki/Patricia_Montgomery,She was one of the scientists in the Compound but was sent to the settlement by Roslyn Chambers to take care of the people there due to the settlement's lack of medical personnel.,Doctor Patricia,femaleboston,,NPCFDoctorPatricia,Human,Female,,992364,992362,YetAnotherModder,0F246A,0F246C
+/wiki/Dora,Dora is a house cat that belongs to the town of Covenant in 2287.,Dora,femaleghoul,,crcat,House cat,Female,,1827848,1827847,YetAnotherModder,1BE407,1BE408
+/wiki/Honest_Dan,Honest Dan is a caravan master hired by Old Man Stockton to investigate the disappearance of a caravan near the settlement of Covenant in 2287.,Honest Dan,MaleBoston,,NPCMHonestDan,Human,Male,,237525,237509,YetAnotherModder,039FC5,039FD5
+/wiki/Jacob_Orden,Jacob Orden is the mayor of the small settlement of Covenant.,Jacob Orden,maleboston,,NPCMJacobOrden,Human,Male,,561475,237523,YetAnotherModder,039FD3,89143
+/wiki/Penny_Fitzgerald,Penny is a merchant who can be found in the town of Covenant in 2287.,Penny Fitzgerald,femaleboston,,NPCFPennyFitzgerald,Human,Female,,341988,341986,YetAnotherModder,53700,370000
+/wiki/Swanson,Swanson is a watchman living in Covenant in 2287.,Swanson,maleboston,,NPCMSwanson,Human,Male,,131954,225366,YetAnotherModder,37056,20372
+/wiki/Talia_McGovern,Talia McGovern is a woman living in Covenant in 2287.,Talia McGovern,femaleboston,,NPCFTaliaMcGovern,Human,Female,,341990,237521,YetAnotherModder,039FD1,0
+/wiki/Ted_Huntley,Ted Huntley is a man living in the Commonwealth in 2287.,Ted Huntley,maleboston,,NPCMTedHuntley,Human,Male,,561474,237519,YetAnotherModder,039FCF,89142
+/wiki/Amelia_Stockton,Amelia Stockton is a runaway synth living in the Commonwealth in 2287.,Amelia Stockton,FemaleBoston,,NPCFAmeliaStockton,Synth,Female,,121820,237512,YetAnotherModder,039FC8,01DBDC
+/wiki/Tach_Blythe,Tach[1] Blythe is a scientist working for Covenant in the Commonwealth in 2287.,Blythe,maleboston,,NPCMBlythe,Human,Male,,997103,997092,YetAnotherModder,0F36E4,0F36EF
+/wiki/Manny,"Manny is the leader of the Compound guards and is located in the Compound himself, guarding the entrance with a turret and two other guards.",Manny,maleboston,,NPCMManny,Human,Male,,346897,346894,YetAnotherModder,054B0E,054B11
+/wiki/Roslyn_Chambers,Dr.,Dr. Roslyn Chambers,femaleboston,,NPCFRoslynChambers,Human,Female,,235483,225365,YetAnotherModder,37055,0397DB
+/wiki/Foster_(Fallout_4),"Brother Foster is a member of the Church of the Children of Atom, and resides in the Crater of Atom in 2287.",Brother Foster,ChildrenOfAtomMale01,,ChildrenOfAtomMale01,Human,Male,,1235789,1235788,YetAnotherModder,12DB4C,12DB4D
+/wiki/Griffith,Brother Griffith is a member of the Church of the Children of Atom in 2287.,Brother Griffith,ChildrenOfAtomMale02,,ChildrenOfAtomMale02,Human,Male,,1235787,1235786,YetAnotherModder,12DB4A,12DB4B
+/wiki/Ogden,"Brother Ogden is a member of the Church of the Children of Atom, found at their village in the Glowing Sea in 2287.",Brother Ogden,ChildrenOfAtomMale01,,ChildrenOfAtomMale01,Human,Male,,1397337,1262189,YetAnotherModder,13426D,155259
+/wiki/Ward_(Fallout_4),Ward is a faithful devotee to Atom and spends most of his time praying at the Crater of Atom.,Brother Ward,ChildrenOfAtomMale01,,ChildrenOfAtomMale01,Human,Male,,1355850,1262191,YetAnotherModder,13426F,14B04A
+/wiki/Isolde,Mother Isolde is the spiritual leader of a peaceful sect of the Children of Atom living near the Commonwealth in the late 2280s.,Mother Isolde,FemaleEvenToned,,FemaleEvenToned,Human,Female,,1235785,1235784,YetAnotherModder,12DB48,12DB49
+/wiki/Layla_(Fallout_4),Sister Layla can be found in the Crater of Atom in the Glowing Sea.,Sister Layla,FemaleEvenToned,,ChildrenOfAtomFemale01,Human,Female,,1355851,1262190,YetAnotherModder,13426E,14B04B
+/wiki/Verena,"Sister Verena is a member of the Church of the Children of Atom, found at the Crater of Atom in the Glowing Sea.",Sister Verena,FemaleEvenToned,,ChildrenOfAtomFemale01,Human,Female,,1355852,1262188,YetAnotherModder,13426C,14B04C
+/wiki/Bosco,Bosco is a raider boss operating inside D.,Bosco,MaleRaider02,,RaiderMale02,Human,Male,,516478,1204954,YetAnotherModder,1262DA,07E17E
+/wiki/Slim_(Fallout_4),Slim is a ghoul chem merchant located east of the D.,Slim,MaleGhoul,,MaleGhoul,Ghoul,Male,,1432801,1432802,YetAnotherModder,15DCE2,15DCE1
+/wiki/Dando,Dando is a man living in the Commonwealth in 2287.,Dando,MaleEvenToned,,MaleRough,Human,Male,,1428780,1428778,YetAnotherModder,15CD2A,15CD2C
+/wiki/Ruby_(Fallout_4),Ruby is a mongrel living in the Commonwealth in 2287.,Ruby,maleghoul,,crferaldogvoice,Mongrel,Male,,1428793,1428794,YetAnotherModder,15CD3A,15CD39
+/wiki/Shug,Shug is a mongrel living in the Commonwealth in 2287.,Shug,maleghoul,,crferaldogvoice,Mongrel,Male,,1432724,1432725,YetAnotherModder,15DC95,15DC94
+/wiki/Abbot,Abbot is the caretaker of the wall in Diamond City in 2287.,Abbot,maleboston,,NPCMAbbot,Human,Male,,12073,12072,YetAnotherModder,002F28,002F29
+/wiki/Ann_Codman,"Ann Codman is a snobby, rude woman living in the upper stands of Diamond City in 2287.",Ann Codman,FemaleBoston,,NPCFAnnCodman,Human,Female,,12047,12046,YetAnotherModder,002F0E,002F0F
+/wiki/Arturo_Rodriguez,"Arturo Rodriguez is the owner of Commonwealth Weaponry, a weapon shop located inside of the Diamond City market, in business in 2287.",Arturo Rodriguez,maleboston,,NPCMArturo,Human,Male,,11449,11447,YetAnotherModder,002CB7,002CB9
+/wiki/Cathy,"Cathy is a hair stylist living in Diamond City, in 2287.",Cathy,femaleboston,,NPCFCathy,Human,Female,,11473,11471,YetAnotherModder,002CCF,002CD1
+/wiki/Clarence_Codman,"Clarence Codman is a businessman living in the upper stands of Diamond City in 2287, descended from the oldest family in the settlement.",Clarence Codman,maleboston,,NPCMClarenceCodman,Human,Male,,12045,12044,YetAnotherModder,002F0C,002F0D
+/wiki/Colette_Cooke,Colette is the daughter of Henry Cooke and a visitor to Diamond City in 2287.,Colette,femaleboston,,NPCFColette,Human,Female,,12033,12032,YetAnotherModder,002F00,002F01
+/wiki/Danny_Sullivan,Danny Sullivan is the gatekeeper for the main entrance of Diamond City in the Commonwealth in 2287.,Danny Sullivan,maleboston,,NPCMDannySullivan,Human,Male,,104917,102591,YetAnotherModder,0190BF,0199D5
+/wiki/Darcy_Pembroke,Darcy Pembroke is a resident of Diamond City in 2287.,Darcy Pembroke,femaleboston,,NPCFDarcyPembroke,Human,Female,,12057,12056,YetAnotherModder,002F18,002F19
+/wiki/Sun,Doctor Sun is a doctor and facial reconstruction surgeon who resides in Diamond City in the year 2287.,Doctor Sun,maleboston,,NPCMDoctorSun,Human,Male,,134033,134030,YetAnotherModder,020B8E,020B91
+/wiki/Eustace,Eustace Hawthorne is a woman living in the upper stands of Diamond City in 2287.,Eustace,femaleboston,,NPCFEustace,Human,Female,,12059,12058,YetAnotherModder,002F1A,002F1B
+/wiki/Geneva,"Geneva is the secretary of Mayor McDonough, living in Diamond City in 2287.",Geneva,scribe_neriah,,NPCFGeneva,Human,Female,,12043,12042,YetAnotherModder,002F0A,002F0B
+/wiki/John_(Fallout_4),John is a hairstylist and barber who resides in the Diamond City market in 2287.,John,maleboston,,NPCMJohn,Human,Male,,11468,11467,YetAnotherModder,002CCB,002CCC
+/wiki/Kyle_(Fallout_4),Kyle is a resident of Diamond City.,Kyle,MaleEvenToned,,MaleRough,Human,Male,,1359720,1359721,YetAnotherModder,14BF69,14BF68
+/wiki/Malcom_Latimer,Malcolm Latimer (mispelled in-game as Malcom) is a wealthy resident and an associate of the Triggermen living in Diamond City in the Commonwealth in 2287.,Malcom Latimer,maleboston,,NPCMMalcolmLatimer,Human,Male,,12049,12048,YetAnotherModder,002F10,002F11
+/wiki/McDonough,"Mayor McDonough is the mayor of Diamond City in 2287, during the events of Fallout.",Mayor McDonough,maleold,,NPCMMayorMcDonough,Synth,Male,,12041,12040,YetAnotherModder,002F08,002F09
+/wiki/Mel_(Fallout_4),Mel is a tech expert associated with Bobbi No-Nose incarcerated in Diamond City's security office in 2287.,Mel,maleboston,,NPCMMel,Human,Male,,1178669,336244,YetAnotherModder,52174,11FC2D
+/wiki/Moe_Cronin,"Moe Cronin is a merchant who resides in Diamond City in 2287, running the Swatters Custom Baseball Bat Store in the Diamond City market.",Moe Cronin,maleboston,,NPCMMoeCronin,Human,Male,,11438,11442,YetAnotherModder,002CB2,002CAE
+/wiki/Myrna,"Myrna, referred to as Crazy Myrna by Piper, is an anti-synth conspiracy theorist and the proprietor of a junk shop operating in Diamond City in 2287.",Myrna,femaleboston,,NPCFMyrna,Human,Female,,11456,11455,YetAnotherModder,002CBF,002CC0
+/wiki/Nat_Wright,"Natalie ""Nat"" Wright is the little sister of Piper and a resident of Diamond City in 2287.",Nat,tinadeluca,,NPCFNat,Human,Female,,12065,12064,YetAnotherModder,002F20,002F21
+/wiki/Nelson_Latimer,Nelson Latimer is a wealthy resident of Diamond City in 2287.,Nelson Latimer,maleboston,,NPCMNelsonLatimer,Human,Male,,12051,12050,YetAnotherModder,002F12,002F13
+/wiki/Paul_Pembroke,Paul Pembroke is a resident of Diamond City in 2287.,Paul Pembroke,MaleEvenToned,,NPCMPaulPembroke,Human,Male,,12054,12052,YetAnotherModder,002F14,002F16
+/wiki/Percy_(Fallout_4),Percy was salvaged by Myrna and programmed as the night-shift salesperson at Diamond City Surplus.,Percy,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,11458,11457,YetAnotherModder,002CC1,002CC2
+/wiki/Piper_Wright,"Piper Wright is a reporter living in Diamond City in 2287, running the local newspaper Publick Occurrences with her younger sister, Nat.",Piper,Piper,,NPCFPiper,Human,Female,,12063,12062,YetAnotherModder,002F1E,002F1F
+/wiki/Polly_(Fallout_4),Polly is a butcher living in Diamond City in 2287.,Polly,femaleboston,,NPCFPolly,Human,Female,,11477,11476,YetAnotherModder,002CD4,002CD5
+/wiki/Riley_(Fallout_4),Riley is an ordinary resident of Diamond City.,Riley,MaleEvenToned,,MaleEvenToned,Human,Male,,1359717,1359718,YetAnotherModder,14BF66,14BF65
+/wiki/Scarlett_(Fallout_4),Scarlett is a waitress who works in the Dugout Inn in Diamond City in 2287.,Scarlett,FemaleBoston,,NPCFScarlett,Human,Female,,307778,307776,YetAnotherModder,04B240,04B242
+/wiki/Sheffield,"Sheffield is a former alcoholic, sitting in the Diamond City market in 2287.",Sheffield,MaleOld,,NPCMSheffield,Human,Male,,12039,12038,YetAnotherModder,002F06,002F07
+/wiki/Sheng_Kawolski,Sheng Kawolski is a young boy who is in charge of the water purifier in Diamond City in 2287.,Sheng Kawolski,Clem,,NPCMShengKawolski,Human,Male,,12035,12034,YetAnotherModder,002F02,002F03
+/wiki/Solomon,Solomon is a merchant living in the Commonwealth in 2287.,Solomon,MaleBoston,,NPCMSolomon,Human,Male,,11453,11451,YetAnotherModder,002CBB,002CBD
+/wiki/Takahashi,Takahashi is the Protectron proprietor of Power Noodles in Diamond City in 2287.,Takahashi,ironsides,,RobotTakahashi,Protectron,Male,,11483,11482,YetAnotherModder,002CDA,002CDB
+/wiki/Wellingham,Wellingham is a Mister Handy that serves guests at the Colonial Taphouse at the Diamond City market in 2287.,Wellingham,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,12067,12066,YetAnotherModder,002F22,002F23
+/wiki/Clements,Pastor Clements is a pastor living within Diamond City in 2287.,Pastor Clements,maleboston,,NPCMPastorClements,Human,Male,,12027,12026,YetAnotherModder,002EFA,002EFB
+/wiki/Henry_Cooke,"Henry Cooke is the owner and barkeeper of the Colonial Taphouse and an Institute SRB informant for fugitive synths, living in his house in Diamond City's upper stands in 2287.",Henry Cooke,maleboston,,NPCMHenryCooke,Human,Male,,235998,235997,YetAnotherModder,0399DD,0399DE
+/wiki/Travis_Miles,Travis Miles is the radio host for Diamond City Radio in 2287.,Travis Miles,travis_normal,,NPCMTravisMiles,Human,Male,,12071,12070,YetAnotherModder,002F26,002F27
+/wiki/Erin_Reische,Erin Reische is a child living in Diamond City in 2287.,Erin Reische,tinadeluca,,FemaleChild,Human,Female,,353808,353806,YetAnotherModder,05660E,56610
+/wiki/Gavin_Everitts,Gavin Everitts is a young boy living in Diamond City in 2287.,Gavin Everitts,Clem,,MaleChild,Human,Male,,155872,155871,YetAnotherModder,0260DF,260
+/wiki/Miss_Edna,Miss Edna is a Miss Nanny and Mister Zwicky's assistant in Diamond City's schoolhouse in 2287.,Miss Edna,Desdemona,,RobotMsNanny,Miss Nanny,Female,,12021,12020,YetAnotherModder,002EF4,002EF5
+/wiki/Zwicky,Mister Zwicky is the teacher in charge of Diamond City's schoolhouse in 2287.,Mister Zwicky,maleboston,,NPCMMisterZwicky,Human,Male,,12023,12022,YetAnotherModder,002EF6,002EF7
+/wiki/Nina_Rodriguez,Nina Rodriguez is a young girl living in Diamond City in 2287.,Nina Rodriguez,tinadeluca,,NPCFNinaRodriguez,Human,Female,,12294,12293,YetAnotherModder,3005,3006
+/wiki/Phil_Wallace,Phil Wallace is a child living in Diamond City in 2287.,Phil Wallace,Clem,,MaleChild,Human,Male,,871127,353805,YetAnotherModder,05660D,0D4AD7
+/wiki/Pete_Pembroke,Pete Pembroke is a child living in Diamond City in 2287.,Pete Pembroke,maleboston,,NPCMPetePembroke,Human,Male,,12055,12053,YetAnotherModder,002F15,002F17
+/wiki/Toro,Toro is a house cat that lives in the schoolhouse in Diamond City in 2287.,Toro,maleghoul,,crcat,House cat,Male,,1289557,1289556,YetAnotherModder,13AD54,13AD55
+/wiki/Bull,Bull is a thug who lives in Diamond City in 2287.,Bull,maleraider01,,NPCMBull,Human,Male,,275340,275337,YetAnotherModder,43389,04338C
+/wiki/Gouger,Gouger is a thug who lives in Diamond City in 2287.,Gouger,maleraider01,,NPCMGouger,Human,Male,,972390,972389,YetAnotherModder,0ED665,0ED666
+/wiki/Hawthorne,Hawthorne is a resident of Diamond City in 2287.,Hawthorne,maleboston,,NPCMHawthorne,Human,Male,,12061,12060,YetAnotherModder,002F1C,002F1D
+/wiki/Vadim_Bobrov,"Vadim Bobrov is the bartender and co-owner of the Dugout Inn, living in Diamond City in 2287.",Vadim Bobrov,maleboston,,NPCMVadimBobrov,Human,Male,,12029,12028,YetAnotherModder,002EFC,002EFD
+/wiki/Yefim_Bobrov,"Yefim Bobrov is the innkeeper and co-owner of the Dugout Inn, living in Diamond City in 2287.",Yefim Bobrov,MaleBoston,,NPCMYefimBobrov,Human,Male,,12031,12030,YetAnotherModder,002EFE,002EFF
+/wiki/Becky_Fallon,Becky Fallon is a clothing merchant who runs Fallon's Basement in the Diamond City market in 2287.,Becky Fallon,BeckyFallon,,NPCFBeckyFallon,Human,Female,,11465,11462,YetAnotherModder,002CC6,002CC9
+/wiki/Crocker,Doc Crocker is a facial reconstruction surgeon operating in Diamond City in 2287.,Doc Crocker,MaleBoston,,NPCMDocCrocker,Human,Male,,11479,11478,YetAnotherModder,002CD6,002CD7
+/wiki/Duff_(Fallout_4),Doctor Duff is a resident of Diamond City in 2287.,Doctor Duff,femaleboston,,NPCFDoctorDuff,Human,Female,,12025,12024,YetAnotherModder,002EF8,002EF9
+/wiki/Professor_Scara,Professor[1] Scara is a scientist found in the Science! Center in Diamond City alongside Dr.,Professor Scara,femaleboston,,NPCFProfessorScara,Human,Female,,733128,733127,YetAnotherModder,0B2FC7,0B2FC8
+/wiki/Ellie_Perkins,"Ellie Perkins is the secretary of private investigator Nick Valentine, operating out of the Valentine Detective Agency located in Diamond City in 2287.",Ellie Perkins,Ellie Perkins,,NPCFElliePerkins,Human,Female,,139940,139938,YetAnotherModder,0222A2,0222A4
+/wiki/Patrick_(Fallout_4),Patrick is a drug addict in the Drumlin Diner in 2287.,Patrick,MaleEvenToned,,MaleEvenToned,Human,Male,,1075711,1075710,YetAnotherModder,1069FE,1069FF
+/wiki/Simone,Simone is the bodyguard of Wolfgang in the Commonwealth in 2287.,Simone,FemaleEvenToned,,FemaleEvenToned,Human,Female,,1075722,1075720,YetAnotherModder,106A08,106A0A
+/wiki/Trudy_(Fallout_4),Trudy is a trader living in the Commonwealth in 2287.,Trudy,FemaleRough,,FemaleRough,Human,Female,,1075712,1075708,YetAnotherModder,1069FC,106A00
+/wiki/Wolfgang,Wolfgang is a chems dealer in the Commonwealth in 2287.,Wolfgang,MaleEvenToned,,MaleRough,Human,Male,,1075719,1075716,YetAnotherModder,106A04,106A07
+/wiki/Bedlam,Bedlam is the lead raider of the Forged in Dunwich Borers in 2287.,Bedlam,FemaleRaider01,,RaiderFemale01,Human,Female,,480536,1312882,YetAnotherModder,140872,75518
+/wiki/Bob_Stanson,Bob Stanson is a ghoul found in The Commonwealth in 2287.,Feral Ghoul,maleghoul,,maleghoul,Feral ghoul,Male,,299613,542994,YetAnotherModder,84912,04925D
+/wiki/Bradley_Ramone,Bradley Ramone is a feral ghoul reaver found in the Commonwealth in 2287.,Feral Ghoul Roamer,maleghoul,,maleghoul,Feral ghoul,Male,,299618,480067,YetAnotherModder,75343,49262
+/wiki/John_Hatfield,John Hatfield is a feral ghoul found in the Commonwealth in 2287.,Feral Ghoul,maleghoul,,maleghoul,Feral ghoul,Male,,299606,542994,YetAnotherModder,84912,49256
+/wiki/Tim_Shoots,Tim Shoots is a feral ghoul reaver in the Commonwealth in 2287.,Feral Ghoul,maleghoul,,maleghoul,Feral ghoul,Male,,299622,542994,YetAnotherModder,84912,49266
+/wiki/Eager_Ernie,Eager Ernie is a mob boss of the Triggermen and the owner of the robot racetrack at Easy City Downs in the Commonwealth in 2287.,Eager Ernie,MaleTriggerman,,MaleTriggerman01,Human,Male,,824648,849626,YetAnotherModder,0CF6DA,0C9548
+/wiki/Atomic_Dreamz,Atomic Dreamz is a Mister Handy at Easy City Downs in 2287.,Atomic Dreamz,robot_mrhandy,,robotmrhandy,Mister Handy,Male,,979966,981941,YetAnotherModder,0EFBB5,0EF3FE
+/wiki/Bob%27s_Your_Uncle,Bob's Your Uncle is a Mister Handy at Easy City Downs in 2287.,Bob's Your Uncle,robot_mrhandy,,robotmrhandy,Mister Handy,Male,,979967,981948,YetAnotherModder,0EFBBC,0EF3FF
+/wiki/The_Boston_Blaster,The Boston Blaster is a Mister Gutsy found at Easy City Downs in 2287.,The Boston Blaster,robot_mrgutsy,,robotmrgutsy,Mister Gutsy,Male,,979964,981945,YetAnotherModder,0EFBB9,0EF3FC
+/wiki/Fusion%27s_Folly,Fusion's Folly is a Mister Handy that can be found deactivated at Easy City Downs in 2287.,Fusion's Folly,robot_mrhandy,,robotmrhandy,Mister Handy,Male,,981929,981946,YetAnotherModder,0EFBBA,0EFBA9
+/wiki/Iron_Maiden,Iron Maiden is an Assaultron at Easy City Downs in 2287.,Iron Maiden,robot_assaultron,,robotassaultron,Assaultron,Female,,979965,981942,YetAnotherModder,0EFBB6,0EF3FD
+/wiki/Lady_Lovelace,Lady Lovelace is an Assaultron that can be found deactivated at Easy City Downs in 2287.,Lady Lovelace,robotcompanionfemaleprocessed,,robotassaultron,Assaultron,Female,,981925,981944,YetAnotherModder,0EFBB8,0EFBA5
+/wiki/Ol%27_Rusty,Ol' Rusty is an Eyebot at Easy City Downs in 2287.,Ol' Rusty,robotcompanionfemaleprocessed,,RobotEyebot,Eyebot,Male,,979958,979957,YetAnotherModder,0EF3F5,0EF3F6
+/wiki/Piece_o%27_Junk,Piece o' Junk is a Mister Handy at Easy City Downs in 2287.,Piece o' Junk,robot_mrhandy,,robotmrhandy,Mister Handy,Male,,979963,981943,YetAnotherModder,0EFBB7,0EF3FB
+/wiki/Tin_Man_(Fallout_4),Tin Man is a protectron that can be found deactivated at Easy City Downs in 2287.,Tin Man,robot_assaultron,,robotprotectron,Protectron,,,981930,981947,YetAnotherModder,0EFBBB,0EFBAA
+/wiki/Eleanor,Not much is known about Eleanor except what can be found in a note found in her trailer northwest of Fairline Hill Estates.,Eleanor,FemaleRough,,FemaleRough,Human,Female,,1974079,1974083,YetAnotherModder,1E1F43,1E1F3F
+/wiki/Teddy,Teddy can be found trapped in a cage due north of Fairline Hill Estates.,Teddy,maleghoul,,CrFeralDogVoice,Dog,Male,,2122100,2122099,YetAnotherModder,206173,206174
+/wiki/Abigail_Finch,Abigail Finch is a farmer living on Finch farm in 2287.,Abigail Finch,FemaleBoston,,FemaleBoston,Human,Female,,285748,258604,YetAnotherModder,03F22C,045C34
+/wiki/Abraham_Finch,Abraham Finch is a farmer living at Finch farm in 2287.,Abraham Finch,MaleBoston,,MaleBoston,Human,Male,,285749,258621,YetAnotherModder,03F23D,045C35
+/wiki/Daniel_Finch,Daniel Finch is a merchant at Finch farm in 2287.,Daniel Finch,MaleEvenToned,,MaleRough,Human,Male,,285750,258603,YetAnotherModder,03F22B,045C36
+/wiki/Bean,Bean is a Mister Handy at the General Atomics Galleria in 2287.,Bean,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,948990,948988,YetAnotherModder,0E7AFC,0E7AFE
+/wiki/Cook_Handy,Cook Handy is a Mister Handy found at the General Atomics Galleria in 2287.,Cook Handy,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,955262,955051,YetAnotherModder,0E92AB,0E937E
+/wiki/Crisp,Crisp is a Mister Handy found at the General Atomics Galleria in 2287.,Crisp,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,949101,949083,YetAnotherModder,0E7B5B,0E7B6D
+/wiki/Danny_(Mister_Handy),Danny is a Mister Handy found at the General Atomics Galleria in 2287.,Danny,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,938574,938569,YetAnotherModder,0,0E524E
+/wiki/Greeter,The Greeter is a Mister Handy found at the General Atomics Galleria in 2287.,Greeter,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,1037506,1037504,YetAnotherModder,0FD4C0,0FD4C2
+/wiki/Kingpin_(Mister_Handy),Kingpin is a Mister Handy found at the General Atomics Galleria in 2287.,Kingpin,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,961694,1407654,YetAnotherModder,157AA6,0EAC9E
+/wiki/Lane_(Mister_Handy),Lane is a Mister Handy found at the General Atomics Galleria in 2287.,Lane,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,1039695,1407656,YetAnotherModder,157AA8,0FDD4F
+/wiki/Mack_(Mister_Handy),Mack is one of two pugilist Mister Handies found in Madden's gym inside the General Atomics Galleria.,Mack,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,938572,938568,YetAnotherModder,0,0E524C
+/wiki/Reg,Reg is a Mister Handy found at the Fallon's in the General Atomics Galleria in 2287.,Reg,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,1039678,953675,YetAnotherModder,0E8D4B,0FDD3E
+/wiki/Split,Split is a Mister Handy found at the General Atomics Galleria in 2287.,Split,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,1039692,1407653,YetAnotherModder,157AA5,0FDD4C
+/wiki/Sprocket,Sprocket is a Mister Handy found at the General Atomics Galleria in 2287.,Sprocket,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,955265,953681,YetAnotherModder,0E8D51,0
+/wiki/Strike,Strike is a Mister Handy found at the General Atomics Galleria in 2287.,Strike,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,1039689,1407655,YetAnotherModder,157AA7,0FDD49
+/wiki/Tenpin,Tenpin is a Mister Handy found at the General Atomics Galleria in 2287.,Tenpin,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,955229,955213,YetAnotherModder,0E934D,0E935D
+/wiki/The_Champ,The Champ is a Mister Handy found at the General Atomics Galleria in 2287.,The Champ,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,938567,938566,YetAnotherModder,0,0
+/wiki/Director_(Fallout_4),The Director is a Mister Gutsy in charge of operations at the General Atomics Galleria in 2287.,Director,robot_mrgutsy,,robotmrgutsy,Mister Gutsy,Male,,1025808,290060,YetAnotherModder,046D0C,0FA710
+/wiki/Torte,Torte is a Mister Handy found at the General Atomics Galleria in 2287.,Torte,robot_mrhandy,,RobotMrHandy,Mister Handy,,,949124,949100,YetAnotherModder,0E7B6C,0E7B84
+/wiki/Waitron,The waitron is a Mister Handy found at the General Atomics Galleria in 2287.,Waitron,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,955261,955050,YetAnotherModder,0E92AA,0E937D
+/wiki/AJ,AJ is a chem dealer operating in Goodneighbor in 2287.,AJ,maleraider02,,NPCMAJ,Human,Male,,1140809,912683,YetAnotherModder,0DED2B,116849
+/wiki/Bobbi_No-Nose,Bobbi No-Nose is a mobster living in Goodneighbor in 2287.,Bobbi No-Nose,bobbinonose,,NPCFBobbiNoNose,Ghoul,Female,,161418,161412,YetAnotherModder,27684,02768A
+/wiki/Daisy_(Fallout_4),Daisy is a ghoul merchant living in Goodneighbor in 2287.,Daisy,femaleghoul,,NPCFDaisy,Ghoul,Female,,141651,141650,YetAnotherModder,22952,22953
+/wiki/Fahrenheit,"Fahrenheit is the bodyguard and current ""main squeeze"" of John Hancock in 2287.",Fahrenheit,femaleboston,,NPCFFahrenheit,Human,Female,,140824,140822,YetAnotherModder,22616,22618
+/wiki/Finn_(Fallout_4),Finn is a thug living in Goodneighbor in 2287.,Finn,maleraider02,,NPCMFinn,Human,Male,,210311,210309,YetAnotherModder,33585,33587
+/wiki/John_Hancock,"John Hancock (born John McDonough) is a ghoul living in Goodneighbor in 2287, serving as the settlement's mayor in Fallout.",Hancock,Hancock,,NPCMHancock,Ghoul,Male,,140821,140819,YetAnotherModder,22613,22615
+/wiki/KL-E-0,KL-E-0 (or Kleo) is a friendly Assaultron merchant in Goodneighbor in 2287.,KL-E-0,robotcompanionfemaledefault,,RobotAssaultron,Assaultron,Female,,141519,141518,YetAnotherModder,0228CE,0228CF
+/wiki/Sammy_(Fallout_4),Sammy is a deceased synth on the streets of Goodneighbor in 2287.,Sammy,MaleEvenToned,,MaleRough,Synth,Male,,1433204,1433203,YetAnotherModder,15DE73,15DE74
+/wiki/Wayne_Delancy,Wayne Delancy is an assassin living in the town of Goodneighbor in 2287.,Wayne Delancy,MaleEvenToned,,MaleRough,Human,Male,,261834,261832,YetAnotherModder,03FEC8,03FECA
+/wiki/Clair_Hutchins,"Clair Hutchins is the manager of Hotel Rexford, Goodneighbor in 2287.",Clair Hutchins,femaleboston,,NPCFClairHutchins,Human,Female,,141021,141020,YetAnotherModder,0226DC,0226DD
+/wiki/Fred_Allen,"Fred Allen is an associate of Marowski, responsible for the distribution of his chems at the Hotel Rexford in Goodneighbor in 2287.",Fred Allen,maleboston,,NPCMFredAllen,Human,Male,,141018,141017,YetAnotherModder,0226D9,0226DA
+/wiki/Marowski,"Marowski is a major chem supplier in the Commonwealth, living in Goodneighbor in 2287.",Marowski,maleboston,,NPCMMarowski,Human,Male,,141027,141026,YetAnotherModder,22600,226000
+/wiki/Rufus_Rubins,"Rufus Rubins is the resident handyman and mechanic of Goodneighbor, living in the Hotel Rexford in 2287.",Rufus Rubins,MaleEvenToned,,MaleEvenToned,Human,Male,,1580545,107093,YetAnotherModder,01A255,1810
+/wiki/Stan_Slavin,"Stan Slavin is a bodyguard working for Marowski, living with his boss at the Hotel Rexford in Goodneighbor in 2287.",Stan Slavin,maleboston,,NPCMStanSlavin,Human,Male,,141024,141023,YetAnotherModder,0226DF,226
+/wiki/Vault-Tec_rep,"The Vault-Tec representative, more commonly known as the Vault-Tec rep, was a door-to-door salesman working for Vault-Tec in 2077.",Vault-Tec Rep,MaleGhoul,,NPCMVaultTecRep,Human,Male,,704416,704414,YetAnotherModder,0ABF9E,031FB4
+/wiki/Vault-Tec_rep,"The Vault-Tec representative, more commonly known as the Vault-Tec rep, was a door-to-door salesman working for Vault-Tec in 2077.",Vault-Tec Rep,MaleGhoul,,NPCMVaultTecRepGhoul,Ghoul,Male,,204724,204723,YetAnotherModder,031FB3,031FB4
+/wiki/Amari,"Doctor Amari is a scientist in the Memory Den in Goodneighbor, and an agent of the Railroad in 2287.",Doctor Amari,Doctor Amari,,NPCFDoctorAmari,Human,Female,,632451,632448,YetAnotherModder,09A680,09A683
+/wiki/Irma,Irma is the co-proprietress of the Memory Den in Goodneighbor in 2287.,Irma,femaleboston,,NPCFIrma,Human,Female,,141478,141477,YetAnotherModder,0228A5,0228A6
+/wiki/Kent_Connolly,"Kent Connolly is a ghoulified radio technician, operating out of his studio in the Memory Den in Goodneighbor, in 2287.",Kent Connolly,maleghoul,,NPCMKentConnolly,Ghoul,Male,,141484,141482,YetAnotherModder,0228AA,0228AC
+/wiki/Sonya,Sonya is a modified Eyebot used for tunneling.,Sonya,robotcompanionfemaledefault,,RobotEyebot,ModifiedEyebot,Male,,1178670,821599,YetAnotherModder,0C895F,11FC2E
+/wiki/Barnes_(Fallout_4),Barnes is a Gunner living in the Commonwealth in 2287.,Barnes,maleboston,,NPCMBarnes,Human,Male,,214660,214656,YetAnotherModder,34680,34684
+/wiki/Ham,Ham is the bouncer of the Third Rail.,Ham,maleghoul,,NPCMHam,Ghoul,Male,,140942,140940,YetAnotherModder,02268C,02268E
+/wiki/Magnolia,"Magnolia is a singer performing at the Third Rail, a bar in Goodneighbor in 2287.",Magnolia,femaleeventoned,,NPCFMagnolia,Synth,Female,,140939,140938,YetAnotherModder,02268A,02268B
+/wiki/Robert_MacCready,"Robert Joseph ""RJ"" MacCready is a mercenary and possible companion in Fallout.",MacCready,MacCready,,NPCMMacCready,Human,Male,,174247,160782,YetAnotherModder,02740E,02A8A7
+/wiki/Whitechapel_Charlie,Whitechapel Charlie is a unique Mister Handy in Fallout.,Whitechapel Charlie,robot_mrhandy,,RobotWhitechapelCharlie,Mister Handy,Male,,140936,140935,YetAnotherModder,22687,22688
+/wiki/Winlock,Winlock is a Gunner living in the Commonwealth in 2287.,Winlock,maleboston,,NPCMWinlock,Human,Male,,214659,214655,YetAnotherModder,03467F,34683
+/wiki/Supervisor_Brown,"Supervisor Brown is a Mister Handy operating at Graygarden in 2287
+Supervisor Brown is a modified Mister Handy model robot with a distinct male voice.",Supervisor Brown,robot_mrhandy,,RobotSupervisorBrown,Mister Handy,Male,,988310,988306,YetAnotherModder,0F1492,0F1496
+/wiki/Supervisor_Greene,Supervisor Greene is a Mister Handy in 2287 at Graygarden as a merchant.,Supervisor Greene,robot_mrhandy,,RobotSupervisorGreene,Mister Handy,Male,,988309,988308,YetAnotherModder,0F1494,0F1495
+/wiki/Supervisor_White,Supervisor White is a modified Mister Handy with a female personality and white paint found in Graygarden in 2287.,Supervisor White,robotcompanionfemaledefault,,RobotSupervisorWhite,Mister Handy,Female,,133706,133703,YetAnotherModder,020A47,020A4A
+/wiki/T.S._Wallace,T.,T. S. Wallace,maleboston,,NPCMTSWallace,Human,Male,,665460,497029,YetAnotherModder,79585,0A2774
+/wiki/K1-98,K1-98 or Jenny is a runaway synth in the Commonwealth in 2287.,K1-98,tinadeluca,,NPCFK1-98,Synth,Female,,413181,323554,YetAnotherModder,04EFE2,064DFD
+/wiki/Z2-47,Z2-47 is a synth courser working for the Institute in 2287.,Z2-47,institutecoursermale,,NPCMZ2-47,Synth,Male,,413180,323564,YetAnotherModder,04EFEC,064DFC
+/wiki/Wes,Captain Wes is the commanding officer of the division of the Gunners operating out of Gunners plaza.,Captain Wes,GangOperatorMale02,,GunnersMale02,Human,Male,,1725296,1732879,YetAnotherModder,1A710F,1A5370
+/wiki/Cruz,Cruz is a Gunner inside Gunners plaza in 2287.,Cruz,GangOperatorMale01,,GunnersMale01,Human,Male,,321869,1732878,YetAnotherModder,1A710E,04E94D
+/wiki/Ryder,Ryder is a member of the Gunners in the Commonwealth in 2287.,Ryder,GangOperatorMale02,,GunnersMale02,Human,Male,,530633,1732877,YetAnotherModder,1A710D,0818C9
+/wiki/Gabriel_(Fallout_4),"Gabriel, designation B5-92, is an escaped synth turned raider living in the Commonwealth in 2287.",Gabriel,MaleRaider02,,RaiderMale02,Synth,Male,,931655,925949,YetAnotherModder,0E20FD,0
+/wiki/James_Wire,James Wire[1] (simply referred to as Wire in-game) is a raider living in the Commonwealth in 2287.,Wire,MaleRaider01,,RaiderMale01,Human,Male,,1697044,713030,YetAnotherModder,0AE146,19E514
+/wiki/Theodore_Collins,"Theodore ""Theo"" Collins is the man running Longneck Lukowski's Cannery in 2287.",Theodore Collins,maleboston,,NPCMTheodoreCollins,Human,Male,,251978,251956,YetAnotherModder,03D834,03D84A
+/wiki/Rylee,Trader Rylee is a trader from Vault 81 in Fallout.,Trader Rylee,femaleboston,,NPCFTraderRylee,Human,Female,,258035,258034,YetAnotherModder,03EFF2,03EFF3
+/wiki/Avery_(Fallout_4),Avery is a raider living in the Commonwealth in 2287.,Avery,femaleboston,,NPCFAvery,Human,Female,,528631,284416,YetAnotherModder,45700,0810F7
+/wiki/Sinjin,Sinjin is a ghoulified raider leader in the Commonwealth in 2287.,Sinjin,maleghoul,,NPCMSinjin,Ghoul,Male,,291253,291252,YetAnotherModder,0471B4,0471B5
+/wiki/Shelly_Tiller,Shelly Tiller is a wastelander and an assassination target found hiding on the second floor of the National Guard training yard in the Commonwealth in 2287.,Shelly Tiller,FemaleEvenToned,,FemaleEvenToned,Human,Female,,924968,924967,YetAnotherModder,0E1D27,0E1D28
+/wiki/Kyle_(dog),Kyle is a dog living in the Commonwealth in 2287.,Kyle,maleghoul,,crraiderdogvoice,Dog,Male,,2077162,2077161,YetAnotherModder,1FB1E9,1FB1EA
+/wiki/Kate_(dog),Kate is a dog living in the Commonwealth in 2287.,Kate,femaleghoul,,crraiderdogvoice,Dog,Female,,2077165,2077163,YetAnotherModder,1FB1EB,1FB1ED
+/wiki/Alissa,Alissa is a mongrel living in the Commonwealth in 2287.,Alissa,femaleghoul,,crraiderdogvoice,Mongrel,Female,,2077166,2077164,YetAnotherModder,1FB1EC,1FB1EE
+/wiki/Lefty,Lefty is a leader of a group of raiders living in the Commonwealth in 2287.,Lefty,MaleRaider01,,RaiderMale01,Human,Male,,763157,1733447,YetAnotherModder,1A7347,0BA515
+/wiki/Lorenzo_Cabot,"Lorenzo Cabot is the patriarch of the Cabot family, imprisoned in the basement of Parsons State Insane Asylum in the Commonwealth in 2287.",Lorenzo Cabot,maleold,,NPCMLorenzoCabot,Human(psychic),Male,,294598,294597,YetAnotherModder,047EC5,047EC6
+/wiki/Maria_(Fallout_4),Maria is the leader of an mercenary group living in the Commonwealth in 2287.,Maria,femaleboston,,NPCFParsonsGuardCaptain,Human,Female,,307856,307854,YetAnotherModder,04B28E,04B290
+/wiki/Pickman,Pickman is a serial killer and self-described artist living in Pickman Gallery in the Commonwealth.,Pickman,maleboston,,NPCMPickman,Human,Male,,306510,306509,YetAnotherModder,04AD4D,04AD4E
+/wiki/Slab,Slab is the leader of a raider gang in 2287 and multiple of his members have been kidnapped by a serial killer known as Pickman.,Slab,MaleRaider01,,RaiderMale01,Human,Male,,306489,1484382,YetAnotherModder,16A65E,04AD39
+/wiki/Baker,Sergeant Baker is one of the residing Gunner leaders at the Quincy ruins.,Baker,GangOperatorMale01,,GunnersMale01,Human,Male,,103423,1730460,YetAnotherModder,1A679C,0193FF
+/wiki/Clint,Lieutenant Clint is the commanding officer of the Gunners stationed in Quincy ruins in 2287.,Clint,GangOperatorMale02,,GunnersMale02,Human,Male,,568442,1730462,YetAnotherModder,1A679E,08AC7A
+/wiki/Bullet,Bullet is a Gunner operating out of Quincy in 2287.,Bullet,MaleBoston,,NPCMBullet,Human,Male,,167352,167348,YetAnotherModder,028DB4,028DB8
+/wiki/Slough,Slough is a raider leader living in the Commonwealth in 2287.,Slough,MaleRaider02,,RaiderMale02,Ghoul,Male,,2127340,2127339,YetAnotherModder,2075EB,2075EC
+/wiki/Tessa,Tessa is a member of the Gunners in the Commonwealth in 2287.,Tessa,FemaleRaider01,,RaiderFemale01,Human,Female,,103393,1730458,YetAnotherModder,1A679A,1930
+/wiki/Carol_Peabody,"Carol Peabody is a ghoul living in her house located near the ruins of Quincy, in 2287.",Carol Peabody,FemaleGhoul,,FemaleGhoul,Ghoul,Female,,174212,174141,YetAnotherModder,02A83D,02A884
+/wiki/Matt_Peabody,Matt Peabody is a ghoul living in his house located near the ruins of Quincy in 2287.,Matt Peabody,MaleGhoul,,MaleGhoul,Ghoul,Male,,174211,174140,YetAnotherModder,02A83C,02A883
+/wiki/Deacon,Deacon (real name unknown)[1] is an enigmatic agent of the Railroad in 2287.,Deacon,Deacon,,NPCMDeacon,Human,Male,,330102,285385,YetAnotherModder,045AC9,50976
+/wiki/Desdemona,"Desdemona, also known by her nickname Dez, is the leader of the secretive underground movement known as the Railroad in the Commonwealth in 2287.",Desdemona,Desdemona,,NPCFDesdemona,Human,Female,,329965,285393,YetAnotherModder,045AD1,0508ED
+/wiki/Stanley_Carrington,Doctor Stanley Carrington[1] is the medic and the second-in-command of the Railroad in 2287.,Doctor Carrington,vaulttecscientist,,NPCMDoctorCarrington,Human,Male,,330064,285389,YetAnotherModder,045ACD,50950
+/wiki/Drummer_Boy,Drummer Boy is the primary courier and liaison for the Railroad in 2287.,Drummer Boy,MaleEvenToned,,MaleEvenToned,Human,Male,,424143,424142,YetAnotherModder,0678CE,0678CF
+/wiki/Glory,"Glory, originally G7-81,[1] is a synth member of the Railroad in 2287.",Glory,Glory,,NPCFGlory,Synth,Female,,329966,285391,YetAnotherModder,045ACF,0508EE
+/wiki/Tims,Mister Tims is an agent of the Railroad living in the Commonwealth in 2287.,Mister Tims,MaleBoston,,MaleBoston,Human,Male,,1590969,1590962,YetAnotherModder,1846B2,1846B9
+/wiki/Predictive_Analytic_Machine,The P.,P.A.M.,PAM,,RobotPAM,Computer AIModifiedAssaultron[1],Female,,329964,285395,YetAnotherModder,045AD3,0508EC
+/wiki/Tinker_Tom,"Thomas Weatherby, colloquially known as Tinker Tom (or TT in code),[1] is the quartermaster and primary repairman for the Railroad, operating in the Commonwealth in 2287.",Tinker Tom,maleboston,,NPCMTinkerTom,Human,Male,,329962,285387,YetAnotherModder,045ACB,0508EA
+/wiki/Codsworth,"Codsworth is a domestic-model Mister Handy purchased by the Sole Survivor, in service to them and their family before the Great War in Sanctuary Hills, as a butler from 2077 to 2287.",Codsworth,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,117373,96767,YetAnotherModder,0179FF,01CA7D
+/wiki/Nate,Nate is a pre-War resident of Sanctuary Hills in 2077 and one of the two possible player characters available during character creation in Fallout.,Nate,Nate,,PlayerVoiceMale01,Human,Male,,687415,353979,YetAnotherModder,0566BB,0A7D37
+/wiki/Nora,Nora is a pre-War resident of Sanctuary Hills in 2077 and one of the two possible player characters available during character creation in Fallout.,Nora,Nora,,PlayerVoiceFemale01,Human,Female,,687416,353980,YetAnotherModder,0566BC,0A7D38
+/wiki/Shaun,"Shaun, also known as Father, is the son of the Sole Survivor and is the director of the Institute in 2287.",Father,Shaun,,NPCMShaun60,Human,Male,,377655,172442,YetAnotherModder,02A19A,05C337
+/wiki/Able_(male),Mr.,Mr. Able,MaleOld,,NPCMMrAble,Human,Male,,777727,777723,YetAnotherModder,0BDDFB,0BDDFF
+/wiki/Able_(female),Mrs.,Mrs. Able,femaleboston,,NPCFMrsAble,Human,Female,,777728,777725,YetAnotherModder,0BDDFD,0BDE00
+/wiki/Callahan_(male),Mr.,Mr. Callahan,maleboston,,NPCMMrCallahan,Human,Male,,1417692,1417688,YetAnotherModder,15A1D8,15A1DC
+/wiki/Callahan_(female),Mrs.,Mrs. Callahan,femaleboston,,NPCFMrsCallahan,Human,Female,,1417693,1417689,YetAnotherModder,15A1D9,15A1DD
+/wiki/Cofran_(male),Mr.,Mr. Cofran,MaleEvenToned,,MaleEvenToned,Human,Male,,245174,245173,YetAnotherModder,03BDB5,03BDB6
+/wiki/Cofran_(female),Mrs.,Mrs. Cofran,FemaleEvenToned,,FemaleEvenToned,Human,Female,,245176,245175,YetAnotherModder,03BDB7,03BDB8
+/wiki/Cindy_Cofran,Cindy Cofran is a deceased resident of Vault 111.,Cindy Cofran,FemaleEvenToned,,FemaleEvenToned,Human,Female,,245184,245177,YetAnotherModder,03BDB9,03BDC0
+/wiki/DiPietro,"According to Hawthorne, a chem dealer who lived in Sanctuary Hills before the Great War, DiPietro was very high strung.",Mr. DiPietro,MaleEvenToned,,MaleEvenToned,Human,Male,,245172,245171,YetAnotherModder,03BDB3,03BDB4
+/wiki/Donoghue_(male),Mr.,Mr. Donoghue,maleghoul,,NPCMMrDonoghue,Ghoul,Male,,777740,777735,YetAnotherModder,0BDE07,0BDE0C
+/wiki/Donoghue_(female),Mrs.,Mrs. Donoghue,femaleghoul,,NPCFMrsDonoghue,Ghoul,Female,,777739,777737,YetAnotherModder,0BDE09,0BDE0B
+/wiki/Parker_(male),Mr.,Neighbor,maleghoul,,NPCMMrParker,Ghoul,Male,,777734,777729,YetAnotherModder,0BDE01,0BDE06
+/wiki/Parker_(female),Mrs.,Neighbor,femaleghoul,,NPCFMrsParker,Ghoul,Female,,777733,777731,YetAnotherModder,0BDE03,0BDE05
+/wiki/Russell,Mr.,Mr. Russell,maleboston,,NPCMMrRussell,Human,Male,,1173397,1173396,YetAnotherModder,11E794,11E795
+/wiki/Smith_(Sanctuary_Hills),Mr.,Mr. Smith,maleboston,,NPCMMrSmith,Human,Male,,831939,1172309,YetAnotherModder,11E355,0CB1C3
+/wiki/Sumner_(male),Mr.,Neighbor,maleghoul,,NPCMMrSumner,Ghoul,Male,,1178011,1178009,YetAnotherModder,11F999,11F99B
+/wiki/Sumner_(female),Mrs.,Neighbor,femaleghoul,,NPCFMrsSumner,Ghoul,Female,,1178012,129434,YetAnotherModder,01F99A,11F99C
+/wiki/Washington_(male),Mr.,Neighbor,maleghoul,,NPCMMrWashington,Ghoul,Male,,1674100,777743,YetAnotherModder,0BDE0F,198B74
+/wiki/Washington_(female),Mrs.,Neighbor,femaleghoul,,NPCFMrsWashington,Ghoul,Female,,1674101,777744,YetAnotherModder,0BDE10,198B75
+/wiki/Whitfield_(male),Mr.,Mr. Whitfield,maleboston,,NPCMMrWhitfield,Human,Male,,1173392,1173390,YetAnotherModder,11E78E,11E790
+/wiki/Whitfield_(female),Mrs.,Mrs. Whitfield,Desdemona,,NPCFMrsWhitfield,Human,Female,,1173391,1173389,YetAnotherModder,11E78D,11E78F
+/wiki/Rosa_(Fallout_4),Ms.,Neighbor,femaleghoul,,NPCFMsRosa,Ghoul,Female,,777722,777720,YetAnotherModder,0BDDF8,0BDDFA
+/wiki/Chris_Rosa,Chris Rosa[1][2] is one of the Sole Survivor and Nate/Nora's neighbors in Sanctuary Hills in 2077.,Neighbor,maleghoul,,NPCMChrisRosa,Ghoul,Male,,799102,799100,YetAnotherModder,0C317C,0C317E
+/wiki/Jake_Finch,"Jake Finch is the son of Abraham Finch, the owner of Finch farm, living in the Commonwealth in 2287.",Jake Finch,MaleEvenToned,,MaleEvenToned,Human,Male,,285751,258605,YetAnotherModder,03F22D,045C37
+/wiki/Lexa,Lexa is a bodyguard living in the Commonwealth in 2287.,Lexa,FemaleEvenToned,,FemaleEvenToned,Human,Female,,2035781,1615573,YetAnotherModder,18A6D5,1F1045
+/wiki/Simon_(Fallout_4),Simon is a bodyguard living in the Commonwealth in 2287.,Simon,MaleEvenToned,,MaleEvenToned,Human,Male,,2035780,1615572,YetAnotherModder,18A6D4,1F1044
+/wiki/Slag,"Slag is the leader of the Forged, a fanatical gang of fire-worshiping raiders established in the Saugus Ironworks in 2287.",Slag,MaleRaider02,,RaiderMale02,Human,Male,,174770,1249305,YetAnotherModder,131019,02AAB2
+/wiki/Stash,Stash is a chem dealer living in the Commonwealth in 2287.,Stash,FemaleEvenToned,,FemaleEvenToned,Human,Female,,1615581,1615569,YetAnotherModder,18A6D1,18A6DD
+/wiki/Henri,"Brother Henri was sent to the Sentinel site Prescott, a nuclear launch site located in the Glowing Sea, probably by Mother Isolde[citation needed] to guard the various atomic weapons stored there.",Brother Henri,maleboston,,NPCMHenri,Human,Male,,733153,733143,YetAnotherModder,0B2FD7,0B2FE1
+/wiki/Atom%27s_Wrath,Atom's Wrath is an Assaultron that accompanied Brother Henri in 2287 on his journey to the sentinel site.,Atom's Wrath,robot_assaultron,,robotassaultron,Assaultron,Female,,1327177,1327178,YetAnotherModder,14404A,144049
+/wiki/Mikail,"A denizen of the Commonwealth, Mikail tried to brave the dangers of downtown Boston to reunite with his loved one.",Mikail,MaleBoston,,MaleBoston,Human,Male,,420486,420053,YetAnotherModder,0668D5,066A86
+/wiki/Swan,"Swan, born Edgar Swann, is a unique super mutant behemoth living in Swan's Pond, the center of the Boston Common in 2287.",Swan,supermutant03,,CrSwan,Super mutantHuman(formerly),Male,,355195,355196,YetAnotherModder,056B7C,056B7B
+/wiki/Ronnie_Shaw,Ronnie Shaw is a veteran officer of the Minutemen living in the Commonwealth in 2287.,Ronnie Shaw,RonnieShaw,,NPCFRonnieShaw,Human,Female,,351945,238680,YetAnotherModder,03A458,055EC9
+/wiki/McGann,"McGann was general of the Minutemen, stationed at the Castle when it was taken over by a mirelurk queen.",General McGann,MaleEvenToned,,MaleEvenToned,Human,Male,,765838,765836,YetAnotherModder,0BAF8C,0BAF8E
+/wiki/Sarge,Sarge is a sentry bot in the Castle tunnels in 2287.,Sarge,ironsides,,robotsentrybot,Sentry bot,Male,,759227,1228870,YetAnotherModder,12C046,0B95BB
+/wiki/Alan_Binet,Alan Binet (username Binet.,Alan Binet,maleboston,,NPCMAlanBinet,Human,Male,,698255,386400,YetAnotherModder,05E560,0AA78F
+/wiki/Alana_Secord,Alana Secord (username Secord.,Alana Secord,femaleboston,,NPCFAlanaSecord,Human,Female,,400431,386404,YetAnotherModder,05E564,061C2F
+/wiki/Alice_Thompson,Alice Thompson is a child in the Institute in 2287.,Alice Thompson,tinadeluca,,FemaleChild,Human,Female,,1346424,1346418,YetAnotherModder,148B72,148B78
+/wiki/Allie_Filmore,Allie Filmore (username Filmore.,Allie Filmore,femaleboston,,NPCFAllieFilmore,Human,Female,,400433,386391,YetAnotherModder,05E557,061C31
+/wiki/Brendan_Volkert,Brendan Volkert (username Volkert.,Brendan Volkert,vaulttecscientist,,NPCMBrendanVolkert,Human,Male,,1346428,1346422,YetAnotherModder,148B76,148B7C
+/wiki/Clayton_Holdren,Doctor Clayton Holdren[1] (username Holdren.,Clayton Holdren,vaulttecscientist,,NPCMClaytonHoldren,Human,Male,,400434,386396,YetAnotherModder,05E55C,061C32
+/wiki/Dean_Volkert,Doctor Dean Volkert (username Volkert.,Dean Volkert,vaulttecscientist,,NPCMDeanVolkert,Human,Male,,400435,386398,YetAnotherModder,05E55E,061C33
+/wiki/Enrico_Thompson,Enrico Thompson (username Thompson.,Enrico Thompson,vaulttecscientist,,NPCMEnricoThompson,Human,Male,,400436,386394,YetAnotherModder,05E55A,061C34
+/wiki/Evan_Watson,Doctor Evan Watson[2] (username Watson.,Evan Watson,vaulttecscientist,,NPCMEvanWatson,Human,Male,,400437,386401,YetAnotherModder,05E561,061C35
+/wiki/Eve,Eve is a third generation synth living in the Institute in 2287.,Eve,FemaleEvenToned,,FemaleEvenToned,Synth,Female,,1124517,1124516,YetAnotherModder,1128A4,1128A5
+/wiki/G9-81,G9-81 is a synth living in the Institute in 2287.,G9-81,FemaleEvenToned,,NPCFG9-81,Synth,Female,,867515,862713,YetAnotherModder,0D29F9,0D3CBB
+/wiki/Isaac_Karlin,Doctor Isaac Karlin[1] (username Karlin.,Isaac Karlin,vaulttecscientist,,NPCMIsaacKarlin,Human,Male,,400438,386397,YetAnotherModder,05E55D,061C36
+/wiki/Janet_Thompson,Janet Thompson is a scientist in the Advanced Systems division of the Institute in 2287.,Janet Thompson,FemaleEvenToned,,FemaleEvenToned,Human,Female,,1346423,1346417,YetAnotherModder,148B71,148B77
+/wiki/Julia_Thompson,Julia Thompson is a child in the Institute in 2287.,Julia Thompson,tinadeluca,,NPCFJuliaThompsonChild,Human,Female,,1346425,1346419,YetAnotherModder,148B73,148B79
+/wiki/Justin_Ayo,Dr.,Justin Ayo,vaulttecscientist,,NPCMJustinAyo,Human,Male,,400439,386403,YetAnotherModder,05E563,061C37
+/wiki/Lawrence_Higgs,Lawrence Higgs is a scientist living in the Institute in 2287.,Lawrence Higgs,vaulttecscientist,,NPCMLawrenceHiggs,Human,Male,,400440,386393,YetAnotherModder,05E559,061C38
+/wiki/Liam_Binet,"Liam Binet (also known as Patriot, username Binet.",Liam Binet,vaulttecscientist,,NPCMLiamBinet,Human,Male,,701164,688868,YetAnotherModder,0A82E4,0AB2EC
+/wiki/Madison_Li,Doctor Madison Li (Institute username Li.,Madison Li,Madison Li,,NPCFMadisonLi,Human,Female,,2020391,386623,YetAnotherModder,05E63F,1ED427
+/wiki/Max_Loken,Max Loken (username Loken.,Max Loken,vaulttecscientist,,NPCMMaxLoken,Human,Male,,400442,386399,YetAnotherModder,05E55F,061C3A
+/wiki/Nathan_Filmore,Nathan Filmore is a member of the Advanced Systems division of the Institute in 2287.,Nathan Filmore,MaleEvenToned,,MaleRough,Human,Male,,1346427,1346421,YetAnotherModder,148B75,148B7B
+/wiki/Newton_Oberly,Dr.,Newton Oberly,vaulttecscientist,,NPCMNewtonOberly,Human,Male,,400443,386395,YetAnotherModder,05E55B,061C3B
+/wiki/Quentin_Filmore,Quentin Filmore (username Filmore.,Quentin Filmore,clem,,MaleChild,Human,Male,,1346426,1346420,YetAnotherModder,148B74,148B7A
+/wiki/Rosalind_Orman,Rosalind Orman (username Ormand.,Rosalind Orman,femaleboston,,NPCFRosalindOrman,Human,Female,,400444,386402,YetAnotherModder,05E562,061C3C
+/wiki/Shaun_(synth),"Shaun (designation: S9-23) is a prototype synth created by the real Shaun and lives in the Institute, unless the Sole Survivor opts to destroy the Institute during the mission The Nuclear Option, after which he can be sent to the Commonwealth or left to die in the Institute's nuclear explosion.",Shaun,Clem,,NPCMShaun10,Synth,Male,,377656,356547,YetAnotherModder,0570C3,05C338
+/wiki/Synth_requisition_officer,The synth requisition officer (named synth in-game) is a generation 2 synth merchant in the Institute's concourse in Fallout.,Synth,gen1synth01,,SynthGen1Male01,Synth,Male,,1578227,1578226,YetAnotherModder,1814F2,1814F3
+/wiki/X6-88,"X6-88 is a courser-class synth serving the Institute in 2287, performing various missions on their behalf in the Commonwealth.",X6-88,X6-88,,NPCMX6-88,Synth,Male,,925962,769766,YetAnotherModder,0BBEE6,0E210A
+/wiki/Z1-14,Z1-14 is a maintenance synth living in the Institute in 2287.,Z1-14,MaleEvenToned,,NPCMZ114,Synth,Male,,867514,862712,YetAnotherModder,0D29F8,0D3CBA
+/wiki/XPN-20A,XPN-20A is a hostile synth encountered in the Institute's reactor room during the quest The Nuclear Option with any faction.,XPN-20A,gen1synth01,,synthgen1male02,Synth,Male,,408680,1899287,YetAnotherModder,1CFB17,063C68
+/wiki/Z4K-97B,Z4K-97B is a synth living in the Institute in 2287.,Z4K-97B,gen1synth01,,synthgen1male02,Synth,Male,,1973642,1899288,YetAnotherModder,1CFB18,1E1D8A
+/wiki/A-2018,A-2018 is a synth living in the Institute in 2287.,A-2018,gen1synth01,,synthgen1male02,Synth,Male,,1973643,1899289,YetAnotherModder,1CFB19,1E1D8B
+/wiki/Arthur_Maxson,Elder Arthur Maxson (Registration MX-001E) is the last descendant of the Maxson lineage.,Elder Maxson,Elder Maxson,,NPCMElderMaxson,Human,Male,,117784,410296,YetAnotherModder,0642B8,01CC18
+/wiki/Emmett,Emmett is a house cat found on the Prydwen in 2287.,Emmett,maleghoul,,CrCat,House cat,Male,,1406046,1397445,YetAnotherModder,1552C5,15745E
+/wiki/Kells,"Lancer Captain Kells, registration KS-390LC,[1] is the captain of the Brotherhood of Steel's airship the Prydwen in 2287.",Lancer Captain Kells,LancerCaptainKells,,NPCMLancerCaptainKells,Human,Male,,117781,410290,YetAnotherModder,0642B2,01CC15
+/wiki/Cade,"Knight-Captain Cade, registration CD-440KC,[1] is the medical officer of the Prydwen in 2287.",Knight-Captain Cade,knight_captain_cade,,NPCMKnightCaptainCade,Human,Male,,570165,410291,YetAnotherModder,0642B3,08B335
+/wiki/Ingram,"Proctor Ingram, registration IG-444PR,[1] is head of engineering and the proctor for the Order of the Shield at the Prydwen in 2287.",Proctor Ingram,Proctor Ingram,,NPCFProctorIngram,Human,Female,,570176,410293,YetAnotherModder,0642B5,08B340
+/wiki/Quinlan,"Proctor Quinlan, registration QN-448PR,[1] is the head of the archives and R&D division, and proctor for the Order of the Quill on the Prydwen in Fallout.",Proctor Quinlan,proctor_quinlan,,NPCMProctorQuinlan,Human,Male,,587094,410294,YetAnotherModder,0642B6,08F556
+/wiki/Teagan,"Proctor Teagan, registration TG-477PR,[1] is the Brotherhood of Steel's quartermaster and the proctor for the Order of the Sword, living on the Prydwen in 2287.",Proctor Teagan,proctor_teagan,,NPCMProctorTeagan,Human,Male,,117759,410292,YetAnotherModder,0642B4,01CBFF
+/wiki/Neriah,"Senior Scribe Neriah, registration NR-490SS,[1] is a scientist serving on the Prydwen in 2287.",Senior Scribe Neriah,scribe_neriah,,NPCFScribeNeriah,Human,Female,,117882,410297,YetAnotherModder,0642B9,01CC7A
+/wiki/Buddy,"Drinkin' Buddy, also called Buddy, is a modified Protectron, located in the basement of the Shamrock Taphouse in 2287.",Buddy,robot_assaultron,,RobotProtectron,ModifiedProtectron,Male,,1524379,987824,YetAnotherModder,0F12B0,17429B
+/wiki/Donny_Kowalski,"Donny Kowalski is a child living in ruins of the Boston waterfront, in the Commonwealth in 2287.",Donny Kowalski,Clem,,NPCMDonnyKowalsky,Human,Male,,213500,206773,YetAnotherModder,0327B5,0341FC
+/wiki/Gaff,Gaff is a raider living in the Commonwealth in 2287.,Gaff,MaleRaider01,,RaiderMale01,Human,Male,,475950,713047,YetAnotherModder,0AE157,07432E
+/wiki/Arlen_Glass,Arlen Glass is a ghoul living in The Slog in 2287.,Arlen Glass,MaleGhoul,,NPCMArlenGlass,Ghoul,Male,,349508,152814,YetAnotherModder,0254EE,55544
+/wiki/Deirdre_(Fallout_4),Deirdre is a female ghoul located in the Slog in 2287.,Deirdre,FemaleGhoul,,FemaleGhoul,Ghoul,Female,,297848,258619,YetAnotherModder,03F23B,048B78
+/wiki/Holly_(Fallout_4),Holly is a ghoul living at the Slog in the Commonwealth in 2287.,Holly,FemaleGhoul,,FemaleGhoul,Ghoul,Female,,297849,258618,YetAnotherModder,03F23A,048B79
+/wiki/Jones_(Fallout_4),Jones is a male ghoul living in the Slog in 2287.,Jones,MaleGhoul,,MaleGhoul,Ghoul,Male,,297847,258617,YetAnotherModder,03F239,048B77
+/wiki/Wiseman,Wiseman is a male ghoul residing in the Commonwealth in 2287.,Wiseman,MaleGhoul,,MaleGhoul,Ghoul,Male,,297846,258612,YetAnotherModder,03F234,048B76
+/wiki/Rex_Goodman,Rex Goodman is a radio actor in the Commonwealth in 2287.,Rex Goodman,maleboston,,NPCMRexGoodman,Human,Male,,258789,224618,YetAnotherModder,036D6A,03F2E5
+/wiki/Strong,Strong is a super mutant imprisoned at Trinity Tower in 2287.,Strong,Strong,,NPCMStrong,Super mutant,Male,,258747,161410,YetAnotherModder,27682,03F2BB
+/wiki/Fist_(super_mutant),Fist is a super mutant in the Commonwealth in 2287.,Fist,Supermutant,,CrSuperMutant,Super mutant,Male,,258795,258794,YetAnotherModder,03F2EA,03F2EB
+/wiki/Bosun,The bosun is a nearly broken Mister Handy that only has its head and thruster left.,Bosun,robot_mrhandy,,RobotMS11Bosun,Mister Handy,Male,,665888,665887,YetAnotherModder,0A291F,0A2920
+/wiki/Ironsides,Ironsides is a sentry bot and the captain of the USS Constitution in 2287.,Ironsides,Ironsides,,RobotIronsides,Sentry bot,Male,,628225,241092,YetAnotherModder,03ADC4,99601
+/wiki/Davies,Davies is a scavenger in the Commonwealth in 2287.,Davies,maleboston,,NPCMDavies,Human,Male,,628143,320414,YetAnotherModder,04E39E,0995AF
+/wiki/First_mate_(robot),"The first mate can be found on one of the higher decks of the USS Constitution, leading the other Protectrons and turrets found on the ship.",First Mate,robot_assaultron,,RobotFirstMate,Police Protectron,Male,,660995,660993,YetAnotherModder,0A1601,0A1603
+/wiki/Lookout_(Mister_Handy),Lookout is a Mister Handy and crewman of the USS Constitution in 2287.,Lookout,robot_mrhandy,,RobotLookout,Mister Handy,Male,,628131,594827,YetAnotherModder,09138B,0995A3
+/wiki/Mandy_Stiles,Mandy Stiles is a scavenger in the Commonwealth in 2287.,Mandy Stiles,femaleboston,,NPCFMandyStiles,Human,Female,,628141,241096,YetAnotherModder,03ADC8,0995AD
+/wiki/Mr._Navigator,Mr.,Mr. Navigator,robot_mrhandy,,RobotNavigator,Mister Handy,Male,,661000,660999,YetAnotherModder,0A1607,0A1608
+/wiki/Alexis_Combes,Alexis Combes is a woman living in Vault 81 in 2287.,Alexis Combes,femaleboston,,NPCFAlexisCombes,Human,Female,,174106,174105,YetAnotherModder,02A819,02A81A
+/wiki/Ashes,Ashes is a house cat living in Vault 81 in the Commonwealth in 2287.,Ashes,maleghoul,,crcat,House cat,Male,,803707,174133,YetAnotherModder,02A835,0C437B
+/wiki/Austin_Engill,Austin Engill is a child resident of Vault 81 in 2287.,Austin Engill,Clem,,NPCMAustinEngill,Human,Male,,360886,360885,YetAnotherModder,0581B5,0581B6
+/wiki/Bobby_De_Luca,"Bobby is assigned to work in the reactor room with Old Rusty, but does not complete any of the work himself.",Bobby De Luca,maleboston,,NPCMBobbyDeLuca,Human,Male,,174123,174121,YetAnotherModder,02A829,02A82B
+/wiki/Calvin_Whitaker,Calvin Whitaker is a middle-aged male resident living in Vault 81 as a repairman.,Calvin,maleboston,,NPCMCalvinWhitaker,Human,Male,,1390677,1390671,YetAnotherModder,15384F,153855
+/wiki/Curie,"Contagions Vulnerability Robotic Infirmary Engineer (CVRIE),[2] or Curie, is a heavily-modified Miss Nanny designed by Vault 81's covert research team in the aftermath of the Great War.",Curie,robotcurie,,NPCFCurie,Handy,Female,,1057353,161414,YetAnotherModder,27686,102249
+/wiki/Curie,"Contagions Vulnerability Robotic Infirmary Engineer (CVRIE),[2] or Curie, is a heavily-modified Miss Nanny designed by Vault 81's covert research team in the aftermath of the Great War.",Curie,curie,,NPCFCurie,Human,Female,,1057353,161414,YetAnotherModder,27686,102249
+/wiki/Jacob_Forsythe,Dr.,Dr. Jacob Forsythe,vaulttecscientist,,NPCMJacobForsythe,Human,Male,,174114,174113,YetAnotherModder,02A821,02A822
+/wiki/Priscilla_Penske,Dr.,Dr. Penske,femaleboston,,NPCFPriscillaPenske,Human,Female,,174118,174117,YetAnotherModder,02A825,02A826
+/wiki/Erin_Combes,Erin Combes is a child resident of Vault 81 in 2287.,Erin Combes,femaleboston,,NPCFErinCombes,Human,Female,,174130,174128,YetAnotherModder,02A830,02A832
+/wiki/Gwen_McNamara,Gwen McNamara is the overseer of Vault 81 in the Commonwealth in 2287.,Overseer,gwen_mcnamara,,NPCFGwenMcNamara,Human,Female,,174132,174131,YetAnotherModder,02A833,02A834
+/wiki/Holt_Combes,Holt Combes is a character living in Vault 81 in the Commonwealth in 2287.,Holt Combes,maleboston,,NPCMHoltCombes,Human,Male,,174129,174127,YetAnotherModder,02A82F,02A831
+/wiki/Horatio_(Fallout_4),Horatio is a resident of Vault 81 and a barber in 2287.,Horatio,maleboston,,NPCMHoratio,Human,Male,,174108,174107,YetAnotherModder,02A81B,02A81C
+/wiki/Katy_Pinn,"Katy is the teacher in Vault 81, having been assigned and trained the role following her G.",Katy,femaleboston,,NPCFKatherinePinn,Human,Female,,174120,174119,YetAnotherModder,02A827,02A828
+/wiki/Maria_Summerset,"Maria ""Mary"" Summerset[1] is a resident of Vault 81 in the Commonwealth in 2287.",Maria Summerset,femaleboston,,NPCFMariaSummerset,Human,Female,,174112,174110,YetAnotherModder,02A81E,02A820
+/wiki/Mark_Summerset,"Markus William ""Mark"" Summerset[2] is a resident of Vault 81 in the Commonwealth in 2287.",Mark Summerset,maleboston,,NPCMMarkSummerset,Human,Male,,174111,174109,YetAnotherModder,02A81D,02A81F
+/wiki/Miranda_Song,Miranda Song is a resident of Vault 81 in Fallout.,Miranda,femaleboston,,NPCFMirandaSong,Human,Female,,701401,701400,YetAnotherModder,0AB3D8,0AB3D9
+/wiki/Neil_Freund,"Neil helps with maintenance in the vault and spends his time at the vault entrance, though he occasionally needs breaks because of the migraines that he suffers.",Neil,maleboston,,NPCMNeilFreund,Human,Male,,701403,701402,YetAnotherModder,0AB3DA,0AB3DB
+/wiki/Scott_Edwards,Scott Edwards is a security officer for Vault 81 in 2287.,Officer Edwards,Sturges,,NPCMScottEdwards,Human,Male,,1390678,1390670,YetAnotherModder,15384E,153856
+/wiki/Old_Rusty,Old Rusty is a Mister Handy in the Commonwealth in 2287.,Old Rusty,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,174126,174125,YetAnotherModder,02A82D,02A82E
+/wiki/Rachel_(Fallout_4),Rachel is one of the doctors of Vault 81 in the Commonwealth in 2287.,Rachel,femaleboston,,NPCFRachel,Human,Female,,174116,174115,YetAnotherModder,02A823,02A824
+/wiki/Tina_De_Luca,Tina De Luca is a resident of Vault 81 in 2287.,Tina De Luca,TinaDeLuca,,NPCFTinaDeLuca,Human,Female,,174124,174122,YetAnotherModder,02A82A,02A82C
+/wiki/Darla_(Fallout_4),"Darla is the current lover and gun moll of Skinny Malone, the leader of the Triggermen gang operating in downtown Boston in 2287.",Darla,femaleboston,,NPCFDarla,Human,Female,,616922,616921,YetAnotherModder,0969D9,0969DA
+/wiki/Dino_(Fallout_4),Dino is a member of Skinny Malone's Triggermen gang operating in the Commonwealth in 2287.,Dino,MaleTriggerman,,MaleTriggerman01,Human,Male,,539348,1524015,YetAnotherModder,17412F,083AD4
+/wiki/Nick_Valentine,Nick Valentine is a synthetic private detective living in Diamond City in 2287.,Nick Valentine,Nick,,NPCMNickValentine,Synth,Male,,12069,12068,YetAnotherModder,002F24,002F25
+/wiki/Skinny_Malone,Skinny Malone is a leader of the Triggermen who reside at Park Street station in the Boston Common in 2287.,Skinny Malone,maleboston,,NPCMSkinnyMalone,Human,Male,,540597,540596,YetAnotherModder,083FB4,083FB5
+/wiki/Bear_(raider),Bear is a member of a group of raiders occupying Walden Pond.,Bear,MaleRaider02,,RaiderMale02,Human,Male,,439969,1734307,YetAnotherModder,1A76A3,06B6A1
+/wiki/Tweez,Tweez is a member of a group of raiders occupying Walden Pond.,Tweez,MaleRaider01,,RaiderMale01,Human,Male,,439970,1734306,YetAnotherModder,1A76A2,06B6A2
+/wiki/Walter_(Walden_Pond),Walter is a raider at Walden Pond in 2287.,Walter,MaleRaider01,,RaiderMale01,Human,Male,,369002,1734310,YetAnotherModder,1A76A6,05A16A
+/wiki/Whiplash,Whiplash is a raider in the Commonwealth in 2287.,Whiplash,FemaleRaider01,,RaiderFemale01,Human,Female,,439972,1738861,YetAnotherModder,1A886D,06B6A4
+/wiki/Bill_Sutton,Bill Sutton is the foreman at Warwick homestead in 2287.,Bill Sutton,MaleEvenToned,,MaleRough,Human,Male,,102422,258616,YetAnotherModder,03F238,19016
+/wiki/Cedric_Hopton,Cedric Hopton is a farmhand living at Warwick homestead in 2287.,Cedric Hopton,MaleOld,,MaleOld,Human,Male,,659993,659991,YetAnotherModder,0A1217,0A1219
+/wiki/Janey_Warwick,Janey Warwick is a resident of Warwick homestead in 2287.,Janey Warwick,FemaleEvenToned,,FemaleEvenToned,Human,Female,,297895,258613,YetAnotherModder,03F235,048BA7
+/wiki/June_Warwick,June Warwick is a farmer living at Warwick homestead in 2287.,June Warwick,FemaleBoston,,FemaleBoston,Human,Female,,297896,258614,YetAnotherModder,03F236,048BA8
+/wiki/Roger_Warwick,Roger Warwick is an Institute synth posing as a farmer living at Warwick homestead in 2287.,Roger Warwick,MaleEvenToned,,MaleEvenToned,Synth,Male,,297897,258620,YetAnotherModder,03F23C,048BA9
+/wiki/Wally_Warwick,Wally Warwick is a child living at Warwick homestead in 2287.,Wally Warwick,Clem,,MaleChild,Human,Male,,297898,258615,YetAnotherModder,03F237,048BAA
+/wiki/Anne_Hargraves,Anne Hargraves is a seamstress and radio actress living in the WRVR broadcast station in 2287.,Anne Hargraves,femaleboston,,NPCFAnneHargraves,Human,Female,,224626,224623,YetAnotherModder,036D6F,036D72
+/wiki/George_Cooper,George Cooper is a radio actor living in the WRVR broadcast station in 2287.,George Cooper,maleboston,,NPCMGeorgeCooper,Human,Male,,224625,224622,YetAnotherModder,036D6E,036D71
+/wiki/Absalom,"Absalom is a hostile wastelander wandering the Commonwealth and even as far as the Island, in 2287.",Absalom,MaleEvenToned,,MaleEvenToned,Human,Male,,1363615,1363614,YetAnotherModder,14CE9E,14CE9F
+/wiki/Ack-Ack,Ack-Ack is a raider boss whose gang regularly extorts vulnerable settlements in the Commonwealth in 2287.,Ack-Ack,FemaleRaider01,,RaiderFemale01,Human,Female,,440411,725083,YetAnotherModder,0B105B,06B85B
+/wiki/Alien_(Fallout_4),An alien is a creature found in the Commonwealth in 2287.,Alien,maleghoul,,--,Alien,Male,,1601728,1592401,YetAnotherModder,184C51,1870C0
+/wiki/Angie_(Fallout_4),Angie is a woman met during the Self Admitted Synth random encounter.,Angie,FemaleRough,,FemaleRough,Human,Female,,0,1639918,YetAnotherModder,1905EE,0
+/wiki/Art_(synth),Art is a third-generation synth in the Commonwealth in 2287.,Art,MaleEvenToned,,MaleEvenToned,Synth,Male,,0,1566604,YetAnotherModder,17E78C,0
+/wiki/Art_(human),Art is a wastelander living in the Commonwealth in 2287.,Art,MaleEvenToned,,MaleEvenToned,Human,Male,,0,1566614,YetAnotherModder,17E796,0
+/wiki/Barney_Rook,"Barney Rook is the last remaining resident of Salem and the commander, quartermaster, sergeant at arms and scribe of the Salem Volunteer Militia in 2287.",Barney Rook,maleboston,,NPCMBarneyRook,Human,Male,,425110,316530,YetAnotherModder,04D472,067C96
+/wiki/Bethany,Bethany is a ghoul doctor living in the Commonwealth in 2287.,Bethany,FemaleGhoul,,FemaleGhoul,Ghoul,Female,,2260692,2260690,YetAnotherModder,227ED2,227ED4
+/wiki/Big_Maude,Big Maude is a raider in the Commonwealth in 2287.,Big Maude,FemaleRaider01,,RaiderFemale01,Human,Female,,0,1288522,YetAnotherModder,13A94A,0
+/wiki/Billy_Peabody,Billy Peabody is a ghoul child living in the Commonwealth in 2287.,Billy,Clem,,NPCMBilly,Ghoul,Male,,165459,165424,YetAnotherModder,28630,28653
+/wiki/Boomer_(Fallout_4),Boomer is a raider leader at Outpost Zimonja in 2287.,Boomer,MaleRaider02,,RaiderMale02,Human,Male,,713061,713044,YetAnotherModder,0AE154,0AE165
+/wiki/Bridget,Captain Bridget is the leader of a group of Gunners established at the Hub City Auto Wreckers in 2287.,Captain Bridget,GangOperatorFemale01,,GunnersFemale01,Human,Female,,247453,335505,YetAnotherModder,1E+092,03C69D
+/wiki/Sally_(Fallout_4),"Captain Sally is the sixth and final target in the To the Mattresses missions, where Railroad leader Desdemona has given the Sole Survivor the assignment to eliminate members of the L&L Gang, which targets and murders synths.",Captain Sally,FemaleRaider01,,RaiderFemale01,Human,Female,,0,1288541,YetAnotherModder,13A95D,0
+/wiki/Zao,"Captain Zao is the ghoulified captain of the Yangtze-31 and a former officer in the Chinese Navy,[1] responsible for launching his vessel's nuclear missiles at targets in the US during the Great War.",Captain Zao,maleghoul,,NPCMCaptainZao,Ghoul,Male,,213020,206774,YetAnotherModder,0327B6,03401C
+/wiki/First_mate_(ghoul),The first mate is a glowing one found inside the Chinese submarine the Yangtze in 2287.,First Mate,maleghoul,,maleghoul,Glowing one,Male,,1773727,1788075,YetAnotherModder,1B48AB,1B109F
+/wiki/Caretaker,Caretaker is a Railroad agent operating within the Commonwealth in 2287.,Caretaker,maleboston,,NPCMCaretaker,Human,Male,,736969,736967,YetAnotherModder,0B3EC7,0B3EC9
+/wiki/Charlie_(Fallout_4),Charlie is a randomly encountered child in the Commonwealth in 2287.,Charlie,tinadeluca,,FemaleChild,Human,Female,,0,1734594,YetAnotherModder,1A77C2,0
+/wiki/Cinder,Cinder is the leader of the gang of raiders established inside Revere Beach station in 2287.,Cinder,FemaleRaider01,,RaiderFemale01,Human,Female,,436908,713043,YetAnotherModder,0AE153,06AAAC
+/wiki/Clinton,Clinton is a man that may be randomly encountered in the Commonwealth in 2287.,Clinton,MaleBoston,,MaleBoston,Human,Male,,0,1734598,YetAnotherModder,1A77C6,0
+/wiki/Clutch,Clutch is the leader of a group of raiders residing at Back Street Apparel in 2287.,Clutch,FemaleRaider01,,RaiderFemale01,Human,Female,,321526,713046,YetAnotherModder,0AE156,04E7F6
+/wiki/Conrad_Kellogg,"Conrad Kellogg is a ruthless, highly skilled mercenary acting as the main surface operative of the Institute in the Commonwealth.",Kellogg,Kellog,,NPCMKellogg,Human(cyborg),Male,,638065,638060,YetAnotherModder,09BC6C,09BC71
+/wiki/Cutty,Cutty is the leader of the raiders established inside the Poseidon Energy plant located in the Commonwealth in 2287.,Cutty,MaleRaider01,,RaiderMale01,Human,Male or female,,355879,1759355,YetAnotherModder,1AD87B,6E+028
+/wiki/Dead_Eye,Dead Eye is a super mutant encountered at Fraternal Post 115 in 2287.,Dead Eye,Supermutant,,crsupermutant,Super mutant,Male,,242368,242367,YetAnotherModder,03B2BF,03B2C0
+/wiki/Demo,Demo is the leader of a small group of raiders occupying the Hardware Town store.,Demo,MaleRaider01,,RaiderMale01,Human,Male,,178927,713036,YetAnotherModder,0AE14C,02BAEF
+/wiki/Anderson_(Fallout_4),Doc Anderson is a traveling doctor in the Commonwealth in 2287.,Doc Anderson,FemaleOld,,FemaleOld,Human,Female,,1638471,1617808,YetAnotherModder,18AF90,190047
+/wiki/Dogmeat_(Fallout_4),Dogmeat is a dog living in the Commonwealth in 2287 and a possible companion to the Sole Survivor.,Dog,maleeventoned,,CrUniqueDogmeat,"Dog, German Shepherd",Male,,119138,119132,YetAnotherModder,01D15C,01D162
+/wiki/Dreth,"She sells a small number of weapons, food, and ammunition, and is accompanied by two Gunner guards.",Dreth,FemaleEvenToned,,FemaleEvenToned,Human,Female,,251449,251448,YetAnotherModder,03D638,03D639
+/wiki/Gabe_(Fallout_4),Father Gabe is situated in the Union's Hope Cathedral.,Father Gabe,MaleGhoul,,MaleGhoul,Ghoul,Male,,2273940,2273941,YetAnotherModder,22B295,22B294
+/wiki/Fred_(Fallout_4),Fred is a man met during the Self Admitted Synth random encounter.,Fred,MaleBoston,,MaleBoston,Human,Male,,0,1639919,YetAnotherModder,1905EF,0
+/wiki/Fred_O%27Connell,Fred O'Connell is a traveling merchant in the Commonwealth in 2287.,Fred O'Connell,MaleEvenToned,,MaleEvenToned,Human,Male,,955004,292425,YetAnotherModder,47649,0E927C
+/wiki/Gene_(Fallout_4),Gene is a dog breeder wandering in the Commonwealth in 2287.,Gene,MaleEvenToned,,MaleEvenToned,Human,Male,,1655605,1655604,YetAnotherModder,194334,194335
+/wiki/Gruel,Gruel is a randomly encountered named raider living in the Commonwealth in 2287.,Gruel,MaleRaider01,,--,Human,Male,,0,1486256,YetAnotherModder,16ADB0,0
+/wiki/Gus,Gus is a unique sentry bot and Kat's bodyguard.,Gus,ironsides,,RobotSentryBot,Sentry bot,,,0,1590413,YetAnotherModder,18448D,0
+/wiki/Hammer_(super_mutant),Hammer is a super mutant living in the West Everett Estates in 2287.,Hammer,Supermutant,,crsupermutant,Super mutant,Male,,608389,1128849,YetAnotherModder,113991,94885
+/wiki/Helter_Skelter,Helter Skelter is a raider in the Commonwealth in 2287.,Helter Skelter,MaleRaider01,,RaiderMale01,Human,Male,,1168961,713027,YetAnotherModder,0AE143,11D641
+/wiki/Jared,Jared is the leader of the raider gang operating in Lexington in 2287.,Jared,MaleRaider01,,RaiderMale01,Human,Male,,507156,867411,YetAnotherModder,0D3C53,07BD14
+/wiki/Zeller,Judge Zeller is a raider leader in the East Boston Preparatory School in 2287.,Judge Zeller,MaleRaider01,,RaiderMale01,Human,Male,,355837,490806,YetAnotherModder,077D36,056DFD
+/wiki/Jules_(Fallout_4),Jules is a third-generation synth traveling with Fred and Angie through the Commonwealth in 2287.,Jules,MaleEvenToned,,MaleEvenToned,Synth,Male,,0,1639917,YetAnotherModder,1905ED,0
+/wiki/Kat_(Fallout_4),Kat is a traveling merchant who can be encountered in the Commonwealth in 2287.,Kat,tinadeluca,,FemaleChild,Human,Female,,1590416,1590412,YetAnotherModder,18448C,184490
+/wiki/Kellogg%27s_mother,Kellogg's mother only appears in one of Kellogg's memories during the quest Dangerous Minds.,Mom,femaleboston,,MQ203MemoryA_MomVoice,Human,Female,,867485,867484,YetAnotherModder,0D3C9C,0D3C9D
+/wiki/Kelly_(Fallout_4),Kelly is a randomly encountered brahmin vendor in the Commonwealth in 2287.,Kelly,FemaleRough,,FemaleRough,Human,Female,,1706574,1706573,YetAnotherModder,1A0A4D,1A0A4E
+/wiki/Kendra,"Kendra is a gun for hire working for Sinjin, living in the Water Street apartments in the Financial District, just south of Goodneighbor.",Kendra,femaleboston,,NPCFKendra,Human,Female,,912688,303361,YetAnotherModder,04A101,0DED30
+/wiki/Leonard_Moore,Leonard Moore is a merchant in the Commonwealth in 2287.,Leonard Moore,MaleEvenToned,,MaleRough,Human,Male,,1999123,1999118,YetAnotherModder,1E810E,1E8113
+/wiki/Lucas_Miller,Lucas Miller is a traveling merchant operating in the Commonwealth in 2287.,Lucas Miller,maleboston,,NPCMLucasMiller,Human,Male,,1248122,1248120,YetAnotherModder,130B78,130B7A
+/wiki/Lucky_Tatum,Lucky Tatum is a raider in the Commonwealth in 2287.,Lucky Tatum,MaleRaider01,,RaiderMale01,Human,Male,,0,1288500,YetAnotherModder,13A934,0
+/wiki/Mac_(Fallout_4),Mac is a merchant living in the Commonwealth in 2287.,Mac,MaleBoston,,MaleBoston,Human,Male,,1758359,1758357,YetAnotherModder,1AD495,1AD497
+/wiki/Manta_Man_(Fallout_4),Manta Man is a delusional would-be vigilante wandering the Commonwealth in 2287.,Manta Man,MaleBoston,,MaleBoston,Human,Male,,1363621,1363618,YetAnotherModder,14CEA2,14CEA5
+/wiki/Mikey_(Fallout_4),Mikey is a wastelander in the Commonwealth in 2287.,Mikey,MaleBoston,,MaleBoston,Human,Male,,0,1742463,YetAnotherModder,1A967F,0
+/wiki/Moss,Moss is a wastelander in the Commonwealth in 2287.,Moss,MaleEvenToned,,MaleRough,Human,Male,,0,1742462,YetAnotherModder,1A967E,0
+/wiki/Mysterious_Stranger_(character),The Mysterious Stranger is a character that has made multiple appearances in the Fallout series and typically only when one has the Mysterious Stranger perk and utilizes V.,Mysterious Stranger,maleboston,,NPCMMysteriousStranger,Human,Male,,2399583,1608359,YetAnotherModder,188AA7,249D5F
+/wiki/Ness,Ness is a treasure hunter currently operating in the Commonwealth in 2287.,Ness,femaleboston,,NPCFNess,Human,Female,,427398,308073,YetAnotherModder,04B369,68586
+/wiki/Northy,Northy is a raider working for Sinjin in 2287.,Northy,maleboston,,NPCMNorthy,Human,Male,,284408,284406,YetAnotherModder,0456F6,0456F8
+/wiki/Opal,Opal is a human living in the Commonwealth in 2287.,Opal,FemaleRough,,FemaleRough,Human,Female,,620008,620029,YetAnotherModder,0975FD,0
+/wiki/Brandis,Paladin Brandis is a paladin of the Brotherhood of Steel living in the Commonwealth in 2287.,Paladin Brandis,paladin_brandis,,NPCMBoSPaladinBrandis,Human,Male,,755582,734653,YetAnotherModder,0B35BD,0B877E
+/wiki/Parker_Quinn,Parker Quinn is a con man operating near the South Boston Police Department in 2287.,Parker Quinn,maleboston,,NPCMParkerQuinn,Human,Male,,541680,541670,YetAnotherModder,0,0843F0
+/wiki/Phyllis_Daily,Phyllis Daily is a woman living at the Egret Tours Marina in 2287.,Phyllis Daily,femaleboston,,NPCFPhyllisDaily,Human,Female,,137666,137648,YetAnotherModder,0219B0,0219C2
+/wiki/Preston_Garvey_impersonator,"The Preston Garvey impersonator is a con artist in the Commonwealth in 2287, found during a random encounter.",Preston Garvey Impersonator,Preston,,NPCMPrestonGarveyImpersonator,Human,Male,,0,1755076,YetAnotherModder,1AC7C4,0
+/wiki/Goodfeels,Professor Goodfeels is a Mister Handy robot wandering around the Sunshine Tidings Co-op in 2287.,Professor Goodfeels,robot_mrhandy,,RobotDrFeelgood,Mister Handy,Male,,872993,872996,YetAnotherModder,0D5224,0D5221
+/wiki/Rags,Rags is the leader of the ghoul raiders found aboard the wreck of the FMS Northern Star in 2287.,Rags,maleghoul,,DN157NorwegianGhoulMale01,Ghoul,Male,,1460441,295309,YetAnotherModder,04818D,1648D9
+/wiki/Red_Tourette,Red Tourette is a raider living in the tunnels of the federal ration stockpile  in 2287.,Red Tourette,FemaleRaider01,,RaiderFemale01,Human,Female,,969261,1723996,YetAnotherModder,1A4E5C,0ECA2D
+/wiki/Regi_Blattaria,Regi Blattaria is a hostile man living in the Commonwealth in 2287.,Regi Blattaria,MaleRaider01,,RaiderMale01,Human,Male,,2393622,2393624,YetAnotherModder,248618,248616
+/wiki/Ricca,Ricca is a deceased raider in the Commonwealth in 2287.,Ricca,MaleRaider01,,RaiderMale01,Human,Female,,407521,1079727,YetAnotherModder,1079AF,6370
+/wiki/Richard_(Fallout_4),Richard is a dead newspaper salesman found west of Monsignor Plaza in 2287.,Richard,MaleEvenToned,,MaleRough,Human,Male,,825289,825287,YetAnotherModder,0C97C7,0C97C9
+/wiki/Ricky_Dalton,Ricky Dalton is a Railroad informant operating in the Commonwealth in 2287.,Ricky Dalton,maleboston,,NPCMRickyDalton,Human,Male,,471604,469512,YetAnotherModder,072A08,73234
+/wiki/Ron_Staples,Ron Staples is a bartender traveling the Commonwealth in 2287.,Ron Staples,MaleEvenToned,,MaleEvenToned,Human,Male,,1647447,1647446,YetAnotherModder,192356,192357
+/wiki/Rory_Rigwell,Rory Rigwell is a dead person at the Irish Pride Industries shipyard in 2287.,Rory Rigwell,maleboston,,NPCMRoryRigwell,Human,Male,,1463563,274966,YetAnotherModder,43216,16550B
+/wiki/Sarah_(Fallout_4),Sarah was the wife of Conrad Kellogg and mother of Mary.,Sarah,femaleboston,,MQ203MemoryB_SarahVoice,Human,Female,,871606,871605,YetAnotherModder,0D4CB5,0D4CB6
+/wiki/Scutter,Scutter is a raider on one of Hyde Park's rooftops in 2287.,Scutter,MaleRaider01,,RaiderMale01,Human,Male,,589241,713048,YetAnotherModder,0AE158,08FDB9
+/wiki/Skrap_Rat,Skrap Rat is a raider masquerading as a scavenger found in the Commonwealth during the BOS patrol vs raiders random encounter in 2287.,Skrap Rat,FemaleRough,,FemaleRough,Human,Female,,0,1742843,YetAnotherModder,1A97FB,0
+/wiki/Smiling_Larry,Smiling Larry is a traveling merchant appearing in the Commonwealth in 2287.,Smiling Larry,MaleEvenToned,,MaleEvenToned,Human,Male,,193191,193190,YetAnotherModder,02F2A6,02F2A7
+/wiki/Smiling_Kate,Smiling Kate is the leader of a small group of raiders working for Sinjin in the Commonwealth in 2287.,Smiling Kate,FemaleRaider01,,NPCFSmilingKate,Human,Female,,284404,284402,YetAnotherModder,0456F2,0456F4
+/wiki/Sparta,Sparta is the leader of a group of raiders holed up inside the BADTFL regional office in 2287.,Sparta,FemaleRaider01,,RaiderFemale01,Human,Female,,713050,713023,YetAnotherModder,0AE13F,0AE15A
+/wiki/Stevie_Buchanan,Stevie Buchanan is a raider in the Commonwealth in 2287.,Stevie Buchanan,MaleRaider01,,RaiderMale01,Human,Male,,0,1288527,YetAnotherModder,13A94F,0
+/wiki/Sully_Mathis,Sully Mathis is a disguised raider boss scouting out locations north of Concord to claim for his gang in 2287.,Sully Mathis,MaleEvenToned,,MaleEvenToned,Human,Male,,1078257,1078268,YetAnotherModder,1073FC,1073F1
+/wiki/Sully_Mathis,Sully Mathis is a disguised raider boss scouting out locations north of Concord to claim for his gang in 2287.,Sully Mathis,MaleEvenToned,,MaleEvenToned,Human,Male,,1079057,1079058,YetAnotherModder,107712,107711
+/wiki/Tad,Tad is a deceased raider in the Commonwealth in 2287.,Tad,MaleBoston,,MaleBoston,Human,Male,,400137,1079730,YetAnotherModder,1079B2,061B09
+/wiki/Tammy_Mac,Tammy Mac is a raider in the Commonwealth in 2287.,Tammy Mac,FemaleRaider01,,RaiderFemale01,Human,Female,,0,1288530,YetAnotherModder,13A952,0
+/wiki/The_Bruiser,The Bruiser is a raider in the Commonwealth in 2287.,The Bruiser,MaleRaider01,,RaiderMale01,Human,Male,,0,1288533,YetAnotherModder,13A955,0
+/wiki/The_Scribe,The Scribe is a randomly encountered merchant in the Commonwealth in 2287.,The Scribe,MaleOld,,MaleOld,Human,Male,,1103213,1103207,YetAnotherModder,10D567,10D56D
+/wiki/Timothy_(Fallout_4),Timothy is a synth encountered in the Escaped Synth random encounter in the Commonwealth in 2287.,Timothy,MaleEvenToned,,MaleEvenToned,Synth,Male,,0,1742096,YetAnotherModder,1A9510,0
+/wiki/Tower_Tom,Tower Tom is the leader of a gang of raiders at the Beantown Brewery in 2287.,Tower Tom,MaleRaider01,,RaiderMale01,Human,Male,,307392,307391,YetAnotherModder,04B0BF,04B0C0
+/wiki/Trish_(Fallout_4),Trish is a trusted underling of Marowski who helps operate much of her employer's chem business.,Trish,femaleghoul,,NPCFGibson,Ghoul,Female,,261698,261697,YetAnotherModder,03FE41,03FE42
+/wiki/Brian_Virgil,Dr.,Virgil,Virgil,,NPCMVirgil,SuperMutantRace,Male,,439557,439555,YetAnotherModder,06B503,06B505
+/wiki/Brian_Virgil,Dr.,Virgil,MaleEvenToned,,NPCMVirgilHuman,Human,Male,,1477514,1477513,YetAnotherModder,168B89,168B8A
+/wiki/X9-27,X9-27 is an Institute courser in the Commonwealth in 2287.,X9-27,institutecoursermale,,SynthGen3Male02,Synth,Male,,1112694,1112691,YetAnotherModder,10FA73,10FA76
+/wiki/Wayne_Gorski,"Wayne Gorski is a ghoulified survivalist and self-taught bomb maker, now turned feral.",Wayne Gorski,MaleGhoul,,MaleGhoul,Feral ghoul,Male,,426436,2356201,YetAnotherModder,23F3E9,0681C4
+/wiki/Ahab,Ahab is a heavily customized sentry bot owned by the Rust Devils in 2287.,Ahab,ironsides,,RobotSentryBot,Sentry bot,Male,,29989,69471,YetAnotherModder,010F5F,7525
+/wiki/Ivey,"Ivey is the leader of the Rust Devils, a group of raiders in the Commonwealth in 2287.",Ivey,FemaleRaider01,,raiderfemale01,Human,Female,,947508,58265,YetAnotherModder,0,0
+/wiki/Jezebel,Jezebel is a dismantled robobrain in the Fort Hagen hangar in 2287.,Jezebel's Voice,robotcompanionfemaleprocessed,,DLC01RobotRobobrain,Robobrain,Female,,66024,35535,YetAnotherModder,008ACF,0
+/wiki/Mechanist_(Automatron),The Mechanist (real name Isabel Cruz) is a robotics expert staying in the Commonwealth in 2287.,Isabel Cruz,femaleboston,,DLC01NPCFMechanist,Human,Female,,2428,2226,YetAnotherModder,0008B2,00097C
+/wiki/Sparks_(Automatron),Sparks is an eyebot serving as the Mechanist's assistant in the Mechanist's lair in 2287.,Sparks,robot_assaultron,,roboteyebot,Eyebot,Male,,7597,7596,YetAnotherModder,001DAC,001DAD
+/wiki/Ada,Ada is a modified Assaultron living in the Commonwealth in 2287 and a possible companion of the Sole Survivor.,Ada,RobotCompanionFemaleDefault,,DLC01RobotCompanionFemaleDefault,Assaultron,Female,,65298,64858,YetAnotherModder,00FD5A,00FF12
+/wiki/Hurtz,Hurtz is a modified Protectron located in the Commonwealth in 2287.,Hurtz,ironsides,,DLC01RobotCompanionBleepC,Protectron,Male,,65295,65294,YetAnotherModder,00FF0E,00FF0F
+/wiki/Porter_(Automatron),Porter is a heavily modified robot located in the Commonwealth in 2287.,Porter,ironsides,,DLC01RobotCompanionBleepC,Modified robot,Male,,65411,65292,YetAnotherModder,00FF0C,00FF83
+/wiki/Turing,Turing is a destroyed Mister Handy located in the Commonwealth in 2287.,Turing,robot_mrhandy,,DLC01RobotCompanionBleepA,Mister Handy,Male,,65291,65290,YetAnotherModder,00FF0A,00FF0B
+/wiki/Aster_(Acadia),"Before 2287, Aster fled the Institute, feeling that anything else would be allowing herself to remain trapped and in constant fear.",Aster,femaleboston,,DLC03FemaleAster,Synth,Female,,21543,17982,YetAnotherModder,00463E,5427
+/wiki/Chase_(Far_Harbor),Chase is a former courser who lives in Acadia in 2287.,Chase,femaleboston,,DLC03FemaleChase,Synth,Female,,21542,17978,YetAnotherModder,00463A,5426
+/wiki/Cog,Cog is a synth merchant located in Acadia.,Cog,maleboston,,DLC03MaleCog,Synth,Male,,21544,17984,YetAnotherModder,4640,5428
+/wiki/Cole_(Far_Harbor),"A recent arrival to Acadia, Cole claims that he would be dead were it not for Chase and DiMA, and is willing to do anything to repay their kindness.",Cole,maleboston,,DLC03MaleCole,Synth,Male,,137051,137050,YetAnotherModder,02175A,02175B
+/wiki/Dejen,"A synth who escaped with the Railroad's help, Dejen witnessed their slaughter but managed to evade his pursuers and make his way down to Acadia.",Dejen,maleboston,,DLC03MaleDejen,Synth,Male,,21545,17983,YetAnotherModder,00463F,5429
+/wiki/DiMA,DiMA is a modified synth on the Island in 2287.,DiMA,DiMA,,DLC03MaleDiMA,Synth,Male,,21541,17977,YetAnotherModder,4639,5425
+/wiki/Faraday,Faraday is a synth and trusted assistant of DiMA living in Acadia in 2287.,Faraday,vaulttecscientist,,DLC03MaleFaraday,Synth,Male,,21546,17980,YetAnotherModder,00463C,00542A
+/wiki/Tektus,High Confessor Tektus is the leader of the Children of Atom living in the Nucleus on the Island in 2287.,High Confessor Tektus,childrenofatommale02,,DLC03CoAMaleHighConfessorTektusSYNTH,Human,Male,,232070,135851,YetAnotherModder,0212AB,038A86
+/wiki/Jule,Jule is a synth living in Acadia on the Island in 2287.,Jule,femaleboston,,DLC03FemaleJule,Synth,Female,,21547,17986,YetAnotherModder,4642,00542B
+/wiki/Kasumi_Nakano,Kasumi Nakano is a runaway mechanic and technical expert taking refuge in Acadia in 2287.,Kasumi Nakano,Kasumi Nakano,,DLC03FemaleKasumiNakano,Humanorsynth,Female,,21548,16074,YetAnotherModder,003ECA,00542C
+/wiki/Larsen_(Far_Harbor),Knight-Captain Larsen is a Brotherhood of Steel soldier serving under Elder Maxson in 2287.,Knight-Captain Larsen,malebos02,,DLC03MaleBoSLarsen,Human,Male,,198079,198076,YetAnotherModder,0305BC,0305BF
+/wiki/Miranda_(Far_Harbor),"Miranda lived in the Commonwealth for some time before moving to Acadia, referring to it as ""back home"" in conversation.",Miranda,FemaleMariner,,DLC03FemaleMiranda,Synth,Female,,21549,17979,YetAnotherModder,00463B,00542D
+/wiki/Naveen,"An escapee from the Institute, Naveen wandered the wasteland, scared, lost and alone.",Naveen,MaleMaineAccent,,DLC03MaleNaveen,Synth,Male,,21550,17985,YetAnotherModder,4641,00542E
+/wiki/Allen_Lee,Allen Lee is the owner of the gun store in Far Harbor in 2287.,Allen Lee,MaleMaineAccent,,DLC03MaleAllenLee,Human,Male,,23706,23705,YetAnotherModder,005C99,005C9A
+/wiki/Andre_Michaud,Andre Michaud is a resident of Far Harbor in 2287.,Andre Michaud,MaleMaineAccent,,DLC03MaleAndreMichaud,Human,Male,,23710,23709,YetAnotherModder,005C9D,005C9E
+/wiki/Brooks,"Brooks, synth designation L7-92, is a synth living in Far Harbor who greets new arrivals on the Island in 2287.",Brooks,MaleMaineAccent,,DLC03MaleBrooks,Synth,Male,,23708,23707,YetAnotherModder,005C9B,005C9C
+/wiki/Olympia_Avery,"Olympia Avery was born on the Island, but left it in the past for a prolonged period of time, only returning to Far Harbor 10 or 11 years ago.",Captain Avery,FemaleMariner,,DLC03FemaleCaptainAvery,Synth,Female,,23682,23680,YetAnotherModder,005C80,005C82
+/wiki/Cassie_Dalton,Cassie Dalton is a resident of Far Harbor in 2287.,Cassie Dalton,FemaleMariner,,DLC03FemaleCassieDalton,Human,Female,,23702,23701,YetAnotherModder,005C95,005C96
+/wiki/Jared_Gresham,Jared Gresham is a resident of Far Harbor in 2287.,Jared Gresham,MaleMaineAccent,,DLC03MaleMaineAccent,Human,Male,,276572,276571,YetAnotherModder,04385B,04385C
+/wiki/Sandra_Lee,Sandra Lee is the sister of Allen Lee.,Sandra Lee,FemaleMariner,,DLC03FemaleSandraLee,Human,Female,,23700,23699,YetAnotherModder,005C93,005C94
+/wiki/The_Mariner,"The Mariner is the shipwright, handyman and landowner of Far Harbor in 2287.",The Mariner,FemaleMariner,,DLC03FemaleMariner,Human,Female,,23698,23697,YetAnotherModder,005C91,005C92
+/wiki/Small_Bertha,Bertha and her family were among those who had to flock to Far Harbor for safety following the Island once again becoming covered in the Fog.,Small Bertha,FemaleMariner,,DLC03FemaleBertha,Human,Female,,23684,23683,YetAnotherModder,005C83,005C84
+/wiki/Teddy_Wright,Teddy Wright is a doctor living in Far Harbor in 2287.,Teddy Wright,MaleMaineAccent,,DLC03MaleTeddyWright,Human,Male,,23704,23703,YetAnotherModder,005C97,005C98
+/wiki/Tony_(Far_Harbor),Tony is a male child living in Far Harbor in 2287.,Tony,MaleMaineAccent,,DLC03MaleTony,Human,Male,,23686,23685,YetAnotherModder,005C85,005C86
+/wiki/Debby,Debby is a waitress at the Last Plank in Far Harbor in 2287.,Debby,FemaleMariner,,DLC03FemaleDebby,Human,Female,,23750,23746,YetAnotherModder,005CC2,005CC6
+/wiki/Mitch_(Far_Harbor),Mitch is the bartender at the Last Plank in Far Harbor in 2287.,Mitch,MaleMaineAccent,,DLC03MaleMitch,Human,Male,,23712,23711,YetAnotherModder,005C9F,005CA0
+/wiki/Old_Longfellow,Old Longfellow is a hunter and guide living out of a cabin near Far Harbor in 2287.,Old Longfellow,Longfellow,,DLC03MaleOldLongfellow,Human,Male,,83458,28251,YetAnotherModder,006E5B,14602
+/wiki/Tink,Tink is a house cat owned by Debby who lives in the Last Plank in Far Harbor.,Tink,maleghoul,,crcat,House cat,Male,,35351,35350,YetAnotherModder,008A16,008A17
+/wiki/Devin_(Far_Harbor),Brother Devin is a fasting devotee of the Church of the Children of Atom at the Nucleus in 2287.,Brother Devin,childrenofatommale01,,DLC03CoAMaleBrotherDevin,Human,Male,,17523,17519,YetAnotherModder,00446F,4473
+/wiki/Kane_(Far_Harbor),Kane is the arms dealer of the Children of Atom at the Nucleus.,Brother Kane,childrenofatommale01,,DLC03CoAMaleBrotherKane,Human,Male,,17532,17521,YetAnotherModder,4471,00447C
+/wiki/Brian_Richter,Grand Zealot Brian Richter is the leader of the zealots and enforcer of Children of Atom laws on the Island in 2287.,Grand Zealot Richter,childrenofatommale01,,DLC03CoAMaleGrandZealotRichter,Human,Male,,17565,17509,YetAnotherModder,4465,00449D
+/wiki/Mai,Sister Mai is the general shopkeeper of the Children of Atom at the Nucleus in 2287.,Sister Mai,FemaleMariner,,DLC03CoAFemaleSisterMai,Human,Female,,17529,17517,YetAnotherModder,00446D,4479
+/wiki/The_Archemist,Anna[1] (aka The Archemist) is the healer of the Children of Atom at The Nucleus in 2287.,The Archemist,FemaleMariner,,DLC03CoAFemaleArchemist,Human,Female,,17531,17515,YetAnotherModder,00446B,00447B
+/wiki/Theil,"Zealot Theil is the second-in-command of the zealots, under Grand Zealot Richter, of the Nucleus in 2287.",Zealot Theil,FemaleMariner,,DLC03CoAFemaleZealotTheil,Human,Female,,17533,17513,YetAnotherModder,4469,00447D
+/wiki/Ware,"Zealot Ware is a Child of Atom, living at their community in the Nucleus on the Island in 2287.",Zealot Ware,childrenofatommale02,,DLC03CoAMaleZealotWare,Human,Male,,17534,17511,YetAnotherModder,4467,00447E
+/wiki/Tektus,High Confessor Tektus is the leader of the Children of Atom living in the Nucleus on the Island in 2287.,High Confessor Tektus,childrenofatommale02,,DLC03CoAMaleHighConfessorTektus,Human,Male,,17541,17508,YetAnotherModder,4464,4485
+/wiki/Aubert,Sister Aubert is the caretaker of the Vessel of the Children of Atom at the Nucleus in 2287.,Sister Aubert,FemaleMariner,,DLC03CoAFemaleSisterAubert,Human,Female,,33483,33479,YetAnotherModder,0082C7,0082CB
+/wiki/Bert_Riggs,"Doctor Bert Riggs is a scientist[2] and former lead developer for General Atomics International, now a robobrain in Vault 118 in 2287.",Bert Riggs,maleold,,DLC03MaleBertRiggs,Robobrain,Male,,132672,132655,YetAnotherModder,02062F,20640
+/wiki/Ezra_Parker,"Ezra Parker is a con-artist and the owner and financier of the Cliff's Edge Hotel, now living as a Robobrain in Vault 118 in 2287.",Ezra Parker,ironsides,,DLC03MaleEzraParker,Robobrain,Male,,03??????,232237,YetAnotherModder,038B2D,??????
+/wiki/Gilda_Broscoe,Gilda Broscoe is a robobrain in Vault 118 and a former Hollywood actress in the Fallout add-on Far Harbor.,Gilda Broscoe,robotcompanionfemaledefault,,DLC03FemaleGildaBroscoe,Robobrain,Female,,132677,132652,YetAnotherModder,02062C,20645
+/wiki/Julianna_Riggs,Julianna Riggs was a robobrain in Vault 118 in 2287.,Julianna Riggs,robotcompanionfemaledefault,,DLC03FemaleJuliannaRiggs,Robobrain,Female,,132673,132654,YetAnotherModder,02062E,20641
+/wiki/Keith_McKinney,Keith McKinney is a robobrain and former Hollywood actor living in Vault 118 in the Fallout add-on Far Harbor.,Keith McKinney,ironsides,,DLC03MaleKeithMcKinney,Robobrain,Male,,132676,132653,YetAnotherModder,02062D,20644
+/wiki/Maxwell_(Far_Harbor),"Maxwell is the one who will let the Sole Survivor into the vault, hoping that they can solve the murder case.",Maxwell,robot_mrhandy,,RobotMrHandy,Mister Handy,Male,,211180,211182,YetAnotherModder,0338EE,0338EC
+/wiki/Pearl_(Far_Harbor),Pearl is a modified Miss Nanny that works in the giftshop of Vault 118 in 2287.,Pearl,robotcompanionfemaledefault,,DLC03RobotPearl,ModifiedMiss Nanny,Female,,206090,206089,YetAnotherModder,32509,03250A
+/wiki/Santiago_Avida,Santiago Avida is a robobrain in Vault 118 in 2287.,Santiago Avida,ironsides,,DLC03MaleSantiagoAvida,Robobrain,Male,,132675,132640,YetAnotherModder,20620,20643
+/wiki/Scruffy,Scruffy is a house cat who lives in Vault 118 on the Island in 2287.,Scruffy,maleghoul,,CrCat,House cat,Male,,286368,286367,YetAnotherModder,045E9F,045EA0
+/wiki/Spencer_Lords,Spencer Lords is a robobrain that exists in the void surrounding Vault 118 and can't be reached without the use of console commands.,Spencer Lords,ironsides,,DLC03MaleSpencerLords,Robobrain,Male,,211198,132656,YetAnotherModder,20630,0338FE
+/wiki/Bilge,Bilge is the leader of a group of trappers that have set up camp in and around the MS Azalea.,Bilge,MaleRaider01,,maleraider01,Human,Male,,44915,188710,YetAnotherModder,2E+126,00AF73
+/wiki/Boxer_(Far_Harbor),Boxer is tasked with looking into and possibly making an alliance between the Railroad and the synth refuge of Acadia located on the the Island.,Boxer,FemaleRough,,DLC03FemaleRRContact,Human,Female,,193535,132101,YetAnotherModder,20405,02F3FF
+/wiki/Duke_(Far_Harbor),Duke is a dog found at Horizon Flight 1207 in 2287.,Duke,maleghoul,,CrRaiderDogVoice,Dog,Male,,309864,309863,YetAnotherModder,04BA67,04BA68
+/wiki/Erickson,"Erickson, or Erikson, is a friendly super mutant on the Island.",Erickson,Supermutant,,DLC03SuperMutantErikson,Super mutant,Male,,116178,116177,YetAnotherModder,01C5D1,01C5D2
+/wiki/Gracie_(Far_Harbor),Gracie is a mutant hound character found in Horizon Flight 1207 on the Island in 2287.,Gracie,femaleghoul,,crfevhoundvoice,Mutant hound,Female,,181858,181857,YetAnotherModder,02C661,02C662
+/wiki/Mishka,Mishka is a wolf serving as a guard dog on the Island in 2287.,Mishka,femaleghoul,,DLC03CrWolfVoice,Wolf,Female,,181853,181852,YetAnotherModder,02C65C,02C65D
+/wiki/Kenji_Nakano,Kenji Nakano is a fisherman living in the Nakano residence on the northeastern shore of the Commonwealth in 2287.,Kenji Nakano,malemaineaccent,,DLC03MaleMrNakano,Human,Male,,8715,8546,YetAnotherModder,2162,00220B
+/wiki/Rei_Nakano,"Rei Nakano is the matriarch of the Nakano family, living in their residence on the northeastern shore of the Commonwealth in 2287.",Rei Nakano,FemaleMariner,,DLC03FemaleMrsNakano,Human,Female,,8719,8717,YetAnotherModder,00220D,00220F
+/wiki/Malcolm_(Far_Harbor),Malcolm is a cannibalistic trapper living on the Island in 2287.,Malcolm,GangOperatorMale01,,DLC03TrapperMale01,Human,Male,,302265,302264,YetAnotherModder,049CB8,049CB9
+/wiki/Douglas,Douglas is the leader of the Trappers at Brooke's Head Lighthouse in 2287.,Douglas,maleraider01,,maleraider01,Human,Male,,61038,163677,YetAnotherModder,027F5D,00EE6E
+/wiki/Dottie,Dottie is a harborman at Emmet's Causeway in 2287.,Dottie,MaleMaineAccent,,DLC03MaleMaineAccent,Human,Male,,61719,61718,YetAnotherModder,00F116,00F117
+/wiki/Machete_Mike,Machete Mike only appears during the first part of the Hull Breach questline.,Machete Mike,MaleMaineAccent,,DLC03MaleMacheteMike,Human,Male,,286684,286682,YetAnotherModder,045FDA,045FDC
+/wiki/Uncle_Ken,Uncle Ken is the seventh generation of his family to live at the National Park visitor's center and the last holdout alive who did not retreat to the pier.,Uncle Ken,MaleMaineAccent,,DLC03MaleUncleKen,Human,Male,,43769,43768,YetAnotherModder,00AAF8,00AAF9
+/wiki/Red_Death,"According to local legends, the Red Death is a fearsome sea creature, responsible for the loss of many ships around its island over the years.",Red Death,Supermutant,,CrMirelurkVoice,Mirelurk,Male,,297663,297662,YetAnotherModder,048ABE,048ABF
+/wiki/Grun,Grun is a super mutant behemoth residing with the super mutants at the Vim! Pop factory on the Island in 2287.,Grun,supermutant03,,crsupermutantbehemoth,Super mutant,Male,,127843,344587,YetAnotherModder,05420B,01F363
+/wiki/William_Moseley,Dr.,William Moseley,MaleMaineAccent,,DLC03MaleMoseley,Human,Male,,193527,193526,YetAnotherModder,02F3F6,02F3F7
+/wiki/Gwyneth,Sister Gwyneth is the heretical member of the Church of the Children of Atom on the Island in 2287.,Sister Gwyneth,FemaleBoston,,DLC03FemaleSisterGwyneth,Human,Female,,110786,110783,YetAnotherModder,01B0BF,01B0C2
+/wiki/Harriet_(Far_Harbor),"Sister Harriet, simply named Child of Atom in-game, is a member of the Children of Atom who lives and evangelizes on the Island in 2287.",Child of Atom,FemaleMariner,,ChildrenOfAtomFemale01,Human,Female,,,107024,YetAnotherModder,01A210,01A212
+/wiki/Frederick_Gibbons,"Frederick Gibbons is a feral ghoul reaver in 2287, found at Cranberry Island Bog.",Frederick Gibbons,maleghoul,,CrFeralGhoulVoice,Feral ghoul,Male,,315922,315921,YetAnotherModder,04D211,04D212
+/wiki/Steven_Gibbons,"Steven Gibbons is a feral ghoul in 2287, found at Cranberry Island Bog.",Steven Gibbons,maleghoul,,CrFeralGhoulVoice,Feral ghoul,Male,,315918,315917,YetAnotherModder,04D20D,04D20E
+/wiki/Victoria_Gibbons,"Victoria Gibbons is a feral ghoul in 2287, found at Cranberry Island Bog.",Victoria Gibbons,femaleghoul,,CrFeralGhoulVoice,Feral ghoul,Female,,315920,315919,YetAnotherModder,04D20F,04D210
+/wiki/Patrick_Gibbons,"Patrick ""Pat""[1] Gibbons is a bloated glowing one in 2287, found at Cranberry Island Bog.",Patrick Gibbons,maleghoul,,CrFeralGhoulVoice,Glowing one,Male,,315924,315923,YetAnotherModder,04D213,04D214
+/wiki/Andersen,"Andersen appears to have been the security chief in position when the bombs fell, having recorded several events in the security terminal.",,maleghoul,,maleghoul,Feral ghoul,Male,,4230,1463658,YetAnotherModder,16556A,1086
+/wiki/Valery_Barstow,"Overseer Doctor[1] Valery Barstow is the Overseer of Vault 88, surviving as a ghoul in 2287, in Vault-Tec Workshop, encountered during the quest Better Living Underground.",Overseer Barstow,femaleghoul,,DLC06FemaleOverseer,Ghoul,Female,,17077,17076,YetAnotherModder,0042B4,0042B5
+/wiki/Clem,Clem arrives at the Vault eager and happy to help with anything that needs doing.,Clem,clem,,DLC06MaleClem,Human,Male,,18905,18903,YetAnotherModder,0049D7,0049D9
+/wiki/Julian_(Vault-Tec_Workshop),Julian is a feral ghoul living in Vault 88 in 2287.,Julian,FemaleGhoul,,maleghoul,Feral ghoul,Male,,16937,660421,YetAnotherModder,0A13C5,4229
+/wiki/Aaron_Corbett,Aaron Corbett is an enslaved merchant in Nuka-World in 2287.,Aaron Corbett,maleboston,,DLC04NPCMAaronCorbett,Human,Male,,129794,117626,YetAnotherModder,01CB7A,01FB02
+/wiki/Chip_Morse,Chip Morse is a repairman in Nuka-World in 2287.,Chip Morse,maleboston,,DLC04NPCMChipMorse,Human,Male,,133680,123827,YetAnotherModder,01E3B3,020A30
+/wiki/Bear_(Nuka-World),Commander Bear is a challenger to the overboss in Nuka-World's Cola-cars arena in 2287.,Commander Bear,maleboston,,gunnersmale02,Human,Male,,06??????,230672,YetAnotherModder,38510,
+/wiki/Dixie,Dixie is a member of the Disciples in Nuka-World in 2287.,Dixie,gangdisciplefemale01,,DLC04NPCFDixie,Human,Female,,150270,42214,YetAnotherModder,00A4E6,024AFE
+/wiki/Fritsch,Fritsch lived in Nuka-World for years before the raiders conquered Nuka-Town USA.,Fritsch,maleboston,,DLC04NPCMFritsch,Human,Male,,201280,201278,YetAnotherModder,03123E,31240
+/wiki/John-Caleb_Bradberton,"John-Caleb Bradberton was a chemist and business magnate before the Great War, best known as the inventor of the Nuka-Cola soft drink and CEO of the Nuka-Cola Corporation.",John-Caleb Bradberton,maleboston,,dlc04npcmjohncalebbradberton,Human,Male,,53660,53088,YetAnotherModder,00CF60,00D19C
+/wiki/Katelyn_Alden,Katelyn Alden is a merchant in Nuka-World in 2287.,Katelyn Alden,femaleboston,,DLC04NPCFKatelynAlden,Human,Female,,123657,117625,YetAnotherModder,01CB79,01E309
+/wiki/Keith_Dawkins,Keith Dawkins is a slave working at Cappy's Cafe in Nuka-World in 2287.,Keith Dawkins,maleboston,,DLC04NPCMKeithDawkins,Human,Male,,133679,123828,YetAnotherModder,01E3B4,020A2F
+/wiki/Lauren_Plummer,Lauren Plummer is the bartender at Cappy's Cafe in Nuka-World in 2287.,Lauren Plummer,femaleboston,,DLC04NPCFLaurenPlummer,Human,Female,,133677,117622,YetAnotherModder,01CB76,020A2D
+/wiki/Lizzie_Wyath,"Lizzie Wyath is a member of the Operators, a raider gang in Nuka-World in 2287.",Lizzie Wyath,gangoperatorfemale01,,DLC04NPCFLizzieWyath,Human,Female,,138620,69201,YetAnotherModder,1E+052,021D7C
+/wiki/Mackenzie_Bridgeman,Mackenzie Bridgeman is a character in Nuka-World in 2287.,Mackenzie Bridgeman,femaleboston,,DLC04NPCFMackenzieBridgeman,Human,Female,,129792,117605,YetAnotherModder,01CB65,01FB00
+/wiki/Maddox,Maddox is an enslaved merchant in Nuka-World in 2287.,Maddox,maleboston,,DLC04NPCMMaddox,Human,Male,,129798,117628,YetAnotherModder,01CB7C,01FB06
+/wiki/Mags_Black,"Maggy ""Mags"" Black is the leader of the Operators, a raider gang in Nuka-World in 2287.",Mags Black,gangoperatorfemale01,,DLC04NPCFMagsBlack,Human,Female,,98373,54251,YetAnotherModder,00D3EB,18045
+/wiki/Mason_(Nuka-World),"Mason is the leader or ""alpha"" of the Pack, a raider gang in Nuka-World in 2287.",Mason,Mason,,DLC04NPCMMason,Human,Male,,98374,62518,YetAnotherModder,00F436,18046
+/wiki/N.I.R.A.,N.,N.I.R.A.,robotcompanionfemaledefault,,DLC04RobotNira,Protectron,,,144547,107970,YetAnotherModder,01A5C2,0234A3
+/wiki/Nisha,Nisha is the leader of the Disciples in Nuka-World in 2287.,Nisha,gangdisciplefemale02,,DLC04NPCFNisha,Human,Female,,98375,42210,YetAnotherModder,00A4E2,18047
+/wiki/Colter,Overboss Colter is the leader of the raiders in Nuka-World before the Sole Survivor arrives in 2287.,Overboss Colter,maleraider01,,DLC04NPCMColter,Human,Male,,42287,42250,YetAnotherModder,00A50A,00A52F
+/wiki/Porter_Gage,Porter Gage is a raider and possible companion of the Sole Survivor in 2287.,Porter Gage,Gage,,DLC04NPCMGage,Human,Male,,42417,34845,YetAnotherModder,00881D,00A5B1
+/wiki/Rage_(Nuka-World),"Rage is a powerful super mutant that has successfully navigated the Gauntlet, and as a result, is a challenger in the Cola-cars arena during Amoral Combat.",Rage,Supermutant,,crsupermutant,Super mutant,,,06??????,230673,YetAnotherModder,38511,
+/wiki/Rogue_knight,The rogue knight is a legendary opponent in Nuka-World in the Fallout add-on Nuka World.,Rogue Knight,MaleRaider01,,raidermale01,Human,Male,,06??????,230674,YetAnotherModder,38512,
+/wiki/Sabine,She is only encountered as a possible challenger in the Amoral Combat quest.,Sabine,femaleraider01,,raiderfemale01,Human,Female,,06??????,230675,YetAnotherModder,38513,
+/wiki/Sabot,Sabot is a member of the Gunners in Nuka-World in 2287.,Sabot,gangoperatormale01,,gunnersmale01,Human,Male,,06??????,230671,YetAnotherModder,03850F,
+/wiki/Savoy,Savoy is a member of the Disciples in Nuka-World in 2287.,Savoy,Mason,,DLC04NPCMSavoy,Human,Male,,150272,42215,YetAnotherModder,00A4E7,024B00
+/wiki/Shank,Shank is a raider informant in Nuka-World in 2287.,Shank,Shank,,DLC04NPCMShank,Human,Male,,123658,56287,YetAnotherModder,00DBDF,01E30A
+/wiki/Shelbie_Chase,Shelbie Chase is an enslaved merchant in Nuka-World in 2287.,Shelbie Chase,ShelbieChase,,DLC04NPCFShelbieChase,Human,Female,,129796,117620,YetAnotherModder,01CB74,01FB04
+/wiki/Sierra_Petrovita,Sierra Petrovita is a Nuka-Cola obsessive who lives in Girdershade in 2277.,Sierra Petrovita,Sierra,,DLC04NPCFSierraPetrovita,Human,Female,,80464,80451,YetAnotherModder,013A43,013A50
+/wiki/William_Black,"William “Bill” Black is the second-in-command of the Operators, a raider gang in Nuka-World in 2287.",William Black,gangoperatormale01,,DLC04NPCMWilliamBlack,Human,Male,,130345,54253,YetAnotherModder,00D3ED,01FD29
+/wiki/Wretch,"Wretch is a raider who has successfully navigated the Gauntlet, and as a result, is in the Cola-cars arena during Amoral Combat.",Wretch,maleraider01,,maleraider01,Human,Male,,06??????,230670,YetAnotherModder,03850E,
+/wiki/Kendell_Alston,Kendell Alston is a deceased wastelander in Nuka-World's Starport Nuka in 2287.,Kendell Alston,MaleBoston,,MaleBoston,Human,Male,,203149,203148,YetAnotherModder,03198C,03198D
+/wiki/Startender,The Startender is a bartender-space sentry in the Starlight Interstellar Theater.,Startender,ironsides,,RobotSentryBot,Space sentry,Male,,168924,168925,YetAnotherModder,0293DD,0293DC
+/wiki/Phosphate,"Doc Phosphate is a protectron that runs the saloon in Dry Rock Gulch, serving ice cold bottles of Nuka-Cola Wild since before the Great War.",Doc Phosphate,robot_assaultron,,DLC04RobotProtectronCowboy,Protectron,Male,,274862,55428,YetAnotherModder,00D884,0431AE
+/wiki/One-Eyed_Ike,One-Eyed Ike is a protectron residing in Dry Rock Gulch in 2287.,One-Eyed Ike,robot_assaultron,,DLC04RobotProtectronCowboy,Protectron,Male,,274874,55426,YetAnotherModder,00D882,0431BA
+/wiki/Eagle,"Programmed by the Nuka-Cola Corporation, Eagle was deployed in Dry Rock Gulch as a guide to assist visitors navigate the park.",Sheriff Eagle,robot_assaultron,,DLC04RobotProtectronCowboy,Protectron,Male,,274879,274878,YetAnotherModder,0431BE,0431BF
+/wiki/Hawk,"Programmed by the Nuka-Cola Corporation, it was deployed in Dry Rock Gulch as a guide to assist visitors navigate the park.",Sheriff Hawk,robot_assaultron,,DLC04RobotProtectronCowboy,Protectron,Male,,274881,274877,YetAnotherModder,0431BD,0431C1
+/wiki/The_Giddyup_Kid,The Giddyup Kid is a protectron in Dry Rock Gulch in 2287.,The Giddyup Kid,robot_assaultron,,DLC04RobotProtectronCowboy,Protectron,Male,,274873,55427,YetAnotherModder,00D883,0431B9
+/wiki/Oswald_the_Outrageous,"Oswald Oppenheimer,[1] also known by his stage name Oswald the Outrageous, is a glowing ghoul in Nuka-World in 2287.",Oswald the Outrageous,maleghoul,,DLC04NPCMOswald,Glowing one,Male,,251467,95803,YetAnotherModder,01763B,03D64B
+/wiki/Cito,"Cito, short for Marcosito,[1] is a wild man living in the Safari Adventure park of Nuka-World in 2287.",Cito,maleboston,,DLC04NPCMCito,Human,Male,,155878,210890,YetAnotherModder,0337CA,0
+/wiki/Brett_Dunmore,Brett Dunmore is a resident of the Dunmore homestead in 2287.,Brett Dunmore,maleboston,,DLC04POISC07NPCMBrettDunmore,Human,Male,,273224,273223,YetAnotherModder,042B47,042B48
+/wiki/Kali_Dunmore,Kali Dunmore is a resident of the Dunmore homestead in 2287.,Kali Dunmore,femaleboston,,DLC04POISC07NPCFKaliDunmore,Human,Female,,273226,273232,YetAnotherModder,042B50,042B4A
+/wiki/Monique_Dunmore,Monique Dunmore is a resident of the Dunmore homestead in 2287.,Monique Dunmore,femaleboston,,DLC04POISC07NPCFMoniqueDunmore,Human,Female,,273225,273228,YetAnotherModder,042B4C,042B49
+/wiki/Lucy_Grandchester,Lucy Grandchester is a ghost child in the Grandchester Mystery Mansion in 2287.,Girl,TinaDeLuca,,DLC04NPCFLucy,Human(formerly)Ghost,Female,,83423,83418,YetAnotherModder,0145DA,0145DF
+/wiki/Ticket_taker,"Standing in a ticket booth in front of the Grandchester Mystery Mansion, the ticket taker is selling tickets to those who are interested in visiting it.",Ticket Taker,robot_assaultron,,RobotProtectron,Protectron,Male,,83425,83420,YetAnotherModder,0145DC,601450
+/wiki/Zachariah,"Zachariah is an ex-Gunner in Nuka-World in 2287, and can be encountered inside the Grandchester Mystery Mansion.",Zachariah,MaleEvenToned,,MaleRough,Human,Male,,310883,83421,YetAnotherModder,0145DD,04BE63
+/wiki/Cleansed,Cleansed is a member of Dara Hubbell's group of Hubologists at their camp near Nuka-World.,Cleansed,MaleEvenToned,,MaleRough,Human,Male,,52380,52375,YetAnotherModder,00CC97,00CC9C
+/wiki/Dara_Hubbell,Dara Hubbell is the leader of a group of Hubologists at Nuka-World in 2287.,Dara Hubbell,Dara Hubbell,,DLC04NPCFDaraHubbell,Human,Female,,52381,52368,YetAnotherModder,00CC90,00CC9D
+/wiki/Maurice_Turner,Maurice Turner is a Hubologist in Nuka-World in 2287.,Maurice Turner,MaleOld,,MaleOld,Human,Male,,52382,52376,YetAnotherModder,00CC98,00CC9E
+/wiki/Phil_Roller,Phil Roller is a Hubologist in Nuka-World in 2287.,Phil Roller,MaleEvenToned,,MaleEvenToned,Human,Male,,52383,52372,YetAnotherModder,00CC94,00CC9F
+/wiki/Rolanda_Hooper,Rolanda Hooper is a Hubologist in Nuka-World in 2287.,Rolanda Hooper,FemaleRough,,FemaleRough,Human,Female,,52384,52374,YetAnotherModder,00CC96,00CCA0
+/wiki/Tula_Spinney,Tula Spinney is a Hubologist in Nuka-World in 2287.,Tula Spinney,FemaleEvenToned,,FemaleEvenToned,Human,Female,,52385,52377,YetAnotherModder,00CC99,00CCA1
+/wiki/Chelsea,Chelsea is a woman traveling outside of Nuka-World in 2287.,Chelsea,FemaleBoston,,FemaleBoston,Human,Female,,,83003,YetAnotherModder,01443B,
+/wiki/Kaylor,Commander Kaylor is a Gunner officer stationed at the Nuka-World transit center in 2287.,Commander Kaylor,gangoperatorfemale01,,DLC04NPCFKaylor,Human,Female,,107149,107147,YetAnotherModder,01A28B,01A28D
+/wiki/Cora,Cora is a merchant traveling outside of Nuka-World in 2287.,Cora,FemaleEvenToned,,FemaleEvenToned,Human,Female,,,83002,YetAnotherModder,01443A,
+/wiki/Evan_(Nuka-World),Evan is a man living outside of Nuka-World in 2287.,Evan,maleboston,,DLC04NPCMEvan,Human,Male,,307309,306229,YetAnotherModder,04AC35,04B06D
+/wiki/Harvey,Harvey is a wasteland survivor in the Nuka-World transit center in 2287.,Harvey,maleboston,,DLC04NPCMHarvey,Human,Male,,32120,32089,YetAnotherModder,007D59,007D78
+/wiki/Katana_(cat),"Katana is a tabby cat found in an abandoned workshop building along with another cat, Luna.",Katana,femaleghoul,,crcat,House cat,Female,,316177,310555,YetAnotherModder,04BD1B,04D311
+/wiki/Luna,"Luna is a black cat found in an abandoned workshop building along with another cat, Katana.",Luna,femaleghoul,,crcat,House cat,Female,,316149,310554,YetAnotherModder,04BD1A,04D2F5
+/wiki/Peter_(Nuka-World),Peter is a man traveling outside of Nuka-World in 2287.,Peter,MaleEvenToned,,MaleEvenToned,Human,Male,,,83004,YetAnotherModder,01443C,000nan
+/wiki/Tornin,"Corporal Tornin, named in-game as a Gunner commander, is the leader of the Gunners at the Bradberton overpass in 2287.",Gunner Commander,gangoperatormale01,,gunnersmale01,Human,Male,,328349,328340,YetAnotherModder,50294,05029D
+/wiki/Tyler_(Nuka-World),"Private Tyler is a Gunner deserter who began seriously considering leaving following the murder of another Gunners member, Davis.",Private Tyler,MaleBoston,,MaleBoston,Human,Male,,194790,194789,YetAnotherModder,02F8E5,02F8E6
+/wiki/RedEye,RedEye is the unseen host of Raider Radio in Nuka-World in 2287.,RedEye,redeye,,DLC04_Announcer_RaiderRadio_NPCM,Human,Male,,42419,42418,YetAnotherModder,00A5B2,00A5B3
+/wiki/Sinner,"Sinner is a raider leader in the Commonwealth, being rather possessive of his territory.",Sinner,maleboston,,DLC04NPCMMQ04Sinner,Human,Male,,,110600,YetAnotherModder,01B008,000nan
+/wiki/Sykes_(Nuka-World),"Sykes was previously a raider, cast out by a former comrade named K.",Sykes,GangOperatorMale01,,DLC04GangOperatorMale01,Human,Male,,186989,186988,YetAnotherModder,02DA6C,02DA6D
+/wiki/Burner,"Burner, also known as R3-11, is a synth character in the Fallout Creation Club content ""Noir Penthouse.",,maleboston,,,Synth,Male,,3139,3129,YetAnotherModder,000C39,000C43
+/wiki/Candy,"Candace ""Candy"" Isola is a ghoul Triggerman and a former Boston Police Department officer found at Shroud Manor in the Fallout Creation Club content ""Shroud Manor.",,femaleghoul,,,Ghoul,Female,,3958,3501,YetAnotherModder,000DAD,000F76
+/wiki/Connor_(Creation_Club),"Connor is a raider in the Fallout Creation Club content ""Anti-materiel rifle.",,maleboston,,,Human,Male,,FEXXX8A1,FEXXX884,YetAnotherModder,XXX884,XXX8A1
+/wiki/Dave_Perkins,Dave Perkins is a deceased member of the Good Fighters in the Capital Wasteland in 2287.,,maleboston,,,Human,Male,,FEXXXAAC,FEXXXAAB,YetAnotherModder,XXXAAB,XXXAAC
+/wiki/Dawson_Wakefield,"Scribe Dawson Wakefield is a rogue Brotherhood of Steel soldier in the Fallout Creation Club content ""Sentinel Control System Companion.",,maleboston,,,Human,Male,,FEXXX000,FEXXX000,YetAnotherModder,XXX000,XXX000
+/wiki/Deuce,"Deuce is a member of the Gunners in the Fallout Creation Club content ""Solar Cannon.",,maleboston,,,Human,Male,,FEXXX8E0,FEXXX8CB,YetAnotherModder,XXX8CB,XXX8E0
+/wiki/Hodges,"Sergeant Hodges is a character in the Fallout Creation Club content ""X-02 Power Armor.",,femaleboston,,,Human,Female,,FEXXX9F1,FEXXX9F0,YetAnotherModder,XXX9F0,XXX9F1
+/wiki/Ivy,"Ivy is a character in the Fallout Creation Club content ""Anti-Materiel Rifle.",,femaleboston,,,Human,Female,,FEXXX893,FEXXX880,YetAnotherModder,XXX880,XXX893
+/wiki/Carol_Janssen,"Captain Carol Janssen, also known as PR-15, is a synth character in the Fallout Creation Club content ""Noir Penthouse.",,femaleboston,,,Synth,Female,,3138,3130,YetAnotherModder,000C3A,000C42
+/wiki/Johnny_Morton,"Johnny Morton is a feral ghoul encountered in the Commonwealth in the Fallout Creation Club content ""Captain Cosmos.",,maleghoul,,,Feral ghoul,Male,,6618,3142,YetAnotherModder,000C46,0019DA
+/wiki/Mercy_(Red_Rocket),"Mercy is a character in the Fallout Creation Club content ""Doom BFG.",,maleghoul,,,Ghoul,Male,,FEXXX81D,FEXXX817,YetAnotherModder,XXX817,XXX81D
+/wiki/Murderer,"The murderer is a character in College Square station in the Fallout Creation Club content ""Pint-Sized Slasher.",,maleghoul,,,Ghoul,Male,,FEXXX80F,FEXXX80A,YetAnotherModder,XXX80A,XXX80F
+/wiki/Pyro,"Pyro is a member of the Forged who can be found southeast of Listening Post Bravo in the Fallout Creation Club content ""Hellfire Power Armor.",,maleboston,,,Human,,,FEXXX86A,FEXXX852,YetAnotherModder,XXX852,XXX86A
+/wiki/Raymond_(Creation_Club),"Raymond is a hostile ghoul near Fallon's department store in the Fallout Creation Club content ""Holiday Workshop Pack.",,maleghoul,,,Ghoul,Male,,FEXXX95D,FEXXX95B,YetAnotherModder,XXX95B,XXX95D
+/wiki/Rod_Stoddard,"Rod Stoddard was the star actor portraying the titular character in the Hubris Comics series The Adventures of Captain Cosmos, filmed at the Hub 360 film studio in October 2077.",,maleghoul,,,Glowing one,Male,,6799,3143,YetAnotherModder,000C47,001A8F
+/wiki/Roy_Baker,Roy Baker was the director of The Adventures of Captain Cosmos at the Hub 360 film studio in October 2077.,,maleghoul,,,Feral ghoul,Male,,6795,3599,YetAnotherModder,000E0F,001A8B
+/wiki/Rudolph,"Rudolph is a mongrel near Fallon's department store in the Fallout Creation Club content ""Holiday Workshop Pack.",,maleghoul,,,Mongrel,Male,,FEXXX95E,FEXXX959,YetAnotherModder,XXX959,XXX95E
+/wiki/Scabby,"Scabby is a raider who invented horse power armor, found dead in the Commonwealth in 2287.",,maleboston,,,Human,Male,,FEXXX86D,FEXXX85B,YetAnotherModder,XXX85B,XXX86D
+/wiki/Silas_(Creation_Club),Silas is a wastelander that can be found in the Faded Glory laundromat in the Commonwealth in 2287.,,maleboston,,,Human,Male,,FEXXX892,FEXXX885,YetAnotherModder,XXX885,XXX892
+/wiki/Architect,"The Architect is a character in the Fallout Creation Club content ""Neon Flats.",,maleboston,,,Human,Male,,5855,3617,YetAnotherModder,0,0016DF
+/wiki/Wally_Mack,Wally Mack is a resident of Vault 101 in 2277 and is a member of a greaser gang called the Tunnel Snakes.,,maleboston,,MaleChild01 ,HumanGlowing one,Male,,2174,4210,YetAnotherModder,1072,00087E
+/wiki/Yuki,Yuki (S.,,femaleboston,,,AI(formerly)Synth,Female,,5864,3137,YetAnotherModder,000C41,1600000000
