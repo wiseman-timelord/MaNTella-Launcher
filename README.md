@@ -14,7 +14,7 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Features
 Work done currently includes...
-1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around.
+1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around, if you install xVASynth to the suggested folder, it will, as required, automatically run it too.
 2. Concise Chararacter details. The Skyrim character details were non-standardized, and generally both had too much info.
 3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
 
