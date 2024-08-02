@@ -15,7 +15,40 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 4. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, For examples...
 
 # Description
-- The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12.
+- The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12. I cant test it otherwise, and I will be producing significant edits.
+
+# Preview
+- Uh, theres the batch launcher...
+```
+==============================================================================
+                         Mantella / xVASynth Launcher
+------------------------------------------------------------------------------
+
+Admin Mode: Correct
+Current Directory: D:\GamesVR\Mantella-0.12_preview
+Checking for running xVASynth.exe process...
+xVASynth.exe is already running. Closing it now...
+xVASynth.exe has been closed.
+Running VASynth and Mantella...
+Mantella.exe running in:
+D:\GamesVR\Mantella-0.12_preview
+config.ini, logging.log, and conversation histories available in:
+C:\Users\Mastar\Documents\My Games\Mantella\
+Mantella currently running for Fallout4. Mantella mod files located in:
+D:\GamesVR\Fallout4_163\Data\Sound\Voice\Mantella.esp
+
+Mantella v0.12 Preview
+20:50:40.793 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+Running Mantella with 'Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix'. The language model can be changed in MantellaSoftware/config.ini
+20:50:44.182 TTS: Connecting to xVASynth...
+20:50:44.498 INFO: Mantella settings can be changed via this link: http://localhost:4999/ui?__theme=dark
+
+Conversations not starting when you select an NPC? See here:
+https://art-from-the-machine.github.io/Mantella/pages/issues_qna
+
+Waiting for player to select an NPC...
+
+```
 
 # Usage / Install
 1. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
@@ -66,41 +99,7 @@ Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for n
 pause_threshold = 1.5 
 ```
 
-# Description
-- These edits will be, paused or for v11, until they get v12 figured out, something wrong with the communication between the, fallout 4 mod and the main, possibly they are using some development version of the Fallout 4 mod I am not, or the fallout 4 side needs updating.
 
-# Preview
-- Uh, theres the batch launcher...
-```
-==============================================================================
-                         Mantella / xVASynth Launcher
-------------------------------------------------------------------------------
-
-Admin Mode: Correct
-Current Directory: D:\GamesVR\Mantella-0.12_preview
-Checking for running xVASynth.exe process...
-xVASynth.exe is already running. Closing it now...
-xVASynth.exe has been closed.
-Running VASynth and Mantella...
-Mantella.exe running in:
-D:\GamesVR\Mantella-0.12_preview
-config.ini, logging.log, and conversation histories available in:
-C:\Users\Mastar\Documents\My Games\Mantella\
-Mantella currently running for Fallout4. Mantella mod files located in:
-D:\GamesVR\Fallout4_163\Data\Sound\Voice\Mantella.esp
-
-Mantella v0.12 Preview
-20:50:40.793 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
-Running Mantella with 'Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix'. The language model can be changed in MantellaSoftware/config.ini
-20:50:44.182 TTS: Connecting to xVASynth...
-20:50:44.498 INFO: Mantella settings can be changed via this link: http://localhost:4999/ui?__theme=dark
-
-Conversations not starting when you select an NPC? See here:
-https://art-from-the-machine.github.io/Mantella/pages/issues_qna
-
-Waiting for player to select an NPC...
-
-```
 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
