@@ -1,11 +1,7 @@
 # Mantella-WT - Wiseman-Timelords Mantella Fork
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
-# Completed
-1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around...
-- This requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`, but I dont think 99% of people will use xVASynth with other things. 
-- Mantella can need a restart, and I might forget to close xVASynth. 
-- I dont want to have to go to 3 total locations to run essentially one program. 
+
 
 # Development 
 - Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
@@ -16,6 +12,12 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Description
 - The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12. I cant test it otherwise, and I will be producing significant edits.
+
+# Features
+1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around...
+
+- Mantella can need a restart, and I might forget to close xVASynth. 
+- I dont want to have to go to 3 total locations to run essentially one program. 
 
 # Preview
 - Uh, theres the batch launcher...
@@ -53,7 +55,8 @@ Waiting for player to select an NPC...
 # Usage / Install
 1. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
 2. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
-3. Run the `Mantella-WT.Bat` batch, if its the first time, then the "config.ini" will require configuration after its created, and then run `Mantella-WT.Bat` again.
+3. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. 
+4. Run the `Mantella-WT.Bat` batch, if its the first time, then the "config.ini" will require configuration after its created, and then run `Mantella-WT.Bat` again.
 
 # Other Notes
 - Dynamic Context
