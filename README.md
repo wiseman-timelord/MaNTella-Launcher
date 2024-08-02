@@ -1,4 +1,4 @@
-# Mantella-WT - Wiseman-Timelords Mantella Fork
+# Mantella-WT - Wiseman-Timelords Mantella Optimization
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
