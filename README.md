@@ -3,10 +3,10 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily. this may involve...
-- Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. 
-- Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character.
-- Context could also be dynamic, in that we would use the 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history?? A flag will be reset when convo ends, thus enabling quick interactions to begin as required.
-- Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
+1. Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. 
+2. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character.
+3. Context could also be dynamic, in that we would use the 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history?? A flag will be reset when convo ends, thus enabling quick interactions to begin as required.
+4. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
 
 # Description
 - The edits to actual mantella code will be intended for v11, until they get v12 relesaed, but may also be compatible with v12. Currently there is something wrong with the communication between the, fallout 4 mod and mantella, in v12, so I cant test it for that, nor skyrim (though I am programming it for both as I go). So these updates are to be considered for speeding up Mantella in Fallout 4.
