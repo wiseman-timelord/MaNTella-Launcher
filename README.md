@@ -1,8 +1,6 @@
 # Mantella-WT - Wiseman-Timelords Mantella Fork
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
-
-
 # Development 
 - Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
 1. Potentially requiring 3 versions of the characters .csv and prompts.
@@ -52,10 +50,14 @@ Waiting for player to select an NPC...
 ```
 
 # Usage / Install
-1. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
-2. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
-3. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. 
-4. Run the `Mantella-WT.Bat` batch, if its the first time, then the "config.ini" will require configuration after its created, and then run `Mantella-WT.Bat` again.
+1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site.
+2. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
+3. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
+4. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. 
+5. Run the `Mantella-WT.Bat` batch once, to generate the "config.ini" file, then close mantella, and...
+5a. For v11, configure the ".\config.ini" after its created. Ensure to replace the prompts section from `.\config_ini_optimization.txt` to ".\config.ini".
+5b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
+6. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
 # Other Notes
 - Dynamic Context
