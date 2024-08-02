@@ -55,7 +55,7 @@ Waiting for player to select an NPC...
 6b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
-# Other Notes
+# Other Notes (developed from original post on nexus)
 - Dynamic Context
 ```
 2048
