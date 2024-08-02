@@ -57,7 +57,7 @@ Waiting for player to select an NPC...
 4. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. 
 5. Ensure you have LM Studio or whatever with a kickass model. I currently advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). I also advise a, q3/q4 (lower is faster) and gguf, version of a model, and run it on 4096 context (this is the default for unrecognised models), even if it has a =>8k context, because speed. 
 6. Run the `Mantella-WT.Bat` batch once, to generate the "config.ini" file, then close mantella, and...
-6a. For v11, configure the ".\config.ini" after its created. Ensure to replace the prompts section from `.\config_ini_updates.txt` to ".\config.ini".
+6a. For v11, configure the ".\config.ini" after its created. Ensure to implement updates from `.\config_ini_updates.txt` to ".\config.ini".
 6b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
