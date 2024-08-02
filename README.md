@@ -14,10 +14,9 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 - The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12. I cant test it otherwise, and I will be producing significant edits.
 
 # Features
-1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around...
-
-- Mantella can need a restart, and I might forget to close xVASynth. 
-- I dont want to have to go to 3 total locations to run essentially one program. 
+Work done currently includes...
+1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around.
+2. Concise Chararacter details. The Skyrim character details were non-standardized, and generally both had too much info.
 
 # Preview
 - Uh, theres the batch launcher...
