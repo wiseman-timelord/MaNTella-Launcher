@@ -2,9 +2,10 @@
 This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Completed
-1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, for minimal hastle...
-- This requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`, but I dont think 99% of people will use xVASynth with other things, so it should probs go in mantella dir somewhere, then its still good for, skyrim or fallout, etc. I dont run Mantella without it. BEsides other things, mantella can mess up and need a restart, and I might forget to close xVASynth. I also dont want to have to go to 3 total locations to run essentially one program. The batch saves time and messing around. 
-
+1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around...
+- This requires install xVASynth to `.\ExampleMantellaDirectory\xVASynth`, but I dont think 99% of people will use xVASynth with other things. 
+- Mantella can need a restart, and I might forget to close xVASynth. 
+- I dont want to have to go to 3 total locations to run essentially one program. 
 
 # Development 
 - Dynamic switching between prompt sets for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, however, we would also not just use the maximum all the time. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily..
