@@ -25,3 +25,5 @@ max_tokens = 125
 max_response_sentences = 2
 temperature = 0.5
 pause_threshold = 1.5
+
+...note the max_tokens is for output, so, 125 tokens, is around 100 characters, to make 2 sentence response, not an essay, temp is low soes to stay on topic, and the pause threshold so you dont get cut-off when talking, though this should be extended to 2 if you pause longer when talking.
