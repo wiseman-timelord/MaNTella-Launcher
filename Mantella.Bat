@@ -22,21 +22,19 @@ echo Current Directory: %cd%
 echo Checking for running xVASynth.exe process...
 tasklist /FI "IMAGENAME eq xVASynth.exe" 2>NUL | find /I /N "xVASynth.exe">NUL
 if "%ERRORLEVEL%"=="0" (
-    echo xVASynth.exe is already running. Closing it now...
-    taskkill /F /IM xVASynth.exe >nul 2>&1
-    echo xVASynth.exe has been closed.
-    timeout /t 1 >nul    	
+    echo xVASynth.exe is already running. Continuing to Mantella...
 ) else (
     echo xVASynth.exe is not running.
+    echo Starting xVASynth...
+    
+    :: Start VASynth using PowerShell to avoid admin elevation
+    powershell -Command ^
+        Start-Process ".\xVASynth\xVASynth.exe" -WorkingDirectory ".\xVASynth" -NoNewWindow 
+    timeout /t 1 >nul
 )
 
 :: Print running VASynth and main script
-echo Running VASynth and Mantella...
-timeout /t 1 >nul
-
-:: Start VASynth using PowerShell to avoid admin elevation
-powershell -Command ^
-    Start-Process ".\xVASynth\xVASynth.exe" -WorkingDirectory ".\xVASynth" -NoNewWindow 
+echo Running Mantella...
 timeout /t 1 >nul
 
 :: Run the main script
