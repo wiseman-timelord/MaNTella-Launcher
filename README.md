@@ -17,8 +17,10 @@ This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
 # Description
 - The edits to actual mantella code will be for v11, until they get v12 relesaed. There is something wrong with the communication between the, fallout 4 mod and mantella, in v12.
 
-# v12 Notes
-- Mantella v11 saves the config.ini in a safe location of the mantella dir, however, with regards to v12, I moved my documents folder from `C:\users\username\my documents\` to a different drive, and for some reason Mantella v12 insists upon using the vanilla windows docs dir on C: for `config.ini`, otherwise, my launcher could have looked in the config.ini to find where xVASynth is. So likely it will move again in v12.1 or whatever when they correct it. Personally I would not  leave local folders, and just, for example `.\ExampleMantellaDir\Data\config.ini`, if I wanted to hide it. There is no reason to preserve settings between versions as far as v11 to v12 is concerned, and with regards to what I higlight below, there is no need for so much configuration, so the config file will change.
+# Usage / Install
+1. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
+2. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
+3. Run the `Mantella-WT.Bat` batch, if its the first time, then the "config.ini" will require configuration after its created, and then run `Mantella-WT.Bat` again.
 
 # Other Notes
 - Dynamic Context
