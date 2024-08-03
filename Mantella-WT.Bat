@@ -66,5 +66,5 @@ timeout /t 2 >nul
 
 :: Wait 5 seconds 
 echo.
-echo 5 Seconds Until Self-Destruct!!
+echo 10 Seconds Until Self-Destruct!!
 timeout /t 10 >nul
