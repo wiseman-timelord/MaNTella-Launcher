@@ -1,5 +1,5 @@
 # Mantella-WT - Wiseman-Timelords Mantella Optimization
-This is a fork, in the form drop-in files and optimizations, [main requires install first, and is here](https://github.com/art-from-the-machine/Mantella).
+This is a fork, in the form drop-in files and optimizations to perform, main is [here](https://github.com/art-from-the-machine/Mantella).
 
 # Development 
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily. this may involve...
@@ -48,7 +48,7 @@ Waiting for player to select an NPC...
 
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site.
-2. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4).
+2. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 3. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
 4. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not have xVASynth installed to my suggested folder, then remember to run it first.
 5. Ensure you have LM Studio or whatever with a kickass model, and if you are AMD user, ensure it is LM Studio v0.2.31, as this supports Vulkan. Currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). I also advise a, lower and faster, version, such as q3 s/m (xxs was not satisfactory), and run it on 4096 context in LM Studio AND Mantella (default will be 4096 for unrecognised, thats what we need for this model).
