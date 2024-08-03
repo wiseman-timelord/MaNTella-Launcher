@@ -76,13 +76,13 @@ max_response_sentences = 1
 temperature = 0.4
 
 Medium
-max_tokens = 125
+max_tokens = 150
 max_response_sentences = 2
 temperature = 0.5
 
 Quality
-max_tokens = 150
-max_response_sentences = 2
+max_tokens = 200
+max_response_sentences = 3
 temperature = 0.6
 ```
 ... the maximum allowed context would also work together with the auto model selection, because the user would be able to therein set the maximum they intend to use. Maybe they just want to use 2k on a 8k model for speed, but if they want to wait for local processing or they are using gpt4, then they would choose to set higher.
