@@ -70,6 +70,11 @@ Selection, Options 1-2, Exit = X:
 ```
 - Relates to...
 ```
+Default
+max_tokens = 250
+max_response_sentences = 999
+temperature = 1
+
 Faster
 max_tokens = 100
 max_response_sentences = 1
@@ -85,7 +90,11 @@ max_tokens = 200
 max_response_sentences = 3
 temperature = 0.6
 ```
-... the maximum allowed context would also work together with the auto model selection, because the user would be able to therein set the maximum they intend to use. Maybe they just want to use 2k on a 8k model for speed, but if they want to wait for local processing or they are using gpt4, then they would choose to set higher.
+...
+- the maximum allowed context would also work together with the auto model selection, because the user would be able to therein set the maximum they intend to use. Maybe they just want to use 2k on a 8k model for speed, but if they want to wait for local processing or they are using gpt4, then they would choose to set higher. 
+- It would additionally require to read the max_tokens upon startup from ".\config.ini", to determine the current settings upon start, to display the correct item in the togglable option 2 on the menu. After option 2 is used to toggle the mode, then menu must be re-drawn. 
+- Input from the user must be displayed upon the end of the same line as the prompt "Selection, Options 1-2, Exit = X:". Additionally check completeness of logic and requirements for operation of toggleable option within 4 settings, with redraw after each iteratin is done, with a re-prompt to the user of "Selection, Options 1-2, Exit = X:". 
+- Ensure Exit funtion is done correctly. 
 ```
 Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for now. 
 ```
