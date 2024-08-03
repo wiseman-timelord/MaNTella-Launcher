@@ -11,7 +11,30 @@ Work done currently includes...
 3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
 
 # Preview
-- Uh, theres the batch launcher...
+- Theres the menu of the batch launcher...
+```
+
+==============================================================================
+                   Mantella xVASynth, Optimizer / Launcher
+------------------------------------------------------------------------------
+
+
+
+
+
+                      1. Run Mantella / xVASynth
+
+                       2. Optimization: Medium
+
+
+
+
+
+------------------------------------------------------------------------------
+Selection, Options 1-2, Exit = X:
+
+```
+- Then theres the running of the things...
 ```
 ==============================================================================
                          Mantella / xVASynth Launcher
