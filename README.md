@@ -51,7 +51,7 @@ Waiting for player to select an NPC for Communication...
 
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
-2. After completing Mantella install, then download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
+2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
 3. Copy/Move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not mode xVASynth, then ensure it is run first always.
 4. Ensure you have LM Studio or whatever with a kickass model, that is able to be handled by whatever GPU/CPU at the same time, along side Fallout 4, do it 50/50 GPU/CPU if GPU memory is a challenge. Currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) in q3_m, default will be 4096 context for unrecognised model, thats what we need.
 5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
