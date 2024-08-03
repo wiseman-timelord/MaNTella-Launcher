@@ -46,13 +46,12 @@ Waiting for player to select an NPC...
 
 
 # Usage / Install
-1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site.
-2. Install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
-3. Download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
-4. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not have xVASynth installed to my suggested folder, then remember to run it first.
-5. Ensure you have LM Studio or whatever with a kickass model, and if you are AMD user, ensure it is LM Studio v0.2.31, as this supports Vulkan. Currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). I also advise a, lower and faster, version, such as q3 s/m (xxs was not satisfactory), and run it on 4096 context in LM Studio AND Mantella (default will be 4096 for unrecognised, thats what we need for this model).
-6. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to implement updates from `.\config_ini_updates.txt` to ".\config.ini".
-7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, then clean the ".\config.ini" and backup the old version to ".\config.bak", and then run ".\main.py" to load "Mantella-WT".
+1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
+2. After completing Mantella install, then download the [Mantella-WT Zip File](https://github.com/wiseman-timelord/Mantella-WT/archive/refs/heads/main.zip), drop the files into the main Mantella folder, preserving folders.
+3. Install/move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not have xVASynth installed to my suggested folder, then remember to run it first.
+4. Ensure you have LM Studio or whatever with a kickass model, and if you are AMD user, ensure it is LM Studio v0.2.31, as this supports Vulkan. Currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). I also advise a, lower and faster, version, such as q3 s/m (xxs was not satisfactory), and run it on 4096 context in LM Studio AND Mantella (default will be 4096 for unrecognised, thats what we need for this model).
+5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to implement updates from `.\config_ini_updates.txt` to ".\config.ini".
+6. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, then clean the ".\config.ini" and backup the old version to ".\config.bak", and then run ".\main.py" to load "Mantella-WT".
 
 ## Notes
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
