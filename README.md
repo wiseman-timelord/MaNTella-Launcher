@@ -37,7 +37,7 @@ Selection, Options 1-2, Exit = X:
 - Then theres the running of the things...
 ```
 ==============================================================================
-                         Mantella / xVASynth Launcher
+                        Mantella / xVASynth
 ------------------------------------------------------------------------------
 
 Administrator Mode.
