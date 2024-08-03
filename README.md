@@ -95,7 +95,7 @@ Waiting for player to select an NPC...
 6b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
-# Notes
+## Notes
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu 
 
 # Development 
