@@ -2,7 +2,7 @@
 This is a experimental fork, main is [here](https://github.com/art-from-the-machine/Mantella).
 
 # Description
-Wiseman-Timelords Drop-in Mantella files for Local-Optimization and Launching, tuned towards local models. Early stages...
+Wiseman-Timelords Drop-in Mantella files for Local-Optimization and Launching, tuned towards local models. Early stages; after make launcher/optimizer, then work on more files, to streamline them for local only, and maybe some other updates for dropin replacement files. Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 
 # Features
 Work done currently includes...
