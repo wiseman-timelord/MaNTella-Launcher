@@ -14,6 +14,18 @@ from src.conversation.context import context
 from src.remember.remembering import remembering
 from src.remember.summaries import summaries
 
+# Configure logging at the very beginning
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%H:%M:%S')
+
+# Remove all existing handlers
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+
+# Add a single handler
+handler = logging.StreamHandler()
+handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s', '%H:%M:%S'))
+logging.root.addHandler(handler)
+
 # Added initial setup to make sure no variable is potentially unbound
 game_state_manager = None
 
@@ -22,16 +34,12 @@ try:
         config_file='config.ini',
         logging_file='logging.log', 
         secret_key_file='GPT_SECRET_KEY.txt', 
-        #Additional df_file added to support Fallout 4 data/fallout4_characters.csv, keep in mind there's also a new file in data\Fallout4\FO4_Voice_folder_XVASynth_matches.csv
         character_df_files=('data/Skyrim/skyrim_characters.csv', 'data/Fallout4/fallout4_characters.csv'), 
         language_file='data/language_support.csv',
         FO4_XVASynth_file='data\\Fallout4\\FO4_Voice_folder_XVASynth_matches.csv'
     )
-
     token_limit = client.token_limit
     starting_prompt_token_limit_percent: float = 0.5
-    mantella_version = '0.11.4'
-    logging.log(24, f'\nMantella v{mantella_version}')
 
     # Check if the mic setting has been configured in MCM
     # If it has, use this instead of the config.ini setting, otherwise take the config.ini value
@@ -117,6 +125,7 @@ try:
             if not talk.proceed():
                 break
 
+# Exception Debug
 except Exception as e:
     if isinstance(game_state_manager, game_manager.GameStateManager):
         game_state_manager.write_game_info('_mantella_status', 'Error with Mantella.exe. Please check MantellaSoftware/logging.log')
