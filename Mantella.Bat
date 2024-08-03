@@ -1,22 +1,33 @@
 @echo off
 
+:: Initialization
+pushd "%~dp0"
+setlocal EnableDelayedExpansion
+
+:: Display has been reset...
+cls
+echo ==============================================================================
+echo                    Mantella xVASynth, Optimizer / Launcher
+echo ------------------------------------------------------------------------------
+echo.
+
 :: Check for administrative privileges
 net session >nul 2>&1
 if %errorLevel% NEQ 0 (
-    echo This script requires administrative privileges.
-    echo Please run it as an administrator.
-    timeout /t 5 >nul
+    echo This script requires administrative privileges. 
+    echo Right click and run as an administrator.
+    echo This script exits in 15 seconds...
+    timeout /t 15 >nul
     exit /b
 )
 
-:: Navigate to the directory where the batch file is located
-pushd "%~dp0"
-echo ==============================================================================
-echo                          Mantella / xVASynth Launcher
-echo ------------------------------------------------------------------------------
-echo.
-echo Administrator Mode.
-echo Current Directory: %cd%
+:: Configuration file
+echo Auto-Cleaning .\config.ini.
+python .\scripts\clean_config.py
+timeout /t 1 >nul
+echo Config Location: %cd%
+set configFile=.\config.ini
+timeout /t 2 >nul
 
 :: Check if xVASynth.exe is running
 echo Checking for running xVASynth.exe process...
@@ -38,6 +49,7 @@ echo Running Mantella...
 timeout /t 1 >nul
 
 :: Run the main script
+
 python .\main.py
 echo Main script exited.
 
