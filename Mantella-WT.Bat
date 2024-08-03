@@ -28,11 +28,11 @@ timeout /t 1 >nul
 
 :: Configuration file
 echo Maintenance for config...
-rem echo Auto-Cleaning .\config.ini
-rem python .\scripts\clean_config.py
-rem timeout /t 1 >nul
-rem echo config.ini Location: %cd%
-rem set configFile=.\config.ini
+echo Auto-Cleaning .\config.ini
+python .\scripts\clean_config.py
+timeout /t 1 >nul
+echo config.ini Location: %cd%
+set configFile=.\config.ini
 echo ...Maintenance Complete.
 echo.
 timeout /t 2 >nul
