@@ -77,8 +77,7 @@ Waiting for player to select an NPC...
 
 # Development 
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, focus is on local models/processing. this may involve...
-1. Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, themed content, so as for less to process in appropriate situation. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character. 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history? First time is full context because probably wont use it all and will want best quality response, as speak to most for one or two times. possibly llm could decide based on previous answers to extend or retract, context by requesting addition of preferences for relevant things at end of prompt? Maybe A flag will be reset when convo ends, thus enabling quick interactions to begin as required.
-2. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
+1. Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, themed content, so as for less to process in appropriate situation. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character. 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history? First time is full context because probably wont use it all and will want best quality response, as speak to most for one or two times. possibly llm could decide based on previous answers to extend or retract, context by requesting addition of preferences for relevant things at end of prompt? Maybe A flag will be reset when convo ends, thus enabling quick interactions to begin as required. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
 
 - Relates to...
 ```
@@ -103,13 +102,8 @@ max_response_sentences = 3
 temperature = 0.6
 ```
 ...
-- the maximum allowed context would also work together with the auto model selection, because the user would be able to therein set the maximum they intend to use. Maybe they just want to use 2k on a 8k model for speed, but if they want to wait for local processing or they are using gpt4, then they would choose to set higher. 
-- It would additionally require to read the max_tokens upon startup from ".\config.ini", to determine the current settings upon start, to display the correct item in the togglable option 2 on the menu. After option 2 is used to toggle the mode, then menu must be re-drawn. 
-- Input from the user must be displayed upon the end of the same line as the prompt "Selection, Options 1-2, Exit = X:". Additionally check completeness of logic and requirements for operation of toggleable option within 4 settings, with redraw after each iteratin is done, with a re-prompt to the user of "Selection, Options 1-2, Exit = X:". 
-- Ensure Exit funtion is done correctly. 
-```
-Drop in your preferred Llama.Cpp Pre-Compiled binaries? All I can think of for now. 
-```
+- It reads the updates from the ini at the start, to determine the current theme of the settings. 
+- Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`.
 
 
 # Disclaimer
