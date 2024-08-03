@@ -23,6 +23,8 @@ if %errorLevel% NEQ 0 (
 
 :: Print Working Dir
 echo Working Directory: %cd%
+echo.
+timeout /t 1 >nul
 
 :: Configuration file
 echo Maintenance for config...
