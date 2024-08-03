@@ -21,13 +21,16 @@ if %errorLevel% NEQ 0 (
     exit /b
 )
 
+:: Print Working Dir
+echo Working Directory: %cd%
+
 :: Configuration file
 echo Maintenance for config...
-echo Auto-Cleaning .\config.ini
-python .\scripts\clean_config.py
-timeout /t 1 >nul
-echo config.ini Location: %cd%
-set configFile=.\config.ini
+rem echo Auto-Cleaning .\config.ini
+rem python .\scripts\clean_config.py
+rem timeout /t 1 >nul
+rem echo config.ini Location: %cd%
+rem set configFile=.\config.ini
 echo ...Maintenance Complete.
 echo.
 timeout /t 2 >nul
@@ -41,13 +44,10 @@ if "%ERRORLEVEL%"=="0" (
 ) else (
     echo xVASynth.exe is not running.
     echo Starting xVASynth...
-    
-    :: Start VASynth using PowerShell to avoid admin elevation
-	pushd .\xVASynth
-    echo xVASynth Work Dir: %cd%
-	powershell -Command ^
-        Start-Process ".\xVASynth.exe" -NoNewWindow
-    popd
+    CD .\xVASynth
+
+	powershell -Command ^ Start-Process ".\xVASynth.exe" -NoNewWindow
+	CD ..
     timeout /t 3 >nul
 )
 echo ...xVASynth Automated.
@@ -57,8 +57,6 @@ timeout /t 2 >nul
 :: Running Mantella
 echo Running Mantella...
 timeout /t 1 >nul
-echo Mantella Work Dir: %cd%
-timeout /t 2 >nul
 python .\main.py
 echo Mantella Exited.
 echo.
