@@ -55,7 +55,20 @@ Waiting for player to select an NPC...
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, focus is on local models/processing. this may involve...
 1. Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, themed content, so as for less to process in appropriate situation. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character. 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history? First time is full context because probably wont use it all and will want best quality response, as speak to most for one or two times. possibly llm could decide based on previous answers to extend or retract, context by requesting addition of preferences for relevant things at end of prompt? Maybe A flag will be reset when convo ends, thus enabling quick interactions to begin as required.
 2. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
-3. 
+3. Put menu on batch launcher...
+```
+=================================
+Mantella-WT
+---------------------------------
+
+1. Run Mantella / xVASYnth
+2. Optimization: Faster/Medium/Quality
+
+---------------------------------
+Selection, Options 1-2, Exit = X:
+
+```
+
 
 # Other Notes (developed from original post on nexus)
 - Dynamic Context
