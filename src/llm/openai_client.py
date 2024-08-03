@@ -307,7 +307,7 @@ If you are running a model locally, please ensure the service (Kobold / Text gen
         if llm in token_limit_dict:
             token_limit = token_limit_dict[llm]
         else:
-            logging.log(23, f"Could not find number of available tokens for {llm}. Defaulting to token count of {custom_token_count} (this number can be changed via the `custom_token_count` setting in config.ini)")
+            logging.log(f"Could not find number of available tokens for {llm}. Defaulting to token count of {custom_token_count} (this number can be changed via the `custom_token_count` setting in config.ini)")
             try:
                 token_limit = int(custom_token_count)
             except ValueError:
