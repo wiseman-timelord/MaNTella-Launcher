@@ -26,10 +26,6 @@ Work done currently includes...
 
                        3. Optimization: Default
 
-                        Max Tokens: 250
-                        Max Response Sentences: 999
-                        Temperature: 1
-
 
 
 
