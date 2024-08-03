@@ -1,8 +1,8 @@
-# Mantella-Local.
+# Mantella-WT.
 This is a experimental fork, main is [here](https://github.com/art-from-the-machine/Mantella).
 
 # Description
-Wiseman-Timelords Drop-in Mantella files for Local-Optimization and Launching. Early stages...
+Wiseman-Timelords Drop-in Mantella files for Local-Optimization and Launching, tuned towards local models. Early stages...
 
 # Features
 Work done currently includes...
