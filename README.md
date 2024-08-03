@@ -6,10 +6,9 @@ Wiseman-Timelords Drop-in files for Local-Optimization and Launching on Mantella
 
 # Features
 Work done currently includes...
-1. Batch launcher, that launches BOTH, xVASynth in non-Admin AND Mantella in Admin, the batch saves time and messing around, if you install xVASynth to the suggested folder, it will, as required, automatically run it too.
+1. Batch launcher, that launches BOTH, xVASynth AND Mantella, in Admin, if you install xVASynth to the suggested folder ".\xVASynth", it will, as required, automatically run it too.
 2. Concise Chararacter details. The character details were non-standardized, and generally both had too much info, so I wrote a program to standardize the character details.
 3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
-
 
 # Preview
 - The current pre-release launcher batch...
@@ -46,16 +45,14 @@ Waiting for player to select an NPC for Communication...
 
 ```
 
-
-
-
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
 3. Copy/Move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not mode xVASynth, then ensure it is run first always.
-4. Ensure you have LM Studio or whatever with a kickass model, that is able to be handled by whatever GPU/CPU at the same time, along side Fallout 4, do it 50/50 GPU/CPU if GPU memory is a challenge. Currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) in q3_m, default will be 4096 context for unrecognised model, thats what we need.
-5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
-6. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
+4. Ensure you have LM Studio loaded and configured, manager your GPU/CPU configurations for optimal output on your hardware, I use GPU 50-75%/CPU 25-50%, as this will be along side Fallout 4, on 8GB VRam. 
+5. Ensure your model is suitable, currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix),  in, q3_s, q3_m, q4_xs, q4_s. with my dropin files it will recognise the model.
+6. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
+7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
 
 ## Notes
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
