@@ -33,13 +33,11 @@ Mantella Work Dir: D:\GamesVR\Mantella-0.11.4
 Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163). Mantella mod located in D:\GamesVR\Fallout4_163\Data
 20:07:37.218 INFO: Running Mantella with local language model
 20:07:37.219 WARNING: L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix is using token_limit of 4096
-
-Mantella v0.11.4
+Mantella version: 0.11.4
 20:07:37.433 TTS: Connecting to xVASynth...
 20:07:37.588 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
 20:07:37.588 STT: If the mic is not picking up your voice, try setting this audio_threshold value manually in MantellaSoftware/config.ini.
 Need help? See here: https://art-from-the-machine.github.io/Mantella/pages/issues_qna
-
 Waiting for player to select an NPC...
 
 ```
