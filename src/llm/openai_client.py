@@ -314,8 +314,6 @@ If you are running a model locally, please ensure the service (Kobold / Text gen
                 logging.error(f"Invalid custom_token_count value: {custom_token_count}. It should be a valid integer. Please update your configuration.")
                 token_limit = 4096  # Default to 4096 in case of an error.
         if token_limit <= 4096:
-            if is_local:
-                llm = 'Local language model'
-            logging.warning(f"{llm} Using token_limit of {token_limit}")
+            logging.warning(f"{llm} is using token_limit of {token_limit}")
         
         return token_limit
