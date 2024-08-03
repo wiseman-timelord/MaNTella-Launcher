@@ -95,6 +95,9 @@ Waiting for player to select an NPC...
 6b. for v12, the configurator will load in a browser next time you run the program, you will need to set that up there, then close mantella.
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch.
 
+# Notes
+- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu 
+
 # Development 
 - Development, stuck at file operations in batch, requires to check if ".data\config.ini" exists, and if not then use powershell to convert the ".\config.ini" to a ".\data\config.ini", therein, removing all, blank lines and ";Commented lines", and use the "[Titles]" for branches, and on those branches then the relevant keys with their corresponding values. Only have keys/values and branches. then save to the new file ".\data\config.ini", this is then the file we will be updating with our optimizer. 
 - If still issues with read/write in batch then, might have to use python 3.11 or powershell core 7 for my main optimizer/launcher. transformation of bulk of code, so as to create new script and use batch as launcher to just run main_script.py/ps1...
