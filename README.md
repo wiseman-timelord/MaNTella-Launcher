@@ -97,6 +97,7 @@ Waiting for player to select an NPC...
 
 ## Notes
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
+- You need to turn off survival mode, and just use Very Hard instead, until someone produces a mod to turn off the needs messages, it confuses the AI.
 
 # Development 
 - Development, stuck at file operations in batch, requires to check if ".data\config.ini" exists, and if not then use powershell to convert the ".\config.ini" to a ".\data\config.ini", therein, removing all, blank lines and ";Commented lines", and use the "[Titles]" for branches, and on those branches then the relevant keys with their corresponding values. Only have keys/values and branches. then save to the new file ".\data\config.ini", this is then the file we will be updating with our optimizer. 
