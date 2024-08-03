@@ -24,7 +24,7 @@ Work done currently includes...
 
                        2. Context Length: 4096
 
-                       2. Optimization: Default
+                       3. Optimization: Default
 
                         Max Tokens: 250
                         Max Response Sentences: 999
@@ -34,8 +34,30 @@ Work done currently includes...
 
 
 ------------------------------------------------------------------------------
-Selection, Options 1-2, Exit = X:
+Selection, Options 1-3, Exit = X:
 
+```
+- all options for Optimization are shown...
+```
+Default
+max_tokens = 250
+max_response_sentences = 999
+temperature = 1
+
+Faster
+max_tokens = 100
+max_response_sentences = 1
+temperature = 0.4
+
+Medium
+max_tokens = 150
+max_response_sentences = 2
+temperature = 0.5
+
+Quality
+max_tokens = 200
+max_response_sentences = 3
+temperature = 0.6
 ```
 - Then theres the running of the things...
 ```
@@ -82,28 +104,7 @@ Waiting for player to select an NPC...
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, focus is on local models/processing. this may involve...
 1. Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, themed content, so as for less to process in appropriate situation. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character. 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history? First time is full context because probably wont use it all and will want best quality response, as speak to most for one or two times. possibly llm could decide based on previous answers to extend or retract, context by requesting addition of preferences for relevant things at end of prompt? Maybe A flag will be reset when convo ends, thus enabling quick interactions to begin as required. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
 
-- Relates to...
-```
-Default
-max_tokens = 250
-max_response_sentences = 999
-temperature = 1
 
-Faster
-max_tokens = 100
-max_response_sentences = 1
-temperature = 0.4
-
-Medium
-max_tokens = 150
-max_response_sentences = 2
-temperature = 0.5
-
-Quality
-max_tokens = 200
-max_response_sentences = 3
-temperature = 0.6
-```
 ...
 - It reads the updates from the ini at the start, to determine the current theme of the settings. 
 - Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`.
