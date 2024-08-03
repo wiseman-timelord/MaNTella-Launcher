@@ -21,22 +21,24 @@ Auto-Cleaning .\config.ini.
 - Blank lines: 0
 - Commented lines: 0
 Cleaning Not Required.
-Config Location: D:\GamesVR\Mantella-0.11.4
+config.ini Location: D:\GamesVR\Mantella-0.11.4
+
 Checking for running xVASynth.exe process...
-xVASynth.exe is already running. Continuing to Mantella...
+xVASynth.exe is not running.
+Starting xVASynth...
+xVASynth Work Dir: D:\GamesVR\Mantella-0.11.4
+
 Running Mantella...
+Mantella Work Dir: D:\GamesVR\Mantella-0.11.4
 Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163). Mantella mod located in D:\GamesVR\Fallout4_163\Data
-18:31:37.279 INFO: Running Mantella with local language model
-18:31:37.280 WARNING: Local language model has a low token count of 4096. For better NPC memories, try changing to a model with a higher token count
+20:07:37.218 INFO: Running Mantella with local language model
+20:07:37.219 WARNING: L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix is using token_limit of 4096
 
 Mantella v0.11.4
-18:31:37.514 TTS: Connecting to xVASynth...
-18:31:37.684 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
-18:31:37.684 STT: If the mic is not picking up your voice, try setting this audio_threshold value manually in MantellaSoftware/config.ini.
-
-
-"NPC not added. Please try again after your next response"? See here:
-https://art-from-the-machine.github.io/Mantella/pages/issues_qna
+20:07:37.433 TTS: Connecting to xVASynth...
+20:07:37.588 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
+20:07:37.588 STT: If the mic is not picking up your voice, try setting this audio_threshold value manually in MantellaSoftware/config.ini.
+Need help? See here: https://art-from-the-machine.github.io/Mantella/pages/issues_qna
 
 Waiting for player to select an NPC...
 
