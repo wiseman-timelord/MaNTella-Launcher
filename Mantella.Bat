@@ -22,11 +22,12 @@ if %errorLevel% NEQ 0 (
 )
 
 :: Configuration file
-echo Auto-Cleaning .\config.ini.
-python .\scripts\clean_config.py
-timeout /t 1 >nul
-echo Config Location: %cd%
+rem echo Auto-Cleaning .\config.ini.
+rem python .\scripts\clean_config.py
+rem timeout /t 1 >nul
+echo config.ini Location: %cd%
 set configFile=.\config.ini
+echo.
 timeout /t 2 >nul
 
 :: Check if xVASynth.exe is running
@@ -39,21 +40,27 @@ if "%ERRORLEVEL%"=="0" (
     echo Starting xVASynth...
     
     :: Start VASynth using PowerShell to avoid admin elevation
+    pushd .\xVASynth
+    echo xVASynth Work Dir: %cd%
     powershell -Command ^
-        Start-Process ".\xVASynth\xVASynth.exe" -WorkingDirectory ".\xVASynth" -NoNewWindow 
-    timeout /t 1 >nul
+        Start-Process ".\xVASynth.exe" -NoNewWindow
+    popd
+    timeout /t 3 >nul
 )
+echo.
+timeout /t 2 >nul
 
-:: Print running VASynth and main script
+:: Running Mantella
 echo Running Mantella...
 timeout /t 1 >nul
-
-:: Run the main script
-
+echo Mantella Work Dir: %cd%
+timeout /t 2 >nul
 python .\main.py
 echo Main script exited.
+echo.
+timeout /t 2 >nul
 
 :: Wait 5 seconds 
 echo.
 echo 5 Seconds Until Self-Destruct!!
-timeout /t 5 >nul
+timeout /t 10 >nul
