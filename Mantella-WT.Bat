@@ -7,7 +7,7 @@ setlocal EnableDelayedExpansion
 :: Display has been reset...
 cls
 echo ==============================================================================
-echo                    Mantella xVASynth, Optimizer / Launcher
+echo                     Mantella-xVASynth Optimizer/Launcher
 echo ------------------------------------------------------------------------------
 echo.
 
