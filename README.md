@@ -1,8 +1,8 @@
-# Mantella-WT - Wiseman-Timelords, Mantella Optimization / Launcher.
-This is a experimental fork, in the form drop-in files and optimizations, main is [here](https://github.com/art-from-the-machine/Mantella).
+# Mantella-Local.
+This is a experimental fork, main is [here](https://github.com/art-from-the-machine/Mantella).
 
 # Description
-This is the fork for, configuring and optimizing and launching, Mantella / Fallout 4 in Windows.
+Wiseman-Timelords Drop-in Mantella files for Local-Optimization and Launching. Early stages...
 
 # Features
 Work done currently includes...
