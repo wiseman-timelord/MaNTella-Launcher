@@ -22,9 +22,10 @@ if %errorLevel% NEQ 0 (
 )
 
 :: Configuration file
-rem echo Auto-Cleaning .\config.ini.
-rem python .\scripts\clean_config.py
-rem timeout /t 1 >nul
+echo Maintenance For: config.ini
+echo Auto-Cleaning .\config.ini
+python .\scripts\clean_config.py
+timeout /t 1 >nul
 echo config.ini Location: %cd%
 set configFile=.\config.ini
 echo.
@@ -40,9 +41,9 @@ if "%ERRORLEVEL%"=="0" (
     echo Starting xVASynth...
     
     :: Start VASynth using PowerShell to avoid admin elevation
-    pushd .\xVASynth
+	pushd .\xVASynth
     echo xVASynth Work Dir: %cd%
-    powershell -Command ^
+	powershell -Command ^
         Start-Process ".\xVASynth.exe" -NoNewWindow
     popd
     timeout /t 3 >nul

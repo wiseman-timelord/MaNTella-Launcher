@@ -14,21 +14,16 @@ from src.conversation.context import context
 from src.remember.remembering import remembering
 from src.remember.summaries import summaries
 
-# Configure logging at the very beginning
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%H:%M:%S')
-
-# Remove all existing handlers
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-
-# Add a single handler
-handler = logging.StreamHandler()
-handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s', '%H:%M:%S'))
-logging.root.addHandler(handler)
-
-# Added initial setup to make sure no variable is potentially unbound
+# Imports
 game_state_manager = None
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%H:%M:%S')
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+handler = logging.StreamHandler()
+
+# Main Loop
 try:
     config, character_df, language_info, client, FO4_Voice_folder_and_models_df = setup.initialise(
         config_file='config.ini',
