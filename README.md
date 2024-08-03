@@ -1,5 +1,5 @@
 # Mantella-WT - Wiseman-Timelords Mantella Optimization
-This is a fork, [main is here](https://github.com/art-from-the-machine/Mantella)
+This is a fork, in the form drop-in files and optimizations, [main is here](https://github.com/art-from-the-machine/Mantella)
 
 # Development 
 - The general idea is to improve the speed of conversation, initialization and interaction. Its my opinion that a ok and fast, answer from AI is better than waiting for a quality response, especially in fps, and in relevance to Fallout 4/Skyrim, these are meant to be 100% offline, so I am leaning towards local models heavily. this may involve...
