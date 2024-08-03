@@ -11,7 +11,7 @@ Work done currently includes...
 3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
 
 # Preview
-- Menu is shaping up like this...
+- Next version is shaping up like this...
 ```
 ==============================================================================
                    Mantella xVASynth, Optimizer / Launcher
@@ -59,7 +59,7 @@ max_tokens = 200
 max_response_sentences = 3
 temperature = 0.6
 ```
-- Then theres the running of the things...
+- The current pre-release launcher batch...
 ```
 ==============================================================================
                           Mantella / xVASynth
