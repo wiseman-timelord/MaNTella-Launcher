@@ -22,6 +22,8 @@ Work done currently includes...
 
                        1. Run Mantella / xVASynth
 
+                       2. Context Length: 4096
+
                        2. Optimization: Default
 
                         Max Tokens: 250
