@@ -68,22 +68,19 @@ Mantella-WT
 Selection, Options 1-2, Exit = X:
 
 ```
-
-
-# Other Notes (developed from original post on nexus)
-- Dynamic Context
+- Relates to...
 ```
-2048
+Faster
 max_tokens = 100
 max_response_sentences = 1
 temperature = 0.4
 
-4096
+Medium
 max_tokens = 125
 max_response_sentences = 2
 temperature = 0.5
 
-8192
+Quality
 max_tokens = 150
 max_response_sentences = 2
 temperature = 0.6
