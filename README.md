@@ -1,8 +1,5 @@
 # Mantella-WT - the Mantella/xVASynth Optimizer-Launcher.
-This is a experimental pre-release fork of [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4), but for info regarding the original go [here](https://github.com/art-from-the-machine/Mantella).
-
-# Status
- When I have integrated the optimizations from the txt file into a pre-launch menu, then there will be release, until then you can gamble on the current files, or download the launch improver pre-release. 
+Status: Working, further development possible.
 
 # Description
 Drop-in files for Local-Optimization and Launching on Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions.
@@ -112,7 +109,7 @@ Waiting for player to select an NPC for Communication...
    - **Version**: Python 3.11 is required. Note that the script is incompatible with Python 3.12.
    - **Dependencies**: Install all necessary Python dependencies as specified in the Mantella Main requirements file. Follow any additional off-site procedures outlined in Mantella documentation for environment setup.
 2. **Language Model**:
-   - **Recommendation**: A suitable language model is needed for optimal text processing. It is advised to use the [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) model from Hugging Face. It supports both SFW and NSFW content.
+   - **Recommendation**: A suitable language model is needed for optimal text processing. It is advised to use the [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) model in, Q3 (Min 4GB VRam Free) or Q4 (Min 6GB VRam Free), from Hugging Face. It supports both SFW and NSFW content.
 3. **Operating System**:
    - **Compatibility**: The script runs on Windows 7 through Windows 11. As the Mantella-WT relies on batch files, it should work on all these versions, provided Mantella is compatible with them.
    - **Permissions**: Administrative privileges might be necessary, as certain operations require elevated permissions.
@@ -124,15 +121,14 @@ Waiting for player to select an NPC for Communication...
    - The script uses Python standard library modules such as `configparser`, `os`, `sys`, `time`, `shutil`, and `traceback`.
 
 # Usage / Install
-1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
-2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
+1. Ensure the [Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
+2. After completing Mantella 11.4 install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
 4. Ensure you have LM Studio / ollama loaded and configured and serving, offload a suitable number of layers to the GPU if Game is on same card, ensure the api addresses are correctly configured.
 5. Configure the ".\config.ini", ensure you have entered things like, "fallout4_folder" and "fallout4_mod_folder" and "llm_api" and "model" and "tts_service".
 6. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, the "config.ini" will be cleaned/backup, and then you will be presented with the menu.
 - Hopefully you have, Admin rights and sensible system settings, but click allow on firewall as required, I am guessing its the interaction between Mantella and the Mantella Mod.
 
 ## Notes
-- I have removed the "Offended" and "Forgiven", this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
 - all options for Optimization are shown...
 ```
 Default: max_tokens = 250, max_response_sentences = 999, temperature = 1
@@ -140,17 +136,14 @@ Faster: max_tokens = 100,max_response_sentences = 1, temperature = 0.4
 Medium: max_tokens = 150, max_response_sentences = 2, temperature = 0.5
 Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
-- Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
+- the "Offended" and "Forgiven", commands are removed, this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
+
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
 
-
 # Development
-- after make launcher/optimizer, then work on more files, to streamline them for local only was part of the original idea, but, I should keep that feature. So, updates for dropin replacement files, to upgrade and streamline current scripts, then demonstrate/push them to main, before altering stuff radically. 
+- Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
-- tuned towards local models, scripts will be streamlined, people whom use online can still use the launcher, but not the dropin files. 
-- NExt version is "Mantella-WT v0.11.3.1".
-- Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`, it accesses the config.ini.
-- The updated prompts and q3_m model seem to be able to ignore the lines starting "*", and not print out lines with "*". These prompts should be optionally injected into the config.ini, so as to not require the config_ini_updates.txt file manual modification.
+- tuned towards, windows and local models, scripts will be streamlined, people whom use online can still use the launcher, but not the dropin files. 
 - The config.ini model name value should be obtained through the curl through "llm_api" key with the api, example "llm_api = http://localhost:1234/v1", in the python script to read this, then ensure this is also written to the "model" key in "config.ini", for example...
 ```
 curl http://localhost:1234/v1/chat/completions \
