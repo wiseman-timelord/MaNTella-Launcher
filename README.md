@@ -84,11 +84,26 @@ Checking Prompts
 Prompts Alrady Optimized.
 Reading config file...
 Read Keys: config.ini.
-
-
-
-
-
+Writing config file...
+Settings saved. Proceeding to run Mantella/xVASynth...
+Writing output file: exit_code=0, xvasynth_path=D:\GamesVR\xVASynth
+Output file written successfully: main-wt.txt
+0,D:\GamesVR\xVASynth
+Final output: exit_code=0, xvasynth_path=D:\GamesVR\xVASynth
+Script execution ended
+...Mantella/xVASynth Optimizer-Launcher Closed...
+Checking for xVASynth...
+Running Mantella...
+Mantella-WT for Mantella version 0.11.4
+Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163).
+Mantella mod located in D:\GamesVR\Fallout4_163\Data.
+21:33:50.151 INFO: Running Mantella with local language model
+21:33:50.152 WARNING: L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix is using token_limit of 4096
+21:33:50.361 TTS: Connecting to xVASynth...
+21:33:50.510 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
+21:33:50.510 STT: If mic input too low, edit audio_threshold value manually in .\config.ini.
+Need help? See here: https://art-from-the-machine.github.io/Mantella/pages/issues_qna
+Waiting for player to select an NPC for Communication...
 
 ```
 
