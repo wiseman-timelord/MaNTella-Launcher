@@ -82,9 +82,12 @@ Mantella-WT for Mantella version 0.11.4
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
-4. Ensure you have LM Studio loaded and configured and serving, offload a suitable number of layers to the GPU if Game is on same card.
-5. Run the 
-5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
+4. Ensure you have LM Studio / ollama loaded and configured and serving, offload a suitable number of layers to the GPU if Game is on same card, ensure the api addresses are correctly configured.
+5. Configure the ".\config.ini", ensure you have entered things like, "fallout4_folder" and "fallout4_mod_folder" and "llm_api" and "model" and "tts_service".
+7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
+
+
+5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
 
 ## Notes
@@ -161,7 +164,7 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 - if there are no lines that start with comments ";" in the "config.ini", then it will not require cleaning, its only if the commented lines are there, then it should do the cleaning, but also do the blank lines, and spacing above the titles, as it does, apart from in the top line, which should be a title. At the moment, it is checking for blank lines, but the blank lines are the ones above the titles, which it removes, then puts back in, which is un-neccessary, and could end up corrupting the config.ini with all the unneccessary parsing and saving, just for it to be the same as the already processed version it just opened.
 - Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
 - Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
-
+- "tts_service" will always be "tts_service = xVASynth", the python script should ensure this when saving.
 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
