@@ -74,11 +74,17 @@ Mantella-WT for Mantella version 0.11.4
 
 ```
 
+# Requirements
+- Same as Mantella Main - I found this DEFINATELY require Python 3.11, and does not work on Python 3.12, and an install of the requirements, and the relating off-site requirements/procedures.
+- Suitable language model - I advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) in q3_m, it has SFW and NSFW and is ok at Text Processing.
+- Operating System - Windows 7-11, Mantella-WT relys on Batch files, assuming Mantella works ok on all of those version normally, then my app should too, albeit with the possible addition of Admin Mode.
+
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
-4. Ensure you have LM Studio loaded and configured and serving, offload a suitable number of layers to the GPU if they are on same card, and ensure your model is suitable, I advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix),  in q3_m if you have ~4GB VRam Free, or q4m if you have ~5-6GB VRAM Free.
-6. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
+4. Ensure you have LM Studio loaded and configured and serving, offload a suitable number of layers to the GPU if Game is on same card.
+5. Run the 
+5. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
 
 ## Notes
@@ -155,7 +161,7 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 - if there are no lines that start with comments ";" in the "config.ini", then it will not require cleaning, its only if the commented lines are there, then it should do the cleaning, but also do the blank lines, and spacing above the titles, as it does, apart from in the top line, which should be a title. At the moment, it is checking for blank lines, but the blank lines are the ones above the titles, which it removes, then puts back in, which is un-neccessary, and could end up corrupting the config.ini with all the unneccessary parsing and saving, just for it to be the same as the already processed version it just opened.
 - Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
 - Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
-
+- Need to figure out how the config.ini is being generated, so we can check for its presence, if its not there, then generate the file before processing it as it would if it existed. First run code. This should possibly be in a separate "Setup-Installer.Bat", that will setup the requirements and create the config.ini, before the user runs "Mantella-WT.Bat". If it does require to be generated, then we should also "pip install -r requirements.txt", this should happen in the batch, before generating the config.ini. 
 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
