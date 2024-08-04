@@ -11,77 +11,77 @@ Work done currently includes...
 3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
 
 # Preview
-- The current pre-release launcher batch...
+- The menu of much little configuration...
 ```
-==============================================================================
-                     Mantella/xVASynth Optimizer-Launcher
-------------------------------------------------------------------------------
+========================================================================================================================
+                                        Mantella xVASynth, Optimizer / Launcher
+------------------------------------------------------------------------------------------------------------------------
 
-Maintenance for config...
-Auto-Cleaning .\config.ini
-- Blank lines: 0
-- Commented lines: 0
-Cleaning Not Required.
-config.ini Location: D:\GamesVR\Mantella-0.11.4
-...Maintenance Complete.
+
+
+
+                                               1. Game Used: Fallout4
+
+                                               2. Optimization: Medium
+
+                                               3. Context Length: 4096
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+                                   Fallout4_folder = D:\GamesVR\Fallout4_163
+                                   Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
+                                   xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
+
+
+------------------------------------------------------------------------------------------------------------------------
+Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
+
+```
+- The general running of things...
+```
+========================================================================================================================
+                                          Mantella-xVASynth Optimizer/Launcher
+------------------------------------------------------------------------------------------------------------------------
+
+Running Mantella xVASynth Optimizer...
+Script started
+Working Folder: D:\GamesVR\Mantella-WT-0.11.4
+Config File: D:\GamesVR\Mantella-WT-0.11.4\config.ini
+Script execution started
+Entering main function
+Starting config cleaning process...
+Found 14 blank lines and 0 comment lines.
+Backup created: config.bak
+Removing clutter and formatting...
+Config file cleaned and saved successfully.
+Reading config file...
+Read Keys: config.ini.
 
 xVASynth Automation...
 Checking running processes...
-xVASynth.exe is already running. Continuing to Mantella...
+xVASynth.exe is not running.
+Starting xVASynth...
 ...xVASynth Automated.
 
 Running Mantella...
-Mantella Work Dir: D:\GamesVR\Mantella-0.11.4
 Mantella-WT for Mantella version 0.11.4
-Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163).
-Mantella mod located in D:\GamesVR\Fallout4_163\Data.
-21:30:12.290 INFO: Running Mantella with local language model
-21:30:12.291 WARNING: L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix is using token_limit of 4096
-21:30:12.512 TTS: Connecting to xVASynth...
-21:30:12.677 STT: Audio threshold set to 'auto'. Adjusting microphone for ambient noise...
-21:30:12.678 STT: If mic input too low, edit audio_threshold value manually in .\config.ini.
-Need help? See here: https://art-from-the-machine.github.io/Mantella/pages/issues_qna
-Waiting for player to select an NPC for Communication...
 
 ```
 
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 2. After completing Mantella install, then download the [Latest working Mantella-WT release](https://github.com/wiseman-timelord/Mantella-WT/releases/), drop the files into the main Mantella folder, preserving folders.
-3. Copy/Move xVASynth to `.\ExampleMantellaDirectory\xVASynth`, keeping things tidy. If you did move xVASynth, then click "Reset Paths" in the configuration.  If you do not mode xVASynth, then ensure it is run first always.
-4. Ensure you have LM Studio loaded and configured, manager your GPU/CPU configurations for optimal output on your hardware, I use GPU 50-75%/CPU 25-50%, as this will be along side Fallout 4, on 8GB VRam. 
-5. Ensure your model is suitable, currently I advise this model [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix),  in, q3_s, q3_m, q4_xs, q4_s. with my dropin files it will recognise the model.
+4. Ensure you have LM Studio loaded and configured and serving, offload a suitable number of layers to the GPU if they are on same card, and ensure your model is suitable, I advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix),  in q3_m if you have ~4GB VRam Free, or q4m if you have ~5-6GB VRAM Free.
 6. Run the main script `python .\main.py` once, to generate the ".\config.ini" file, then close mantella, and configure the ".\config.ini" after its created. Ensure to also implement updates from `.\config_ini_updates.txt` to ".\config.ini".
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
 
 ## Notes
-- The model name can be obtained through standalone python script used by batch to determine the settings being broadcasted by LM Studio or whatever model hosting, then ensure this is current in config. Determine what can simlarly be obtained, has the base folder moved, etc, auto correction.
-
-- Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
-- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
-- You need to turn off survival mode, and just use Very Hard instead, until someone produces a mod to turn off the needs messages, it confuses the AI.
-
-# Development 
-- Next version is shaping up like this...
-```
-========================================================================================================================
-                                   Mantella/xVASynth Optimizer-Launcher
-------------------------------------------------------------------------------------------------------------------------
-
-                                        1. Game Used: Fallout4
-                                        2. Optimization: Default
-                                        3. Context Length: 4096
-
-------------------------------------------------------------------------------------------------------------------------
-
-                          Fallout4_folder = D:\GamesVR\Fallout4_163
-                          Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
-                          xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
-
-------------------------------------------------------------------------------------------------------------------------
-Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
-
-```
 - all options for Optimization are shown...
 ```
 Default
@@ -105,11 +105,49 @@ max_response_sentences = 3
 temperature = 0.6
 ```
 
-- Development, stuck at file operations in batch, requires to check if ".data\config.ini" exists, and if not then use powershell to convert the ".\config.ini" to a ".\data\config.ini", therein, removing all, blank lines and ";Commented lines", and use the "[Titles]" for branches, and on those branches then the relevant keys with their corresponding values. Only have keys/values and branches. then save to the new file ".\data\config.ini", this is then the file we will be updating with our optimizer. 
-- If still issues with read/write in batch then, might have to use python 3.11 or powershell core 7 for my main optimizer/launcher. transformation of bulk of code, so as to create new script and use batch as launcher to just run main_script.py/ps1...
-- The general idea is to improve the speed of conversation, this could involve Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could work up to that, possibly we could switch between 2000, 4000, 8000, themed content, so as for less to process in appropriate situation. Potentially 3 versions of the characters .csv, 1/2/3 sentence description limit for each character. 2k context for greeting, 4k for the continuation with recent history summary or something, 8k for the rest of the convo with full convo history? First time is full context because probably wont use it all and will want best quality response, as speak to most for one or two times. possibly llm could decide based on previous answers to extend or retract, context by requesting addition of preferences for relevant things at end of prompt? Maybe A flag will be reset when convo ends, thus enabling quick interactions to begin as required. Some of the inputs, can actually be dynamic, and not present at all in user interaction, most/some of this could scale based on context size and be reasonable settings, see examples in "other notes" section.
-- It reads the updates from the ini at the start, to determine the current theme of the settings. 
-- Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`.
+
+- Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
+- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
+
+
+# Development
+- NExt version is "Mantella-WT v0.11.3.1".
+- Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`, it accesses the config.ini.
+- The updated prompts and q3_m model seem to be able to ignore the lines starting "*", and not print out lines with "*". These prompts should be optionally injected into the config.ini, so as to not require the config_ini_updates.txt file manual modification.
+- The config.ini model name value should be obtained through the curl through "llm_api" key with the api, example "llm_api = http://localhost:1234/v1", in the python script to read this, then ensure this is also written to the "model" key in "config.ini", for example...
+```
+curl http://localhost:1234/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{ 
+    "model": "Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix",
+    "messages": [ 
+      { "role": "system", "content": "Always answer in rhymes." },
+      { "role": "user", "content": "Introduce yourself." }
+    ], 
+    "temperature": 0.7, 
+    "max_tokens": -1,
+    "stream": true
+}'
+```
+...would result in saving...
+```
+model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
+```
+...and the menu would also be displaying it after it has been read, like the other ones...
+```
+
+
+
+           model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
+           fallout4_folder = D:\GamesVR\Fallout4_163
+            fallout4_mod_folder = D:\GamesVR\Fallout4_163
+             xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
+
+
+                       
+```
+- Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
+
 - Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
 
 # Disclaimer
