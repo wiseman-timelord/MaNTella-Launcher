@@ -81,7 +81,7 @@ Waiting for player to select an NPC for Communication...
 
 
 ------------------------------------------------------------------------------
-Selection, Options 1-3, Exit = X:
+Selection, Options 1-4, Exit = X:
 
 ```
 - all options for Optimization are shown...
