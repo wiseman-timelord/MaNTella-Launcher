@@ -151,10 +151,11 @@ model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
 Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
 ```
 ...hence when it refreshes, it will need to read the values of the curl again, because logically the user would have changed the model, dont worry about re-reading the config.
-- it should only create a backup file, if "config.bak" is not present already, the idea is the original version will have comments, that explain what the different parts mean, and what the options are, this way the user has a reference config. So it needs to check for this, and if it exists, then just continue, if not back the config.ini up. 
+- it should only create a backup file, if "config.bak" is not present already, the idea is the original version will have comments, that explain what the different parts mean, and what the options are, this way the user has a reference config. So it needs to check for this, and if it exists, then just continue to save the config.ini, if not back the config.ini up.
+- if there are no lines that start with comments ";" in the "config.ini", then it will not require cleaning, its only if the commented lines are there, then it should do the cleaning, but also do the blank lines, and spacing above the titles, as it does, apart from in the top line, which should be a title. At the moment, it is checking for blank lines, but the blank lines are the ones above the titles, which it removes, then puts back in, which is un-neccessary, and could end up corrupting the config.ini with all the unneccessary parsing and saving, just for it to be the same as the already processed version it just opened.
 - Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
-
 - Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
+
 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
