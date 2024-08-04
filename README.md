@@ -132,30 +132,14 @@ Waiting for player to select an NPC for Communication...
 - Hopefully you have, Admin rights and sensible system settings, but click allow on firewall as required, I am guessing its the interaction between Mantella and the Mantella Mod.
 
 ## Notes
+- I have removed the "Offended" and "Forgiven", this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
 - all options for Optimization are shown...
 ```
-Default
-max_tokens = 250
-max_response_sentences = 999
-temperature = 1
-
-Faster
-max_tokens = 100
-max_response_sentences = 1
-temperature = 0.4
-
-Medium
-max_tokens = 150
-max_response_sentences = 2
-temperature = 0.5
-
-Quality
-max_tokens = 200
-max_response_sentences = 3
-temperature = 0.6
+Default: max_tokens = 250, max_response_sentences = 999, temperature = 1
+Faster: max_tokens = 100,max_response_sentences = 1, temperature = 0.4
+Medium: max_tokens = 150, max_response_sentences = 2, temperature = 0.5
+Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
-
-
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
 
