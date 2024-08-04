@@ -162,7 +162,9 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 - Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
 - Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
 - "tts_service" will always be "tts_service = xVASynth", the python script should ensure this when saving.
-
+-  main-wt.txt should be deleted after the batch has used it.
+- Option on menu for the key "microphone_enabled", true/false, this will relate to 0, 1, for example... "microphone_enabled = 1", this choice will also require, loading and displaying as another toggle option, and saving when the config.ini is saved on run or exit. 
+ 
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
 - My forks sometimes just up and dissapear, this tends to happen when I no longer use the relating program, to neaten up things a little.
