@@ -1,4 +1,4 @@
-# Mantella-WT.
+# Mantella-WT - the Mantella/xVASynth Optimizer-Launcher.
 This is a experimental pre-release fork of [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4), For info regarding the original go [here](https://github.com/art-from-the-machine/Mantella).
 
 # Description
@@ -14,7 +14,7 @@ Work done currently includes...
 - The current pre-release launcher batch...
 ```
 ==============================================================================
-                   Mantella xVASynth, Optimizer / Launcher
+                     Mantella/xVASynth Optimizer-Launcher
 ------------------------------------------------------------------------------
 
 Maintenance for config...
@@ -65,7 +65,7 @@ Waiting for player to select an NPC for Communication...
 - Next version is shaping up like this...
 ```
 ========================================================================================================================
-                                   Mantella xVASynth, Optimizer / Launcher
+                                   Mantella/xVASynth Optimizer-Launcher
 ------------------------------------------------------------------------------------------------------------------------
 
                                         1. Game Used: Fallout4
