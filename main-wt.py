@@ -9,14 +9,8 @@ def verbose_print(message):
     print(message, file=sys.stderr)
     sys.stderr.flush()
 
-def short_delay():
-    time.sleep(1)
-
-def long_delay():
-    time.sleep(2)
-
-def error_delay():
-    time.sleep(3)
+def delay(seconds=1):
+    time.sleep(seconds)
 
 verbose_print("Script started")
 
@@ -32,7 +26,7 @@ xvasynth_folder = ""
 
 verbose_print(f"Working Folder: {os.getcwd()}")
 verbose_print(f"Config File: {os.path.abspath(FILE_NAME)}")
-short_delay()
+delay()
 
 # Optimization presets
 optimization_presets = {
@@ -44,11 +38,11 @@ optimization_presets = {
 
 def clean_config():
     verbose_print("Starting config cleaning process...")
-    short_delay()
+    delay()
     
     if not os.path.exists(FILE_NAME):
         verbose_print(f"Config file '{FILE_NAME}' not found.")
-        error_delay()
+        delay(3)
         return
 
     with open(FILE_NAME, 'r') as file:
@@ -61,7 +55,7 @@ def clean_config():
 
     if blank_line_count == 0 and comment_line_count == 0:
         verbose_print("Config file is already clean. No changes needed.")
-        long_delay()
+        delay(2)
         return
 
     backup_path = 'config.bak'
@@ -70,11 +64,11 @@ def clean_config():
         verbose_print(f"Backup created: {backup_path}")
     except Exception as e:
         verbose_print(f"Error creating backup: {str(e)}")
-        error_delay()
+        delay(3)
         return
 
     verbose_print("Removing clutter and formatting...")
-    short_delay()
+    delay()
     
     processed_lines = []
     for i, line in enumerate(lines):
@@ -88,10 +82,10 @@ def clean_config():
         with open(FILE_NAME, 'w') as file:
             file.writelines(processed_lines)
         verbose_print("Config file cleaned and saved successfully.")
-        long_delay()
+        delay(2)
     except Exception as e:
         verbose_print(f"Error writing cleaned config: {str(e)}")
-        error_delay()
+        delay(3)
 
 def read_config():
     verbose_print("Reading config file...")
@@ -102,7 +96,7 @@ def read_config():
         config.read(FILE_NAME)
     except configparser.Error as e:
         verbose_print(f"Error reading config.ini file: {str(e)}")
-        error_delay()
+        delay(3)
         return
     
     # Get the game name
@@ -144,7 +138,7 @@ def read_config():
         optimization = "Default"
 
     verbose_print(f"Read Keys: config.ini.")
-    long_delay()
+    delay(2)
 
 def write_config():
     verbose_print("Writing config file...")
@@ -154,7 +148,7 @@ def write_config():
         config.read(FILE_NAME)
     except configparser.Error as e:
         verbose_print(f"Error reading existing config for writing: {str(e)}")
-        error_delay()
+        delay(3)
         return
     
     if "Game" not in config:
@@ -166,8 +160,6 @@ def write_config():
     config["LanguageModel.Advanced"]["custom_token_count"] = str(custom_token_count)
     
     preset = optimization_presets[optimization]
-    if "LanguageModel.Advanced" not in config:
-        config["LanguageModel.Advanced"] = {}
     config["LanguageModel.Advanced"]["max_tokens"] = str(preset["max_tokens"])
     config["LanguageModel.Advanced"]["temperature"] = str(preset["temperature"])
     
@@ -178,12 +170,11 @@ def write_config():
     try:
         with open(FILE_NAME, 'w') as configfile:
             config.write(configfile)
-        verbose_print("Config written successfully")
     except Exception as e:
         verbose_print(f"Error writing config: {str(e)}")
-        error_delay()
+        delay(3)
 
-    long_delay()
+    delay(2)
 
 def write_output_file(exit_code, xvasynth_path):
     verbose_print(f"Writing output file '{OUTPUT_FILE}' with exit_code={exit_code} and xvasynth_path={xvasynth_path}")
@@ -194,7 +185,7 @@ def write_output_file(exit_code, xvasynth_path):
         verbose_print("Output file written successfully")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
-        error_delay()
+        delay(3)
 
 def display_menu():
     verbose_print("Displaying menu...")
@@ -221,25 +212,22 @@ def toggle_game():
     verbose_print("Toggling game...")
     global game
     games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
-    current_index = games.index(game)
-    game = games[(current_index + 1) % len(games)]
-    short_delay()
+    game = games[(games.index(game) + 1) % len(games)]
+    delay()
 
 def toggle_optimization():
     verbose_print("Toggling optimization...")
     global optimization
     optimizations = list(optimization_presets.keys())
-    current_index = optimizations.index(optimization)
-    optimization = optimizations[(current_index + 1) % len(optimizations)]
-    short_delay()
+    optimization = optimizations[(optimizations.index(optimization) + 1) % len(optimizations)]
+    delay()
 
 def toggle_context_length():
     verbose_print("Toggling context length...")
     global custom_token_count
     context_lengths = [2048, 4096, 8096, 16384]
-    current_index = context_lengths.index(custom_token_count)
-    custom_token_count = context_lengths[(current_index + 1) % len(context_lengths)]
-    short_delay()
+    custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
+    delay()
 
 def main():
     verbose_print("Entering main function")
@@ -274,7 +262,7 @@ def main():
         verbose_print("Traceback:")
         verbose_print(traceback.format_exc())
         write_output_file(1, "")  # Ensure an error exit signal is saved
-        error_delay()
+        delay(3)
         return 1, ""
 
 if __name__ == "__main__":
