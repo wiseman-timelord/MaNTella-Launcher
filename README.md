@@ -64,26 +64,22 @@ Waiting for player to select an NPC for Communication...
 # Development 
 - Next version is shaping up like this...
 ```
-==============================================================================
-                   Mantella xVASynth, Optimizer / Launcher
-------------------------------------------------------------------------------
+========================================================================================================================
+                                   Mantella xVASynth, Optimizer / Launcher
+------------------------------------------------------------------------------------------------------------------------
 
+                                        1. Game Used: Fallout4
+                                        2. Optimization: Default
+                                        3. Context Length: 4096
 
+------------------------------------------------------------------------------------------------------------------------
 
+                          Fallout4_folder = D:\GamesVR\Fallout4_163
+                          Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
+                          xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
 
-                       1. Run, Mantella and xVASynth.
-
-                       2. Game Used: Fallout4/Fallout4VR/Skyrim/SkyrimVR
-
-                       3. Context Length: 2048/4096/8096/16384
-
-                       4. Optimization: Default/Faster/Medium/Quality
-
-
-
-
-------------------------------------------------------------------------------
-Selection, Options 1-4, Exit = X:
+------------------------------------------------------------------------------------------------------------------------
+Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
 
 ```
 - all options for Optimization are shown...
