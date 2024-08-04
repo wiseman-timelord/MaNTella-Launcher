@@ -57,7 +57,7 @@ These features combine to provide a comprehensive and user-friendly tool for opt
 
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
                                    Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
-                                   xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
+                                   xvasynth_folder = D:\GamesVR\xVASynth
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -66,32 +66,29 @@ Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
 ```
 - The general running of things...
 ```
-========================================================================================================================
+=======================================================================================================================
                                           Mantella-xVASynth Optimizer/Launcher
 ------------------------------------------------------------------------------------------------------------------------
 
+Working Dir: D:\GamesVR\Mantella-WT-0.11.3
 Running Mantella xVASynth Optimizer...
 Script started
-Working Folder: D:\GamesVR\Mantella-WT-0.11.4
-Config File: D:\GamesVR\Mantella-WT-0.11.4\config.ini
+Working Folder: D:\GamesVR\Mantella-WT-0.11.3
+Config File: D:\GamesVR\Mantella-WT-0.11.3\config.ini
 Script execution started
 Entering main function
-Starting config cleaning process...
-Found 14 blank lines and 0 comment lines.
-Backup created: config.bak
-Removing clutter and formatting...
-Config file cleaned and saved successfully.
+Starting config cleaning...
+Found 0 comment lines.
+Config Already Clean.
+Checking Prompts
+Prompts Alrady Optimized.
 Reading config file...
 Read Keys: config.ini.
 
-xVASynth Automation...
-Checking running processes...
-xVASynth.exe is not running.
-Starting xVASynth...
-...xVASynth Automated.
 
-Running Mantella...
-Mantella-WT for Mantella version 0.11.4
+
+
+
 
 ```
 
