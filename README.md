@@ -69,11 +69,13 @@ Waiting for player to select an NPC for Communication...
 
 
 
-                       1. Run Mantella / xVASynth
+                       1. Run, Mantella and xVASynth.
 
-                       2. Context Length: 4096
+                       2. Game Used: Fallout4/Fallout4VR/Skyrim/SkyrimVR
 
-                       3. Optimization: Default
+                       3. Context Length: 2048/4096/8096
+
+                       4. Optimization: Default/Faster/Medium/Quality
 
 
 
