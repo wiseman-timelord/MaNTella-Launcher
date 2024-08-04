@@ -29,16 +29,11 @@ if %errorLevel% NEQ 0 (
 )
 
 :: Run the Python script for config cleaning and menu
-echo Running Mantella xVASynth Optimizer...
+echo Running Mantella/xVASynth Optimizer-Launcher...
 python main-wt.py
-
-:: Display Is Reset
-cls
-echo ========================================================================================================================
-echo                                           Mantella-xVASynth Optimizer/Launcher
-echo ------------------------------------------------------------------------------------------------------------------------
-echo.
+echo ...Mantella/xVASynth Optimizer-Launcher Closed...
 timeout /t 1 >nul
+
 
 :: Read the output values from main-wt.txt
 for /f "tokens=1,2 delims==" %%i in (main-wt.txt) do (

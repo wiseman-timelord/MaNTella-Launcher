@@ -24,7 +24,6 @@ game_folders = {}
 mod_folders = {}
 xvasynth_folder = ""
 
-verbose_print(f"Working Folder: {os.getcwd()}")
 verbose_print(f"Config File: {os.path.abspath(FILE_NAME)}")
 delay()
 
@@ -37,7 +36,7 @@ optimization_presets = {
 }
 
 def clean_config():
-    verbose_print("Starting config cleaning process...")
+    verbose_print("Starting config cleaning...")
     delay()
     
     if not os.path.exists(FILE_NAME):
@@ -48,24 +47,26 @@ def clean_config():
     with open(FILE_NAME, 'r') as file:
         lines = file.readlines()
 
-    blank_line_count = sum(1 for line in lines if not line.strip())
     comment_line_count = sum(1 for line in lines if line.strip().startswith(';'))
 
-    verbose_print(f"Found {blank_line_count} blank lines and {comment_line_count} comment lines.")
+    verbose_print(f"Found {comment_line_count} comment lines.")
 
-    if blank_line_count == 0 and comment_line_count == 0:
-        verbose_print("Config file is already clean. No changes needed.")
+    if comment_line_count == 0:
+        verbose_print("Config Already Clean.")
         delay(2)
         return
 
     backup_path = 'config.bak'
-    try:
-        shutil.copy(FILE_NAME, backup_path)
-        verbose_print(f"Backup created: {backup_path}")
-    except Exception as e:
-        verbose_print(f"Error creating backup: {str(e)}")
-        delay(3)
-        return
+    if not os.path.exists(backup_path):
+        try:
+            shutil.copy(FILE_NAME, backup_path)
+            verbose_print(f"Backup created: {backup_path}")
+        except Exception as e:
+            verbose_print(f"Error creating backup: {str(e)}")
+            delay(3)
+            return
+    else:
+        verbose_print(f"Backup file {backup_path} already exists. Skipping backup.")
 
     verbose_print("Removing clutter and formatting...")
     delay()
@@ -81,10 +82,10 @@ def clean_config():
     try:
         with open(FILE_NAME, 'w') as file:
             file.writelines(processed_lines)
-        verbose_print("Config file cleaned and saved successfully.")
+        verbose_print("Config cleaned and saved.")
         delay(2)
     except Exception as e:
-        verbose_print(f"Error writing cleaned config: {str(e)}")
+        verbose_print(f"Error writing config: {str(e)}")
         delay(3)
 
 def read_config():
@@ -177,23 +178,91 @@ def write_config():
     delay(2)
 
 def write_output_file(exit_code, xvasynth_path):
-    verbose_print(f"Writing output file '{OUTPUT_FILE}' with exit_code={exit_code} and xvasynth_path={xvasynth_path}")
+    verbose_print(f"Writing output file: exit_code={exit_code}, xvasynth_path={xvasynth_path}")
     try:
-        with open(OUTPUT_FILE, 'w') as output_file:
-            output_file.write(f"exit_code={exit_code}\n")
-            output_file.write(f"xvasynth_path={xvasynth_path}\n")
-        verbose_print("Output file written successfully")
+        with open(OUTPUT_FILE, 'w') as f:
+            f.write(f"exit_code={exit_code}\nxvasynth_path={xvasynth_path}")
+        verbose_print(f"Output file written successfully: {OUTPUT_FILE}")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
-        delay(3)
 
-def display_menu():
-    verbose_print("Displaying menu...")
+
+def check_and_update_prompts():
+    verbose_print("Checking Prompts")
+    config = configparser.ConfigParser()
+    config.read(FILE_NAME)
+
+    prompt_keys = [
+        "skyrim_prompt", "skyrim_multi_npc_prompt", "fallout4_prompt", 
+        "fallout4_multi_npc_prompt", "radiant_start_prompt", "radiant_end_prompt", 
+        "memory_prompt", "resummarize_prompt"
+    ]
+
+    updated_prompts = {
+        "skyrim_prompt": "You are {name} from Skyrim. This is your background:{bio}, stay in character. You are having a conversation with(the player), in {location} and in Skyrim and at {time_group} time. The conversation is in {language}. The situation so far is... {conversation_summary}. Respond as {name}. This response will be spoken aloud, so keep responses concise, and avoid, numbered lists or descriptions of actions, instead speech ONLY. Do not use symbols of any form in your output.",
+        "skyrim_multi_npc_prompt": "The following is a conversation between {names_w_player} from Skyrim, in {location} and at {time_group} time. Backgrounds: {bios}, utilize all characters. Their conversation histories: {conversation_summaries}. Respond as {names}. This response will be spoken aloud, so keep responses concise, and avoid, numbered lists or descriptions of actions, instead speech ONLY. Do not use symbols in any form in your output.",
+        "fallout4_prompt": "You are {name} in Fallout4. This is your background: {bio}. You're having a conversation with (the player) in {location}. The time is {time_group} time. The conversation is in {language}. The situation so far is... {conversation_summary}. This response will be spoken aloud, so keep responses concise, and avoid, numbered lists or descriptions of actions, instead speech ONLY. Do not use symbols in any form in your output.",
+        "fallout4_multi_npc_prompt": "The following is a conversation between {names_w_player} from Fallout 4, in {location} and at {time_group} time. Their backgrounds: {bios}. Their conversation histories: {conversation_summaries}. Respond as {names}. and avoid, numbered lists or descriptions of actions, instead speech ONLY. The conversation is in {language}. Do not use symbols in any form in your output. ",
+        "radiant_start_prompt": "Start or continue a conversation topic (skip greetings). Shift topics if current ones lose steam. Steer toward character revelations or drive previous conversations forward. The conversation is in {language}. Do not use symbols in any form in your output.",
+        "radiant_end_prompt": "In {language} and with a maximum of 125 text characters, wrap up the current topic naturally. No need for formal goodbyes as no one is leaving.  The summarization is in {language}. Do not use symbols of any kind in your output.",
+        "memory_prompt": "In {language} and with a maximum of 250 text characters, summarize the conversation between {name} (assistant) and the player (user)/others in {game}, capturing the essence of in-game events. Ignore communication mix-ups like mishearings. The summarization is in {language}. Do not use symbols in any form in your output.",
+        "resummarize_prompt": "In {language} and with a maximum of 500 text characters and in single short paragraphs, summarize the conversation history between {name} (assistant) and the player (user)/others in {game}. Each paragraph is a separate conversation.  The summarization is in {language}. Do not use symbols in any form in your output."
+    }
+
+    needs_update = False
+    if 'Prompt' not in config:
+        verbose_print("'Prompt' section not found in config. Creating it.")
+        config['Prompt'] = {}
+        needs_update = True
+    else:
+        for key in prompt_keys:
+            if key not in config['Prompt']:
+                verbose_print(f"Prompt key '{key}' not found in config. Will update.")
+                needs_update = True
+                break
+            elif config['Prompt'][key].strip() != updated_prompts[key].strip():
+                verbose_print(f"Prompt '{key}' needs updating.")
+                verbose_print(f"Current: {config['Prompt'][key]}")
+                verbose_print(f"Updated: {updated_prompts[key]}")
+                if key == "resummarize_prompt":
+                    verbose_print("Detailed comparison of resummarize_prompt:")
+                    current = config['Prompt'][key].strip()
+                    updated = updated_prompts[key].strip()
+                    verbose_print(f"Length of current: {len(current)}")
+                    verbose_print(f"Length of updated: {len(updated)}")
+                    for i, (c, u) in enumerate(zip(current, updated)):
+                        if c != u:
+                            verbose_print(f"Difference at position {i}: '{c}' vs '{u}'")
+                            break
+                needs_update = True
+                break
+
+    if needs_update:
+        verbose_print("Optimizing Prompts..")
+        for key, value in updated_prompts.items():
+            config['Prompt'][key] = value
+        
+        try:
+            with open(FILE_NAME, 'w') as configfile:
+                config.write(configfile)
+            verbose_print("..Prompts Optimized.")
+        except Exception as e:
+            verbose_print(f"Error writing updated prompts to config file: {str(e)}")
+            delay(3)
+    else:
+        verbose_print("Prompts Already Optimized.")
+        delay(1)
+
+def display_title():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 120)
     print("                                        Mantella xVASynth, Optimizer / Launcher")
     print("-" * 120)
-    print(f"\n\n\n")
+    print(f"")
+    
+def display_menu():
+    display_title()
+    print(f"\n\n")
     print(f"                                               1. Game Used: {game}\n")
     print(f"                                               2. Optimization: {optimization}\n")
     print(f"                                               3. Context Length: {custom_token_count}\n")
@@ -233,6 +302,7 @@ def main():
     verbose_print("Entering main function")
     try:
         clean_config()
+        check_and_update_prompts()
         read_config()
         
         while True:
@@ -246,11 +316,13 @@ def main():
             elif choice == '3':
                 toggle_context_length()
             elif choice == 'R':
+                display_title()
                 write_config()
                 verbose_print("Settings saved. Proceeding to run Mantella/xVASynth...")
                 write_output_file(0, xvasynth_folder)  # Save relevant values
                 return 0, xvasynth_folder
             elif choice == 'X':
+                display_title()
                 write_config()
                 verbose_print("Settings saved. Exiting...")
                 write_output_file(1, "")  # Save exit signal
@@ -262,7 +334,6 @@ def main():
         verbose_print("Traceback:")
         verbose_print(traceback.format_exc())
         write_output_file(1, "")  # Ensure an error exit signal is saved
-        delay(3)
         return 1, ""
 
 if __name__ == "__main__":
