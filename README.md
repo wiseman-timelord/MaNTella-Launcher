@@ -73,7 +73,7 @@ Waiting for player to select an NPC for Communication...
 
                        2. Game Used: Fallout4/Fallout4VR/Skyrim/SkyrimVR
 
-                       3. Context Length: 2048/4096/8096
+                       3. Context Length: 2048/4096/8096/16384
 
                        4. Optimization: Default/Faster/Medium/Quality
 
