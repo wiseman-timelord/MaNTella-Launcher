@@ -1,14 +1,24 @@
 # Mantella-WT - the Mantella/xVASynth Optimizer-Launcher.
 This is a experimental pre-release fork of [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4), but for info regarding the original go [here](https://github.com/art-from-the-machine/Mantella).
 
+# Status
+Drop-in files for Local-Optimization and Launching on Mantella.  When I have integrated the optimizations from the txt file into a pre-launch menu, then there will be release, until then you can gamble on the current files, or download the launch improver pre-release. 
+
 # Description
-Wiseman-Timelords Drop-in files for Local-Optimization and Launching on Mantella. tuned towards local models. Early stages; after make launcher/optimizer, then work on more files, to streamline them for local only, and maybe some other updates for dropin replacement files. Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently. When I have integrated the optimizations from the txt file into a pre-launch menu, then there will be full release.
+The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions.
 
 # Features
-Work done currently includes...
-1. Batch launcher, that launches BOTH, xVASynth AND Mantella, in Admin, if you install xVASynth to the suggested folder ".\xVASynth", it will, as required, automatically run it too.
-2. Concise Chararacter details. The character details were non-standardized, and generally both had too much info, so I wrote a program to standardize the character details.
-3. Concise, optimized and streamlined, prompts for config.ini, with stated charater limit on consolidation. follow, offended, forgiven were removed, as they didnt work in vanilla when tested.
+1. **Batch Launcher for Automation**:  
+   - The script includes a batch launcher that automates the execution of both xVASynth and Mantella.  
+   - If xVASynth is installed in the recommended directory (`.\xVASynth`), the script will automatically launch it as needed.  
+   - The batch script ensures the launcher runs with administrative privileges, facilitating seamless execution of both applications.
+2. **Standardized Character Details**:  
+   - The script processes and standardizes character details, which were previously non-standardized and often contained excessive information.  
+   - This standardization enhances clarity and consistency, allowing for more effective use of character data in audio generation.
+3. **Optimized Configuration Management**:  
+   - The script optimizes and streamlines prompts for managing `config.ini`, ensuring concise and clear configuration of settings.  
+   - Character limits on specific configuration fields are implemented for consistency and ease of use.  
+   - Non-functional options such as "follow," "offended," and "forgiven" were removed from the configuration prompts to enhance functionality and usability based on testing with the vanilla game.
 
 # Preview
 - The menu of much optimization, landing today...
@@ -117,6 +127,9 @@ temperature = 0.6
 
 
 # Development
+- after make launcher/optimizer, then work on more files, to streamline them for local only was part of the original idea, but, I should keep that feature. So, updates for dropin replacement files, to upgrade and streamline current scripts, then demonstrate/push them to main, before altering stuff radically. 
+- Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
+- tuned towards local models, scripts will be streamlined, people whom use online can still use the launcher, but not the dropin files. 
 - NExt version is "Mantella-WT v0.11.3.1".
 - Next version will also read the "xvasynth_folder" so as to not require the xVASynth to be installed in `.\xVASynth`, it accesses the config.ini.
 - The updated prompts and q3_m model seem to be able to ignore the lines starting "*", and not print out lines with "*". These prompts should be optionally injected into the config.ini, so as to not require the config_ini_updates.txt file manual modification.
