@@ -5,28 +5,12 @@ Status: Working, further development possible.
 Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions.
 
 # Features
-These features combine to provide a comprehensive and user-friendly tool for optimizing and managing audio generation for Skyrim and Fallout 4 using xVASynth and Mantella.
-1. **Batch Launcher for Automation**  
-   - The script includes a batch launcher that automates the execution of both xVASynth and Mantella.
-   - If xVASynth is installed in the recommended directory (`.\xVASynth`), the script will automatically launch it as needed.
-   - Ensures the launcher runs with administrative privileges, facilitating seamless execution of both applications.
-2. **Standardized Character Details**  
-   - Processes and standardizes character details, which were previously non-standardized and often contained excessive information.
-   - Enhances clarity and consistency, allowing for more effective use of character data in audio generation.
-3. **Optimized Configuration Management**  
-   - Optimizes and streamlines prompts for managing `config.ini`, ensuring concise and clear configuration of settings.
-   - Implements character limits on specific configuration fields for consistency and ease of use.
-   - Removes non-functional options such as "follow," "offended," and "forgiven" from the configuration prompts to enhance functionality and usability based on testing with the vanilla game.
-4. **Interactive Python Script**  
-   - The Python script handles the cleaning and reading of the configuration file, ensuring it is free from clutter and formatted correctly.
-   - Provides an interactive menu for users to toggle between different games (Skyrim, SkyrimVR, Fallout4, Fallout4VR) and optimization presets (Default, Faster, Medium, Quality).
-   - Allows users to adjust context length settings, offering predefined options for efficient customization.
-5. **Error Handling and Logging**  
-   - Includes robust error handling and logging to track the execution flow and capture any issues that arise during script execution.
-   - Creates backups of the configuration file before making changes, ensuring that the original settings can be restored if needed.
-6. **Automatic Execution and Exit Handling**  
-   - Automatically runs Mantella after configuring xVASynth, streamlining the workflow for users.
-   - Handles exit codes and saves them to an output file, ensuring proper closure and communication between the batch and Python scripts.
+1. **Batch Launcher for Automation**: Automates and runs xVASynth and Mantella with admin privileges.
+2. **Standardized Character Details**: Standardizes character data for clarity and effective audio generation.
+3. **Optimized Configuration Management**: Streamlines `config.ini` prompts and removes non-functional options.
+4. **Interactive Python Script**: Cleans configuration files and offers an interactive menu for game and preset choices.
+5. **Error Handling and Logging**: Tracks errors, logs execution, and backs up configuration files.
+6. **Automatic Execution and Exit Handling**: Runs Mantella post-xVASynth and manages exit codes for smooth operation.
 
 # Preview
 - The menu of much optimization, landing today...
@@ -105,20 +89,12 @@ Waiting for player to select an NPC for Communication...
 ```
 
 ## Requirements
-1. **Python Environment**:
-   - **Version**: Python 3.11 is required for Mantella, it does not work on 3.12 from my experience.
-   - **Dependencies**: Install all necessary Python dependencies as specified in the Mantella Main requirements file. Follow any additional off-site procedures outlined in Mantella documentation for environment setup.
-2. **Language Model**:
-   - **Recommendation**: A suitable language model is needed for optimal text processing. It is advised to use the [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) model in, Q3 (Min 4GB VRam Free) or Q4 (Min 6GB VRam Free), from Hugging Face. It supports both SFW and NSFW content.
-3. **Operating System**:
-   - **Compatibility**: The script runs on Windows 7 through Windows 11. As the Mantella-WT relies on batch files, it should work on all these versions, provided Mantella is compatible with them.
-   - **Permissions**: Administrative privileges might be necessary, as certain operations require elevated permissions.
-4. **xVASynth Installation**:
-   - Ensure xVASynth is installed and configured properly, with the executable located in the directory specified within the `config.ini` file.
-5. **Configuration File**:
-   - A `config.ini` file must be present, containing sections for `Game`, `Paths`, and `LanguageModel.Advanced`. This file is used to set paths and audio optimization parameters for *Skyrim* and *Fallout 4*.
-6. **Dependencies**:
-   - The script uses Python standard library modules such as `configparser`, `os`, `sys`, `time`, `shutil`, and `traceback`.
+1. **Python Environment**: Requires Python 3.11 and dependencies from the Mantella requirements file.
+2. **Language Model**: Use [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) with Q3 or Q4 VRAM specifications.
+3. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
+4. **xVASynth Installation**: Must be installed and correctly configured in the specified directory.
+5. **Configuration File**: Requires a `config.ini` with `Game`, `Paths`, and `LanguageModel.Advanced` sections.
+6. **Dependencies**: Utilizes Python standard library modules like `configparser`, `os`, `sys`, `time`, `shutil`, and `traceback`.
 
 # Usage / Install
 1. Ensure the [Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
