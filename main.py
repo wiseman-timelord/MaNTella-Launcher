@@ -1,3 +1,4 @@
+# Imports
 import traceback
 import src.tts as tts
 import src.stt as stt
@@ -14,14 +15,11 @@ from src.conversation.context import context
 from src.remember.remembering import remembering
 from src.remember.summaries import summaries
 
-# Imports
+# Globals
 game_state_manager = None
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%H:%M:%S')
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-handler = logging.StreamHandler()
+# Print Version
+print("Mantella-WT for Mantella version 0.11.4")
 
 # Main Loop
 try:
