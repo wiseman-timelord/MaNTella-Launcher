@@ -55,6 +55,8 @@ Waiting for player to select an NPC for Communication...
 7. Run Fallout 4/Skyrim, and then run the `Mantella-WT.Bat` batch, it will, as required, clean the ".\config.ini" and backup the old version to ".\config.bak", and then run "Mantella-WT".
 
 ## Notes
+- The model name can be obtained through standalone python script used by batch to determine the settings being broadcasted by LM Studio or whatever model hosting, then ensure this is current in config. Determine what can simlarly be obtained, has the base folder moved, etc, auto correction.
+
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
 - You need to turn off survival mode, and just use Very Hard instead, until someone produces a mod to turn off the needs messages, it confuses the AI.
