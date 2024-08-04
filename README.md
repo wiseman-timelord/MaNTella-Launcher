@@ -2,23 +2,34 @@
 This is a experimental pre-release fork of [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4), but for info regarding the original go [here](https://github.com/art-from-the-machine/Mantella).
 
 # Status
-Drop-in files for Local-Optimization and Launching on Mantella.  When I have integrated the optimizations from the txt file into a pre-launch menu, then there will be release, until then you can gamble on the current files, or download the launch improver pre-release. 
+ When I have integrated the optimizations from the txt file into a pre-launch menu, then there will be release, until then you can gamble on the current files, or download the launch improver pre-release. 
 
 # Description
-The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions.
+Drop-in files for Local-Optimization and Launching on Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions.
 
 # Features
-1. **Batch Launcher for Automation**:  
-   - The script includes a batch launcher that automates the execution of both xVASynth and Mantella.  
-   - If xVASynth is installed in the recommended directory (`.\xVASynth`), the script will automatically launch it as needed.  
-   - The batch script ensures the launcher runs with administrative privileges, facilitating seamless execution of both applications.
-2. **Standardized Character Details**:  
-   - The script processes and standardizes character details, which were previously non-standardized and often contained excessive information.  
-   - This standardization enhances clarity and consistency, allowing for more effective use of character data in audio generation.
-3. **Optimized Configuration Management**:  
-   - The script optimizes and streamlines prompts for managing `config.ini`, ensuring concise and clear configuration of settings.  
-   - Character limits on specific configuration fields are implemented for consistency and ease of use.  
-   - Non-functional options such as "follow," "offended," and "forgiven" were removed from the configuration prompts to enhance functionality and usability based on testing with the vanilla game.
+These features combine to provide a comprehensive and user-friendly tool for optimizing and managing audio generation for Skyrim and Fallout 4 using xVASynth and Mantella.
+1. **Batch Launcher for Automation**  
+   - The script includes a batch launcher that automates the execution of both xVASynth and Mantella.
+   - If xVASynth is installed in the recommended directory (`.\xVASynth`), the script will automatically launch it as needed.
+   - Ensures the launcher runs with administrative privileges, facilitating seamless execution of both applications.
+2. **Standardized Character Details**  
+   - Processes and standardizes character details, which were previously non-standardized and often contained excessive information.
+   - Enhances clarity and consistency, allowing for more effective use of character data in audio generation.
+3. **Optimized Configuration Management**  
+   - Optimizes and streamlines prompts for managing `config.ini`, ensuring concise and clear configuration of settings.
+   - Implements character limits on specific configuration fields for consistency and ease of use.
+   - Removes non-functional options such as "follow," "offended," and "forgiven" from the configuration prompts to enhance functionality and usability based on testing with the vanilla game.
+4. **Interactive Python Script**  
+   - The Python script handles the cleaning and reading of the configuration file, ensuring it is free from clutter and formatted correctly.
+   - Provides an interactive menu for users to toggle between different games (Skyrim, SkyrimVR, Fallout4, Fallout4VR) and optimization presets (Default, Faster, Medium, Quality).
+   - Allows users to adjust context length settings, offering predefined options for efficient customization.
+5. **Error Handling and Logging**  
+   - Includes robust error handling and logging to track the execution flow and capture any issues that arise during script execution.
+   - Creates backups of the configuration file before making changes, ensuring that the original settings can be restored if needed.
+6. **Automatic Execution and Exit Handling**  
+   - Automatically runs Mantella after configuring xVASynth, streamlining the workflow for users.
+   - Handles exit codes and saves them to an output file, ensuring proper closure and communication between the batch and Python scripts.
 
 # Preview
 - The menu of much optimization, landing today...
@@ -84,10 +95,21 @@ Mantella-WT for Mantella version 0.11.4
 
 ```
 
-# Requirements
-- Same as Mantella Main - I found this DEFINATELY require Python 3.11, and does not work on Python 3.12, and an install of the requirements, and the relating off-site requirements/procedures.
-- Suitable language model - I advise [this one from huggingface.co](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) in q3_m, it has SFW and NSFW and is ok at Text Processing.
-- Operating System - Windows 7-11, Mantella-WT relys on Batch files, assuming Mantella works ok on all of those version normally, then my app should too, albeit with the possible addition of Admin Mode.
+## Requirements
+1. **Python Environment**:
+   - **Version**: Python 3.11 is required. Note that the script is incompatible with Python 3.12.
+   - **Dependencies**: Install all necessary Python dependencies as specified in the Mantella Main requirements file. Follow any additional off-site procedures outlined in Mantella documentation for environment setup.
+2. **Language Model**:
+   - **Recommendation**: A suitable language model is needed for optimal text processing. It is advised to use the [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) model from Hugging Face. It supports both SFW and NSFW content.
+3. **Operating System**:
+   - **Compatibility**: The script runs on Windows 7 through Windows 11. As the Mantella-WT relies on batch files, it should work on all these versions, provided Mantella is compatible with them.
+   - **Permissions**: Administrative privileges might be necessary, as certain operations require elevated permissions.
+4. **xVASynth Installation**:
+   - Ensure xVASynth is installed and configured properly, with the executable located in the directory specified within the `config.ini` file.
+5. **Configuration File**:
+   - A `config.ini` file must be present, containing sections for `Game`, `Paths`, and `LanguageModel.Advanced`. This file is used to set paths and audio optimization parameters for *Skyrim* and *Fallout 4*.
+6. **Dependencies**:
+   - The script uses Python standard library modules such as `configparser`, `os`, `sys`, `time`, `shutil`, and `traceback`.
 
 # Usage / Install
 1. Ensure the Mantella mod is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
