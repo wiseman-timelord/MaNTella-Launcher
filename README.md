@@ -70,11 +70,11 @@ Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
                                           Mantella-xVASynth Optimizer/Launcher
 ------------------------------------------------------------------------------------------------------------------------
 
-Working Dir: D:\GamesVR\Mantella-WT-0.11.3
+Working Dir: D:\GamesVR\Mantella-WT-0.11.4
 Running Mantella xVASynth Optimizer...
 Script started
-Working Folder: D:\GamesVR\Mantella-WT-0.11.3
-Config File: D:\GamesVR\Mantella-WT-0.11.3\config.ini
+Working Folder: D:\GamesVR\Mantella-WT-0.11.4
+Config File: D:\GamesVR\Mantella-WT-0.11.4\config.ini
 Script execution started
 Entering main function
 Starting config cleaning...
