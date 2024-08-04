@@ -106,7 +106,7 @@ Waiting for player to select an NPC for Communication...
 
 ## Requirements
 1. **Python Environment**:
-   - **Version**: Python 3.11 is required. Note that the script is incompatible with Python 3.12.
+   - **Version**: Python 3.11 is required for Mantella, it does not work on 3.12 from my experience.
    - **Dependencies**: Install all necessary Python dependencies as specified in the Mantella Main requirements file. Follow any additional off-site procedures outlined in Mantella documentation for environment setup.
 2. **Language Model**:
    - **Recommendation**: A suitable language model is needed for optimal text processing. It is advised to use the [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix) model in, Q3 (Min 4GB VRam Free) or Q4 (Min 6GB VRam Free), from Hugging Face. It supports both SFW and NSFW content.
