@@ -164,7 +164,8 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 - "tts_service" will always be "tts_service = xVASynth", the python script should ensure this when saving.
 -  main-wt.txt should be deleted after the batch has used it.
 - Option on menu for the key "microphone_enabled", true/false, this will relate to 0, 1, for example... "microphone_enabled = 1", this choice will also require, loading and displaying as another toggle option, and saving when the config.ini is saved on run or exit. 
- 
+- if upon run, the batch does not detect the presence of "config.bak", then it should run "pip install -r requirements.txt", so as to be foolproof.
+
 # Disclaimer
 - This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
 - My forks sometimes just up and dissapear, this tends to happen when I no longer use the relating program, to neaten up things a little.
