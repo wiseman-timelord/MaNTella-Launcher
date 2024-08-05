@@ -114,6 +114,7 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
 - the "Offended" and "Forgiven", commands are removed, this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
 
+
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
 
 # Development
@@ -167,5 +168,4 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 - if upon run, the batch does not detect the presence of "config.bak", then it should run "pip install -r requirements.txt", so as to be foolproof on first run.
 
 # Disclaimer
-- This is a fork by Wiseman-Timelord, meaning, if you have issues with the program, its Likely not my code, you would have to check that.
-- My forks sometimes just up and dissapear, this tends to happen when I no longer use the relating program, to neaten up things a little.
+- The extension `-WT` means that this project does not originate from Wiseman-Timelord, it is the "Wiseman-Timelord's" own, "Hack" or "Version", of the relating "Official" software. Any issues regarding the "Original" code, stop with the Author's of the "Original" code.
