@@ -118,6 +118,38 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
 
 # Development
+- End of session 1 for today, the interface is shaping up like this, detect ollama/lm studio, obtain model info, use model info in config.ini, thus requiring no configuration of config.ini when you choose to change the model...
+```
+=======================================================================================================================
+                                        Mantella xVASynth, Optimizer / Launcher
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+                                               1. Game Used: Fallout4
+
+                                               2. Optimization: Medium
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+                                   model =
+                                   model_folder =
+                                   custom_token_count = 4096
+                                   Fallout4_folder = D:\GamesVR\Fallout4_163
+                                   Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
+                                   xvasynth_folder = D:\GamesVR\xVASynth
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Selection, Program Options = 1-2, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
+
+```
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 - tuned towards, windows and local models, scripts will be streamlined, people whom use online can still use the launcher, but not the dropin files. 
