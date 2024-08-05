@@ -1,29 +1,28 @@
-import configparser
-import os
-import sys
-import time
-import shutil
-import traceback
+# Script: .\main-wt.p
 
-def verbose_print(message):
-    print(message, file=sys.stderr)
-    sys.stderr.flush()
-
-def delay(seconds=1):
-    time.sleep(seconds)
-
-verbose_print("Script started")
+# Imports
+import os, sys, time, shutil, traceback, subprocess  # Common Imports
+import configparser, json  # Config/Json Related
 
 # Global variables
 FILE_NAME = 'config.ini'
-OUTPUT_FILE = 'main-wt.txt'  # New output file for batch script
+OUTPUT_FILE = 'main-wt.txt'
 game = "Skyrim"
 optimization = "Default"
-custom_token_count = 2048
 game_folders = {}
 mod_folders = {}
 xvasynth_folder = ""
+model_id = ""
+custom_token_count = 8192    # Default value
+lmstudio_api_url = "http://localhost:1234/v1/models"
 
+# Initialization
+def verbose_print(message):
+    print(message, file=sys.stderr)
+    sys.stderr.flush()
+def delay(seconds=1):
+    time.sleep(seconds)
+verbose_print(".\main-wt.py Started.")    
 verbose_print(f"Config File: {os.path.abspath(FILE_NAME)}")
 delay()
 
@@ -167,10 +166,12 @@ def write_config():
     if "LanguageModel" not in config:
         config["LanguageModel"] = {}
     config["LanguageModel"]["max_response_sentences"] = str(preset["max_response_sentences"])
+    config["LanguageModel"]["model"] = model_id  # Add this line to ensure model_id is saved
     
     try:
         with open(FILE_NAME, 'w') as configfile:
             config.write(configfile)
+        verbose_print("Config file updated successfully.")
     except Exception as e:
         verbose_print(f"Error writing config: {str(e)}")
         delay(3)
@@ -180,12 +181,74 @@ def write_config():
 def write_output_file(exit_code, xvasynth_path):
     verbose_print(f"Writing output file: exit_code={exit_code}, xvasynth_path={xvasynth_path}")
     try:
+        game_key = game.lower().replace(" ", "")
+        game_folder = game_folders.get(game_key, "Not set")
         with open(OUTPUT_FILE, 'w') as f:
-            f.write(f"exit_code={exit_code}\nxvasynth_path={xvasynth_path}")
+            f.write(f"exit_code={exit_code}\n")
+            f.write(f"xvasynth_path={xvasynth_path}\n")
+            f.write(f"game={game}\n")
+            f.write(f"game_folder={game_folder}")
         verbose_print(f"Output file written successfully: {OUTPUT_FILE}")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
 
+def fetch_model_details():
+    """Fetch the model details from LM Studio using curl."""
+    global model_id
+    config = configparser.ConfigParser()
+
+    try:
+        config.read(FILE_NAME)
+
+        # Read the service information from main-wt.txt
+        with open('main-wt.txt', 'r') as f:
+            service_info = f.read().strip().split('=')
+
+        if len(service_info) == 2 and service_info[0] == 'service':
+            service = service_info[1]
+        else:
+            verbose_print("Invalid service information in main-wt.txt")
+            delay(3)
+            return
+
+        if service == 'lmstudio':
+                       
+            try:
+                # Run curl command and capture output
+                result = subprocess.run(['curl', lmstudio_api_url], capture_output=True, text=True, check=True)
+                
+                # Parse the JSON output
+                import json
+                model_data = json.loads(result.stdout)
+                
+                if 'data' in model_data and len(model_data['data']) > 0:
+                    # Extract model ID
+                    full_id = model_data['data'][0]['id']
+                    # Extract the relevant part (everything before the last '/')
+                    model_id = full_id.rsplit('/', 1)[0]
+
+                    # Update the configuration with the model details
+                    if "LanguageModel" not in config:
+                        config["LanguageModel"] = {}
+                    config["LanguageModel"]["model"] = model_id
+                    
+                    with open(FILE_NAME, 'w') as configfile:
+                        config.write(configfile)
+
+                    verbose_print(f"Model Details: ID={model_id}")
+                else:
+                    verbose_print("No models currently loaded in LM Studio.")
+            except subprocess.CalledProcessError as e:
+                verbose_print(f"Error running curl command: {e}")
+                verbose_print(f"Curl output: {e.stderr}")
+            except json.JSONDecodeError:
+                verbose_print("Error parsing JSON from curl output")
+
+    except Exception as e:
+        verbose_print(f"Error fetching model details: {str(e)}")
+        traceback.print_exc()
+
+    delay(1)
 
 def check_and_update_prompts():
     verbose_print("Checking Prompts")
@@ -254,28 +317,61 @@ def check_and_update_prompts():
         delay(1)
 
 def display_title():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 120)
-    print("                                        Mantella xVASynth, Optimizer / Launcher")
-    print("-" * 120)
+    print("=" * 119)
+    print("                                          Mantella-WT Optimizer / Launcher")
+    print("-" * 119)
     print(f"")
     
-def display_menu():
-    display_title()
-    print(f"\n\n")
-    print(f"                                               1. Game Used: {game}\n")
-    print(f"                                               2. Optimization: {optimization}\n")
-    print(f"                                               3. Context Length: {custom_token_count}\n")
-    print(f"\n\n\n")
-    print("-" * 120)
-    print()
-    game_key = game.lower().replace(" ", "")
-    print(f"\n")
-    print(f"                                   {game}_folder = {game_folders.get(game_key, 'Not set')}")
-    print(f"                                   {game}_mod_folder = {mod_folders.get(game_key, 'Not set')}")
-    print(f"                                   xvasynth_folder = {xvasynth_folder}")
-    print(f"\n")
-    print("-" * 120)
+def display_menu_and_handle_input():
+    global game, optimization, custom_token_count
+    while True:
+        display_title()
+        print(f"\n")
+        print(f"                                               1. Game Used: {game}\n")
+        print(f"                                               2. Optimization: {optimization}\n")
+        print(f"                                               3. Token Count: {custom_token_count}\n\n")
+        print("-" * 119)
+        game_key = game.lower().replace(" ", "")
+        print(f"\n\n")
+        print(f"                                   model = {model_id}")
+        print(f"                                   custom_token_count = {custom_token_count}")
+        print(f"                                   {game}_folder = {game_folders.get(game_key, 'Not set')}")
+        print(f"                                   {game}_mod_folder = {mod_folders.get(game_key, 'Not set')}")
+        print(f"                                   xvasynth_folder = {xvasynth_folder}")
+        print(f"\n\n")
+        print("-" * 119)
+
+        choice = input("Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X: ").strip().upper()
+        
+        if choice == '1':
+            games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
+            game = games[(games.index(game) + 1) % len(games)]
+        elif choice == '2':
+            optimizations = list(optimization_presets.keys())
+            optimization = optimizations[(optimizations.index(optimization) + 1) % len(optimizations)]
+        elif choice == '3':
+            context_lengths = [2048, 4096, 8192]
+            custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
+        elif choice == 'R':
+            fetch_model_details()
+            continue
+        elif choice == 'B':
+            display_title()
+            write_config()
+            verbose_print("Settings saved. Proceeding to run Mantella/xVASynth...")
+            write_output_file(0, xvasynth_folder)
+            return 0, xvasynth_folder
+        elif choice == 'X':
+            display_title()
+            write_config()
+            verbose_print("Settings saved. Exiting...")
+            write_output_file(1, "")
+            return 1, ""
+        else:
+            verbose_print("Invalid selection. Please try again.")
+        
+        delay()
+
 
 def toggle_game():
     verbose_print("Toggling game...")
@@ -294,7 +390,7 @@ def toggle_optimization():
 def toggle_context_length():
     verbose_print("Toggling context length...")
     global custom_token_count
-    context_lengths = [2048, 4096, 8096, 16384]
+    context_lengths = [2048, 4096, 8192]
     custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
     delay()
 
@@ -304,36 +400,13 @@ def main():
         clean_config()
         check_and_update_prompts()
         read_config()
-        
-        while True:
-            display_menu()
-            choice = input("Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X: ").strip().upper()
-            
-            if choice == '1':
-                toggle_game()
-            elif choice == '2':
-                toggle_optimization()
-            elif choice == '3':
-                toggle_context_length()
-            elif choice == 'R':
-                display_title()
-                write_config()
-                verbose_print("Settings saved. Proceeding to run Mantella/xVASynth...")
-                write_output_file(0, xvasynth_folder)  # Save relevant values
-                return 0, xvasynth_folder
-            elif choice == 'X':
-                display_title()
-                write_config()
-                verbose_print("Settings saved. Exiting...")
-                write_output_file(1, "")  # Save exit signal
-                return 1, ""
-            else:
-                verbose_print("Invalid selection. Please try again.")
+        fetch_model_details()
+        return display_menu_and_handle_input()
     except Exception as e:
         verbose_print(f"An unexpected error occurred: {str(e)}")
         verbose_print("Traceback:")
         verbose_print(traceback.format_exc())
-        write_output_file(1, "")  # Ensure an error exit signal is saved
+        write_output_file(1, "")
         return 1, ""
 
 if __name__ == "__main__":
