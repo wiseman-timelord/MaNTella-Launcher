@@ -173,11 +173,16 @@ def write_config():
     if "LanguageModel" not in config:
         config["LanguageModel"] = {}
     config["LanguageModel"]["max_response_sentences"] = str(preset["max_response_sentences"])
-    config["LanguageModel"]["model"] = model_id  # Add this line to ensure model_id is saved
-
+    config["LanguageModel"]["model"] = model_id
+    
     if "Microphone" not in config:
         config["Microphone"] = {}
     config["Microphone"]["microphone_enabled"] = str(int(microphone_enabled))
+    
+    # Add the Speech section and tts_service key
+    if "Speech" not in config:
+        config["Speech"] = {}
+    config["Speech"]["tts_service"] = "xVASynth"
     
     try:
         with open(FILE_NAME, 'w') as configfile:
@@ -186,9 +191,7 @@ def write_config():
     except Exception as e:
         verbose_print(f"Error writing config: {str(e)}")
         delay(3)
-
     delay(2)
-
 
 def write_output_file(exit_code):
     verbose_print(f"Writing output file")
