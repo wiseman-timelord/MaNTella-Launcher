@@ -235,7 +235,8 @@ def fetch_model_details():
                     with open(FILE_NAME, 'w') as configfile:
                         config.write(configfile)
 
-                    verbose_print(f"Model Details: ID={model_id}")
+                    verbose_print(f"Model Read: LM Studio")
+                    delay(1)
                 else:
                     verbose_print("No models currently loaded in LM Studio.")
             except subprocess.CalledProcessError as e:
@@ -317,6 +318,7 @@ def check_and_update_prompts():
         delay(1)
 
 def display_title():
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 119)
     print("                                          Mantella-WT Optimizer / Launcher")
     print("-" * 119)
@@ -329,12 +331,11 @@ def display_menu_and_handle_input():
         print(f"\n")
         print(f"                                               1. Game Used: {game}\n")
         print(f"                                               2. Optimization: {optimization}\n")
-        print(f"                                               3. Token Count: {custom_token_count}\n\n")
+        print(f"                                               3. Token Count: {custom_token_count}\n\n\n")
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
         print(f"\n\n")
         print(f"                                   model = {model_id}")
-        print(f"                                   custom_token_count = {custom_token_count}")
         print(f"                                   {game}_folder = {game_folders.get(game_key, 'Not set')}")
         print(f"                                   {game}_mod_folder = {mod_folders.get(game_key, 'Not set')}")
         print(f"                                   xvasynth_folder = {xvasynth_folder}")
