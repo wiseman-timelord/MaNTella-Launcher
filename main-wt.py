@@ -6,7 +6,7 @@ import configparser, json  # Config/Json Related
 
 # Global variables
 FILE_NAME = 'config.ini'
-OUTPUT_FILE = 'main-wt.txt'
+OUTPUT_FILE = 'temp-wt.txt'
 game = "Skyrim"
 optimization = "Default"
 game_folders = {}
@@ -200,14 +200,14 @@ def fetch_model_details():
     try:
         config.read(FILE_NAME)
 
-        # Read the service information from main-wt.txt
-        with open('main-wt.txt', 'r') as f:
+        # Read the service information from temp-wt.txt
+        with open('temp-wt.txt', 'r') as f:
             service_info = f.read().strip().split('=')
 
         if len(service_info) == 2 and service_info[0] == 'service':
             service = service_info[1]
         else:
-            verbose_print("Invalid service information in main-wt.txt")
+            verbose_print("Invalid service information in temp-wt.txt")
             delay(3)
             return
 
@@ -360,7 +360,6 @@ def display_menu_and_handle_input():
             display_title()
             write_config()
             verbose_print("Settings saved. Proceeding to run Mantella/xVASynth...")
-            write_output_file(0, xvasynth_folder)
             return 0, xvasynth_folder
         elif choice == 'X':
             display_title()
