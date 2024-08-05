@@ -36,32 +36,13 @@ if "%ERRORLEVEL%" EQU "0" (
     set "LM_RUNNING=0"
 )
 
-:: Check for Ollama
-set "OLLAMA_RUNNING=0"
-set "OLLAMA_LOADED=0"
-ollama ps > ollama_output.txt 2>&1
-if %ERRORLEVEL% EQU 0 (
-    set "OLLAMA_RUNNING=1"
-    findstr /C:"NAME    ID      SIZE    PROCESSOR       UNTIL" ollama_output.txt >nul
-    if !ERRORLEVEL! EQU 0 (
-        find /v /c "" ollama_output.txt > count.txt
-        set /p LINE_COUNT=<count.txt
-        if !LINE_COUNT! GTR 1 (
-            set "OLLAMA_LOADED=1"
-        )
-    )
-)
-del ollama_output.txt count.txt 2>nul
-
-:: Determine which service to use and save to temp-wt.txt
+:: Determine service status and save to temp-wt.txt
 if "%LM_RUNNING%"=="1" (
     echo service=lmstudio > temp-wt.txt
-) else if "%OLLAMA_LOADED%"=="1" (
-    echo service=ollama > temp-wt.txt
+	echo LM Studio Status: Running 
 ) else (
-    echo Requirement: LM Studio or Ollama, with Loaded Model
-    powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Balloon.wav').PlaySync()"
-    echo Load the Language Model, and Try Again.
+    echo Error: LM Studio Must Be Running.
+    echo Load the Language Model In LM Studio, and Try Again.
     timeout /t 5 >nul
     popd
     exit /b
@@ -84,20 +65,36 @@ echo Read File: temp-wt.txt
 timeout /t 1 >nul
 if "%exit_code%" equ "1" (
     echo Exit and Save Complete. 
-	goto eof:
+    goto eof:
 )
 timeout /t 1 >nul
 
 :: Check if the game is running and start if necessary
 echo Checking for %game%...
 if "%game%"=="Fallout4" (
-    set "game_exe=Fallout4.exe"
+    if exist "%game_folder%\f4se_loader.exe" (
+        set "game_exe=f4se_loader.exe"
+    ) else (
+        set "game_exe=Fallout4.exe"
+    )
 ) else if "%game%"=="Fallout4VR" (
-    set "game_exe=Fallout4.exe"
+    if exist "%game_folder%\f4sevr_loader.exe" (
+        set "game_exe=f4sevr_loader.exe"
+    ) else (
+        set "game_exe=Fallout4VR.exe"
+    )
 ) else if "%game%"=="Skyrim" (
-    set "game_exe=SkyrimSE.exe"
+    if exist "%game_folder%\skse64_loader.exe" (
+        set "game_exe=skse64_loader.exe"
+    ) else (
+        set "game_exe=SkyrimSE.exe"
+    )
 ) else if "%game%"=="SkyrimVR" (
-    set "game_exe=SkyrimSE.exe"
+    if exist "%game_folder%\sksevr_loader.exe" (
+        set "game_exe=sksevr_loader.exe"
+    ) else (
+        set "game_exe=SkyrimVR.exe"
+    )
 )
 
 tasklist /FI "IMAGENAME eq %game_exe%" 2>NUL | find /I /N "%game_exe%">NUL
@@ -105,6 +102,8 @@ if "%ERRORLEVEL%" NEQ "0" (
     echo %game_exe% is not running. Starting %game%...
     if exist "%game_folder%\%game_exe%" (
         pushd "%game_folder%"
+        echo Found and running %game_exe%.
+        timeout /t 1 >nul
         powershell -Command "Start-Process '%game_folder%\%game_exe%' -NoNewWindow"
         popd
     ) else (
