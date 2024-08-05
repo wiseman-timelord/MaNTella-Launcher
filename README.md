@@ -11,7 +11,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 4. **Interactive Python Script**: Cleans configuration files and offers an interactive menu for game and preset choices.
 5. **Error Handling and Logging**: Tracks errors, logs execution, and backs up configuration files.
 6. **Automatic Execution and Exit Handling**: If not already running, then runs, Fallout 4 and/or xVASynth, and then continues to Mantella for smooth operation.
-7. **Automatic Update Model**: When you switch models in LM Studio, it will detect this upon start, and update the model folder/name in `config.ini`.
+7. **LM Studio Enhanced/Specific**: Switching models in LM Studio is detected, and then automatically updated in `config.ini`. 
 
 # Preview
 - The menu of much simplified optimization (Showing version 11.4.3 in development)...
@@ -95,7 +95,7 @@ Waiting for player to select an NPC for Communication...
 3. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
 4. **xVASynth Installation**: Must be installed and correctly configured in the specified directory.
 5. **Configuration File**: Requires a `config.ini` with `Game`, `Paths`, and `LanguageModel.Advanced` sections.
-6. **LM Studio**: Utilizes commands to obtain model folder/name, this will not work on Ollama, and I cant test GPT API.
+6. **LM Studio**: Obtain model folder/name and foolproofs api config, Mantella-WT will not work on, Ollama or GPT.
 
 # Usage / Install
 1. Ensure the [Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
