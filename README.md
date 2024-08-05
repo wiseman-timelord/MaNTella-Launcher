@@ -120,6 +120,7 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 NAME                    ID              SIZE    PROCESSOR       UNTIL
 qwen2_57b:latest        9dbf41c98d9e    48 GB   100% CPU        4 minutes from now
 ```
+- No, GPT/Online or Ollama, support! GPT will always be filtered response, despite being fast. I cant see it being used when local models are finally figured out, and GPT/Online models are not private either. Ollama has no curl model folder/name request, I would have to do interference in a Launcher to get the model info, and Ollama has no AMD GPU OpenCL/Vulkan support.
 
 # Development
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
