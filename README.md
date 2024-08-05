@@ -42,7 +42,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
                                    xvasynth_folder = D:\GamesVR\xVASynth
 
 
------------------------------------------------------------------------------------------------------------------------
+=======================================================================================================================
 Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
 
 ```
