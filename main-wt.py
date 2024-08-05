@@ -317,7 +317,7 @@ def check_and_update_prompts():
 def display_title():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 119)
-    print("                                          Mantella-WT Optimizer / Launcher")
+    print("                                          Mantella-WT Optimizer/Launcher")
     print("-" * 119)
     print(f"")
     
@@ -327,10 +327,11 @@ def display_menu_and_handle_input():
         display_title()
         print(f"\n\n\n")
         print(f"                                               1. Game Used: {game}\n")
-        print(f"                                               2. Optimization: {optimization}\n")
-        print(f"                                               3. Token Count: {custom_token_count}\n")
-        print(f"                                               4. Microphone On: {'True' if microphone_enabled else 'False'}")
-        print(f"\n\n\n\n")
+        print(f"                                               2. Microphone On: {'True' if microphone_enabled else 'False'}\n")
+        print(f"                                               3. Optimization: {optimization}\n")
+        print(f"                                               4. Token Count: {custom_token_count}\n")
+
+        print(f"\n\n\n")
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
         print(f"")
@@ -346,13 +347,13 @@ def display_menu_and_handle_input():
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
             game = games[(games.index(game) + 1) % len(games)]
         elif choice == '2':
+            microphone_enabled = not microphone_enabled
+        elif choice == '3':
             optimizations = list(optimization_presets.keys())
             optimization = optimizations[(optimizations.index(optimization) + 1) % len(optimizations)]
-        elif choice == '3':
+        elif choice == '4':
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
-        elif choice == '4':
-            microphone_enabled = not microphone_enabled
         elif choice == 'R':
             fetch_model_details()
             continue
