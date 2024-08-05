@@ -13,7 +13,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 6. **Automatic Execution and Exit Handling**: Runs Mantella post-xVASynth and manages exit codes for smooth operation.
 
 # Preview
-- The menu of much optimization, landing today...
+- The menu of much simplified optimization...
 ```
 ========================================================================================================================
                                         Mantella xVASynth, Optimizer / Launcher
