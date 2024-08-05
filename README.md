@@ -14,7 +14,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 7. **Automatic Update of key "model" when you switch models in LM Studio (in pre-release 0.11.3.1.1. Later Ollama support, and full release, for now Ollama users use "0.11.3.1" instead.
 
 # Preview
-- The menu of much simplified optimization (Showing the new 11.4.1.1 pre-release version)...
+- The menu of much simplified optimization (Showing version for next release)...
 ```
 =======================================================================================================================
                                           Mantella-WT Optimizer / Launcher
@@ -30,14 +30,15 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
 
 
+
 -----------------------------------------------------------------------------------------------------------------------
 
 
 
                                    model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
-                                   Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
                                    xvasynth_folder = D:\GamesVR\xVASynth
+
 
 
 
