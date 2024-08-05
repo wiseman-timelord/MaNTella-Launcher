@@ -28,6 +28,13 @@ if %errorLevel% NEQ 0 (
     exit /b
 )
 
+:: First run check and requirement installation
+if not exist ".\config.bak" (
+    echo First Run, Fool-Proofing Mantella...
+    timeout /t 1 >nul
+    pip install -r requirements.txt
+)
+
 :: Check if LM Studio is running
 tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe">NUL
 if "%ERRORLEVEL%" EQU "0" (
