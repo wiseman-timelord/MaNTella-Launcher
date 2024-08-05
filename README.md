@@ -26,11 +26,11 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
                                                1. Game Used: Fallout4
 
-                                               2. Optimization: Regular
+                                               2 Microphone On: False
 
-                                               3. Token Count: 4096
+                                               3. Optimization: Regular
 
-                                               4. Microphone On: False
+                                               4. Token Count: 4096
 
 
 
