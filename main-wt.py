@@ -178,14 +178,14 @@ def write_config():
 
     delay(2)
 
-def write_output_file(exit_code, xvasynth_path):
-    verbose_print(f"Writing output file: exit_code={exit_code}, xvasynth_path={xvasynth_path}")
+def write_output_file(exit_code):
+    verbose_print(f"Writing output file")
     try:
         game_key = game.lower().replace(" ", "")
         game_folder = game_folders.get(game_key, "Not set")
         with open(OUTPUT_FILE, 'w') as f:
             f.write(f"exit_code={exit_code}\n")
-            f.write(f"xvasynth_path={xvasynth_path}\n")
+            f.write(f"xvasynth_folder={xvasynth_folder}\n")  # Use the global xvasynth_folder
             f.write(f"game={game}\n")
             f.write(f"game_folder={game_folder}")
         verbose_print(f"Output file written successfully: {OUTPUT_FILE}")
@@ -359,14 +359,19 @@ def display_menu_and_handle_input():
         elif choice == 'B':
             display_title()
             write_config()
-            verbose_print("Settings saved. Proceeding to run Mantella/xVASynth...")
+            verbose_print("Saved File: config.ini")
+            write_output_file(0)
+            verbose_print("Saved File: temp-wt.txt")
+            verbose_print("Exiting, then Running Mantella/xVASynth...")
             return 0, xvasynth_folder
         elif choice == 'X':
             display_title()
             write_config()
-            verbose_print("Settings saved. Exiting...")
-            write_output_file(1, "")
-            return 1, ""
+            verbose_print("Saved File: config.ini")
+            write_output_file(1)
+            verbose_print("Saved File: temp-wt.txt")
+            verbose_print("Exiting Launcher/Optimizer...") 
+            return 1, xvasynth_folder
         else:
             verbose_print("Invalid selection. Please try again.")
         

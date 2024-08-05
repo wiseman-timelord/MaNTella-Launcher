@@ -53,11 +53,11 @@ if %ERRORLEVEL% EQU 0 (
 )
 del ollama_output.txt count.txt 2>nul
 
-:: Determine which service to use and save to main-wt.txt
+:: Determine which service to use and save to temp-wt.txt
 if "%LM_RUNNING%"=="1" (
-    echo service=lmstudio > main-wt.txt
+    echo service=lmstudio > temp-wt.txt
 ) else if "%OLLAMA_LOADED%"=="1" (
-    echo service=ollama > main-wt.txt
+    echo service=ollama > temp-wt.txt
 ) else (
     echo Requirement: LM Studio or Ollama, with Loaded Model
     powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Balloon.wav').PlaySync()"
@@ -70,46 +70,34 @@ if "%LM_RUNNING%"=="1" (
 :: Run the Python script for config cleaning and menu
 echo Running Mantella-WT Optimizer-Launcher...
 python main-wt.py
-echo ...Mantella/xVASynth Optimizer-Launcher Closed...
+echo ...Mantella/xVASynth Optimizer-Launcher Closed.
 timeout /t 1 >nul
 
-:: Debug
-pause
-
-:: Display Is Reset
-cls
-echo ========================================================================================================================
-echo                                             Mantella-WT Optimizer/Launcher
-echo ------------------------------------------------------------------------------------------------------------------------
-echo.
-echo Working Dir: %ScriptDirectoryWt%
-timeout /t 1 >nul
-
-:: Read the output values from main-wt.txt
-for /f "tokens=1,2 delims==" %%i in (main-wt.txt) do (
+:: Read the output values from temp-wt.txt
+for /f "tokens=1,2 delims==" %%i in (temp-wt.txt) do (
     if "%%i"=="exit_code" set exit_code=%%j
-    if "%%i"=="xvasynth_path" set xvasynth_path=%%j
+    if "%%i"=="xvasynth_folder" set xvasynth_folder=%%j
     if "%%i"=="game" set game=%%j
     if "%%i"=="game_folder" set game_folder=%%j
 )
-
+echo Read File: temp-wt.txt
+timeout /t 1 >nul
 if "%exit_code%" equ "1" (
-    echo User chose to exit. Closing in 5 seconds...
-    timeout /t 5 >nul
-    popd
-    exit /b
+    echo Exit and Save Complete. 
+	goto eof:
 )
+timeout /t 1 >nul
 
 :: Check if the game is running and start if necessary
 echo Checking for %game%...
 if "%game%"=="Fallout4" (
     set "game_exe=Fallout4.exe"
 ) else if "%game%"=="Fallout4VR" (
-    set "game_exe=Fallout4VR.exe"
+    set "game_exe=Fallout4.exe"
 ) else if "%game%"=="Skyrim" (
     set "game_exe=SkyrimSE.exe"
 ) else if "%game%"=="SkyrimVR" (
-    set "game_exe=SkyrimVR.exe"
+    set "game_exe=SkyrimSE.exe"
 )
 
 tasklist /FI "IMAGENAME eq %game_exe%" 2>NUL | find /I /N "%game_exe%">NUL
@@ -134,12 +122,12 @@ echo Checking for xVASynth...
 tasklist /FI "IMAGENAME eq xVASynth.exe" 2>NUL | find /I /N "xVASynth.exe">NUL
 if "%ERRORLEVEL%" NEQ "0" (
     echo xVASynth.exe is not running. Starting xVASynth...
-    if exist "%xvasynth_path%\xVASynth.exe" (
-        pushd "%xvasynth_path%"
-        powershell -Command "Start-Process '%xvasynth_path%\xVASynth.exe' -NoNewWindow"
+    if exist "%xvasynth_folder%\xVASynth.exe" (
+        pushd "%xvasynth_folder%"
+        powershell -Command "Start-Process '%xvasynth_folder%\xVASynth.exe' -NoNewWindow"
         popd
     ) else (
-        echo Error: xVASynth.exe not found at %xvasynth_path%
+        echo Error: xVASynth.exe not found at %xvasynth_folder%
         echo Please check your config.ini file and ensure the xvasynth_folder path is correct.
         timeout /t 10 >nul
         popd
@@ -159,6 +147,12 @@ python .\main.py
 echo Mantella Exited.
 timeout /t 10 >nul
 
-:: Return to the original directory
-popd
+:eof
+:: Exit Program
+rem del .\temp-wt.txt   (do not remove this line) 
+echo File Deleted: temp-wt.txt
+pushd "%ScriptDirectoryWt%"
+echo Closing in 5 seconds...
+pause
+rem timeout /t 5 >nul
 exit /b
