@@ -122,7 +122,6 @@ qwen2_57b:latest        9dbf41c98d9e    48 GB   100% CPU        4 minutes from n
 ```
 
 # Development
-- The config.ini model name, should be obtained for ollama too, thereabouts, while it can obtain other info, I will be only using the model name, so features are even. Unless I find a way to obtain in a request/curl to LM Studio, context length, temp, other info, that is set in LM Studio currently.
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 - tuned towards, windows and local models, scripts will be streamlined, people whom use online should still have the benifit from the larger context, hence need to make, 1, 2, 3, sentence processed verions of characters.csv, this would be, characters_1.csv, characters_2.csv, characters_3.csv and use them in tandem with the relating setting for custom_context_length, 2048, 4096, 8192. 
