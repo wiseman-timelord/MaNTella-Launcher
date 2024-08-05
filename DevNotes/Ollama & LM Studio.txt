@@ -1,0 +1,70 @@
+Interacting with Ollama and LM Studio to Retrieve Model Information
+
+LM Studio
+
+LM Studio provides a local API server for interacting with locally loaded language models. To retrieve information about loaded models, you can use the /v1/models endpoint.
+
+Steps to Retrieve Model Information from LM Studio:
+
+1. Start the LM Studio Server:
+   - Open LM Studio and navigate to the Local Server tab.
+   - Load your desired language model and start the server by clicking on the Start Server button.
+
+2. Request Loaded Models:
+   - Use the following curl command to request information about models currently loaded on the LM Studio server:
+
+     curl http://localhost:1234/v1/models
+
+3. Response Structure:
+   - The response will contain a list of models with each model's details, such as:
+     {
+       "data": [
+         {
+           "id": "TheBloke/phi-2-GGUF/phi-2.Q4_K_S.gguf",
+           "object": "model",
+           "owned_by": "organization-owner",
+           "permission": [{}]
+         }
+       ],
+       "object": "list"
+     }
+
+4. Extract Information:
+   - From the id field, extract the model name and relevant context information. If available, determine the custom_token_count from model specifications.
+
+Ollama
+
+Ollama allows querying for model information using its show API endpoint, which provides details such as context length.
+
+Steps to Retrieve Model Information from Ollama:
+
+1. List Available Models:
+   - First, list all locally available models using:
+
+     curl http://localhost:11434/api/list
+
+2. Show Model Information:
+   - Use the following curl command to show detailed information for a specific model in Ollama:
+
+     curl http://localhost:11434/api/show -d '{
+       "name": "llama2"
+     }'
+
+3. Response Structure:
+   - The response will include detailed model information such as:
+
+     {
+       "modelfile": "...",
+       "parameters": "...",
+       "details": {
+         "parameter_size": "8.0B",
+         "context_length": 4096
+       }
+     }
+
+4. Extract Information:
+   - Use the name field to obtain the model's name and the context_length field to determine the custom_token_count.
+
+Summary
+
+By querying the respective APIs of LM Studio and Ollama, you can extract essential model information such as the model's name and context length. This data can then be used to configure applications or optimize usage scenarios that involve language models.
