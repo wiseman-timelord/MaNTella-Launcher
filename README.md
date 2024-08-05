@@ -10,15 +10,15 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 3. **Optimized Configuration Management**: Streamlines `config.ini` prompts and removes non-functional options.
 4. **Interactive Python Script**: Cleans configuration files and offers an interactive menu for game and preset choices.
 5. **Error Handling and Logging**: Tracks errors, logs execution, and backs up configuration files.
-6. **Automatic Execution and Exit Handling**: Runs Mantella post-xVASynth and manages exit codes for smooth operation.
+6. **Automatic Execution and Exit Handling**: If not already running, then runs, Fallout 4 and/or xVASynth, and then continues to Mantella for smooth operation.
+7. **Automatic Update of key "model" when you switch models in LM Studio (in pre-release 0.11.3.1.1. Later Ollama support, and full release, for now Ollama users use "0.11.3.1" instead.
 
 # Preview
 - The menu of much simplified optimization...
 ```
-========================================================================================================================
-                                        Mantella xVASynth, Optimizer / Launcher
-------------------------------------------------------------------------------------------------------------------------
-
+=======================================================================================================================
+                                          Mantella-WT Optimizer / Launcher
+-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -26,23 +26,23 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
                                                2. Optimization: Medium
 
-                                               3. Context Length: 4096
+                                               3. Token Count: 4096
 
 
 
-
-
-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 
 
+                                   model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
                                    Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
                                    xvasynth_folder = D:\GamesVR\xVASynth
 
 
-------------------------------------------------------------------------------------------------------------------------
-Selection, Run Mantella/xVASynth = R, Program Options 1-3, Exit and Save = X:
+
+-----------------------------------------------------------------------------------------------------------------------
+Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
 
 ```
 - The general running of things...
@@ -113,90 +113,35 @@ Medium: max_tokens = 150, max_response_sentences = 2, temperature = 0.5
 Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
 - the "Offended" and "Forgiven", commands are removed, this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
-
-
-- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including 512 wasteland texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4, then I suggest 12GB Gpu. Need to try the PhyOp Reduced.
+- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then I suggest 10-12GB free VRam or, sharing processing with the cpu. Need to try the PhyOp Reduced.
 
 # Development
-- End of session 1 for today, the interface is shaping up like this, detect ollama/lm studio, obtain model info, use model info in config.ini, thus requiring no configuration of config.ini when you choose to change the model...
-```
-=======================================================================================================================
-                                        Mantella xVASynth, Optimizer / Launcher
------------------------------------------------------------------------------------------------------------------------
-
-
-
-                                               1. Game Used: Fallout4
-
-                                               2. Optimization: Medium
-
-
-
-
------------------------------------------------------------------------------------------------------------------------
-
-
-
-                                   model =
-                                   model_folder =
-                                   custom_token_count = 4096
-                                   Fallout4_folder = D:\GamesVR\Fallout4_163
-                                   Fallout4_mod_folder = D:\GamesVR\Fallout4_163\Data
-                                   xvasynth_folder = D:\GamesVR\xVASynth
-
-
-
------------------------------------------------------------------------------------------------------------------------
-Selection, Program Options = 1-2, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
-
-```
+- The config.ini model name, should be obtained for ollama too, thereabouts, while it can obtain other info, I will be only using the model name, so features are even. Unless I find a way to obtain in a request/curl to LM Studio, context length, temp, other info, that is set in LM Studio currently.
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 - tuned towards, windows and local models, scripts will be streamlined, people whom use online can still use the launcher, but not the dropin files. 
-- The config.ini model name value should be obtained through the curl through "llm_api" key with the api, example "llm_api = http://localhost:1234/v1", in the python script to read this, then ensure this is also written to the "model" key in "config.ini", for example...
-```
-curl http://localhost:1234/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{ 
-    "model": "Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix",
-    "messages": [ 
-      { "role": "system", "content": "Always answer in rhymes." },
-      { "role": "user", "content": "Introduce yourself." }
-    ], 
-    "temperature": 0.7, 
-    "max_tokens": -1,
-    "stream": true
-}'
-```
-...would result in saving...
-```
-model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
-```
-...and the menu would also be displaying it after it has been read, like the other ones...
-```
-
-
-
-           model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
-           fallout4_folder = D:\GamesVR\Fallout4_163
-            fallout4_mod_folder = D:\GamesVR\Fallout4_163
-             xvasynth_folder = D:\GamesVR\Mantella-WT-0.11.4\xVASynth
-
-
-                       
-```
-...the menu should then have options for...
-```
-Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
-```
-...hence when it refreshes, it will need to read the values of the curl again, because logically the user would have changed the model, dont worry about re-reading the config.
 - it should only create a backup file, if "config.bak" is not present already, the idea is the original version will have comments, that explain what the different parts mean, and what the options are, this way the user has a reference config. So it needs to check for this, and if it exists, then just continue to save the config.ini, if not back the config.ini up, if the batch detects there is no config.bak, then before processing "config.bak", it should also run "pip install -r requirements.txt".
-- if there are no lines that start with comments ";" in the "config.ini", then it will not require cleaning, its only if the commented lines are there, then it should do the cleaning, but also do the blank lines, and spacing above the titles, as it does, apart from in the top line, which should be a title. At the moment, it is checking for blank lines, but the blank lines are the ones above the titles, which it removes, then puts back in, which is un-neccessary, and could end up corrupting the config.ini with all the unneccessary parsing and saving, just for it to be the same as the already processed version it just opened.
 - Dynamic switching between, prompt sets and for differing context, depending upon the maximum context for the model, we could switch between ONLY 4096, 8192, in the mantella scripts, depending upon the value of "custom_token_count", I want 2 versions of the characters.csv details, one should have 1 sentence description, the other 2, so as to use the better one for the higher context. 
-- Need to remove warning, and streamline code for context assessment, and use the setting from the config.ini, then user can toggle the context lengths from the menu.
-- "tts_service" will always be "tts_service = xVASynth", the python script should ensure this when saving.
--  main-wt.txt should be deleted after the batch has used it.
-- Option on menu for the key "microphone_enabled", true/false, this will relate to 0, 1, for example... "microphone_enabled = 1", this choice will also require, loading and displaying as another toggle option, and saving when the config.ini is saved on run or exit. 
+- "tts_service" will always be "tts_service = xVASynth", because mantella-wt is batch/windows based, so the python script should read the config, note what the key is set to, and ensure this is set to xVASynth when saving, to make things foolproof.
+-  main-wt.txt should be deleted after the batch has used it the second time or exited the menu. also when selecting X to exit the menu, then it should be printing...
+```
+Writing config file...
+Config file updated successfully.
+Settings saved. Exiting...
+```
+...but it should NOT be printing...
+```
+Writing output file: exit_code=1, xvasynth_path=
+Output file written successfully: main-wt.txt
+1,
+Final output: exit_code=1, xvasynth_path=
+...
+- Option on menu "4. Microphone Enabled: True/False", this will relate to "microphone_enabled = 1/0", this key will be required to be read it reads the "config.ini" for other keys...
+```
+[Microphone]
+microphone_enabled = 1
+```
+...and loaded into a global variable "microphone_enabled", and then saved in "write_config()" along with the other keys.
 - if upon run, the batch does not detect the presence of "config.bak", then it should run "pip install -r requirements.txt", so as to be foolproof on first run.
 -  When they release v12, I am assuming i will have completed/tested this project, so at that point, I will upgrade the main v12 scripts, and push it to main, but whatever code I do push, must, remain compatibly with or expand upon, the Authors intended features, so nothing, local only or 4k context optimized, it will have to be for, local/non-local AND 4k/8k.
 
