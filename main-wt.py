@@ -10,6 +10,7 @@ OUTPUT_FILE = 'main-wt.txt'
 game = "Skyrim"
 optimization = "Default"
 game_folders = {}
+mod_folders = {}
 xvasynth_folder = ""
 model_id = ""
 custom_token_count = 8192    # Default value
@@ -88,7 +89,7 @@ def clean_config():
 
 def read_config():
     verbose_print("Reading config file...")
-    global game, optimization, custom_token_count, game_folders, xvasynth_folder
+    global game, optimization, custom_token_count, game_folders, mod_folders, xvasynth_folder
     config = configparser.ConfigParser()
 
     try:
@@ -107,6 +108,13 @@ def read_config():
         "skyrimvr": config.get("Paths", "skyrimvr_folder", fallback="Not set"),
         "fallout4": config.get("Paths", "fallout4_folder", fallback="Not set"),
         "fallout4vr": config.get("Paths", "fallout4vr_folder", fallback="Not set"),
+    }
+
+    mod_folders = {
+        "skyrim": config.get("Paths", "skyrim_mod_folder", fallback="Not set"),
+        "skyrimvr": config.get("Paths", "skyrimvr_mod_folder", fallback="Not set"),
+        "fallout4": config.get("Paths", "fallout4_mod_folder", fallback="Not set"),
+        "fallout4vr": config.get("Paths", "fallout4vr_mod_folder", fallback="Not set"),
     }
 
     # Set xVASynth folder
@@ -320,18 +328,19 @@ def display_menu_and_handle_input():
     global game, optimization, custom_token_count
     while True:
         display_title()
-        print(f"\n")
+        print(f"\n\n\n\n")
         print(f"                                               1. Game Used: {game}\n")
         print(f"                                               2. Optimization: {optimization}\n")
-        print(f"                                               3. Token Count: {custom_token_count}\n\n\n\n")
+        print(f"                                               3. Token Count: {custom_token_count}")
+        print(f"\n\n\n\n\n")
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
-        print(f"\n\n")
+        print(f"")
         print(f"                                   model = {model_id}")
         print(f"                                   {game}_folder = {game_folders.get(game_key, 'Not set')}")
         print(f"                                   xvasynth_folder = {xvasynth_folder}")
-        print(f"\n\n\n")
-        print("-" * 119)
+        print(f"")
+        print("=" * 119)
 
         choice = input("Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X: ").strip().upper()
         
