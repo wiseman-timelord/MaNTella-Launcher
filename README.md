@@ -14,7 +14,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 7. **Automatic Update of key "model" when you switch models in LM Studio (in pre-release 0.11.3.1.1. Later Ollama support, and full release, for now Ollama users use "0.11.3.1" instead.
 
 # Preview
-- The menu of much simplified optimization (Showing version for next release)...
+- The menu of much simplified optimization (Showing version 11.4.2 in development)...
 ```
 =======================================================================================================================
                                           Mantella-WT Optimizer / Launcher
