@@ -2,7 +2,7 @@
 Status: Working, further development possible.
 
 # Description
-Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions. It all goes together, the launcher and optimizations are as important as the drop-in files, currently the upgraded files includes concise/standardized characters sheet for Fo4/Vr & Skyrim/Vr. When they release v12 likely I will upgrade the code, and push it to main.
+Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates game configuration management, launches xVASynth if it is not already running, and performs various tasks such as cleaning configuration files and setting optimization presets for audio processing. The Python component of the script handles reading and writing configuration settings, displays an interactive menu for user selection of game and optimization options, and saves the chosen settings for subsequent executions. It all goes together, the launcher and optimizations are as important as the drop-in files, currently the upgraded files includes concise/standardized characters sheet for Fo4/Vr & Skyrim/Vr.
 
 # Features
 1. **Batch Launcher for Automation**: Automates and runs xVASynth and Mantella with admin privileges.
@@ -198,6 +198,7 @@ Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth =
 -  main-wt.txt should be deleted after the batch has used it.
 - Option on menu for the key "microphone_enabled", true/false, this will relate to 0, 1, for example... "microphone_enabled = 1", this choice will also require, loading and displaying as another toggle option, and saving when the config.ini is saved on run or exit. 
 - if upon run, the batch does not detect the presence of "config.bak", then it should run "pip install -r requirements.txt", so as to be foolproof on first run.
+-  When they release v12, I am assuming i will have completed/tested this project, so at that point, I will upgrade the main v12 scripts, and push it to main, but whatever code I do push, must, remain compatibly with or expand upon, the Authors intended features, so nothing, local only or 4k context optimized, it will have to be for, local/non-local AND 4k/8k.
 
 # Disclaimer
 - The extension `-WT` means that this project does not originate from Wiseman-Timelord, it is the "Wiseman-Timelord's" own, "Hack" or "Version", of the relating "Official" software. Any issues regarding the "Original" code, stop with the Author's of the "Original" code.
