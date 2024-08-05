@@ -11,7 +11,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 4. **Interactive Python Script**: Cleans configuration files and offers an interactive menu for game and preset choices.
 5. **Error Handling and Logging**: Tracks errors, logs execution, and backs up configuration files.
 6. **Automatic Execution and Exit Handling**: If not already running, then runs, Fallout 4 and/or xVASynth, and then continues to Mantella for smooth operation.
-7. **Automatic Update of key "model" when you switch models in LM Studio (in pre-release 0.11.3.1.1. Later Ollama support, and full release, for now Ollama users use "0.11.3.1" instead.
+7. **Automatic Update Model**: When you switch models in LM Studio, it will detect this upon start, and update the model folder/name in `config.ini`.
 
 # Preview
 - The menu of much simplified optimization (Showing version 11.4.2 in development)...
