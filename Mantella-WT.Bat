@@ -123,7 +123,7 @@ if "%ERRORLEVEL%" NEQ "0" (
     echo xVASynth.exe is not running. Starting xVASynth...
     if exist "%xvasynth_folder%\xVASynth.exe" (
         pushd "%xvasynth_folder%"
-        powershell -Command "Start-Process '%xvasynth_folder%\xVASynth.exe' -NoNewWindow"
+        powershell -Command "Start-Process '%xvasynth_folder%\xVASynth.exe'"
         popd
     ) else (
         echo Error: xVASynth.exe not found at %xvasynth_folder%
@@ -148,10 +148,9 @@ timeout /t 10 >nul
 
 :eof
 :: Exit Program
-rem del .\temp-wt.txt   (do not remove this line) 
+del .\temp-wt.txt
 echo File Deleted: temp-wt.txt
 pushd "%ScriptDirectoryWt%"
 echo Closing in 5 seconds...
-pause
 rem timeout /t 5 >nul
 exit /b

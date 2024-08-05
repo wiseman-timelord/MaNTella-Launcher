@@ -15,13 +15,16 @@ xvasynth_folder = ""
 model_id = ""
 custom_token_count = 8192    # Default value
 lmstudio_api_url = "http://localhost:1234/v1/models"
+microphone_enabled = False
 
 # Initialization
 def verbose_print(message):
     print(message, file=sys.stderr)
     sys.stderr.flush()
+
 def delay(seconds=1):
     time.sleep(seconds)
+
 verbose_print(".\main-wt.py Started.")    
 verbose_print(f"Config File: {os.path.abspath(FILE_NAME)}")
 delay()
@@ -89,7 +92,7 @@ def clean_config():
 
 def read_config():
     verbose_print("Reading config file...")
-    global game, optimization, custom_token_count, game_folders, mod_folders, xvasynth_folder
+    global game, optimization, custom_token_count, game_folders, mod_folders, xvasynth_folder, microphone_enabled
     config = configparser.ConfigParser()
 
     try:
@@ -137,11 +140,15 @@ def read_config():
     else:
         optimization = "Default"
 
+    # Read microphone setting
+    microphone_enabled = config.getboolean("Microphone", "microphone_enabled", fallback=False)
+
     verbose_print(f"Read Keys: config.ini.")
     delay(2)
 
 def write_config():
     verbose_print("Writing config file...")
+    global microphone_enabled
     config = configparser.ConfigParser()
     
     try:
@@ -167,6 +174,10 @@ def write_config():
         config["LanguageModel"] = {}
     config["LanguageModel"]["max_response_sentences"] = str(preset["max_response_sentences"])
     config["LanguageModel"]["model"] = model_id  # Add this line to ensure model_id is saved
+
+    if "Microphone" not in config:
+        config["Microphone"] = {}
+    config["Microphone"]["microphone_enabled"] = str(int(microphone_enabled))
     
     try:
         with open(FILE_NAME, 'w') as configfile:
@@ -177,6 +188,7 @@ def write_config():
         delay(3)
 
     delay(2)
+
 
 def write_output_file(exit_code):
     verbose_print(f"Writing output file")
@@ -199,51 +211,36 @@ def fetch_model_details():
 
     try:
         config.read(FILE_NAME)
+        try:
+            # Run curl command and capture output
+            result = subprocess.run(['curl', lmstudio_api_url], capture_output=True, text=True, check=True)
+            
+            # Parse the JSON output
+            model_data = json.loads(result.stdout)
+            
+            if 'data' in model_data and len(model_data['data']) > 0:
+                # Extract model ID
+                full_id = model_data['data'][0]['id']
+                # Extract the relevant part (everything before the last '/')
+                model_id = full_id.rsplit('/', 1)[0]
 
-        # Read the service information from temp-wt.txt
-        with open('temp-wt.txt', 'r') as f:
-            service_info = f.read().strip().split('=')
-
-        if len(service_info) == 2 and service_info[0] == 'service':
-            service = service_info[1]
-        else:
-            verbose_print("Invalid service information in temp-wt.txt")
-            delay(3)
-            return
-
-        if service == 'lmstudio':
-                       
-            try:
-                # Run curl command and capture output
-                result = subprocess.run(['curl', lmstudio_api_url], capture_output=True, text=True, check=True)
+                # Update the configuration with the model details
+                if "LanguageModel" not in config:
+                    config["LanguageModel"] = {}
+                config["LanguageModel"]["model"] = model_id
                 
-                # Parse the JSON output
-                import json
-                model_data = json.loads(result.stdout)
-                
-                if 'data' in model_data and len(model_data['data']) > 0:
-                    # Extract model ID
-                    full_id = model_data['data'][0]['id']
-                    # Extract the relevant part (everything before the last '/')
-                    model_id = full_id.rsplit('/', 1)[0]
+                with open(FILE_NAME, 'w') as configfile:
+                    config.write(configfile)
 
-                    # Update the configuration with the model details
-                    if "LanguageModel" not in config:
-                        config["LanguageModel"] = {}
-                    config["LanguageModel"]["model"] = model_id
-                    
-                    with open(FILE_NAME, 'w') as configfile:
-                        config.write(configfile)
-
-                    verbose_print(f"Model Read: LM Studio")
-                    delay(1)
-                else:
-                    verbose_print("No models currently loaded in LM Studio.")
-            except subprocess.CalledProcessError as e:
-                verbose_print(f"Error running curl command: {e}")
-                verbose_print(f"Curl output: {e.stderr}")
-            except json.JSONDecodeError:
-                verbose_print("Error parsing JSON from curl output")
+                verbose_print(f"Model Read: LM Studio")
+                delay(1)
+            else:
+                verbose_print("No models currently loaded in LM Studio.")
+        except subprocess.CalledProcessError as e:
+            verbose_print(f"Error running curl command: {e}")
+            verbose_print(f"Curl output: {e.stderr}")
+        except json.JSONDecodeError:
+            verbose_print("Error parsing JSON from curl output")
 
     except Exception as e:
         verbose_print(f"Error fetching model details: {str(e)}")
@@ -325,14 +322,15 @@ def display_title():
     print(f"")
     
 def display_menu_and_handle_input():
-    global game, optimization, custom_token_count
+    global game, optimization, custom_token_count, microphone_enabled
     while True:
         display_title()
-        print(f"\n\n\n\n")
+        print(f"\n\n\n")
         print(f"                                               1. Game Used: {game}\n")
         print(f"                                               2. Optimization: {optimization}\n")
-        print(f"                                               3. Token Count: {custom_token_count}")
-        print(f"\n\n\n\n\n")
+        print(f"                                               3. Token Count: {custom_token_count}\n")
+        print(f"                                               4. Microphone On: {'True' if microphone_enabled else 'False'}")
+        print(f"\n\n\n\n")
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
         print(f"")
@@ -342,7 +340,7 @@ def display_menu_and_handle_input():
         print(f"")
         print("=" * 119)
 
-        choice = input("Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X: ").strip().upper()
+        choice = input("Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X: ").strip().upper()
         
         if choice == '1':
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
@@ -353,6 +351,8 @@ def display_menu_and_handle_input():
         elif choice == '3':
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
+        elif choice == '4':
+            microphone_enabled = not microphone_enabled
         elif choice == 'R':
             fetch_model_details()
             continue
@@ -376,7 +376,6 @@ def display_menu_and_handle_input():
             verbose_print("Invalid selection. Please try again.")
         
         delay()
-
 
 def toggle_game():
     verbose_print("Toggling game...")
