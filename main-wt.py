@@ -183,6 +183,11 @@ def write_config():
     if "Speech" not in config:
         config["Speech"] = {}
     config["Speech"]["tts_service"] = "xVASynth"
+
+    # Add the LM Studio API key
+    if "LanguageModel.Advanced" not in config:
+        config["LanguageModel.Advanced"] = {}
+    config["LanguageModel.Advanced"]["llm_api"] = "http://localhost:1234/v1"
     
     try:
         with open(FILE_NAME, 'w') as configfile:

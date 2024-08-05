@@ -1,11 +1,9 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-:: Remove trailing backslash from ScriptDirectoryWt
+:: Change to the script's directory
 set "ScriptDirectoryWt=%~dp0"
 set "ScriptDirectoryWt=%ScriptDirectoryWt:~0,-1%"
-
-:: Change to the script's directory
 pushd "%ScriptDirectoryWt%"
 
 :: Display Is Reset
@@ -17,23 +15,26 @@ echo.
 echo Working Dir: %ScriptDirectoryWt%
 timeout /t 1 >nul
 
+
 :: Check for administrative privileges
 net session >nul 2>&1
 if %errorLevel% NEQ 0 (
-    echo This script requires administrative privileges. 
-    echo Right click and run as an administrator.
-    echo This script exits in 15 seconds...
-    timeout /t 15 >nul
-    popd
-    exit /b
+    echo Error: Admin Required!
+    echo Right Click, then Run As Administrator.
+    timeout /t 3 >nul
+    goto :eof
 )
+echo Admin Status: Administrator 
 
 :: First run check and requirement installation
 if not exist ".\config.bak" (
-    echo First Run, Fool-Proofing Mantella...
+    echo First Run, Fool-Proofing Mantella..
     timeout /t 1 >nul
     pip install -r requirements.txt
+	echo ..Requirements Installed ^(Hopefully^).
+	timeout /t 2 >nul
 )
+echo Note: 'config.bak' Retains Instructions.
 
 :: Check if LM Studio is running
 tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe">NUL
