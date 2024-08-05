@@ -14,12 +14,11 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 7. **Automatic Update Model**: When you switch models in LM Studio, it will detect this upon start, and update the model folder/name in `config.ini`.
 
 # Preview
-- The menu of much simplified optimization (Showing version 11.4.2 in development)...
+- The menu of much simplified optimization (Showing version 11.4.3 in development)...
 ```
 =======================================================================================================================
                                           Mantella-WT Optimizer / Launcher
 -----------------------------------------------------------------------------------------------------------------------
-
 
 
 
@@ -31,6 +30,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
                                                3. Token Count: 4096
 
+                                               4. Microphone On: False
 
 
 
@@ -43,7 +43,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
                                    xvasynth_folder = D:\GamesVR\xVASynth
 
 =======================================================================================================================
-Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
+Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
 
 ```
 - The general running of things...
