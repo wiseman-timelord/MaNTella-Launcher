@@ -24,6 +24,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
 
 
+
                                                1. Game Used: Fallout4
 
                                                2. Optimization: Regular
@@ -34,13 +35,12 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 
 
 
------------------------------------------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------------------------------------------
 
                                    model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
                                    xvasynth_folder = D:\GamesVR\xVASynth
-
 
 =======================================================================================================================
 Selection, Program Options = 1-3, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
