@@ -120,15 +120,16 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
 - the "Offended" and "Forgiven", commands are removed, this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then I suggest 10-12GB free VRam or, sharing processing with the cpu. If you need more VRam, try the "PhyOp" Performance/Regular Textures on Nexus, ensure it loads after things like, for example, CBBE and BodyTalk.
-- Because LM Studio has a curl command to request the model folder/name, and Ollama does not, so there will be no Ollama Support, because it would require interference with models in a launcher app. Additionally, Ollama does not support AMD Vulkan, and it did not support OpenCL before. This information shown below from command "Ollama Ps" after running "Ollama Serve", nothing useful...
-```
-NAME                    ID              SIZE    PROCESSOR       UNTIL
-qwen2_57b:latest        9dbf41c98d9e    48 GB   100% CPU        4 minutes from now
-```
 - No, GPT/Online or Ollama, support! GPT will always be filtered response, despite being fast. I cant see it being used when local models are finally figured out, and GPT/Online models are not private either. Ollama has no curl model folder/name request, I would have to do interference in a Launcher to get the model info, and Ollama has no AMD GPU OpenCL/Vulkan support.
 
 # Development
 1. last thing from the original outline: develop my program to standardize the character csv files, it needs to generate 3 files, 1/2/3 sentence versions, that will be used, relevantly and dynamically, with the context lengths of, 2048, 4096, 8192. What would be simpler is, I could rename the files, ie "gamename_characters.bak", then process it according to the current context settings for context, and over-write any existing csv file in the same dir, so as, to not need a bunch of modifications to, 3 scripts to make them dynamic.
+2. Ollama does not have a curl requires, but we know it running or not by "ollama.exe". From command "Ollama Ps", we can find this...
+```
+NAME                    ID              SIZE    PROCESSOR       UNTIL
+qwen2_57b:latest        9dbf41c98d9e    48 GB   100% CPU        4 minutes from now
+```
+...there is the model name, so we can search the host computer for "qwen2_57b", to find the folder it is in, it will stop on the first one it finds. I would think, that commonly, people would have their models in one location, not duplicated. If we can implement this, then Mantella-Local will be able to support ALL local features. Obviously, it should first check if both Ollama AND LM Studio are running, and if so, then ask the user to choose which one they are using. If multiple models are hosted on ollama/lm studio, then the user should be prompted to choose.
 2. Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 3. Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens". 
 4. Launcher GUI.
