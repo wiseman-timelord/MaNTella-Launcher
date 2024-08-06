@@ -1,4 +1,4 @@
-# Mantella-Local - the Mantella/xVASynth Optimizer-Launcher for Ollama/LM Studio ONLY.
+# Mantella-WT - the Mantella/xVASynth Optimizer-Launcher for Ollama/LM Studio ONLY.
 Status: Working, further development possible. 
 
 ### IMPORTANT UPDATE
