@@ -14,7 +14,7 @@ Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella 
 7. **LM Studio Enhanced/Specific**: Switching models in LM Studio is detected, and then automatically updated in `config.ini`. 
 
 # Preview
-- The menu of much simplified optimization (Showing version 11.4.3 in development)...
+- The menu of much simplified optimization...
 ```
 =======================================================================================================================
                                           Mantella-WT Optimizer / Launcher
@@ -123,6 +123,7 @@ qwen2_57b:latest        9dbf41c98d9e    48 GB   100% CPU        4 minutes from n
 - No, GPT/Online or Ollama, support! GPT will always be filtered response, despite being fast. I cant see it being used when local models are finally figured out, and GPT/Online models are not private either. Ollama has no curl model folder/name request, I would have to do interference in a Launcher to get the model info, and Ollama has no AMD GPU OpenCL/Vulkan support.
 
 # Development
+- 1 last thing from the original outline, develop my program to standardize the character csv files, it needs to generate 3 files, 1/2/3 sentence versions, that will be used, relevantly and dynamically, with the context lengths of, 2048, 4096, 8192. Noticing the mantella scripts dont have a load of unique globals in main.py, so I need try find if there is a specific file with all the globals in, or if I should make one.
 - Noticing the improvements in Language models, 1 token per word? it used to be 5 tokens for every 4 letters, and 4 tokens for every 3 tokens, or something was the calculation, when we were at llama 1 stage, if I am not hallucinating, this is highly impressive advancements, but requires re-assessment of what is a "Required number of Tokens".
 - Possibly requires advance of my project for utilizing llama.cpp pre-compiled binaries for vulkan, to host models with OhLlama/LmStudio compatibility for apps, as they are not utilizing threads properly or vulkan at all, currently.
 - tuned towards, windows and local models, scripts will be streamlined, people whom use online should still have the benifit from the larger context, hence need to make, 1, 2, 3, sentence processed verions of characters.csv, this would be, characters_1.csv, characters_2.csv, characters_3.csv and use them in tandem with the relating setting for custom_context_length, 2048, 4096, 8192. 
