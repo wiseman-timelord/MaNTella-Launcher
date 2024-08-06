@@ -2,7 +2,7 @@
 Status: Project being re-planned.  Notice: Some of the details are somewhat inaccurate, at-least until the next release.
 
 # Description
-So far character descriptions have basic details and 1 sentence description, this helps greatly with faster processing, however, they need to be re-done, to have 2-3 sentences per character. Soon there willbe 2 batches.
+So far character descriptions have basic details and 1 sentence description, this helps greatly with faster processing, however, they need to be re-done, to have 2-3 sentences per character. Soon there willbe 2 batches. The batch/python standalone launcher has moved to [Mantella-Local-Launcher](https://github.com/wiseman-timelord/Mantella-Local-Launcher).
 
 # Features
 This section is being re-done, however...
