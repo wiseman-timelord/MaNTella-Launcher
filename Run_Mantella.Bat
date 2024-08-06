@@ -40,7 +40,7 @@ python .\main.py
 
 :: Cleanup and exit
 echo Mantella Exited.
-timeout /t 10 >nul
+timeout /t 2 >nul
 
 :eof
 :: Exit Program
