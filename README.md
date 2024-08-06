@@ -1,4 +1,5 @@
-# Mantella <a href="https://www.nexusmods.com/skyrimspecialedition/mods/98631" target="_blank"><img src="./img/nexus_mods_link.png" alt="Mantella Nexus Mods link" width="auto" height="28"/></a>
+# Mantella-WT - Wiseman-Timelord's work on Mantella.
+For more information see the [Original Fork](https://github.com/art-from-the-machine/Mantella).
 
 <img src="./img/mantella_logo_github.png" align="right" alt="Mantella logo" width="150" height="auto">
 
@@ -11,30 +12,6 @@ Click below or [here](https://youtu.be/FLmbd48r2Wo?si=QLe2_E1CogpxlaS1) to see t
 <a href="https://youtu.be/FLmbd48r2Wo?si=QLe2_E1CogpxlaS1
 " target="_blank"><img src="./img/mantella_trailer.gif"
 alt="Mantella trailer link" width="auto" height="220"/></a>
-
-# Installation
-See [art-from-the-machine.github.io/Mantella](https://art-from-the-machine.github.io/Mantella/)
-
-# Issues Q&A
-See [art-from-the-machine.github.io/Mantella/pages/issues_qna.html](https://art-from-the-machine.github.io/Mantella/pages/issues_qna.html)
-
-# Skyrim
-See [art-from-the-machine.github.io/Mantella/pages/installation.html#skyrim](https://art-from-the-machine.github.io/Mantella/pages/installation.html#skyrim)
-
-# Contribute
-The source code for Mantella is included in this repo. Please note that this development version of Mantella is prone to error and is not recommended for general use. See [here](https://www.nexusmods.com/skyrimspecialedition/mods/98631) for the latest stable release.
-
-Here are the quick steps to get set up:
-
-1. Clone the repo to your machine
-2. Create a virtual environment via `py -3.11 -m venv MantellaEnv` in your console (Mantella requires Python 3.11)
-3. Start the environment in your console (`.\MantellaEnv\Scripts\Activate`)
-4. Install the required packages via `pip install -r requirements.txt`
-5. Create a file called `GPT_SECRET_KEY.txt` and paste your secret key in this file
-6. Set up your paths / any other required settings in the `config.ini`
-7. Run Mantella via `main.py` in the parent directory
-
-If you have any trouble in getting the repo set up, please reach out on [Discord](https://discord.gg/Q4BJAdtGUE)!
 
 Related repos:
 - Mantella Spell (Skyrim): [https://github.com/art-from-the-machine/Mantella-Spell](https://github.com/art-from-the-machine/Mantella-Spell)
