@@ -15,8 +15,6 @@ echo.
 echo Working Dir: %ScriptDirectoryMantella%
 timeout /t 1 >nul
 
-
-
 :: First run check and requirement installation
 if not exist ".\config.bak" (
     echo First Run, Fool-Proofing Mantella...
