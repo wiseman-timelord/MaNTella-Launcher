@@ -4,8 +4,11 @@ Status: Working, further development possible.
 ### IMPORTANT UPDATE
 ### Project Evolution
 - Its looking likely, I have determined how to correctly process the character files pre-launce, to the context, and thus, no modified game files are required for deployment, this then becomes the launcher. so the forked files would be gone. it would become a standalone exe, it will be put on, Github repository and nexus, as Mantella-Launcher.
-- The github project so far with mantella from WT, will be reverted in name. The idea is to, 1. optimize the scripts, 2. enhance the prompting,  
-- Streamline the scripts for local should become a diff fork Mantella-Local, therefore, code in mantella-wt will be able to be pushed to main. Mantella-Local will then become a thing, for people whom will not be using online services. code will be streamlined, streamlining will open up possibilities, i like the idea of even removing the model system present, and integrating pre-compiled llama.cpp binaries. the user will choose which one they want to install, and it will download and install the correct one, then use that.
+- The idea is now to, 1. optimize the scripts, 2. enhance the prompting, therefore, code in mantella-wt will be able to be pushed to main.
+- Streamline the scripts for local should become a diff fork Mantella-Local,  Mantella-Local will then become a thing, for people whom will not be using online services. code will be streamlined, streamlining will open up possibilities.
+ 
+
+Mantella-Local will not be happening until other projects are complete.
 - When v12 comes, We will see what happens. 
 
 # Description
