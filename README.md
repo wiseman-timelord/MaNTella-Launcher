@@ -27,16 +27,7 @@ This section is being re-done, however...
 - Hopefully you have, Admin rights and sensible system settings, but click allow on firewall as required, I am guessing its the interaction between Mantella and the Mantella Mod.
 
 ## Notes
-- all options for Optimization are shown...
-```
-Default: max_tokens = 250, max_response_sentences = 999, temperature = 1
-Faster: max_tokens = 100,max_response_sentences = 1, temperature = 0.4
-Medium: max_tokens = 150, max_response_sentences = 2, temperature = 0.5
-Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
-```
-- the "Offended" and "Forgiven", commands are removed, this is because, offended will depend on the model, and most likely on local models, asking for forgiveness would not have a result before the player is dead? So, I find these things a nice idea, but a bit naff. I would prefer commands like "Attack" and "Hold Back", to switch between, Aggressive and Cautious. Either way, it was additional weight, and I wanted the prompts to work, correctly and fast, on Q3_M Local Models.
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then I suggest 10-12GB free VRam or, sharing processing with the cpu. If you need more VRam, try the "PhyOp" Performance/Regular Textures on Nexus, ensure it loads after things like, for example, CBBE and BodyTalk.
-- No, GPT/Online or Ollama, support! GPT will always be filtered response, despite being fast. I cant see it being used when local models are finally figured out, and GPT/Online models are not private either. Ollama has no curl model folder/name request, I would have to do interference in a Launcher to get the model info, and Ollama has no AMD GPU OpenCL/Vulkan support.
 
 # Development
 - Its looking likely, I have determined how to correctly process the character files pre-launce, to the context, and thus, no modified game files are required for deployment, this then becomes the launcher. so the forked files would be gone. it would become a standalone exe, it will be put on, Github repository and nexus, as Mantella-Launcher.
