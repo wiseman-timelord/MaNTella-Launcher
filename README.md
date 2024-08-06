@@ -18,9 +18,5 @@ Related repos:
 - Mantella Gun (Fallout 4): [https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod](https://github.com/YetAnotherModder/Fallout-4-Mantella-Mod)
 - Mantella Gun (Fallout 4 VR): [https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod](https://github.com/YetAnotherModder/Fallout-4-VR-Mantella-Mod)
 
-Updates made on one repo are often intertwined with the other, so it is best to ensure you have the latest versions of each when developing.
-
-The source files for the [Mantella docs](https://art-from-the-machine.github.io/Mantella) are stored in the [gh-pages branch](https://github.com/art-from-the-machine/Mantella/tree/gh-pages).
-
 # Attributions
 Mantella uses material from the "[Skyrim: Characters](https://elderscrolls.fandom.com/wiki/Category:Skyrim:_Characters)" articles on the [Elder Scrolls wiki](https://elderscrolls.fandom.com/wiki/The_Elder_Scrolls_Wiki) at [Fandom](https://www.fandom.com/) and is licensed under the [Creative Commons Attribution-Share Alike License](https://creativecommons.org/licenses/by-sa/3.0/).
