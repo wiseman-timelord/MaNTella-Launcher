@@ -16,7 +16,7 @@ echo Working Dir: %ScriptDirectoryMantella%
 timeout /t 1 >nul
 
 :: First run check and requirement installation
-if not exist "%USERPROFILE%\Documents\config.bak" (
+if not exist "%USERPROFILE%\Documents\My Games\Mantella\config.bak" (
     echo First Run, Fool-Proofing Mantella...
     timeout /t 1 >nul
     pip install -r requirements.txt
@@ -26,7 +26,7 @@ if not exist "%USERPROFILE%\Documents\config.bak" (
     :: Backup config.ini to config.bak
     if exist "%USERPROFILE%\Documents\config.ini" (
         echo Creating backup of config.ini...
-        copy /Y "%USERPROFILE%\Documents\config.ini" "%USERPROFILE%\Documents\config.bak" >nul
+        copy /Y "%USERPROFILE%\Documents\My Games\Mantella\config.ini" "%USERPROFILE%\Documents\My Games\Mantella\config.bak" >nul
         echo Backup created: config.bak
     ) else (
         echo Warning: config.ini not found. No backup created.
