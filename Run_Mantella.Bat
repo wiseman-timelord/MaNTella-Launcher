@@ -9,10 +9,10 @@ pushd "%ScriptDirectoryMantella%"
 :: Display Is Reset
 cls
 echo ========================================================================================================================
-echo                                                     Mantella
+echo                                                         Mantella
 echo ------------------------------------------------------------------------------------------------------------------------
 echo.
-echo Working Dir: %ScriptDirectoryMantella%
+echo Working Folder: %ScriptDirectoryMantella%
 timeout /t 1 >nul
 
 :: First run check and requirement installation
