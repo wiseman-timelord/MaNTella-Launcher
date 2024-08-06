@@ -20,11 +20,15 @@ if not exist "%USERPROFILE%\Documents\My Games\Mantella\config.bak" (
     echo First Run, Fool-Proofing Mantella...
     timeout /t 1 >nul
     pip install -r requirements.txt
+    if errorlevel 1 (
+        echo Failed to install requirements. Check Python and pip installation.
+        goto eof
+    )
     echo ..Requirements Installed ^(Hopefully^).
     timeout /t 2 >nul
 
     :: Backup config.ini to config.bak
-    if exist "%USERPROFILE%\Documents\config.ini" (
+    if exist "%USERPROFILE%\Documents\My Games\Mantella\config.ini" (
         echo Creating backup of config.ini...
         copy /Y "%USERPROFILE%\Documents\My Games\Mantella\config.ini" "%USERPROFILE%\Documents\My Games\Mantella\config.bak" >nul
         echo Backup created: config.bak
@@ -37,6 +41,10 @@ if not exist "%USERPROFILE%\Documents\My Games\Mantella\config.bak" (
 echo Running Mantella...
 timeout /t 1 >nul
 python .\main.py
+if errorlevel 1 (
+    echo Error occurred while running Mantella.
+    goto eof
+)
 
 :: Cleanup and exit
 echo Mantella Exited.
