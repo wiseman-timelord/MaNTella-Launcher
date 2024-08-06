@@ -2,13 +2,14 @@
 Status: Working, further development possible. 
 
 # Description
-So far character descriptions have basic details and 1 sentence description, this helps greatly with faster processing, however, they need to be re-done, to have 2-3 sentences per character, however, playing "MWO2 - Mantella Wasteland Operator" collection, presumably I wouldnt really want characters to be static in experience. But some of the entries are waffly or just un-optimized, and you only wanted a quicker interaction the first time More to come.
+So far character descriptions have basic details and 1 sentence description, this helps greatly with faster processing, however, they need to be re-done, to have 2-3 sentences per character. Soon there willbe 2 batches.
 
 # Features
 This section is being re-done, however...
-- There will be a "Setup-Install.Bat".
-- There will be a "Run_Mantella.Bat".
-- There will be enhanced versions of main branch scripts, that will be pushed to main, or not if it breaks compatibility with online services, but that is possibly going to happen in a diff project.
+- There will be a "Setup-Install.Bat", for requirements, to make things fool-proof.
+- There will be a "Run_Mantella.Bat", this will have the epic batch code from the Launcher.
+- There will be enhanced versions of main branch scripts, that will be pushed to main or not, 
+- Stuff that breaks compatibility, will possibly go in diff project like Mantella-Local.
 
 # Preview
 - The working of the thing, is pretty much the same as Mantella, there will be an update here....
