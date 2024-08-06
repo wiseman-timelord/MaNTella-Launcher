@@ -9,7 +9,6 @@ This section is being re-done, however...
 - There will be a "Setup-Install.Bat", for requirements, to make things fool-proof.
 - There will be a "Run_Mantella.Bat", this will have the epic batch code from the Launcher.
 - There will be enhanced versions of main branch scripts, that will be pushed to main or not, 
-- Stuff that breaks compatibility, will possibly go in diff project like Mantella-Local.
 
 # Preview
 - The working of the thing, is pretty much the same as Mantella, there will be an update here....
