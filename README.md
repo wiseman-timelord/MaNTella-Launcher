@@ -2,7 +2,10 @@
 Status: Working, further development possible. 
 
 ### IMPORTANT UPDATE
-- Its looking likely, I have determined how to correctly process the character files pre-launce, to the context, and thus, no modified game files are required for deployment, so the forked files would be gone, it would become a standalone, launcher/optimizer for offline, it will have become Mantella-Launcher. I could also streamline the scripts for local, it will then become a fork again. When v12 comes, a standalone launcher, that only relys upon, characters.csv and config.ini, being SOMEWHAT in the same format, would be super-easy to maintain. We will see what happens. 
+### Project Evolution
+- Its looking likely, I have determined how to correctly process the character files pre-launce, to the context, and thus, no modified game files are required for deployment, this then becomes the launcher. so the forked files would be gone. it would become a standalone exe, it will be put on, Github repository and nexus, as Mantella-Launcher.
+- The github project so far with mantella from WT, will be reverted in name. The idea is to streamline the scripts for local, Mantella-WT, it will then become a fork again. 
+- When v12 comes, We will see what happens. 
 
 # Description
 Drop-in files for Local-Model Optimization and Launching Mantella. The Mantella xVASynth Optimizer/Launcher is a command-line tool designed to automate and optimize the workflow for managing audio generation in Skyrim and Fallout 4 using the xVASynth software. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and/or your chosen game, if it is not already running, then it launches Mantella, making use throughout of the re-configured settings in `config.ini`. Mantella-WT also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. It all goes together, the launcher and optimizations are as important as the drop-in files. Currently the drop-in (replacer) files includes, concise/standardized characters sheet for Fo4/Vr & Skyrim/Vr, and also refinement of printed lines.
