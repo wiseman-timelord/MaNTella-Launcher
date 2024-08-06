@@ -11,7 +11,7 @@ This section is being re-done, however...
 - There will be enhanced versions of main branch scripts, that will be pushed to main or not, 
 
 # Preview
-- The working of the thing, is pretty much the same as Mantella, there will be an update here....
+- The working of the thing, is pretty much the same as Mantella currently, there will be an update here when there is something to show.
 
 ## Requirements
 1. **Python Environment**: Requires Python 3.11 and dependencies from the Mantella requirements file.
@@ -24,9 +24,6 @@ This section is being re-done, however...
 5. Configure the ".\config.ini", ensure you have entered things like, "fallout4_folder" and "fallout4_mod_folder" and "llm_api" and "tts_service".
 6. Run Fallout 4/Skyrim, and then run the `Run_Mantella.Bat` batch.
 - Hopefully you have, Admin rights and sensible system settings, but click allow on firewall as required, I am guessing its the interaction between Mantella and the Mantella Mod.
-
-## Notes
-- a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then I suggest 10-12GB free VRam or, sharing processing with the cpu. If you need more VRam, try the "PhyOp" Performance/Regular Textures on Nexus, ensure it loads after things like, for example, CBBE and BodyTalk.
 
 # Development
 - The idea is now to, 1. optimize the scripts, 2. enhance the prompting, therefore, code in mantella-wt will be able to be pushed to main.
