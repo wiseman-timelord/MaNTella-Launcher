@@ -80,7 +80,6 @@ if "%mantella_version%"=="v11.4" (
     echo.
     timeout /t 2 >nul
     echo Exit Sequence In 10 Seconds...
-    echo.
     timeout /t 10 >nul
     goto end_of_file
 ) else if "%mantella_version%"=="v12" (
