@@ -88,7 +88,6 @@ if "%mantella_version%"=="v11.4" (
     echo 3. After Configuration, Run Mantella.Bat.
     echo.
     timeout /t 2 >nul
-    echo.
     echo Running Mantella In 10 Seconds...
     timeout /t 10 >nul
     echo Running Mantella...
