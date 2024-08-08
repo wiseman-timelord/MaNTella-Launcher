@@ -6,6 +6,16 @@ set "ScriptDirectoryMantella=%~dp0"
 set "ScriptDirectoryMantella=%ScriptDirectoryMantella:~0,-1%"
 pushd "%ScriptDirectoryMantella%"
 
+:: Check for administrative privileges
+net session >nul 2>&1
+if %errorLevel% NEQ 0 (
+    echo Error: Admin Required!
+    echo Right Click, then Run As Administrator.
+    timeout /t 3 >nul
+    goto :eof
+)
+echo Admin Status: Administrator 
+
 :: Show Directory
 echo Working Folder: %ScriptDirectoryMantella%
 timeout /t 1 >nul
