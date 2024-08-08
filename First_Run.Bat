@@ -10,6 +10,16 @@ pushd "%ScriptDirectoryMantella%"
 echo Working Folder: %ScriptDirectoryMantella%
 timeout /t 1 >nul
 
+:: Check for administrative privileges
+net session >nul 2>&1
+if %errorLevel% NEQ 0 (
+    echo Error: Admin Required!
+    echo Right Click, then Run As Administrator.
+    timeout /t 3 >nul
+    goto :eof
+)
+echo Admin Status: Administrator 
+
 :: Find Config
 if exist ".\config.ini" (
     set "mantella_version=v11.4"
