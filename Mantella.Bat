@@ -26,15 +26,6 @@ if not exist "%USERPROFILE%\Documents\My Games\Mantella\config.bak" (
     )
     echo ..Requirements Installed ^(Hopefully^).
     timeout /t 2 >nul
-
-    :: Backup config.ini to config.bak
-    if exist "%USERPROFILE%\Documents\My Games\Mantella\config.ini" (
-        echo Creating backup of config.ini...
-        copy /Y "%USERPROFILE%\Documents\My Games\Mantella\config.ini" "%USERPROFILE%\Documents\My Games\Mantella\config.bak" >nul
-        echo Backup created: config.bak
-    ) else (
-        echo Warning: config.ini not found. No backup created.
-    )
 )
 
 :: Running Mantella
