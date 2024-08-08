@@ -15,19 +15,6 @@ echo.
 echo Working Folder: %ScriptDirectoryMantella%
 timeout /t 1 >nul
 
-:: First run check and requirement installation
-if not exist "%USERPROFILE%\Documents\My Games\Mantella\config.bak" (
-    echo First Run, Fool-Proofing Mantella...
-    timeout /t 1 >nul
-    pip install -r requirements.txt
-    if errorlevel 1 (
-        echo Failed to install requirements. Check Python and pip installation.
-        goto eof
-    )
-    echo ..Requirements Installed ^(Hopefully^).
-    timeout /t 2 >nul
-)
-
 :: Running Mantella
 echo Running Mantella...
 timeout /t 1 >nul
