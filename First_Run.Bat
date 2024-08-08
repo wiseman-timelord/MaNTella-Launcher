@@ -70,7 +70,7 @@ if defined config_folder (
 if "%mantella_version%"=="v11.4" (
     echo After First_Run Exits...
     echo 1. Ensure to configure %config_file%.
-    echo 2. Run Launcher.Bat.
+    echo 2. After Configuring, Run Launcher.Bat.
     timeout /t 2 >nul
     echo Exit Sequence In 10 Seconds...
     timeout /t 10 >nul
@@ -78,7 +78,7 @@ if "%mantella_version%"=="v11.4" (
 ) else if "%mantella_version%"=="v12" (
     echo 1. Exit Mantella After "Waiting for player to select an NPC...
     echo 2. Ensure to configure %config_file%.
-    echo 3. Run Launcher.Bat.
+    echo 3. After Configuring, Run Launcher.Bat.
     timeout /t 2 >nul
     echo.
     echo Running Mantella In 10 Seconds...
