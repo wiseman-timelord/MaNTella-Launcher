@@ -1,4 +1,4 @@
-# Mantella-WT - Wiseman-Timelord's work on Mantella.
+# Mantella-WT - Wiseman-Timelord's fork on Mantella.
 For more information see the [Original Fork](https://github.com/art-from-the-machine/Mantella) - "Bring Skyrim and Fallout 4 NPCs to life with AI"
 
 <img src="./img/mantella_logo_github.png" align="right" alt="Mantella logo" width="150" height="auto">
