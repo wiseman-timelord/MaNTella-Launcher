@@ -1,9 +1,7 @@
 # Mantella-WT - Wiseman-Timelord's work on Mantella.
-For more information see the [Original Fork](https://github.com/art-from-the-machine/Mantella).
+For more information see the [Original Fork](https://github.com/art-from-the-machine/Mantella) - "Bring Skyrim and Fallout 4 NPCs to life with AI"
 
 <img src="./img/mantella_logo_github.png" align="right" alt="Mantella logo" width="150" height="auto">
-
-> Bring Skyrim and Fallout 4 NPCs to life with AI
 
 ### Work Intended:
 - Improve scripts for optimize data dynamically in online/offline, this will require 3 versions of the characters info and prompts.
