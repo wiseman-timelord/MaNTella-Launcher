@@ -1,5 +1,5 @@
 # Mantella-Local-Launcher for [Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases)
-Status: Revisit 09/2024. Work to do..
+Status: Revisit 09/2024. Work to do, firstly a overhaul of the batches, then tackle `launcher.py`..
 - (testing) Compatibility with both default python locations.
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
 - (testing) Optimized and improved display code.
