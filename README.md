@@ -4,8 +4,7 @@ Status: Revisit 09/2024. Work to do, firstly a overhaul of the batches, then tac
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
 - (testing) Optimized and improved display code.
 - (testing) Use of my new, DP0 and Admin Check, block.
-- Do Away with code specific to v11, config.ini will no longer be in same place, need to see where they put it in new version, and make my setup/launcher v12 only.
-- Update for completion of v12 compatibility, as its now no-longer beta.
+- Make my setup/launcher v12 only, streamline and do Away with code specific to v11; config.ini will no longer be in same place, need to see where they put it in new version.
 
 ### Description
 - a Windows Launcher/Optimizer for Mantella for, Fallout 4 and Skyrim, with models locally on Windows. Mantella was optimized for 8K on GPT, so, Mantella-Local-Launcher instead optimizes Mantella for Local Models. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and your chosen game, if they are not already running, then it launches Mantella, by making use of the settings already present in `config.ini`, so you do still need to configure that first. Mantella-Local-Launcher also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. The project is local only, so, gpt/online, compatibility and optimization, remains untested. 
