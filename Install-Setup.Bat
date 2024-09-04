@@ -171,7 +171,7 @@ if errorlevel 1 (
     goto menu
 )
 echo pip upgraded.
-timeout /t 2 >nul
+pause
 goto menu
 
 :end_of_file
