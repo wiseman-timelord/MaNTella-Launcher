@@ -2,6 +2,8 @@
 Status: Revisit 09/2024. Work to do..
 - (testing) Compatibility with both default python locations.
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
+- (testing) Optimized and improved display code.
+- (testing) Use of my new, DP0 and Admin Check, block.
 - Update for completion of v12 compatibility, its now released.
 
 ### Description
