@@ -4,6 +4,7 @@ Status: Revisit 09/2024. Work to do, firstly a overhaul of the batches, then tac
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
 - (testing) Optimized and improved display code.
 - (testing) Use of my new, DP0 and Admin Check, block.
+- Do Away with code specific to v11, config.ini will no longer be in same place, need to see where they put it in new version, and make my setup/launcher v12 only.
 - Update for completion of v12 compatibility, as its now no-longer beta.
 
 ### Description
