@@ -106,6 +106,36 @@ https://art-from-the-machine.github.io/Mantella/pages/issues_qna
 Waiting for player to select an NPC...
 
 ```
+- The `Setup-Install.Bat` Main Menu (upcoming version)...
+========================================================================================================================
+                                       MaNTella-Local For Mantella v11.4
+========================================================================================================================
+
+
+
+
+
+
+
+
+
+    1. Install Requirements
+
+    2. Install Torch[CPU]
+
+    3. Upgrade Pip Version
+
+
+
+
+
+
+
+
+
+========================================================================================================================
+Selection; Menu Options (1-3), Exit Install-Setup (X):
+```
 
 ## Requirements
 1. **Powerful Computer**: Running Fallout 4/Skyrim and interference on models can be intensive.
