@@ -8,7 +8,7 @@ The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\Curre
 3. somehow Merge `Seup-Install` and `Mantella-Local-Launcher.bat`, it would become a `pre-launcher` menu, like...
 ```
 ========================================================================================================================
-                                         M-L-L Runner / Pre-Launch Config
+                                            Pre-Launcher Configuration
 ========================================================================================================================
 
 
