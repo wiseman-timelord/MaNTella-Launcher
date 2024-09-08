@@ -494,7 +494,7 @@ def check_and_update_prompts():
 def display_title():
     clear_screen()
     print("=" * 119)
-    print("                                               Mantella-Local-Launcher")
+    print("                                               MaNTella-Launcher")
     print("-" * 119)
     print("")
 

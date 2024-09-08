@@ -68,7 +68,7 @@ goto :menu
 :banner_display
 cls
 echo ========================================================================================================================
-echo                                        MaNTella-Local For Mantella %mantella_version%
+echo                                                      Install-Setup                                                     I
 echo ========================================================================================================================
 echo.
 goto :eof
@@ -76,11 +76,6 @@ goto :eof
 :: Main Menu
 :menu
 call :banner_display
-echo.
-echo.
-echo.
-echo.
-echo.
 echo.
 echo.
 echo.
@@ -93,7 +88,12 @@ echo.
 echo.
 echo.
 echo.
+echo ------------------------------------------------------------------------------------------------------------------------
 echo.
+echo.
+echo.
+echo.
+echo     Mantella Detected: %mantella_version%
 echo.
 echo.
 echo.
