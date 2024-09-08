@@ -1,4 +1,4 @@
-# Mantella-Launcher for local models on [Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases)
+# Mantella-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Release works for v11.4, attempting to be updating to v12.
 - (testing) Compatibility with both default python locations.
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
