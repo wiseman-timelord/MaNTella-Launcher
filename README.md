@@ -1,9 +1,6 @@
 # Mantella-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Release works for v11.4, attempting to be updating to v12.
-- (testing) Compatibility with both default python locations.
-- (testing) use of `python.exe -m pip` instead of `pip.exe`.
-- (testing) Optimized and improved display code.
-- (testing) Use of my new, DP0 and Admin Check, block.
+- note from v12 update `Pull location of users Documents folder directly from the windows registry`, so, config is there now. Scripts need pointing to that for `config.ini`.
 - Make my setup/launcher v12 only, streamline and do Away with code specific to v11; config.ini will no longer be in same place as v11.4.
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Launcher, On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
 
