@@ -1,5 +1,5 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
-Status: Release works for v11.4, attempting to be updating to v12.
+Status: Release works for v11.4, attempting to be updating to v12, and improve along the way.
 1. Next step, correct the registry value documents config path merge code, here are notes...
 ```
 The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
