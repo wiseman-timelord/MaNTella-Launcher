@@ -143,7 +143,7 @@ Selection; Menu Options (1-3), Exit Install-Setup (X):
 ## Requirements
 1. **Powerful Computer**: Running Fallout 4/Skyrim and interference on models can be intensive.
 2. **Python Environment**: Requires Python 3.11 and dependencies from the Mantella requirements file.
-3. **Language Model**: Use [Lewdiculous L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix](https://huggingface.co/Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix). Have, 4GB VRam Free for Q3 or 6GB VRam free for Q4. 
+3. **Language Model**: Search [HuggingFace](https://huggingface.co) for a `.Gguf` model such as, llama 3 or llama 3.1, 4.xGB VRam Free for Q3 or 5.xGB VRam free for Q4, and for shared GPU this is in addition to whatever Fallout 4 consumes of your Vram.
 4. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
 5. **xVASynth Installation**: Must be installed and correctly configured in the specified directory.
 6. **Configuration File**: Requires a `config.ini` with `Game`, `Paths`, and `LanguageModel.Advanced` sections.
