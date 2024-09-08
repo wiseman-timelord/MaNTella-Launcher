@@ -59,13 +59,13 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 
 
 
+    1. Upgrade Pip Version
 
-    1. Install Requirements
+    2. Install Requirements
 
-    2. Install Torch[CPU]
+    3. Install Torch[CPU]
 
-    3. Upgrade Pip Version
-
+    4. First Run Setup
 
 
 
@@ -73,14 +73,14 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 
 
 
+    Python Path: C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
 
-    Mantella Detected: v11.4
-
+    Config File: C:\Users\Mastar\Documents\My Games\Mantella\config.ini
 
 
 
 ========================================================================================================================
-Selection; Menu Options (1-3), Exit Install-Setup (X):
+Selection; Menu Options (1-4), Exit Install-Setup (X):
 
 ```
 
