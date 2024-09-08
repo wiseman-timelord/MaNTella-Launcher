@@ -1,13 +1,40 @@
-# Mantella-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
+# Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Release works for v11.4, attempting to be updating to v12.
 1. Next step, correct the registry value documents config path merge code, here are notes...
 ```
 The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
 ```
 2. Clean up and test.
+3. somehow Merge `Seup-Install` and `Mantella-Local-Launcher.bat`, it would become a `pre-launcher` menu, like...
+```
+========================================================================================================================
+                                         M-L-L Runner / Pre-Configuration
+========================================================================================================================
+
+
+
+
+
+
+
+    1. Run Mantella-Local-Launcher
+
+    2. Setup and Install Requirements
+
+    3. Check File Integrity
+
+
+
+
+
+
+========================================================================================================================
+Selection; Menu Options (1-3), Exit Pre-Config (X):
+```
+...where, 1. would run `mantella_local_launcher.py`, 2. would display the setup menu (which would return to this menu), 3. would check the working folder for `.\Mantella-Local-Launcher.Bat` and `.\mantella_local_launcher.py`, and if any of them are missing then report `Some Files Missing!` then `Reinstall Mantella-Local-Launcher.`. code should be safely merged from the two batches, relevant code requires to be analyzed for, correct integration and streamlining of processes.
 - when working version, then make into mod on nexus mods.
 - move as much code as possible for the launching after the python script, from launcher batch script into launcher python script, so that upon exiting mantella, then it will exit the python script and go through the normal processes of having exited mantella as shown in the batch script, if that is possible? Or possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
-- There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Launcher, On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
+- There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
 
 ### Description
 - a Windows Launcher/Optimizer for Mantella for, Fallout 4 and Skyrim, specifically only for local models on Windows, not online models but maybe later. Mantella was optimized for 8K on GPT, so, Mantella-Launcher instead optimizes Mantella for Local Models. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and your chosen game, if they are not already running, then it launches Mantella, by making use of the settings already present in `config.ini`, so you do still need to configure that first. Mantella-Launcher also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. 
@@ -24,10 +51,10 @@ The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\Curre
 10. **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length.
 
 ### Preview
-- The `MaNTella-Launcher.Bat` provides simplified optimization...
+- The `MaNTella-Local-Launcher.Bat` and `mantella-local-launcher.py` provides simplified optimization...
 ```
 =======================================================================================================================
-    MaNTella-Launcher
+    Mantella-Local-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
 
@@ -102,8 +129,8 @@ Selection; Menu Options (1-4), Exit Install-Setup (X):
 1. Ensure that Python 3.11 was installed to, the default directory or the default directory for all users.
 2. Ensure the [Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
 3. Download the [Latest Release](https://github.com/wiseman-timelord/Mantella-Local-Launcher/releases) of the launcher, and drag the, file(S) and folder(s), from the zip into the main Mantella folder.
-4. Run `1a. Install-Setup-Libraries.Bat`, this will ensure you have installed the requirements to the correct install of python. If, it exits with a torch error and/or you do not have cuda, then run `1b. Install_Torch_Cpu(Optional).bat`, so as install, "Torch+Cpu" and "TorchAudio+Cpu" and "TorchVision+Cpu, as "xVASynth" will likely have less issues. 
-5. Run `2a. Mantella-Local-Launcher.Bat` for the Launcher, configure your optimizations, and when done then select "B" for begin. In future you should run `2b. Mantella_No_Launcher.Bat`, unless you wish to alter the optimizations.
+4. Run `Install-Setup.Bat`, this will ensure you have installed the requirements to the correct install of python. If, it exits with a torch error and/or you do not have cuda, then run `1b. Install_Torch_Cpu(Optional).bat`, so as install, "Torch+Cpu" and "TorchAudio+Cpu" and "TorchVision+Cpu, as "xVASynth" will likely have less issues. 
+5. Run `Mantella-Local-Launcher.Bat` for the Launcher, configure your optimizations, and when done then select "B" for begin. In future you should run `Mantella_No_Launcher.Bat`, unless you wish to alter the optimizations.
   
 ## Notes
 - all options for Optimization are shown...
