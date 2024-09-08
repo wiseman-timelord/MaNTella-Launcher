@@ -1,4 +1,4 @@
-# Mantella-Local-Launcher for [Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases)
+# Mantella-Launcher for [Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases)
 Status: Release works for v11.4, updating to v12. On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
 - (testing) Compatibility with both default python locations.
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
@@ -25,7 +25,7 @@ Status: Release works for v11.4, updating to v12. On hold until `https://github.
 - The menu of much simplified optimization...
 ```
 =======================================================================================================================
-                                               Mantella-Local-Launcher
+                                                    Mantella-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
 
@@ -57,7 +57,7 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth =
 - The general running of things...
 ```
 =======================================================================================================================
-                                               Mantella-Local-Launcher
+                                                   Mantella-Launcher
 ------------------------------------------------------------------------------------------------------------------------
 
 Working Dir: D:\GamesVR\Mantella-WT-0.11.4
@@ -109,7 +109,7 @@ Waiting for player to select an NPC...
 - The `Setup-Install.Bat` Main Menu (upcoming version)...
 ```
 ========================================================================================================================
-                                       MaNTella-Local For Mantella v11.4
+                                              Install-Setup - Mantella-Launcher
 ========================================================================================================================
 
 
