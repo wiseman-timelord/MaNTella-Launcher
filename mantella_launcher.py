@@ -494,7 +494,7 @@ def check_and_update_prompts():
 def display_title():
     clear_screen()
     print("=" * 119)
-    print("                                               MaNTella-Launcher")
+    print("    MaNTella-Launcher")
     print("-" * 119)
     print("")
 
@@ -502,23 +502,22 @@ def display_menu_and_handle_input():
     global game, optimization, custom_token_count, microphone_enabled, model_id
     while True:
         display_title()
-        print(f"\n\n\n")
-        print(f"                                               1. Game Used: {game}\n")
-        print(f"                                               2. Microphone On: {'True' if microphone_enabled else 'False'}\n")
-        print(f"                                               3. Optimization: {optimization}\n")
-        print(f"                                               4. Token Count: {custom_token_count}\n")
-
-        print(f"\n\n\n")
+        print(f"\n")
+        print(f"    1. Game Used: {game}\n")
+        print(f"    2. Microphone On: {'True' if microphone_enabled else 'False'}\n")
+        print(f"    3. Optimization: {optimization}\n")
+        print(f"    4. Token Count: {custom_token_count}\n")
+        print(f"")
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
-        print(f"")
-        print(f"                                   model = {model_id}")
-        print(f"                                   {game}_folder = {game_folders.get(game_key, 'Not set')}")
-        print(f"                                   xvasynth_folder = {xvasynth_folder}")
-        print(f"")
+        print(f"\n")
+        print(f"    model = {model_id}\n")
+        print(f"    {game}_folder = {game_folders.get(game_key, 'Not set')}\n")
+        print(f"    xvasynth_folder = {xvasynth_folder}")
+        print(f"\n\n")
         print("=" * 119)
 
-        choice = input("Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X: ").strip().upper()
+        choice = input("Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: ").strip().upper()
         
         if choice == '1':
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
