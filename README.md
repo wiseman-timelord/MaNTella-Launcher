@@ -1,17 +1,17 @@
 # Mantella-Launcher for [Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases)
-Status: Release works for v11.4, updating to v12. On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
+Status: Release works for v11.4, attempting to be updating to v12.
 - (testing) Compatibility with both default python locations.
 - (testing) use of `python.exe -m pip` instead of `pip.exe`.
 - (testing) Optimized and improved display code.
 - (testing) Use of my new, DP0 and Admin Check, block.
 - Make my setup/launcher v12 only, streamline and do Away with code specific to v11; config.ini will no longer be in same place as v11.4.
+- There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Launcher, On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
 
 ### Description
-- a Windows Launcher/Optimizer for Mantella for, Fallout 4 and Skyrim, with models locally on Windows. Mantella was optimized for 8K on GPT, so, Mantella-Local-Launcher instead optimizes Mantella for Local Models. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and your chosen game, if they are not already running, then it launches Mantella, by making use of the settings already present in `config.ini`, so you do still need to configure that first. Mantella-Local-Launcher also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. The project is local only, so, gpt/online, compatibility and optimization, remains untested. 
+- a Windows Launcher/Optimizer for Mantella for, Fallout 4 and Skyrim, specifically only for local models on Windows, not online models; Fallout 4 is an offline game for me. Mantella was optimized for 8K on GPT, so, Mantella-Launcher instead optimizes Mantella for Local Models. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and your chosen game, if they are not already running, then it launches Mantella, by making use of the settings already present in `config.ini`, so you do still need to configure that first. Mantella-Launcher also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. 
 
 ### Features
 1. **Batch Launcher for Automation**: Automates and runs xVASynth and Mantella with admin privileges.
-
 3. **Optimized Configuration Management**: Streamlines `config.ini` prompts and removes non-functional options.
 4. **Interactive Python Script**: Cleans configuration files and offers an interactive menu for game and preset choices.
 5. **Error Handling and Logging**: Tracks errors, logs execution, and backs up configuration files.
@@ -25,7 +25,7 @@ Status: Release works for v11.4, updating to v12. On hold until `https://github.
 - The menu of much simplified optimization...
 ```
 =======================================================================================================================
-                                                    Mantella-Launcher
+                                               MaNTella-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
 
@@ -34,7 +34,7 @@ Status: Release works for v11.4, updating to v12. On hold until `https://github.
 
                                                1. Game Used: Fallout4
 
-                                               2 Microphone On: False
+                                               2. Microphone On: True
 
                                                3. Optimization: Regular
 
@@ -46,15 +46,16 @@ Status: Release works for v11.4, updating to v12. On hold until `https://github.
 
 -----------------------------------------------------------------------------------------------------------------------
 
-                                   model = Lewdiculous/L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix
+                                   model = uncensored-frank-llama-3-8b.q6_k
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
                                    xvasynth_folder = D:\GamesVR\xVASynth
 
 =======================================================================================================================
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
 
+
 ```
-- The general running of things...
+- It runs xVAsynth, then Mantella, then Fallout 4, and bypasses them if they are already running...
 ```
 =======================================================================================================================
                                                    Mantella-Launcher
@@ -106,16 +107,11 @@ https://art-from-the-machine.github.io/Mantella/pages/issues_qna
 Waiting for player to select an NPC...
 
 ```
-- The `Setup-Install.Bat` Main Menu (upcoming version)...
+- The `Setup-Install.Bat` Main Menu...
 ```
+=======================================================================================================================
+                                                     Install-Setup                                                     I
 ========================================================================================================================
-                                              Install-Setup - Mantella-Launcher
-========================================================================================================================
-
-
-
-
-
 
 
 
@@ -129,13 +125,19 @@ Waiting for player to select an NPC...
 
 
 
+------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+    Mantella Detected: v11.4
 
 
 
 
 ========================================================================================================================
 Selection; Menu Options (1-3), Exit Install-Setup (X):
+
 ```
 
 ## Requirements
