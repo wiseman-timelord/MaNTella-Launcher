@@ -25,10 +25,8 @@ Status: Release works for v11.4, attempting to be updating to v12.
 - The menu of much simplified optimization...
 ```
 =======================================================================================================================
-                                               MaNTella-Launcher
+                                                   MaNTella-Launcher
 -----------------------------------------------------------------------------------------------------------------------
-
-
 
 
 
@@ -41,18 +39,19 @@ Status: Release works for v11.4, attempting to be updating to v12.
                                                4. Token Count: 4096
 
 
-
-
-
 -----------------------------------------------------------------------------------------------------------------------
 
+
                                    model = uncensored-frank-llama-3-8b.q6_k
+
                                    Fallout4_folder = D:\GamesVR\Fallout4_163
+
                                    xvasynth_folder = D:\GamesVR\xVASynth
+
+
 
 =======================================================================================================================
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
-
 
 ```
 - It runs xVAsynth, then Mantella, then Fallout 4, and bypasses them if they are already running...
