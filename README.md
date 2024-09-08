@@ -54,88 +54,36 @@ Status: Release works for v11.4, attempting to be updating to v12.
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
-- It runs xVAsynth, then Mantella, then Fallout 4, and bypasses them if they are already running...
-```
-=======================================================================================================================
-                                                   Mantella-Launcher
-------------------------------------------------------------------------------------------------------------------------
-
-Working Dir: D:\GamesVR\Mantella-WT-0.11.4
-Running Mantella xVASynth Optimizer...
-Script started
-Working Folder: D:\GamesVR\Mantella-WT-0.11.4
-Config File: D:\GamesVR\Mantella-WT-0.11.4\config.ini
-Script execution started
-Entering main function
-Starting config cleaning...
-Found 0 comment lines.
-Config Already Clean.
-Checking Prompts
-Prompts Alrady Optimized.
-Reading config file...
-Read Keys: config.ini.
-Writing config file...
-Config file updated successfully.
-Saved File: config.ini
-Writing output file
-Output file written successfully: temp-wt.txt
-Saved File: temp-wt.txt
-Exiting, then Running Mantella/xVASynth...
-0,D:\GamesVR\xVASynth
-Final output: exit_code=0, xvasynth_path=D:\GamesVR\xVASynth
-Script execution ended
-...Mantella/xVASynth Optimizer-Launcher Closed.
-Read File: temp-wt.txt
-Checking for Fallout4...
-f4se_loader.exe is not running. Starting Fallout4...
-Found and running f4se_loader.exe.
-Checking for xVASynth...
-xVASynth.exe is not running. Starting xVASynth...
-Running Mantella...
-Mantella currently running for Fallout4 (D:\GamesVR\Fallout4_163). Mantella mod located in D:\GamesVR\Fallout4_163\Data
-19:55:00.415 INFO: Running Mantella with local language model
-Could not find number of available tokens for L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix. Defaulting to token count of 4096 (this number can be changed via the `custom_token_count` setting in config.ini)
-19:55:00.416 WARNING: Local language model has a low token count of 4096. For better NPC memories, try changing to a model with a higher token count
-
-Mantella v0.11.4
-19:55:00.623 TTS: Connecting to xVASynth...
-
-"NPC not added. Please try again after your next response"? See here:
-https://art-from-the-machine.github.io/Mantella/pages/issues_qna
-
-Waiting for player to select an NPC...
-
-```
 - The `Setup-Install.Bat` Main Menu...
 ```
-=======================================================================================================================
-                                                   MaNTella-Launcher
------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
+                                                     Install-Setup                                                     I
+========================================================================================================================
 
 
 
-                                               1. Game Used: Fallout4
 
-                                               2. Microphone On: True
+    1. Install Requirements
 
-                                               3. Optimization: Regular
+    2. Install Torch[CPU]
 
-                                               4. Token Count: 4096
-
-
------------------------------------------------------------------------------------------------------------------------
-
-
-                                   model = uncensored-frank-llama-3-8b.q6_k
-
-                                   Fallout4_folder = D:\GamesVR\Fallout4_163
-
-                                   xvasynth_folder = D:\GamesVR\xVASynth
+    3. Upgrade Pip Version
 
 
 
-=======================================================================================================================
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    Mantella Detected: v11.4
+
+
+
+
+========================================================================================================================
+Selection; Menu Options (1-3), Exit Install-Setup (X):
 
 ```
 
