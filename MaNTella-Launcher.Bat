@@ -1,3 +1,6 @@
+:: Script: MaNTella-Launcher.Bat
+
+:: Initialization
 @echo off
 setlocal EnableDelayedExpansion
 
@@ -48,35 +51,17 @@ timeout /t 1 >nul
 
 echo Admin Status: Administrator 
 
-:: First run check and requirement installation
-if not exist ".\config.bak" (
-    echo First Run, Fool-Proofing Mantella..
-    timeout /t 1 >nul
-    "%PYTHON_EXE_TO_USE%" -m pip install -r requirements.txt
-    echo ..Requirements Installed ^(Hopefully^).
-    timeout /t 2 >nul
+:: First run check
+for /f "usebackq tokens=3*" %%A in (`reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal`) do (
+    set "CONFIG_INI_PATH=%%A\My Games\Mantella\config.ini"
 )
-echo Note: 'config.bak' Retains Instructions.
-
-:: Load configuration from multiple locations
-set "config_file="
-if exist ".\config.ini" (
-    set "config_file=.\config.ini"
-) else if exist "%USERPROFILE%\Documents\Mantella\config.ini" (
-    set "config_file=%USERPROFILE%\Documents\Mantella\config.ini"
-) else if exist "C:\Mantella\config.ini" (
-    set "config_file=C:\Mantella\config.ini"
-)
-
-if defined config_file (
-    echo Config Loaded: %config_file%
-    timeout /t 1 >nul
-) else (
-    echo Error: No configuration file found.
-    echo Please ensure a config.ini exists in one of the expected locations.
+set "CONFIG_INI_PATH=%CONFIG_INI_PATH:/=\%"
+if not exist "%CONFIG_INI_PATH%" (
+    echo First Run Detected. Please run Install-Setup.Bat first!
     timeout /t 3 >nul
-    goto :eof
+    goto :end_of_script
 )
+echo Found Config File.
 
 :: Check if LM Studio or Ollama is running, act appropriately.
 tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe" >NUL
@@ -208,7 +193,7 @@ timeout /t 1 >nul
 
 :eof
 :: Exit Program
-del .\.\data\temporary_batch.txt
+del .\data\temporary_batch.txt
 echo File Deleted: .\data\temporary_batch.txt
 timeout /t 1 >nul
 pushd "%ScriptDirectoryWt%"

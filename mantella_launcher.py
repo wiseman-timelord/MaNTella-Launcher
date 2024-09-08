@@ -1,11 +1,10 @@
-# Script: .\launcher.py
+# Script: .\mantella_launcher.py
 
 # Imports
 import os, sys, time, shutil, traceback, subprocess  # Common Imports
 import configparser, json  # Config/Json Related
 
 # Global variables
-FILE_NAME = 'config.ini'
 OUTPUT_FILE = '.\\data\\temporary_batch.txt'
 game = "Skyrim"
 optimization = "Default"
@@ -16,23 +15,22 @@ model_id = ""
 custom_token_count = 8192    # Default value
 lmstudio_api_url = "http://localhost:1234/v1/models"
 microphone_enabled = False
-FILE_NAME = 'config.ini'
-DEFAULT_FILE_PATHS = [
-    FILE_NAME,
-    os.path.join(os.environ.get('USERPROFILE', ''), 'Documents', 'My Games', 'Mantella', FILE_NAME)
-]
+FILE_NAME = ''
+DOCUMENTS_FOLDER = ''
 
 # Initialization
 def verbose_print(message):
     print(message, file=sys.stderr)
     sys.stderr.flush()
-
 def delay(seconds=1):
     time.sleep(seconds)
-
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
-
+def get_documents_folder():
+    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")
+    return os.path.expandvars(winreg.QueryValueEx(key, "Personal")[0])
+DOCUMENTS_FOLDER = get_documents_folder()
+FILE_NAME = os.path.join(DOCUMENTS_FOLDER, 'My Games', 'Mantella', 'config.ini')
 verbose_print(".\launcher.py Initialized.") 
 delay()
 
@@ -75,83 +73,75 @@ def get_or_set_models_drive():
     return models_drive_letter
 
 
-def clean_config():
-    verbose_print("Starting config cleaning...")
-    delay()
-    
-    if not os.path.exists(FILE_NAME):
-        verbose_print(f"Config file '{FILE_NAME}' not found.")
-        delay(3)
-        return
-
-    with open(FILE_NAME, 'r') as file:
-        lines = file.readlines()
-
-    comment_line_count = sum(1 for line in lines if line.strip().startswith(';'))
-
-    verbose_print(f"Found {comment_line_count} comment lines.")
-
-    if comment_line_count == 0:
-        verbose_print("Config Already Clean.")
-        delay(2)
-        return
-
-    backup_path = 'config.bak'
-    if not os.path.exists(backup_path):
-        try:
-            shutil.copy(FILE_NAME, backup_path)
-            verbose_print(f"Backup created: {backup_path}")
-        except Exception as e:
-            verbose_print(f"Error creating backup: {str(e)}")
-            delay(3)
-            return
-    else:
-        verbose_print(f"Backup file {backup_path} already exists. Skipping backup.")
-
-    verbose_print("Removing clutter and formatting...")
-    delay()
-    
-    processed_lines = []
-    for i, line in enumerate(lines):
-        stripped_line = line.strip()
-        if stripped_line and not stripped_line.startswith(';'):
-            if stripped_line.startswith('[') and i > 0 and processed_lines:
-                processed_lines.append('\n')
-            processed_lines.append(line)
+def read_config():
+    verbose_print("Reading config file...")
+    global game, optimization, custom_token_count, game_folders, mod_folders, xvasynth_folder, microphone_enabled
+    config = configparser.ConfigParser()
 
     try:
-        with open(FILE_NAME, 'w') as file:
-            file.writelines(processed_lines)
-        verbose_print("Config cleaned and saved.")
-        delay(2)
-    except Exception as e:
-        verbose_print(f"Error writing config: {str(e)}")
+        config.read(FILE_NAME)
+    except configparser.Error as e:
+        verbose_print(f"Error reading config.ini file: {str(e)}")
         delay(3)
+        return
 
-def find_config_file():
-    """Finds the config file in potential directories."""
-    for path in DEFAULT_FILE_PATHS:
-        if os.path.exists(path):
-            return path
-    return None
+    # Get the game name
+    game = config.get("Game", "game", fallback="Skyrim")
+
+    # Fetch paths based on sections and keys
+    game_folders = {
+        "skyrim": config.get("Paths", "skyrim_folder", fallback="Not set"),
+        "skyrimvr": config.get("Paths", "skyrimvr_folder", fallback="Not set"),
+        "fallout4": config.get("Paths", "fallout4_folder", fallback="Not set"),
+        "fallout4vr": config.get("Paths", "fallout4vr_folder", fallback="Not set"),
+    }
+
+    mod_folders = {
+        "skyrim": config.get("Paths", "skyrim_mod_folder", fallback="Not set"),
+        "skyrimvr": config.get("Paths", "skyrim_mod_folder", fallback="Not set"),
+        "fallout4": config.get("Paths", "fallout4_mod_folder", fallback="Not set"),
+        "fallout4vr": config.get("Paths", "fallout4vr_mod_folder", fallback="Not set"),
+    }
+
+    # Set xVASynth folder
+    xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="Not set")
+
+    # Fetch Language Model settings
+    custom_token_count = int(config.get("LanguageModel.Advanced", "custom_token_count", fallback="2048"))
+
+    # Check for optimization preset
+    max_tokens = int(config.get("LanguageModel.Advanced", "max_tokens", fallback="250"))
+    max_response_sentences = int(config.get("LanguageModel", "max_response_sentences", fallback="999"))
+    temperature = float(config.get("LanguageModel.Advanced", "temperature", fallback="1.0"))
+
+    for preset, values in optimization_presets.items():
+        if (
+            max_tokens == values["max_tokens"]
+            and max_response_sentences == values["max_response_sentences"]
+            and abs(temperature - values["temperature"]) < 0.01
+        ):
+            optimization = preset
+            break
+    else:
+        optimization = "Default"
+
+    # Read microphone setting
+    microphone_enabled = config.getboolean("Microphone", "microphone_enabled", fallback=False)
+
+    verbose_print(f"Read Keys: config.ini.")
+    delay(2)
+
 
 def read_config():
     verbose_print("Reading config file...")
     global game, optimization, custom_token_count, game_folders, mod_folders, xvasynth_folder, microphone_enabled
     config = configparser.ConfigParser()
 
-    # Find the config file path
-    config_path = find_config_file()
-    if config_path:
-        try:
-            config.read(config_path)
-        except configparser.Error as e:
-            verbose_print(f"Error reading config.ini file: {str(e)}")
-            delay(3)
-            return
-    else:
-        verbose_print("No config file found. Using default settings.")
-        delay(2)
+    try:
+        config.read(FILE_NAME)
+    except configparser.Error as e:
+        verbose_print(f"Error reading config.ini file: {str(e)}")
+        delay(3)
         return
 
     # Get the game name
@@ -244,6 +234,7 @@ def write_config():
     config["LanguageModel.Advanced"]["llm_api"] = "http://localhost:1234/v1"
     
     try:
+        os.makedirs(os.path.dirname(FILE_NAME), exist_ok=True)
         with open(FILE_NAME, 'w') as configfile:
             config.write(configfile)
         verbose_print("Config file updated successfully.")
@@ -558,11 +549,10 @@ def display_menu_and_handle_input():
         
         delay()
 
+# Main Function
 def main():
     verbose_print("Entering main function")
     try:
-        clean_config()
-        check_and_update_prompts()
         read_config()
 
         server_choice = read_temp_file()
@@ -582,6 +572,7 @@ def main():
         write_output_file(1)
         return 1, ""
 
+# Entry Point
 if __name__ == "__main__":
     verbose_print("Script execution started")
     try:
@@ -596,22 +587,4 @@ if __name__ == "__main__":
         print("1,", file=sys.stdout)
         sys.stdout.flush()
     verbose_print("Script execution ended")
-    sys.exit(0)  # Always exit with code 0 to prevent the NameError
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    sys.exit(0)   # Always exit with code 0

@@ -3,9 +3,11 @@ setlocal EnableDelayedExpansion
 
 :: Global Variables
 set "PYTHON_EXE_TO_USE="
-set "config_folder="
-set "mantella_version="
+set "CONFIG_INI_PATH="
 set "ATTEMPTS=0"
+
+:: Initialize display
+call :banner_display
 
 :: ADMIN AND DP0, BLOCK, DO NOT MODIFY: START
 net session >nul 2>&1 || (
@@ -18,12 +20,9 @@ timeout /t 1 >nul
 set "SCRIPT_DIRECTORY_PATH=%~dp0"
 set "SCRIPT_DIRECTORY_PATH=%SCRIPT_DIRECTORY_PATH:~0,-1%"
 pushd "%SCRIPT_DIRECTORY_PATH%"
-echo Path Dp0'd To Script.
+echo Dp0'd to Script Dir.
 timeout /t 1 >nul
 :: ...ADMIN AND DP0, BLOCK, DO NOT MODIFY: END
-
-:: Initialize display
-call :banner_display
 
 :: Check for python.exe in the specified locations or prompt user for a custom path
 set "PYTHON_PATHS=C:\Program Files\Python311\python.exe C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python311\python.exe"
@@ -47,28 +46,25 @@ if not exist %PYTHON_EXE_TO_USE% (
     )
 )
 :python_found
-echo Python 3.11 found at: %PYTHON_EXE_TO_USE%
+echo Python 3.11 found
 timeout /t 1 >nul
 
-:find_config
-if exist ".\config.ini" (
-    set "mantella_version=v11.4"
-    set "config_folder=.\"
-) else if exist "%USERPROFILE%\Documents\My Games\Mantella\config.ini" (
-    set "mantella_version=v12"
-    set "config_folder=%USERPROFILE%\Documents\My Games\Mantella"
-) else (
-    echo Error: File Missing: config.ini
-    timeout /t 5 >nul
-    goto :end_of_file
+:: Fetch Documents folder from Registry
+for /f "usebackq tokens=3*" %%A in (`reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal`) do (
+    set "CONFIG_INI_PATH=%%A\My Games\Mantella\config.ini"
 )
+set "CONFIG_INI_PATH=%CONFIG_INI_PATH:/=\%"
+echo config.ini found
+timeout /t 1 >nul
+
+:: Initialization Over
 goto :menu
 
 :: ML Banner 
 :banner_display
 cls
 echo ========================================================================================================================
-echo                                                      Install-Setup                                                     I
+echo                                                      Install-Setup                                                     
 echo ========================================================================================================================
 echo.
 goto :eof
@@ -78,13 +74,13 @@ goto :eof
 call :banner_display
 echo.
 echo.
+echo     1. Upgrade Pip Version
 echo.
-echo     1. Install Requirements
+echo     2. Install Requirements
 echo.
-echo     2. Install Torch[CPU]
+echo     3. Install Torch[CPU]
 echo.
-echo     3. Upgrade Pip Version
-echo.
+echo     4. First Run Setup
 echo.
 echo.
 echo.
@@ -92,18 +88,19 @@ echo ---------------------------------------------------------------------------
 echo.
 echo.
 echo.
+echo     Python Path: %PYTHON_EXE_TO_USE%
 echo.
-echo     Mantella Detected: %mantella_version%
-echo.
+echo     Config File: %config_folder%\config.ini
 echo.
 echo.
 echo.
 echo ========================================================================================================================
-set /p "choice=Selection; Menu Options (1-3), Exit Install-Setup (X): "
+set /p "choice=Selection; Menu Options (1-4), Exit Install-Setup (X): "
 
-if "%choice%"=="1" goto install_requirements
-if "%choice%"=="2" goto install_torch
-if "%choice%"=="3" goto upgrade_pip
+if "%choice%"=="1" goto upgrade_pip
+if "%choice%"=="2" goto install_requirements
+if "%choice%"=="3" goto install_torch
+if "%choice%"=="4" goto first_run_setup
 if /i "%choice%"=="X" goto exit_script
 
 :: Invalid choice handler
@@ -111,7 +108,21 @@ echo Invalid option. Please choose a valid option.
 timeout /t 2 >nul
 goto menu
 
-:: Option 1: Install Requirements
+:: Option 1: Upgrade pip
+:upgrade_pip
+call :banner_display
+echo Upgrading pip...
+%PYTHON_EXE_TO_USE% -m pip install --upgrade pip
+if errorlevel 1 (
+    echo Failed to upgrade pip. Please check your Python installation.
+    timeout /t 5 >nul
+    goto menu
+)
+echo pip upgraded.
+pause
+goto menu
+
+:: Option 2: Install Requirements
 :install_requirements
 call :banner_display
 echo Installing Requirements, Ensure Python v3.11...
@@ -136,13 +147,9 @@ echo.
 pause
 goto menu
 
-:: Option 2: Install Torch[CPU]
+:: Option 3: Install Torch[CPU]
 :install_torch
 call :banner_display
-call :find_python
-if not defined PYTHON_EXE_TO_USE goto menu
-
-:: Use python.exe -m pip to uninstall and install torch packages
 echo Uninstalling existing Torch packages...
 %PYTHON_EXE_TO_USE% -m pip uninstall torch torchvision torchaudio -y
 echo Installing Torch for CPU...
@@ -153,75 +160,27 @@ if errorlevel 1 (
     goto menu
 )
 echo Torch[CPU] Installed.
-timeout /t 2 >nul
-goto menu
-
-:: Option 3: Upgrade pip
-:upgrade_pip
-call :find_python
-if not defined PYTHON_EXE_TO_USE goto menu
-
-:: 3. Upgrade pip
-call :banner_display
-echo Upgrading pip...
-%PYTHON_EXE_TO_USE% -m pip install --upgrade pip
-if errorlevel 1 (
-    echo Failed to upgrade pip. Please check your Python installation.
-    timeout /t 5 >nul
-    goto menu
-)
-echo pip upgraded.
 pause
 goto menu
 
-:end_of_file
-:: Exit Program
-echo Closing in 5 seconds...
-timeout /t 5 >nul
-exit /b
-
-:: Function Definitions
-:backup_config
-if defined config_folder (
-    echo Config File: %config_folder%\config.ini
-    if exist "%config_folder%\config.bak" (
-        echo Backup Already Exists: %config_folder%\config.bak
-        timeout /t 5 >nul
-    ) else (
-        copy /y "%config_folder%\config.ini" "%config_folder%\config.bak"
-        echo File Backed Up: config.ini ^> config.bak
-        echo Backup File: %config_folder%\config.bak
-    )
+:: Option 4: First Run Setup
+:first_run_setup
+call :banner_display
+echo Running First Run Setup...
+echo Waiting for User to Close Mantella Window...
+start "" %PYTHON_EXE_TO_USE% .\main.py
+:wait_loop
+tasklist /FI "IMAGENAME eq python.exe" 2>NUL | find /I /N "python.exe">NUL
+if "%ERRORLEVEL%"=="0" (
     timeout /t 2 >nul
-) else (
-    echo Error: No configuration file found.
-    echo Please ensure a config.ini exists in one of the expected locations.
-    timeout /t 5 >nul
-    goto :end_of_file
+    goto :wait_loop
 )
-goto :eof
+echo Created: config.ini
+echo Returning to Menu
+timeout /t 2 >nul
+goto menu
 
-:: Exit Option: X
 :exit_script
-if "%mantella_version%"=="v11.4" (
-    echo 1. Ensure to configure %config_folder%\config.ini.
-    echo 2. After Configuration, Run MaNTella-Local.Bat.
-    timeout /t 10 >nul
-) else if "%mantella_version%"=="v12" (
-    echo 1. Exit Mantella After "Waiting for player to select an NPC..."
-    echo 2. Ensure to configure %config_folder%\config.ini.
-    echo 3. After Configuration, Run Mantella.Bat.
-    timeout /t 10 >nul
-    echo Running Mantella...
-    timeout /t 2 >nul
-    "%PYTHON_EXE_TO_USE%" .\main.py
-    if errorlevel 1 (
-        echo Error occurred while running Mantella.
-        goto end_of_file
-    )
-	call :backup_config
-    timeout /t 5 >nul    
-)
 echo Exiting the script... Please wait.
 timeout /t 2 >nul
 exit /b
