@@ -1,7 +1,12 @@
 # Mantella-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Release works for v11.4, attempting to be updating to v12.
-- note from v12 update `Pull location of users Documents folder directly from the windows registry`, so, config is there now. Scripts need pointing to that for `config.ini`.
-- Make my setup/launcher v12 only, remove version detection code in `install-setup.bat`
+1. Next step, correct the registry value documents config path merge code, here are notes...
+```
+The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
+```
+2. Clean up and test.
+- when working version, then make into mod on nexus mods.
+- move as much code as possible for the launching after the python script, from launcher batch script into launcher python script, so that upon exiting mantella, then it will exit the python script and go through the normal processes of having exited mantella as shown in the batch script, if that is possible? Or possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Launcher, On hold until `https://github.com/wiseman-timelord/Llama-Legacy-Serve` is complete..
 
 ### Description
