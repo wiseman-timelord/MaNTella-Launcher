@@ -51,7 +51,7 @@ Status: Release works for v11.4, attempting to be updating to v12.
 
 
 =======================================================================================================================
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth = B, Exit and Save = X:
+Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
 - It runs xVAsynth, then Mantella, then Fallout 4, and bypasses them if they are already running...
