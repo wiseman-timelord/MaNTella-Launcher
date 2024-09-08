@@ -32,7 +32,7 @@ The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\Curre
 Selection; Menu Options (1-3), Exit Pre-Config (X):
 ```
 ...where, 1. would run `mantella_local_launcher.py`, 2. would display the setup menu (which would return to this menu), 3. would check the working folder for `.\Mantella-Local-Launcher.Bat` and `.\mantella_local_launcher.py`, and if any of them are missing then report `Some Files Missing!` then `Reinstall Mantella-Local-Launcher.`. code should be safely merged from the two batches, relevant code requires to be analyzed for, correct integration and streamlining of processes.
-- when working version, then make into mod on nexus mods.
+- when working version with 2 files, then make into mod on nexus mods.
 - move as much code as possible for the launching after the python script, from launcher batch script into launcher python script, so that upon exiting mantella, then it will exit the python script and go through the normal processes of having exited mantella as shown in the batch script, if that is possible? Or possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
 
