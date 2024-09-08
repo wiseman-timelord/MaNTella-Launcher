@@ -22,31 +22,31 @@ Status: Release works for v11.4, attempting to be updating to v12.
 10. **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length.
 
 ### Preview
-- The menu of much simplified optimization...
+- The `MaNTella-Launcher.Bat` provides simplified optimization...
 ```
 =======================================================================================================================
-                                                   MaNTella-Launcher
+    MaNTella-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
 
 
-                                               1. Game Used: Fallout4
+    1. Game Used: Fallout4
 
-                                               2. Microphone On: True
+    2. Microphone On: True
 
-                                               3. Optimization: Regular
+    3. Optimization: Regular
 
-                                               4. Token Count: 4096
+    4. Token Count: 4096
 
 
 -----------------------------------------------------------------------------------------------------------------------
 
 
-                                   model = uncensored-frank-llama-3-8b.q6_k
+    model = uncensored-frank-llama-3-8b.q6_k
 
-                                   Fallout4_folder = D:\GamesVR\Fallout4_163
+    Fallout4_folder = D:\GamesVR\Fallout4_163
 
-                                   xvasynth_folder = D:\GamesVR\xVASynth
+    xvasynth_folder = D:\GamesVR\xVASynth
 
 
 
@@ -54,7 +54,7 @@ Status: Release works for v11.4, attempting to be updating to v12.
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
-- The `Setup-Install.Bat` Main Menu...
+- The `Setup-Install.Bat` to install requirements compitently...
 ```
 ========================================================================================================================
                                                      Install-Setup                                                     I
