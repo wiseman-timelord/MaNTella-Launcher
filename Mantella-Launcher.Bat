@@ -11,6 +11,7 @@ set "config_folder="
 set "ATTEMPTS=0"
 set "ALL_FILES_OKAY="
 set "SCRIPT_DIRECTORY_PATH="
+set "model_service_used="
 
 :: ADMIN AND DP0, BLOCK, DO NOT MODIFY: START
 net session >nul 2>&1 || (
@@ -26,6 +27,25 @@ pushd "%SCRIPT_DIRECTORY_PATH%"
 echo Dp0'd to Script Dir.
 timeout /t 1 >nul
 :: ...ADMIN AND DP0, BLOCK, DO NOT MODIFY: END
+
+:: FIND PYTHON BLOCK, DO NOT MODIFY: START
+for %%I in (
+    "C:\Program Files\Python311\python.exe"
+    "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python311\python.exe"
+) do (
+    if exist "%%~I" (
+        set "PYTHON_EXE_TO_USE=%%~I"
+        goto :python_found
+    )
+)
+echo Python 3.11 not found.
+echo See Install Notes.
+timeout /t 3 >nul
+goto :end_of_script
+:python_found
+echo Python 3.11 Found
+timeout /t 1 >nul
+:: FIND PYTHON BLOCK, DO NOT MODIFY: END
 
 :: Config Notification
 for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal') do (
@@ -80,7 +100,7 @@ set /p "choice=Selection; Menu Options = 1-3, Exit Batch = X: "
 
 if "%choice%"=="1" goto run_mantella
 if "%choice%"=="2" goto mantella_launcher
-if "%choice%"=="3" goto installer_setup
+if "%choice%"=="3" goto installer_menu
 if /i "%choice%"=="X" goto end_script
 
 echo Invalid option. Please try again.
@@ -88,8 +108,11 @@ timeout /t 2 >nul
 goto main_menu
 
 :run_mantella
-call :find_python
 call :check_config
+echo Saving CONFIG_INI_PATH and model_service_used to temporary_batch.txt...
+echo CONFIG_INI_PATH=%CONFIG_INI_PATH% > .\data\temporary_batch.txt
+echo model_service_used=standalone >> .\data\temporary_batch.txt
+timeout /t 1 >nul
 echo Running Mantella...
 "%PYTHON_EXE_TO_USE%" .\main.py
 if errorlevel 1 (
@@ -106,12 +129,15 @@ cls
 echo ========================================================================================================================
 echo     Pre-Launcher Configuration  
 echo ========================================================================================================================
-call :find_python
 call :check_config
 call :check_lm_ollama
 if "%exit_code%"=="1" goto main_menu
 call :check_game
 call :check_xvasynth
+echo Saving CONFIG_INI_PATH and model_service_used to temporary_batch.txt...
+echo CONFIG_INI_PATH=%CONFIG_INI_PATH% > .\data\temporary_batch.txt
+echo model_service_used=launcher >> .\data\temporary_batch.txt
+timeout /t 1 >nul
 echo Running Mantella...
 "%PYTHON_EXE_TO_USE%" .\main.py
 echo Mantella Exited.
@@ -120,8 +146,6 @@ echo File Deleted: .\data\temporary_batch.txt
 pause
 goto main_menu
 
-:installer_setup
-call :find_python
 :installer_menu
 cls
 echo ========================================================================================================================
@@ -141,7 +165,6 @@ echo     5. Check Dependency Conflicts
 echo.
 echo     6. File Integrity Test
 echo.
-echo.
 echo ------------------------------------------------------------------------------------------------------------------------
 echo.
 echo     Python Path:
@@ -149,6 +172,7 @@ echo         %PYTHON_EXE_TO_USE%
 echo.
 echo     Config File:
 echo         %CONFIG_INI_PATH%
+echo.
 echo.
 echo ========================================================================================================================
 set /p "install_choice=Selection; Menu Options = 1-6, Back to Main = B: "
@@ -165,7 +189,16 @@ echo Invalid option. Please try again.
 timeout /t 2 >nul
 goto installer_menu
 
+:banner_install
+cls
+echo ========================================================================================================================
+echo     Installation/Setup in Progress...                                                
+echo ========================================================================================================================
+echo.
+goto :eof
+
 :upgrade_pip
+call :banner_install
 echo Upgrading pip...
 %PYTHON_EXE_TO_USE% -m pip install --upgrade pip
 if errorlevel 1 (
@@ -178,6 +211,7 @@ pause
 goto installer_menu
 
 :install_requirements
+call :banner_install
 echo Installing Requirements, Ensure Python v3.11...
 "%PYTHON_EXE_TO_USE%" -m pip install -r requirements.txt
 if errorlevel 1 (
@@ -190,6 +224,7 @@ pause
 goto installer_menu
 
 :install_requirements
+call :banner_install
 echo Installing Requirements, Ensure Python v3.11...
 "%PYTHON_EXE_TO_USE%" -m pip install -r requirements.txt
 if errorlevel 1 (
@@ -202,6 +237,7 @@ pause
 goto installer_menu
 
 :install_torch
+call :banner_install
 echo Uninstalling existing Torch packages...
 %PYTHON_EXE_TO_USE% -m pip uninstall torch torchvision torchaudio -y
 echo Installing Torch for CPU...
@@ -216,8 +252,9 @@ pause
 goto installer_menu
 
 :first_run_setup
+call :banner_install
 echo Running First Run Setup...
-echo Waiting for User to Close Mantella Window...
+echo Waiting for User to, Finish Editing Config and Close Mantella Window...
 start "" %PYTHON_EXE_TO_USE% .\main.py
 :wait_loop
 tasklist /FI "IMAGENAME eq python.exe" 2>NUL | find /I /N "python.exe">NUL
@@ -232,11 +269,7 @@ goto installer_menu
 
 
 :integrity_test
-cls
-echo ========================================================================================================================
-echo     File Integrity Check
-echo ========================================================================================================================
-echo.
+call :banner_install
 set "ALL_FILES_OKAY=true"
 echo Searching for Mantella-Local-Launcher.Bat...
 timeout /t 1 > nul
@@ -293,23 +326,6 @@ if not exist "%CONFIG_INI_PATH%" (
 )
 goto :eof
 
-:find_python
-for %%I in (
-    "C:\Program Files\Python311\python.exe"
-    "C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python311\python.exe"
-) do (
-    if exist "%%~I" (
-        set "PYTHON_EXE_TO_USE=%%~I"
-        goto :python_found
-    )
-)
-echo Python 3.11 not found. Please install it before running this script.
-timeout /t 3 >nul
-goto main_menu
-:python_found
-echo Python 3.11 Found
-goto :eof
-
 :check_lm_ollama
 tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe" >NUL
 if "%ERRORLEVEL%" EQU "0" (
@@ -317,14 +333,12 @@ if "%ERRORLEVEL%" EQU "0" (
 ) else (
     set "LM_RUNNING=0"
 )
-
 tasklist /FI "IMAGENAME eq ollama.exe" 2>NUL | find /I /N "ollama.exe" >NUL
 if "%ERRORLEVEL%" EQU "0" (
     set "OLLAMA_RUNNING=1"
 ) else (
     set "OLLAMA_RUNNING=0"
 )
-
 if "%LM_RUNNING%"=="1" (
     if "%OLLAMA_RUNNING%"=="1" (
         echo Error: Multiple Model Servers
@@ -332,12 +346,12 @@ if "%LM_RUNNING%"=="1" (
         timeout /t 3 >nul
         goto main_menu
     ) else (
-        echo service=lmstudio > .\data\temporary_batch.txt
+        echo model_service_used=lmstudio >> .\data\temporary_batch.txt
         timeout /t 1 >nul
         echo LM Studio Status: Running
     )
 ) else if "%OLLAMA_RUNNING%"=="1" (
-    echo service=ollama > .\data\temporary_batch.txt
+    echo model_service_used=ollama >> .\data\temporary_batch.txt
     timeout /t 1 >nul
     echo Ollama Status: Running
 ) else (
@@ -345,44 +359,6 @@ if "%LM_RUNNING%"=="1" (
     echo Load one of the Language Models and try again.
     timeout /t 3 >nul
     goto main_menu
-)
-goto :eof
-
-:check_lm_ollama
-tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe" >NUL
-if "%ERRORLEVEL%" EQU "0" (
-    set "LM_RUNNING=1"
-) else (
-    set "LM_RUNNING=0"
-)
-
-tasklist /FI "IMAGENAME eq ollama.exe" 2>NUL | find /I /N "ollama.exe" >NUL
-if "%ERRORLEVEL%" EQU "0" (
-    set "OLLAMA_RUNNING=1"
-) else (
-    set "OLLAMA_RUNNING=0"
-)
-
-if "%LM_RUNNING%"=="1" (
-    if "%OLLAMA_RUNNING%"=="1" (
-        echo Error: Multiple Model Servers
-        echo Please run, Ollama or LM Studio, not both
-        timeout /t 3 >nul
-        set "exit_code=1"
-        goto :eof
-    ) else (
-        echo service=lmstudio > .\data\temporary_batch.txt
-        echo LM Studio Status: Running
-    )
-) else if "%OLLAMA_RUNNING%"=="1" (
-    echo service=ollama > .\data\temporary_batch.txt
-    echo Ollama Status: Running
-) else (
-    echo Error: Neither LM Studio nor Ollama is running.
-    echo Load one of the Language Models and try again.
-    timeout /t 3 >nul
-    set "exit_code=1"
-    goto :eof
 )
 goto :eof
 
@@ -453,7 +429,7 @@ if "%ERRORLEVEL%" NEQ "0" (
 )
 goto :eof
 
-:end_script
+:end_of_script
 echo Exiting the script... Please wait.
 timeout /t 2 >nul
 exit /b
