@@ -1,39 +1,11 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Pre-release works for v11.4, attempting to be updating to v12, and improve along the way...
-1. Next step, correct the registry value documents config path merge code, here are notes...
-```
-The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
-```
-2. Clean up and test.
-3. somehow Merge `Seup-Install` and `Mantella-Local-Launcher.bat`, it would become a `pre-launcher` menu, like...
-```
-========================================================================================================================
-    Pre-Launcher Configuration
-========================================================================================================================
-
-
-
-
-
-
-
-    1. Run Mantella-Local-Launcher
-
-    2. Setup and Install Requirements
-
-    3. Check File Integrity
-
-
-
-
-
-
-========================================================================================================================
-Selection; Menu Options (1-3), Exit Pre-Config (X):
-```
-...where, 1. would run `mantella_local_launcher.py`, 2. would display the setup menu (which would return to this menu), 3. would check the working folder for `.\Mantella-Local-Launcher.Bat` and `.\mantella_local_launcher.py`, and if any of them are missing then report `Some Files Missing!` then `Reinstall Mantella-Local-Launcher.`. code should be safely merged from the two batches, relevant code requires to be analyzed for, correct integration and streamlining of processes.
-- when working version with 2 files, then make into mod on nexus mods.
-- move as much code as possible for the launching after the python script, from launcher batch script into launcher python script, so that upon exiting mantella, then it will exit the python script and go through the normal processes of having exited mantella as shown in the batch script, if that is possible? Or possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
+1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
+2. Ensure working for v12.
+2a. debug til working
+2b. Clean up and test.
+2c. when working version with 2 files, then make into mod on nexus mods.
+3. Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
 
 ### Description
@@ -180,6 +152,10 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 - There is also my mod collection specifically designed for Mantella, [MWO2 - Mantella Wasteland Operator](https://www.youtube.com/watch?v=ayZmcOqZ8iY), in that, initially the mods from MWO1 that had issues with Mantella were removed. 
 
 # Development
+- documents config path merge code, here are notes...
+```
+The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
+```
 - to do dynamic processing of characters.csv, to match the context length option, though for now this controls the context length saved in the config.ini file.
 - For v12 compatibility, there are not the keys "fallout4_folder" and "skyrim_Folder", need to ensure the launcher understands how many keys it will be retrieving. the solution is to use similar code to what is in the batch to detect what version of mantella is running...
 ```
