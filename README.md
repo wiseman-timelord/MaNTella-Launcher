@@ -92,10 +92,6 @@ Selection; Menu Options = 1-3, Exit Batch = X:
 ========================================================================================================================
 
 
-
-
-
-
     1. Install `.\requirements.txt`
 
     2. Install Torch[CPU]
@@ -108,9 +104,13 @@ Selection; Menu Options = 1-3, Exit Batch = X:
 
     6. File Integrity Test
 
+------------------------------------------------------------------------------------------------------------------------
 
+    Python Path:
+        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
 
-
+    Config File:
+        \config.ini
 
 
 ========================================================================================================================
