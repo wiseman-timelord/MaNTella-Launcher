@@ -108,7 +108,7 @@ Selection; Menu Options = 1-3, Exit Batch = X:
 ------------------------------------------------------------------------------------------------------------------------
 
     Python Path:
-        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
+        C:\Users\**USERNAME**\AppData\Local\Programs\Python\Python311\python.exe
 
     Config File:
         \config.ini
