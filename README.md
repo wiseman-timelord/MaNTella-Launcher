@@ -1,6 +1,6 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are, alpha and greatly improved...
-1. Its Now finding config.ini, but its not reading the values for the, game, game path, xvasynth path, it needs to be able to do this correctly, in order to be able to, check if they are not already running, then run these things during launch, as it did before.
+1. Its Now finding config.ini, but its not reading the values for the, game, game path, xvasynth path, it needs to be able to do this correctly, in order to be able to, check if they are not already running, then run these things during launch, as it did before. Possibly this requires the parsing code to be run, that I developed before, where the config.ini is reduced to just, `[SectionTitles]` and `keys_with=Values`, either way, if there is processing of text, then we need to move launch processes to the python script, as we should be processing the config.ini for more compitent, processing of text and reading of keys.
 1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 2. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
 3. when 100% working version with 2 files, then make into release.
