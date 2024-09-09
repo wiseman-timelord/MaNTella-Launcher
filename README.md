@@ -22,7 +22,7 @@ Status: Pre-release works for v11.4, attempting to be updating to v12, and impro
 - **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length. Current drop-in file is 1 sentence I think.
 
 ### Preview
-- The `Mantella-Local-Launcher` provides simplified optimization...
+- The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
 ```
 =======================================================================================================================
     Mantella-Local-Launcher
