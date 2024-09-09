@@ -502,9 +502,11 @@ def display_menu_and_handle_input():
         print("-" * 119)
         game_key = game.lower().replace(" ", "")
         print(f"\n")
-        print(f"    model = {model_id}\n")
+        print(f"    model:")
+        print(f"        {model_id}\n")
         print(f"    {game}_folder = {game_folders.get(game_key, 'Not set')}\n")
-        print(f"    xvasynth_folder = {xvasynth_folder}")
+        print(f"    xvasynth_folder:")
+        print(f"        {xvasynth_folder}")
         print(f"\n\n")
         print("=" * 119)
 
