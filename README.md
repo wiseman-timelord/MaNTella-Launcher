@@ -82,7 +82,7 @@ Selection; Menu Options (1-3), Exit Pre-Config (X):
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
-- The `Pre-Launch Configuration Options` of `Mantella-Launcher.Bat`...
+- The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
 ```
 ========================================================================================================================
     Pre-Launcher Configuration
@@ -114,7 +114,7 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 Selection; Menu Options = 1-3, Exit Batch = X:
 
 ```
-- The `Installer-Setup` Menu in the `Pre-Launcher`, to install requirements compitently...
+- The `Installer-Setup` Menu in the `Pre-Launcher Configuration` menu, to install requirements compitently...
 ```
 ========================================================================================================================
     Installer-Setup
