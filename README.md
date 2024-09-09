@@ -82,36 +82,68 @@ Selection; Menu Options (1-3), Exit Pre-Config (X):
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
-- The `Setup-Install.Bat` to install requirements compitently...
+- The `Pre-Launch Configuration Options` of `Mantella-Launcher.Bat`...
 ```
 ========================================================================================================================
-                                                     Install-Setup                                                     I
+    Pre-Launcher Configuration
 ========================================================================================================================
 
 
 
-    1. Upgrade Pip Version
-
-    2. Install Requirements
-
-    3. Install Torch[CPU]
-
-    4. First Run Setup
 
 
 
-------------------------------------------------------------------------------------------------------------------------
 
 
 
-    Python Path: C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
+    1. Just Run Mantella
 
-    Config File: C:\Users\Mastar\Documents\My Games\Mantella\config.ini
+    2. Mantella-Local-Launcher
+
+    3. Installer-Setup
+
+
+
+
+
+
 
 
 
 ========================================================================================================================
-Selection; Menu Options (1-4), Exit Install-Setup (X):
+Selection; Menu Options = 1-3, Exit Batch = X:
+
+```
+- The `Installer-Setup` Menu in the `Pre-Launcher`, to install requirements compitently...
+```
+========================================================================================================================
+    Installer-Setup
+========================================================================================================================
+
+
+
+
+
+
+    1. Install `.\requirements.txt`
+
+    2. Install Torch[CPU]
+
+    3. First Run Setup
+
+    4. Upgrade Pip Version
+
+    5. Check Dependency Conflicts
+
+    6. File Integrity Test
+
+
+
+
+
+
+========================================================================================================================
+Selection; Menu Options = 1-6, Back to Main = B:
 
 ```
 
