@@ -10,15 +10,22 @@ set "CONFIG_INI_PATH="
 set "config_folder="
 set "ATTEMPTS=0"
 set "ALL_FILES_OKAY="
+set "SCRIPT_DIRECTORY_PATH="
 
-:: Check Admin
+:: ADMIN AND DP0, BLOCK, DO NOT MODIFY: START
 net session >nul 2>&1 || (
-    echo Error: Admin privileges required. Right click and select "Run as administrator".
+    echo Error: Admin privileges required. Right-click and select "Run as administrator".
     timeout /t 3 >nul
-    goto :end_of_script
+    exit /b 1
 )
-echo Admin Status: Administrator
+echo Status: Administrator
 timeout /t 1 >nul
+set "SCRIPT_DIRECTORY_PATH=%~dp0"
+set "SCRIPT_DIRECTORY_PATH=%SCRIPT_DIRECTORY_PATH:~0,-1%"
+pushd "%SCRIPT_DIRECTORY_PATH%"
+echo Dp0'd to Script Dir.
+timeout /t 1 >nul
+:: ...ADMIN AND DP0, BLOCK, DO NOT MODIFY: END
 
 :: Config Notification
 for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal') do (
