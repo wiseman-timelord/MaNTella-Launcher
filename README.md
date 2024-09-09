@@ -1,11 +1,9 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: Pre-release works for v11.4, attempting to be updating to v12, and improve along the way...
 1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
-2. Ensure working for v12.
-2a. debug til working
-2b. Clean up and test.
-2c. when working version with 2 files, then make into mod on nexus mods.
-3. Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
+2. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
+3. when 100% working version with 2 files, then make into mod on nexus mods.
+4. Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
 
 ### Description
