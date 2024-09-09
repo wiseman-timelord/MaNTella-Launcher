@@ -120,7 +120,8 @@ Selection; Menu Options = 1-6, Back to Main = B:
 
 ## Requirements
 1. **Powerful Computer**: Running Fallout 4/Skyrim and interference on models can be intensive.
-2. **Python Environment**: "Mantella requires Python 3.11" and the same libraries as in the original Mantella `requirements.txt`.
+2. **Python Environment**: "Mantella-Local-Launcher requires Python 3.11", but Ensure that it was installed to the default directory or the default directory for all users.
+3. **Python Libraries**: The same libraries as Mantella listed in `requirements.txt`.
 3. **Language Model**: Search [HuggingFace](https://huggingface.co) for a `.Gguf` model such as, llama 3 or llama 3.1, 4.xGB VRam Free for Q3 or 5.xGB VRam free for Q4, and for shared GPU this is in addition to whatever Fallout 4 consumes of your Vram.
 4. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
 5. **xVASynth Installation**: Must be installed and correctly configured in the specified directory.
@@ -128,10 +129,11 @@ Selection; Menu Options = 1-6, Back to Main = B:
 7. **LM Studio or Ollama**: Obtain model folder/name and foolproofs api config, Mantella-Local-Launcer will not work on non-local model host services.
 
 # Usage / Install
-1. Ensure that Python 3.11 was installed to, the default directory or the default directory for all users.
-2. Ensure the [Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) is installed for Fallout/Skyrim from the Nexus mods site, follow the guide, this will, at some point, require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
-3. Download the [Latest Release](https://github.com/wiseman-timelord/Mantella-Local-Launcher/releases) of the launcher, and drag the, file(S) and folder(s), from the zip into the main Mantella folder.
-4. Run `Install-Setup.Bat`, this will ensure you have installed the requirements to the correct install of python. If, it exits with a torch error and/or you do not have cuda, then run `1b. Install_Torch_Cpu(Optional).bat`, so as install, "Torch+Cpu" and "TorchAudio+Cpu" and "TorchVision+Cpu, as "xVASynth" will likely have less issues. 
+1. Ensure the, [Fallout 4 Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) or [Skyrim SE/AE Mantella Mod](https://www.nexusmods.com/skyrimspecialedition/mods/98631), is installed for from the Nexus mods site, ensure to skim through the relating guides, this will require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
+2. Download the [Latest Release](https://github.com/wiseman-timelord/Mantella-Local-Launcher/releases) of the launcher, and drag the, file(S) and folder(s), from the zip into the main Mantella folder.
+3. Run `Installer-Setup`, this will ensure you have installed the requirements to the correct install of python. If, you are getting Torch errors and/or you do not have suitable GPU, then install `Torch[Cpu]`.
+4. Ensure that you have ran `First Run Setup`
+4. For LM Studio, to Quote "In config.ini, set llm_api = http://localhost:1234/v1/. This is the URL that LM Studio is running your model on.", other server methods are detailed in the Official guides. 
 5. Run `Mantella-Local-Launcher.Bat` for the Launcher, configure your optimizations, and when done then select "B" for begin. In future you should run `Mantella_No_Launcher.Bat`, unless you wish to alter the optimizations.
   
 ## Notes
