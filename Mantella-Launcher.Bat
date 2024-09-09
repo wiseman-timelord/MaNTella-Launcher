@@ -7,20 +7,41 @@ setlocal EnableDelayedExpansion
 :: Global Variables
 set "PYTHON_EXE_TO_USE="
 set "CONFIG_INI_PATH="
+set "config_folder="
 set "ATTEMPTS=0"
 set "ALL_FILES_OKAY="
 
 :: Check Admin
 net session >nul 2>&1 || (
-    echo Error: Admin privileges required. Right-click and select "Run as administrator".
+    echo Error: Admin privileges required. Right click and select "Run as administrator".
     timeout /t 3 >nul
     goto :end_of_script
 )
 echo Admin Status: Administrator
 timeout /t 1 >nul
 
+:: Config Notification
+for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal') do (
+    set "config_folder=%%B"
+)
+if not defined config_folder (
+    echo Error: Unable to retrieve Documents folder from the registry.
+	timeout /t 3 >nul
+    goto main_menu
+)
+set "CONFIG_INI_PATH=%config_folder%\My Games\Mantella\config.ini"
+if not exist "%CONFIG_INI_PATH%" (
+	echo Error: %CONFIG_INI_PATH% not found.
+	echo Ensure to Run `First Run Setup`, and then edit `Documents\My Games\Mantella\config.ini`.
+	timeout /t 5 >nul
+    goto main_menu
+)
+echo Config Found: %CONFIG_INI_PATH%
+timeout /t 1 >nul
+goto :main_menu
+
 :main_menu
-rem cls
+cls
 echo ========================================================================================================================
 echo     Pre-Launcher Configuration  
 echo ========================================================================================================================
@@ -113,14 +134,14 @@ echo     5. Check Dependency Conflicts
 echo.
 echo     6. File Integrity Test
 echo.
+echo.
 echo ------------------------------------------------------------------------------------------------------------------------
 echo.
 echo     Python Path:
 echo         %PYTHON_EXE_TO_USE%
 echo.
 echo     Config File:
-echo         %config_folder%\config.ini
-echo.
+echo         %CONFIG_INI_PATH%
 echo.
 echo ========================================================================================================================
 set /p "install_choice=Selection; Menu Options = 1-6, Back to Main = B: "
@@ -247,13 +268,22 @@ timeout /t 1 > nul
 goto main_menu
 
 :check_config
-if not exist "%CONFIG_INI_PATH%" (
-    echo Error: %CONFIG_INI_PATH% not found.
-    echo Please run the `First Run Setup`, and then edit the config.ini file.
-    timeout /t 3 >nul
-    goto main_menu
+rem Retrieve Documents folder path from the correct registry key (User Shell Folders)
+if exist "%CONFIG_INI_PATH%" (
+    goto :eof
 )
-echo Config file found.
+for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal') do (
+    set "config_folder=%%B"
+)
+set "CONFIG_INI_PATH=%config_folder%\My Games\Mantella\config.ini"
+if not defined config_folder (
+    Set "CONFIG_INI_PATH=Failed_Reading_Registry"
+    goto :eof
+)
+if not exist "%CONFIG_INI_PATH%" (
+    Set "CONFIG_INI_PATH=First_Run_Then_Edit_config.ini"
+    goto :eof
+)
 goto :eof
 
 :find_python
