@@ -108,7 +108,7 @@ Selection; Menu Options = 1-3, Exit Batch = X:
 ------------------------------------------------------------------------------------------------------------------------
 
     Python Path:
-        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
+        C:\Users\**USER_FOLDER**\AppData\Local\Programs\Python\Python311\python.exe
 
     Config File:
         F:\Documents\My Games\Mantella\config.ini
