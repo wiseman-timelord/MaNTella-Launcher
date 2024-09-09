@@ -10,8 +10,17 @@ set "CONFIG_INI_PATH="
 set "ATTEMPTS=0"
 set "ALL_FILES_OKAY="
 
+:: Check Admin
+net session >nul 2>&1 || (
+    echo Error: Admin privileges required. Right-click and select "Run as administrator".
+    timeout /t 3 >nul
+    goto :end_of_script
+)
+echo Admin Status: Administrator
+timeout /t 1 >nul
+
 :main_menu
-cls
+rem cls
 echo ========================================================================================================================
 echo     Pre-Launcher Configuration  
 echo ========================================================================================================================
@@ -51,7 +60,6 @@ timeout /t 2 >nul
 goto main_menu
 
 :run_mantella
-call :admin_check
 call :find_python
 call :check_config
 echo Running Mantella...
@@ -66,7 +74,10 @@ pause
 goto main_menu
 
 :mantella_launcher
-call :admin_check
+cls
+echo ========================================================================================================================
+echo     Pre-Launcher Configuration  
+echo ========================================================================================================================
 call :find_python
 call :check_config
 call :check_lm_ollama
@@ -82,17 +93,12 @@ pause
 goto main_menu
 
 :installer_setup
-call :admin_check
 call :find_python
 :installer_menu
 cls
 echo ========================================================================================================================
 echo     Installer-Setup                                                     
 echo ========================================================================================================================
-echo.
-echo.
-echo.
-echo.
 echo.
 echo.
 echo     1. Install `.\requirements.txt`
@@ -107,9 +113,13 @@ echo     5. Check Dependency Conflicts
 echo.
 echo     6. File Integrity Test
 echo.
+echo ------------------------------------------------------------------------------------------------------------------------
 echo.
+echo     Python Path:
+echo         %PYTHON_EXE_TO_USE%
 echo.
-echo.
+echo     Config File:
+echo         %config_folder%\config.ini
 echo.
 echo.
 echo ========================================================================================================================
@@ -236,17 +246,14 @@ echo Returning to main menu...
 timeout /t 1 > nul
 goto main_menu
 
-:admin_check
-net session >nul 2>&1 || (
-    echo Error: Admin privileges required. Right-click and select "Run as administrator".
+:check_config
+if not exist "%CONFIG_INI_PATH%" (
+    echo Error: %CONFIG_INI_PATH% not found.
+    echo Please run the `First Run Setup`, and then edit the config.ini file.
     timeout /t 3 >nul
     goto main_menu
 )
-echo Status: Administrator
-set "SCRIPT_DIRECTORY_PATH=%~dp0"
-set "SCRIPT_DIRECTORY_PATH=%SCRIPT_DIRECTORY_PATH:~0,-1%"
-pushd "%SCRIPT_DIRECTORY_PATH%"
-echo Path Dp0'd To Script.
+echo Config file found.
 goto :eof
 
 :find_python
@@ -266,17 +273,42 @@ goto main_menu
 echo Python 3.11 Found
 goto :eof
 
-:check_config
-for /f "usebackq tokens=3*" %%A in (`reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal`) do (
-    set "CONFIG_INI_PATH=%%A\My Games\Mantella\config.ini"
+:check_lm_ollama
+tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe" >NUL
+if "%ERRORLEVEL%" EQU "0" (
+    set "LM_RUNNING=1"
+) else (
+    set "LM_RUNNING=0"
 )
-set "CONFIG_INI_PATH=%CONFIG_INI_PATH:/=\%"
-if not exist "%CONFIG_INI_PATH%" (
-    echo First Run Detected. Please run Install-Setup first!
+
+tasklist /FI "IMAGENAME eq ollama.exe" 2>NUL | find /I /N "ollama.exe" >NUL
+if "%ERRORLEVEL%" EQU "0" (
+    set "OLLAMA_RUNNING=1"
+) else (
+    set "OLLAMA_RUNNING=0"
+)
+
+if "%LM_RUNNING%"=="1" (
+    if "%OLLAMA_RUNNING%"=="1" (
+        echo Error: Multiple Model Servers
+        echo Please run, Ollama or LM Studio, not both
+        timeout /t 3 >nul
+        goto main_menu
+    ) else (
+        echo service=lmstudio > .\data\temporary_batch.txt
+        timeout /t 1 >nul
+        echo LM Studio Status: Running
+    )
+) else if "%OLLAMA_RUNNING%"=="1" (
+    echo service=ollama > .\data\temporary_batch.txt
+    timeout /t 1 >nul
+    echo Ollama Status: Running
+) else (
+    echo Error: Neither LM Studio nor Ollama is running.
+    echo Load one of the Language Models and try again.
     timeout /t 3 >nul
     goto main_menu
 )
-echo Found Config File.
 goto :eof
 
 :check_lm_ollama
