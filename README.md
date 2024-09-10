@@ -24,34 +24,34 @@ Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are,
 ### Preview
 - The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
 ```
-=======================================================================================================================
-    MaNTella-Launcher
------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
+    Installer-Setup
+========================================================================================================================
 
-    1. Select Game Used
-        (Fallout4)
-    2. Microphone Status
-        (False)
-    3. Prompt Optimization
-        (Default)
-    4. Model Token Count
-        (4096)
 
------------------------------------------------------------------------------------------------------------------------
+    1. Install `.\requirements.txt`
 
-    Config Path:
+    2. Install Torch[CPU]
+
+    3. First Run Setup
+
+    4. Upgrade Pip Version
+
+    5. Check Dependency Conflicts
+
+    6. File Integrity Test
+
+------------------------------------------------------------------------------------------------------------------------
+
+    Python Path:
+        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
+
+    Config File:
         F:\Documents\My Games\Mantella\config.ini
-    Fallout4_Path:
-        E:\GamesVR\Fallout4_163\
-    xVAsynth Path:
-        D:\GamesVR\xVASynth
-    LLM API:
-        http://localhost:1234/v1/
-    Model Loaded:
-        uncensored-frank-llama-3-8b.q6_k
 
-=======================================================================================================================
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
+
+========================================================================================================================
+Selection; Menu Options = 1-6, Back to Main = B:
 
 ```
 - The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
