@@ -5,6 +5,7 @@ Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are,
 Fallout4_Path:
         E:\GamesVR\Fallout4_163\
 ```
+...so it knows where the game path is, its just not merging the path with the exe's in sequence when it runs, however it seems to be working correctly with regards to exit messages when it fails.
 1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 2. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
 3. when 100% working version with 2 files, then make into release.
