@@ -4,7 +4,7 @@
 import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg  # built-in libraries 
 
 # Global variables
-OUTPUT_FILE = '.\\data\\temporary_batch.txt'
+PERSISTENCE_TXT_PATH = '.\\data\\temporary_batch.txt'
 game = "Skyrim"
 optimization = "Default"
 game_folders = {}
@@ -14,7 +14,7 @@ model_id = ""
 custom_token_count = 8192    # Default value
 lmstudio_api_url = "http://localhost:1234/v1/models"
 microphone_enabled = False
-FILE_NAME = ''
+CONFIG_INI_PATH = ''
 DOCUMENTS_FOLDER = ''
 
 # Initialization
@@ -28,6 +28,11 @@ def clear_screen():
 def get_documents_folder():
     key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")
     return os.path.expandvars(winreg.QueryValueEx(key, "Personal")[0])
+def set_config_ini_path():
+    global CONFIG_INI_PATH, DOCUMENTS_FOLDER
+    DOCUMENTS_FOLDER = get_documents_folder()
+    CONFIG_INI_PATH = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
+    verbose_print(f"CONFIG_INI_PATH set to: {CONFIG_INI_PATH}")
 
 # Optimization presets
 optimization_presets = {
@@ -83,13 +88,15 @@ def get_config_from_file():
         verbose_print(f"Config paths file not found: {txt_file_path}")
         return None, None
 
+
+
 def read_config():
-    verbose_print(f"Reading config file from: {FILE_NAME}")
+    verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
     global game, optimization, custom_token_count, game_folders, mod_folders, microphone_enabled
     config = configparser.ConfigParser()
 
     try:
-        config.read(FILE_NAME)
+        config.read(CONFIG_INI_PATH)
     except configparser.Error as e:
         verbose_print(f"Error reading config.ini file: {str(e)}")
         delay(3)
@@ -147,7 +154,7 @@ def write_config():
     config = configparser.ConfigParser()
     
     try:
-        config.read(FILE_NAME)
+        config.read(CONFIG_INI_PATH)
     except configparser.Error as e:
         verbose_print(f"Error reading existing config for writing: {str(e)}")
         delay(3)
@@ -185,8 +192,8 @@ def write_config():
     config["LanguageModel.Advanced"]["llm_api"] = "http://localhost:1234/v1"
     
     try:
-        os.makedirs(os.path.dirname(FILE_NAME), exist_ok=True)
-        with open(FILE_NAME, 'w') as configfile:
+        os.makedirs(os.path.dirname(CONFIG_INI_PATH), exist_ok=True)
+        with open(CONFIG_INI_PATH, 'w') as configfile:
             config.write(configfile)
         verbose_print("Config file updated successfully.")
     except Exception as e:
@@ -199,12 +206,12 @@ def write_output_file(exit_code):
     try:
         game_key = game.lower().replace(" ", "")
         game_folder = game_folders.get(game_key, "Not set")
-        with open(OUTPUT_FILE, 'w') as f:
+        with open(PERSISTENCE_TXT_PATH, 'w') as f:
             f.write(f"exit_code={exit_code}\n")
             f.write(f"xvasynth_folder={xvasynth_folder}\n")  # Updated from the text file
             f.write(f"game={game}\n")
             f.write(f"game_folder={game_folder}")
-        verbose_print(f"Output file written successfully: {OUTPUT_FILE}")
+        verbose_print(f"Output file written successfully: {PERSISTENCE_TXT_PATH}")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
 
@@ -213,7 +220,7 @@ def fetch_model_details_ollama():
     config = configparser.ConfigParser()
 
     try:
-        config.read(FILE_NAME)
+        config.read(CONFIG_INI_PATH)
 
         result = subprocess.run(['ollama', 'ps'], capture_output=True, text=True, check=True)
         output_lines = result.stdout.strip().split('\n')
@@ -259,7 +266,7 @@ def fetch_model_details_ollama():
                         config["LanguageModel"] = {}
                     config["LanguageModel"]["model"] = model_id
 
-                    with open(FILE_NAME, 'w') as configfile:
+                    with open(CONFIG_INI_PATH, 'w') as configfile:
                         config.write(configfile)
 
                     verbose_print(f"Model Read: Ollama - {model_id}")
@@ -286,7 +293,7 @@ def fetch_model_details_lmstudio():
     config = configparser.ConfigParser()
 
     try:
-        config.read(FILE_NAME)
+        config.read(CONFIG_INI_PATH)
         try:
             result = subprocess.run(['curl', lmstudio_api_url], capture_output=True, text=True, check=True)
             model_data = json.loads(result.stdout)
@@ -299,7 +306,7 @@ def fetch_model_details_lmstudio():
                     config["LanguageModel"] = {}
                 config["LanguageModel"]["model"] = model_id
 
-                with open(FILE_NAME, 'w') as configfile:
+                with open(CONFIG_INI_PATH, 'w') as configfile:
                     config.write(configfile)
 
                 verbose_print(f"Model Read: LM Studio - {model_id}")
@@ -323,7 +330,7 @@ def fetch_model_details_lmstudio():
 def check_and_update_prompts():
     verbose_print("Checking Prompts")
     config = configparser.ConfigParser()
-    config.read(FILE_NAME)
+    config.read(CONFIG_INI_PATH)
 
     prompt_keys = [
         "skyrim_prompt", "skyrim_multi_npc_prompt", "fallout4_prompt", 
@@ -373,7 +380,7 @@ def check_and_update_prompts():
             config['Prompt'][key] = value
         
         try:
-            with open(FILE_NAME, 'w') as configfile:
+            with open(CONFIG_INI_PATH, 'w') as configfile:
                 config.write(configfile)
             verbose_print("..Prompts Optimized.")
         except Exception as e:
@@ -479,21 +486,28 @@ def display_menu_and_handle_input():
     global game, optimization, custom_token_count, microphone_enabled, model_id
     while True:
         display_title()
-        print(f"\n")
-        print(f"    1. Game Used: {game}\n")
-        print(f"    2. Microphone On: {'True' if microphone_enabled else 'False'}\n")
-        print(f"    3. Optimization: {optimization}\n")
-        print(f"    4. Token Count: {custom_token_count}\n")
-        print(f"")
-        print("-" * 119)
         game_key = game.lower().replace(" ", "")
-        print(f"\n")
-        print(f"    model:")
-        print(f"        {model_id}\n")
-        print(f"    {game}_folder = {game_folders.get(game_key, 'Not set')}\n")
-        print(f"    xvasynth_folder:")
+        print(f"")
+        print(f"    1. Select Game Used")
+        print(f"        ({game})")
+        print(f"    2. Microphone Status")
+        print(f"        ({'True' if microphone_enabled else 'False'})")
+        print(f"    3. Prompt Optimization")
+        print(f"        ({optimization})")
+        print(f"    4. Model Token Count")
+        print(f"        ({custom_token_count})")
+        print(f"")
+        print("-" * 119) 
+        print(f"")
+        print(f"    Model Loaded:")
+        print(f"        {model_id}")
+        print(f"    Config Path:")
+        print(f"        {CONFIG_INI_PATH}")
+        print(f"    {game}_Path:")
+        print(f"        {game_folders.get(game_key, 'Not set')}")
+        print(f"    xVAsynth Path:")
         print(f"        {xvasynth_folder}")
-        print(f"\n\n")
+        print(f"")
         print("=" * 119)
 
         choice = input("Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: ").strip().upper()
@@ -539,12 +553,9 @@ def display_menu_and_handle_input():
 
 # Main Function
 def main():
-    global FILE_NAME, DOCUMENTS_FOLDER
-
     verbose_print("Entering main function")
     try:
-        DOCUMENTS_FOLDER = get_documents_folder()
-        FILE_NAME = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
+        set_config_ini_path()  # Call the new function to set CONFIG_INI_PATH
 
         read_config()
 
