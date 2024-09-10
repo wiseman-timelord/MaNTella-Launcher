@@ -102,9 +102,9 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 
     1. Install `.\requirements.txt`
 
-    2. Install Torch[CPU]
+    2 First Run Setup (Run Once)
 
-    3. First Run Setup
+    3. Fix Ollama Non-Cuda/Non-Rocm GPU
 
     4. Upgrade Pip Version
 
@@ -112,14 +112,14 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 
     6. File Integrity Test
 
-
 ------------------------------------------------------------------------------------------------------------------------
 
     Python Path:
-        C:\Users\**USER_FOLDER**\AppData\Local\Programs\Python\Python311\python.exe
+        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
 
     Config File:
         F:\Documents\My Games\Mantella\config.ini
+
 
 ========================================================================================================================
 Selection; Menu Options = 1-6, Back to Main = B:
