@@ -1,5 +1,6 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are, alpha and greatly improved...
+- Waiting for Claude refresh.
 1. When launching, it needs to merge the path from the registry with the relating script extender exe for the relevant game, falling back on the original game exe if it cant find the script extender exe. This is important for the launch command to work. the game path without exe is shown here...
 ```
 Fallout4_Path:
