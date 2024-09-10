@@ -108,6 +108,12 @@ timeout /t 2 >nul
 goto main_menu
 
 :run_mantella
+cls
+echo ========================================================================================================================
+echo     Launching Mantella-Vanilla...                                                
+echo ========================================================================================================================
+echo.
+timeout /t 1 >nul
 call :check_config
 echo Saving CONFIG_INI_PATH and model_service_used to temporary_batch.txt...
 echo CONFIG_INI_PATH=%CONFIG_INI_PATH% > .\data\temporary_batch.txt
@@ -117,7 +123,7 @@ echo Running Mantella...
 "%PYTHON_EXE_TO_USE%" .\main.py
 if errorlevel 1 (
     echo Error occurred while running Mantella.
-    pause
+    timeout /t 5 >nul
     goto main_menu
 )
 echo Mantella Exited.
@@ -127,24 +133,25 @@ goto main_menu
 :mantella_launcher
 cls
 echo ========================================================================================================================
-echo     Pre-Launcher Configuration  
+echo     Launching Mantella-Local...                                                
 echo ========================================================================================================================
+echo.
+timeout /t 1 >nul
 call :check_config
-call :check_lm_ollama
-if "%exit_code%"=="1" goto main_menu
-call :check_game
-call :check_xvasynth
 echo Saving CONFIG_INI_PATH and model_service_used to temporary_batch.txt...
 echo CONFIG_INI_PATH=%CONFIG_INI_PATH% > .\data\temporary_batch.txt
-echo model_service_used=launcher >> .\data\temporary_batch.txt
+echo model_service_used=standalone >> .\data\temporary_batch.txt
 timeout /t 1 >nul
-echo Running Mantella...
-"%PYTHON_EXE_TO_USE%" .\main.py
-echo Mantella Exited.
-del .\data\temporary_batch.txt
-echo File Deleted: .\data\temporary_batch.txt
-pause
+echo Running Mantella Local Launcher...
+"%PYTHON_EXE_TO_USE%" .\mantella_launcher.py
+if errorlevel 1 (
+    echo Error occurred in Mantella Local.
+    echo Returning to menu in 5 seconds...
+    timeout /t 5 >nul
+    goto main_menu
+)
 goto main_menu
+
 
 :installer_menu
 cls
@@ -188,6 +195,7 @@ if /i "%install_choice%"=="B" goto main_menu
 echo Invalid option. Please try again.
 timeout /t 2 >nul
 goto installer_menu
+
 
 :banner_install
 cls
@@ -323,109 +331,6 @@ if not defined config_folder (
 if not exist "%CONFIG_INI_PATH%" (
     Set "CONFIG_INI_PATH=First_Run_Then_Edit_config.ini"
     goto :eof
-)
-goto :eof
-
-:check_lm_ollama
-tasklist /FI "IMAGENAME eq LM Studio.exe" 2>NUL | find /I /N "LM Studio.exe" >NUL
-if "%ERRORLEVEL%" EQU "0" (
-    set "LM_RUNNING=1"
-) else (
-    set "LM_RUNNING=0"
-)
-tasklist /FI "IMAGENAME eq ollama.exe" 2>NUL | find /I /N "ollama.exe" >NUL
-if "%ERRORLEVEL%" EQU "0" (
-    set "OLLAMA_RUNNING=1"
-) else (
-    set "OLLAMA_RUNNING=0"
-)
-if "%LM_RUNNING%"=="1" (
-    if "%OLLAMA_RUNNING%"=="1" (
-        echo Error: Multiple Model Servers
-        echo Please run, Ollama or LM Studio, not both
-        timeout /t 3 >nul
-        goto main_menu
-    ) else (
-        echo model_service_used=lmstudio >> .\data\temporary_batch.txt
-        timeout /t 1 >nul
-        echo LM Studio Status: Running
-    )
-) else if "%OLLAMA_RUNNING%"=="1" (
-    echo model_service_used=ollama >> .\data\temporary_batch.txt
-    timeout /t 1 >nul
-    echo Ollama Status: Running
-) else (
-    echo Error: Neither LM Studio nor Ollama is running.
-    echo Load one of the Language Models and try again.
-    timeout /t 3 >nul
-    goto main_menu
-)
-goto :eof
-
-:check_game
-for /f "tokens=1,2 delims==" %%i in (.\data\temporary_batch.txt) do (
-    if "%%i"=="game" set game=%%j
-    if "%%i"=="game_folder" set game_folder=%%j
-)
-echo Checking for %game%...
-if "%game%"=="Fallout4" (
-    if exist "%game_folder%\f4se_loader.exe" (
-        set "game_se=f4se_loader.exe"
-        set "game_exe=Fallout4.exe"
-    )
-) else if "%game%"=="Fallout4VR" (
-    if exist "%game_folder%\f4sevr_loader.exe" (
-        set "game_se=f4sevr_loader.exe"
-        set "game_exe=Fallout4VR.exe"
-    )
-) else if "%game%"=="Skyrim" (
-    if exist "%game_folder%\skse64_loader.exe" (
-        set "game_se=skse64_loader.exe"
-        set "game_exe=SkyrimSE.exe"
-    )
-) else if "%game%"=="SkyrimVR" (
-    if exist "%game_folder%\sksevr_loader.exe" (
-        set "game_se=sksevr_loader.exe"
-        set "game_exe=SkyrimVR.exe"
-    )
-)
-tasklist /FI "IMAGENAME eq %game_exe%" 2>NUL | find /I /N "%game_exe%">NUL
-if "%ERRORLEVEL%" NEQ "0" (
-    echo %game_exe% is not running. Starting %game%...
-    if exist "%game_folder%\%game_se%" (
-        pushd "%game_folder%"
-        echo Found and Running, %game_se%.
-        powershell -Command "Start-Process '%game_folder%\%game_se%' -NoNewWindow"
-        popd
-    ) else (
-        echo Error: %game_se% not found at %game_folder%
-        echo Check, config.ini game path and Script Extender presence.
-        timeout /t 3 >nul
-        goto main_menu
-    )
-    timeout /t 3 >nul
-)
-goto :eof
-
-:check_xvasynth
-for /f "tokens=1,2 delims==" %%i in (.\data\temporary_batch.txt) do (
-    if "%%i"=="xvasynth_folder" set xvasynth_folder=%%j
-)
-echo Checking for xVASynth...
-tasklist /FI "IMAGENAME eq xVASynth.exe" 2>NUL | find /I /N "xVASynth.exe">NUL
-if "%ERRORLEVEL%" NEQ "0" (
-    echo xVASynth.exe is not running. Starting xVASynth...
-    if exist "%xvasynth_folder%\xVASynth.exe" (
-        pushd "%xvasynth_folder%"
-        powershell -Command "Start-Process '%xvasynth_folder%\xVASynth.exe'"
-        popd
-    ) else (
-        echo Error: xVASynth.exe not found.
-        echo Check config.ini xvasynth path validity.
-        timeout /t 3 >nul
-        goto main_menu
-    )
-    timeout /t 3 >nul
 )
 goto :eof
 

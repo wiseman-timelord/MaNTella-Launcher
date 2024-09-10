@@ -1,8 +1,7 @@
 # Script: .\mantella_launcher.py
 
 # Imports
-import os, sys, time, shutil, traceback, subprocess  # Common Imports
-import configparser, json  # Config/Json Related
+import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg  # built-in libraries 
 
 # Global variables
 OUTPUT_FILE = '.\\data\\temporary_batch.txt'
@@ -384,6 +383,90 @@ def check_and_update_prompts():
         verbose_print("Prompts Already Optimized.")
         delay(1)
 
+def check_lm_ollama():
+    lm_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq LM Studio.exe'], capture_output=True, text=True).stdout.lower().count('lm studio.exe') > 0
+    ollama_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq ollama.exe'], capture_output=True, text=True).stdout.lower().count('ollama.exe') > 0
+
+    if lm_running and ollama_running:
+        verbose_print("Error: Multiple Model Servers")
+        verbose_print("Please run, Ollama or LM Studio, not both")
+        return False
+    elif lm_running:
+        verbose_print("LM Studio Status: Running")
+        return "lmstudio"
+    elif ollama_running:
+        verbose_print("Ollama Status: Running")
+        return "ollama"
+    else:
+        verbose_print("Error: Neither LM Studio nor Ollama is running.")
+        verbose_print("Load one of the Language Models and try again.")
+        return False
+
+def check_game():
+    game_exe = {
+        "Fallout4": "Fallout4.exe",
+        "Fallout4VR": "Fallout4VR.exe",
+        "Skyrim": "SkyrimSE.exe",
+        "SkyrimVR": "SkyrimVR.exe"
+    }.get(game, "")
+
+    if not game_exe:
+        verbose_print(f"Unknown game: {game}")
+        return False
+
+    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
+
+    if not game_running:
+        verbose_print(f"{game_exe} is not running. Starting {game}...")
+        game_folder = game_folders.get(game.lower(), "")
+        if not game_folder:
+            verbose_print(f"Game folder not set for {game}")
+            return False
+
+        script_extender = {
+            "Fallout4": "f4se_loader.exe",
+            "Fallout4VR": "f4sevr_loader.exe",
+            "Skyrim": "skse64_loader.exe",
+            "SkyrimVR": "sksevr_loader.exe"
+        }.get(game, "")
+
+        if not os.path.exists(os.path.join(game_folder, script_extender)):
+            verbose_print(f"Error: {script_extender} not found at {game_folder}")
+            verbose_print("Check, config.ini game path and Script Extender presence.")
+            return False
+
+        subprocess.Popen([os.path.join(game_folder, script_extender)], cwd=game_folder)
+        verbose_print(f"Started {script_extender}")
+        time.sleep(3)  # Wait for the game to start
+
+    return True
+
+def check_xvasynth():
+    xvasynth_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq xVASynth.exe'], capture_output=True, text=True).stdout.lower().count('xvasynth.exe') > 0
+
+    if not xvasynth_running:
+        verbose_print("xVASynth.exe is not running. Starting xVASynth...")
+        if os.path.exists(os.path.join(xvasynth_folder, "xVASynth.exe")):
+            subprocess.Popen([os.path.join(xvasynth_folder, "xVASynth.exe")], cwd=xvasynth_folder)
+            verbose_print("Started xVASynth")
+            time.sleep(3)  # Wait for xVASynth to start
+        else:
+            verbose_print("Error: xVASynth.exe not found.")
+            verbose_print("Check config.ini xvasynth path validity.")
+            return False
+
+    return True
+
+def launch_mantella():
+    verbose_print("Running Mantella...")
+    try:
+        subprocess.run([sys.executable, "main.py"], check=True)
+    except subprocess.CalledProcessError as e:
+        verbose_print(f"Error occurred while running main.py: {e}")
+        verbose_print("Returning to menu in 5 seconds...")
+        time.sleep(5)
+        return False
+    return True
 
 def display_title():
     clear_screen()
@@ -456,20 +539,38 @@ def display_menu_and_handle_input():
 
 # Main Function
 def main():
+    global FILE_NAME, DOCUMENTS_FOLDER
+
     verbose_print("Entering main function")
     try:
+        DOCUMENTS_FOLDER = get_documents_folder()
+        FILE_NAME = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
+
         read_config()
 
-        server_choice = read_temp_file()
-        if server_choice == "lmstudio":
-            fetch_model_details_lmstudio()
-        elif server_choice == "ollama":
-            fetch_model_details_ollama()
-        else:
-            verbose_print("No valid model server choice found.")
-            model_id = "No valid server choice"
+        model_server = check_lm_ollama()
+        if not model_server:
+            return 1, ""
 
-        return display_menu_and_handle_input()
+        if model_server == "lmstudio":
+            fetch_model_details_lmstudio()
+        elif model_server == "ollama":
+            fetch_model_details_ollama()
+
+        while True:
+            exit_code, xvasynth_folder = display_menu_and_handle_input()
+            
+            if exit_code == 0:
+                if not check_game():
+                    continue
+                if not check_xvasynth():
+                    continue
+                if launch_mantella():
+                    break
+            else:
+                break
+
+        return exit_code, xvasynth_folder
     except Exception as e:
         verbose_print(f"An unexpected error occurred: {str(e)}")
         verbose_print("Traceback:")
