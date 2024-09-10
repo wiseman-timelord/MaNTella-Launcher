@@ -68,7 +68,7 @@ timeout /t 1 >nul
 goto :main_menu
 
 :main_menu
-cls
+rem cls
 echo ========================================================================================================================
 echo     Pre-Launcher Configuration  
 echo ========================================================================================================================
@@ -162,9 +162,9 @@ echo.
 echo.
 echo     1. Install `.\requirements.txt`
 echo.
-echo     2. Install Torch[CPU]
+echo     2 First Run Setup ^(Run Once^)
 echo.
-echo     3. First Run Setup
+echo     3. Fix Ollama Non-Cuda/Non-Rocm GPU 
 echo.
 echo     4. Upgrade Pip Version
 echo.
@@ -185,8 +185,8 @@ echo ===========================================================================
 set /p "install_choice=Selection; Menu Options = 1-6, Back to Main = B: "
 
 if "%install_choice%"=="1" goto install_requirements
-if "%install_choice%"=="2" goto install_torch
-if "%install_choice%"=="3" goto first_run_setup
+if "%install_choice%"=="2" goto first_run_setup
+if "%install_choice%"=="3" goto install_torch
 if "%install_choice%"=="4" goto upgrade_pip
 if "%install_choice%"=="5" goto check_dependencies
 if "%install_choice%"=="6" goto integrity_test

@@ -7,7 +7,7 @@ import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg 
 PERSISTENCE_TXT_PATH = '.\\data\\temporary_batch.txt'
 game = "Skyrim"
 optimization = "Default"
-game_folders = {}
+game_paths = {}
 mod_folders = {}
 xvasynth_folder = ""
 model_id = ""
@@ -63,10 +63,10 @@ def read_game_paths_from_registry():
         except WindowsError:
             return "Not_Installed"
 
-    Skyrim_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path")
-    SkyrimVR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path")
-    Fallout4_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path")
-    Fallout4VR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path")
+    Skyrim_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path"), script_extender["Skyrim"])
+    SkyrimVR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path"), script_extender["SkyrimVR"])
+    Fallout4_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path"), script_extender["Fallout4"])
+    Fallout4VR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path"), script_extender["Fallout4VR"])
     verbose_print(f"Skyrim Folder Path: {Skyrim_Folder_Path}")
     verbose_print(f"SkyrimVR Folder Path: {SkyrimVR_Folder_Path}")
     verbose_print(f"Fallout4 Folder Path: {Fallout4_Folder_Path}")
@@ -129,7 +129,7 @@ def get_config_from_file():
 
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
-    global game, optimization, custom_token_count, game_folders, mod_folders, microphone_enabled, llm_api
+    global game, optimization, custom_token_count, game_paths, mod_folders, microphone_enabled, llm_api
     config = configparser.ConfigParser()
 
     try:
@@ -143,7 +143,7 @@ def read_config():
     game = config.get("Game", "game", fallback="Skyrim")
 
     # Fetch paths based on sections and keys
-    game_folders = {
+    game_paths = {
         "skyrim": config.get("Game", "skyrim_folder", fallback="Not set"),
         "skyrimvr": config.get("Game", "skyrimvr_folder", fallback="Not set"),
         "fallout4": config.get("Game", "fallout4_folder", fallback="Not set"),
@@ -160,6 +160,8 @@ def read_config():
     # Set xVASynth folder
     global xvasynth_folder
     xvasynth_folder = config.get("TTS", "xvasynth_folder", fallback="Not set")
+    if xvasynth_folder != "Not set":
+        xvasynth_folder = os.path.join(xvasynth_folder, "xVASynth.exe")
 
     # Fetch Language Model settings
     custom_token_count = int(config.get("LLM", "custom_token_count", fallback="4096"))
@@ -246,12 +248,12 @@ def write_output_file(exit_code):
     verbose_print(f"Writing output file")
     try:
         game_key = game.lower().replace(" ", "")
-        game_folder = game_folders.get(game_key, "Not set")
+        game_path = game_paths.get(game_key, "Not set")
         with open(PERSISTENCE_TXT_PATH, 'w') as f:
             f.write(f"exit_code={exit_code}\n")
             f.write(f"xvasynth_folder={xvasynth_folder}\n")  # Updated from the text file
             f.write(f"game={game}\n")
-            f.write(f"game_folder={game_folder}")
+            f.write(f"game_path={game_path}")
         verbose_print(f"Output file written successfully: {PERSISTENCE_TXT_PATH}")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
@@ -455,26 +457,23 @@ def check_game():
         verbose_print(f"Unknown game: {game}")
         return False
 
-    game_folder = globals().get(f"{game}_Folder_Path", "")
-    if game_folder == "Not_Installed":
+    game_path = globals().get(f"{game}_Folder_Path", "")
+    if game_path == "Not_Installed":
         verbose_print(f"Game folder not set for {game}")
         return False
 
-    full_game_path = os.path.join(game_folder, game_exe[game])
+    full_game_path = os.path.join(os.path.dirname(game_path), game_exe[game])
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe[game]}'], capture_output=True, text=True).stdout.lower().count(game_exe[game].lower()) > 0
 
-    if not game_running:
-        verbose_print(f"{game_exe[game]} is not running. Starting {game}...")
+    if game_running:
+        verbose_print(f"{game_exe[game]} is running. Closing it...")
+        subprocess.run(['taskkill', '/F', '/IM', game_exe[game]], capture_output=True)
+        time.sleep(2)
 
-        full_script_extender_path = os.path.join(game_folder, script_extender[game])
-        if not os.path.exists(full_script_extender_path):
-            verbose_print(f"Error: {script_extender[game]} not found at {full_script_extender_path}")
-            verbose_print("Check the game path and Script Extender presence.")
-            return False
-
-        subprocess.Popen([full_script_extender_path], cwd=game_folder)
-        verbose_print(f"Started {script_extender[game]}")
-        time.sleep(3)  # Wait for the game to start
+    verbose_print(f"Starting {game}...")
+    subprocess.Popen([game_path], cwd=os.path.dirname(game_path))
+    verbose_print(f"Started {script_extender[game]}")
+    time.sleep(3)  # Wait for the game to start
 
     return True
 
@@ -494,49 +493,71 @@ def check_xvasynth():
 
     return True
 
-def launch_mantella():
+def launch_mantella_sequence(game_path):
+    global xvasynth_folder
+
+    # Check if the provided full path exists    
+    print(f"Checking: {game_path}")
+    if not os.path.exists(game_path):
+        verbose_print(f"Missing Files: {game_path}")
+        verbose_print(f"Check {game} path and Script Extender presence.")
+        delay(3)
+        return False
+
+    # Check if game is running (using the filename from the path)
+    game_exe_name = os.path.basename(game_path)
+
+    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe_name}'], capture_output=True, text=True).stdout.lower().count(game_exe_name.lower()) > 0
+
+    if game_running:
+        verbose_print(f"{game_exe_name} is already running. Closing it...")
+        subprocess.run(['taskkill', '/F', '/IM', game_exe_name], capture_output=True)
+        delay(2)
+
+    verbose_print(f"Starting {game_exe_name} from path: {game_path}...")
+    subprocess.Popen([game_path], cwd=os.path.dirname(game_path))
+    verbose_print(f"Started {game_exe_name}")
+    delay(3)
+
+    # Check if the provided full path exists    
+    print(f"Checking: {xvasynth_folder}")
+    if not os.path.exists(xvasynth_folder):
+        verbose_print(f"Missing Files: {xvasynth_folder}")
+        verbose_print("Check xVASynth path and exe presence.")
+        delay(3)
+        return False
+
+    # Check xVASynth
+    print(f"Checking: {game_path}")
+    xvasynth_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq xVASynth.exe'], capture_output=True, text=True).stdout.lower().count('xvasynth.exe') > 0
+
+    if not xvasynth_running:
+        verbose_print("xVASynth.exe is not running. Starting xVASynth...")
+        if os.path.exists(xvasynth_folder):
+            subprocess.Popen([xvasynth_folder], cwd=os.path.dirname(xvasynth_folder))
+            verbose_print("Started xVASynth")
+            delay(3)
+        else:
+            verbose_print("Error: xVASynth.exe not found.")
+            verbose_print("Check xvasynth folder path validity.")
+            delay(3)
+            return False
+
+    delay(1)
+
+    # Run Mantella
     verbose_print("Running Mantella...")
+    delay(1)
     try:
         subprocess.run([sys.executable, "main.py"], check=True)
     except subprocess.CalledProcessError as e:
         verbose_print(f"Error occurred while running main.py: {e}")
         verbose_print("Returning to menu in 5 seconds...")
-        time.sleep(5)
-        return False
-    return True
-
-def launch_mantella_sequence():
-    game_key = game.lower().replace(" ", "")
-    game_path = globals().get(f"{game}_Folder_Path", "Not set")
-    
-    if game_path != "Not set" and game_path != "Not_Installed":
-        script_extender_exe = script_extender.get(game, "")
-        game_exe_name = game_exe.get(game, "")
-        
-        full_script_extender_path = os.path.join(game_path, script_extender_exe)
-        full_game_exe_path = os.path.join(game_path, game_exe_name)
-        
-        if os.path.exists(full_script_extender_path):
-            exe_path = full_script_extender_path
-        elif os.path.exists(full_game_exe_path):
-            exe_path = full_game_exe_path
-        else:
-            exe_path = "Not present"
-    else:
-        exe_path = game_path
-
-    if exe_path == "Not present":
-        verbose_print("Game Not Installed.")
-        verbose_print("Run Game Launcher, Generate Reg Keys.")
-        delay(3)
+        delay(5)
         return False
 
-    display_title()
-    write_config()
-    verbose_print("Saved File: config.ini")
-    write_output_file(0)
-    verbose_print("Saved File: .\\data\\temporary_batch.txt")
-    verbose_print("Exiting, then Running Mantella/xVASynth...")
+    verbose_print("Mantella Exited.")
+    delay(1)
     return True
 
 def exit_and_save():
@@ -549,7 +570,7 @@ def exit_and_save():
     return 1, xvasynth_folder
 
 def display_title():
-    clear_screen()
+    # clear_screen()
     print("=" * 119)
     print("    MaNTella-Local-Launcher")
     print("-" * 119)
@@ -571,7 +592,7 @@ def display_menu_and_handle_input():
         print(f"    4. Model Token Count")
         print(f"        ({custom_token_count})")
         print(f"")
-        print("-" * 119) 
+        print("-" * 119)
         print(f"")
         print(f"    {game}_Path:")
         print(f"        {game_path}")
@@ -605,8 +626,8 @@ def display_menu_and_handle_input():
                 fetch_model_details_ollama()
             continue
         elif choice == 'B':
-            if launch_mantella_sequence():
-                return 0, xvasynth_folder
+            if launch_mantella_sequence(game_path):  # Pass the game_path to the function
+                return display_menu_and_handle_input()
             else:
                 continue
         elif choice == 'X':
@@ -638,11 +659,7 @@ def main():
             exit_code, xvasynth_folder = display_menu_and_handle_input()
             
             if exit_code == 0:
-                if not check_game():
-                    continue
-                if not check_xvasynth():
-                    continue
-                if launch_mantella():
+                if launch_mantella_sequence():
                     break
             else:
                 break
