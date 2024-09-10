@@ -29,38 +29,6 @@ Fallout4_Path:
 - **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length. Current drop-in file is 1 sentence I think.
 
 ### Preview
-- The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
-```
-=======================================================================================================================
-    MaNTella-Local-Launcher
------------------------------------------------------------------------------------------------------------------------
-
-
-    1. Select Game Used
-        (Fallout4)
-    2. Microphone Status
-        (False)
-    3. Prompt Optimization
-        (Default)
-    4. Model Token Count
-        (4096)
-
------------------------------------------------------------------------------------------------------------------------
-
-    Fallout4_Path:
-        E:\GamesVR\Fallout4_163\
-    xVAsynth Path:
-        D:\GamesVR\xVASynth
-    LLM API:
-        http://localhost:1234/v1/
-    Model Loaded:
-        uncensored-frank-llama-3-8b.q6_k
-
-
-=======================================================================================================================
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
-
-```
 - The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
 ```
 ========================================================================================================================
@@ -93,7 +61,39 @@ Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/F
 Selection; Menu Options = 1-3, Exit Batch = X:
 
 ```
-- The `Installer-Setup` Menu in the `Pre-Launcher Configuration` menu, to install requirements compitently...
+- The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
+```
+=======================================================================================================================
+    MaNTella-Local-Launcher
+-----------------------------------------------------------------------------------------------------------------------
+
+
+    1. Select Game Used
+        (Fallout4)
+    2. Microphone Status
+        (False)
+    3. Prompt Optimization
+        (Default)
+    4. Model Token Count
+        (4096)
+
+-----------------------------------------------------------------------------------------------------------------------
+
+    Fallout4_Path:
+        E:\GamesVR\Fallout4_163\
+    xVAsynth Path:
+        D:\GamesVR\xVASynth
+    LLM API:
+        http://localhost:1234/v1/
+    Model Loaded:
+        uncensored-frank-llama-3-8b.q6_k
+
+
+=======================================================================================================================
+Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
+
+```
+- The `Installer-Setup`, to install requirements compitently...
 ```
 ========================================================================================================================
     Installer-Setup
