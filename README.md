@@ -26,30 +26,30 @@ Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are,
 - The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
 ```
 =======================================================================================================================
-    Mantella-Local-Launcher
+    MaNTella-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
-
-
-    1. Game Used: Fallout4
-
-    2. Microphone On: True
-
-    3. Optimization: Regular
-
-    4. Token Count: 4096
-
+    1. Select Game Used
+        (Fallout4)
+    2. Microphone Status
+        (False)
+    3. Prompt Optimization
+        (Default)
+    4. Model Token Count
+        (4096)
 
 -----------------------------------------------------------------------------------------------------------------------
 
-
-    model = uncensored-frank-llama-3-8b.q6_k
-
-    Fallout4_folder = D:\GamesVR\Fallout4_163
-
-    xvasynth_folder = D:\GamesVR\xVASynth
-
-
+    Config Path:
+        F:\Documents\My Games\Mantella\config.ini
+    Fallout4_Path:
+        E:\GamesVR\Fallout4_163\
+    xVAsynth Path:
+        D:\GamesVR\xVASynth
+    LLM API:
+        http://localhost:1234/v1/
+    Model Loaded:
+        uncensored-frank-llama-3-8b.q6_k
 
 =======================================================================================================================
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
