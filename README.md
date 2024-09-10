@@ -1,6 +1,6 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
-Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are, alpha and greatly improved...
-- Waiting for Claude refresh.
+Status: There are Pre-release for v11.4 that work, the new v12 pre-releases and raw fork are alpha, but will be greatly improved...
+- Waiting for Claude refresh, very close to completion of working vesion.
 1. When launching, it needs to merge the path from the registry with the relating script extender exe for the relevant game, falling back on the original game exe if it cant find the script extender exe. This is important for the launch command to work. the game path without exe is shown here...
 ```
 Fallout4_Path:
@@ -9,7 +9,8 @@ Fallout4_Path:
 ...so it knows where the game path is, its just not merging the path with the exe's in sequence when it runs, however it seems to be working correctly with regards to exit messages when it fails.
 1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 3. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
-3. when 100% working version with 2 files, then make into release.
+4. Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
+4. when 100% working version with 2 files, then make into release.
 4. Update relevant media.
 4. Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
