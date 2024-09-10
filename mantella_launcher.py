@@ -21,6 +21,20 @@ SkyrimVR_Folder_Path = "Not_Installed"
 Fallout4_Folder_Path = "Not_Installed"
 Fallout4VR_Folder_Path = "Not_Installed"
 
+# Global Maps
+game_exe = {
+    "Fallout4": "Fallout4.exe",
+    "Fallout4VR": "Fallout4VR.exe",
+    "Skyrim": "SkyrimSE.exe",
+    "SkyrimVR": "SkyrimVR.exe"
+}
+script_extender = {
+    "Fallout4": "f4se_loader.exe",
+    "Fallout4VR": "f4sevr_loader.exe",
+    "Skyrim": "skse64_loader.exe",
+    "SkyrimVR": "sksevr_loader.exe"
+}
+
 # Initialization
 def verbose_print(message):
     print(message, file=sys.stderr)
@@ -191,18 +205,18 @@ def write_config():
         config["Game"] = {}
     config["Game"]["game"] = game
     
-    if "LanguageModel.Advanced" not in config:
-        config["LanguageModel.Advanced"] = {}
-    config["LanguageModel.Advanced"]["custom_token_count"] = str(custom_token_count)
+    if "LLM.Advanced" not in config:
+        config["LLM.Advanced"] = {}
+    config["LLM.Advanced"]["custom_token_count"] = str(custom_token_count)
     
     preset = optimization_presets[optimization]
-    config["LanguageModel.Advanced"]["max_tokens"] = str(preset["max_tokens"])
-    config["LanguageModel.Advanced"]["temperature"] = str(preset["temperature"])
+    config["LLM.Advanced"]["max_tokens"] = str(preset["max_tokens"])
+    config["LLM.Advanced"]["temperature"] = str(preset["temperature"])
     
-    if "LanguageModel" not in config:
-        config["LanguageModel"] = {}
-    config["LanguageModel"]["max_response_sentences"] = str(preset["max_response_sentences"])
-    config["LanguageModel"]["model"] = model_id
+    if "LLM" not in config:
+        config["LLM"] = {}
+    config["LLM"]["max_response_sentences"] = str(preset["max_response_sentences"])
+    config["LLM"]["model"] = model_id
     
     if "Microphone" not in config:
         config["Microphone"] = {}
@@ -214,9 +228,9 @@ def write_config():
     config["Speech"]["tts_service"] = "xVASynth"
 
     # Add the LM Studio API key
-    if "LanguageModel.Advanced" not in config:
-        config["LanguageModel.Advanced"] = {}
-    config["LanguageModel.Advanced"]["llm_api"] = "http://localhost:1234/v1"
+    if "LLM.Advanced" not in config:
+        config["LLM.Advanced"] = {}
+    config["LLM.Advanced"]["llm_api"] = "http://localhost:1234/v1"
     
     try:
         os.makedirs(os.path.dirname(CONFIG_INI_PATH), exist_ok=True)
@@ -437,40 +451,29 @@ def check_lm_ollama():
         return False
 
 def check_game():
-    game_exe = {
-        "Fallout4": "Fallout4.exe",
-        "Fallout4VR": "Fallout4VR.exe",
-        "Skyrim": "SkyrimSE.exe",
-        "SkyrimVR": "SkyrimVR.exe"
-    }.get(game, "")
-
-    if not game_exe:
+    if game not in game_exe:
         verbose_print(f"Unknown game: {game}")
         return False
 
-    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
+    game_folder = globals().get(f"{game}_Folder_Path", "")
+    if game_folder == "Not_Installed":
+        verbose_print(f"Game folder not set for {game}")
+        return False
+
+    full_game_path = os.path.join(game_folder, game_exe[game])
+    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe[game]}'], capture_output=True, text=True).stdout.lower().count(game_exe[game].lower()) > 0
 
     if not game_running:
-        verbose_print(f"{game_exe} is not running. Starting {game}...")
-        game_folder = globals().get(f"{game}_Folder_Path", "")
-        if game_folder == "Not_Installed":
-            verbose_print(f"Game folder not set for {game}")
-            return False
+        verbose_print(f"{game_exe[game]} is not running. Starting {game}...")
 
-        script_extender = {
-            "Fallout4": "f4se_loader.exe",
-            "Fallout4VR": "f4sevr_loader.exe",
-            "Skyrim": "skse64_loader.exe",
-            "SkyrimVR": "sksevr_loader.exe"
-        }.get(game, "")
-
-        if not os.path.exists(os.path.join(game_folder, script_extender)):
-            verbose_print(f"Error: {script_extender} not found at {game_folder}")
+        full_script_extender_path = os.path.join(game_folder, script_extender[game])
+        if not os.path.exists(full_script_extender_path):
+            verbose_print(f"Error: {script_extender[game]} not found at {full_script_extender_path}")
             verbose_print("Check the game path and Script Extender presence.")
             return False
 
-        subprocess.Popen([os.path.join(game_folder, script_extender)], cwd=game_folder)
-        verbose_print(f"Started {script_extender}")
+        subprocess.Popen([full_script_extender_path], cwd=game_folder)
+        verbose_print(f"Started {script_extender[game]}")
         time.sleep(3)  # Wait for the game to start
 
     return True
@@ -502,10 +505,53 @@ def launch_mantella():
         return False
     return True
 
+def launch_mantella_sequence():
+    game_key = game.lower().replace(" ", "")
+    game_path = globals().get(f"{game}_Folder_Path", "Not set")
+    
+    if game_path != "Not set" and game_path != "Not_Installed":
+        script_extender_exe = script_extender.get(game, "")
+        game_exe_name = game_exe.get(game, "")
+        
+        full_script_extender_path = os.path.join(game_path, script_extender_exe)
+        full_game_exe_path = os.path.join(game_path, game_exe_name)
+        
+        if os.path.exists(full_script_extender_path):
+            exe_path = full_script_extender_path
+        elif os.path.exists(full_game_exe_path):
+            exe_path = full_game_exe_path
+        else:
+            exe_path = "Not present"
+    else:
+        exe_path = game_path
+
+    if exe_path == "Not present":
+        verbose_print("Game Not Installed.")
+        verbose_print("Run Game Launcher, Generate Reg Keys.")
+        delay(3)
+        return False
+
+    display_title()
+    write_config()
+    verbose_print("Saved File: config.ini")
+    write_output_file(0)
+    verbose_print("Saved File: .\\data\\temporary_batch.txt")
+    verbose_print("Exiting, then Running Mantella/xVASynth...")
+    return True
+
+def exit_and_save():
+    display_title()
+    write_config()
+    verbose_print("Saved File: config.ini")
+    write_output_file(1)
+    verbose_print("Saved File: .\\data\\temporary_batch.txt")
+    verbose_print("Exiting Launcher/Optimizer...") 
+    return 1, xvasynth_folder
+
 def display_title():
     clear_screen()
     print("=" * 119)
-    print("    MaNTella-Launcher")
+    print("    MaNTella-Local-Launcher")
     print("-" * 119)
     print("")
 
@@ -515,19 +561,6 @@ def display_menu_and_handle_input():
         display_title()
         game_key = game.lower().replace(" ", "")
         game_path = globals().get(f"{game}_Folder_Path", "Not set")
-        print(f"    Model Loaded:")
-        print(f"        {model_id}")
-        print(f"    Config Path:")
-        print(f"        {CONFIG_INI_PATH}")
-        print(f"    {game}_Path:")
-        print(f"        {game_path}")
-        print(f"    xVAsynth Path:")
-        print(f"        {xvasynth_folder}")
-        print(f"    LLM API:")
-        print(f"        {llm_api}")        
-        print(f"")
-        print("-" * 119) 
-        print(f"")
         print(f"    1. Select Game Used")
         print(f"        ({game})")
         print(f"    2. Microphone Status")
@@ -536,6 +569,19 @@ def display_menu_and_handle_input():
         print(f"        ({optimization})")
         print(f"    4. Model Token Count")
         print(f"        ({custom_token_count})")
+        print(f"")
+        print("-" * 119) 
+        print(f"")
+        print(f"    Config Path:")
+        print(f"        {CONFIG_INI_PATH}")
+        print(f"    {game}_Path:")
+        print(f"        {game_path}")
+        print(f"    xVAsynth Path:")
+        print(f"        {xvasynth_folder}")
+        print(f"    LLM API:")
+        print(f"        {llm_api}")                
+        print(f"    Model Loaded:")
+        print(f"        {model_id}")
         print(f"")
         print("=" * 119)
 
@@ -560,21 +606,12 @@ def display_menu_and_handle_input():
                 fetch_model_details_ollama()
             continue
         elif choice == 'B':
-            display_title()
-            write_config()
-            verbose_print("Saved File: config.ini")
-            write_output_file(0)
-            verbose_print("Saved File: .\data\temporary_batch.txt")
-            verbose_print("Exiting, then Running Mantella/xVASynth...")
-            return 0, xvasynth_folder
+            if launch_mantella_sequence():
+                return 0, xvasynth_folder
+            else:
+                continue
         elif choice == 'X':
-            display_title()
-            write_config()
-            verbose_print("Saved File: config.ini")
-            write_output_file(1)
-            verbose_print("Saved File: .\data\temporary_batch.txt")
-            verbose_print("Exiting Launcher/Optimizer...") 
-            return 1, xvasynth_folder
+            return exit_and_save()
         else:
             verbose_print("Invalid selection. Please try again.")
         
