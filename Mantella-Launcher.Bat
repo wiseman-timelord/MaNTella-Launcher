@@ -261,8 +261,13 @@ goto installer_menu
 
 :first_run_setup
 call :banner_install
+echo Ensure to edit the config.ini from the mantella-webui.
+echo After doing so , then close the config and mantella.
+echo 10 second delay...
+timeout /t 10 >nul
 echo Running First Run Setup...
-echo Waiting for User to, Finish Editing Config and Close Mantella Window...
+timeout /t 1
+echo Waiting for User to, Finish Editing and Close Mantella...
 start "" %PYTHON_EXE_TO_USE% .\main.py
 :wait_loop
 tasklist /FI "IMAGENAME eq python.exe" 2>NUL | find /I /N "python.exe">NUL
