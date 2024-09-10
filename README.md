@@ -1,6 +1,6 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: There are Pre-release for v11.4 that work, the new v12 pre-releases and raw fork are alpha, but will be greatly improved, mainly merging scripts into 2 scripts, and upgrading, and adding options...
-- Waiting for claude refresh. Script too big for GPT4o <_<.
+- Waiting for claude refresh. Script too big for GPT4o <_<, feel free to kofi me.
 1. the output is saying it can find fallout4...
 ```
 Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: b
