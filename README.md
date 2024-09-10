@@ -2,8 +2,9 @@
 Status: There are Pre-release for v11.4 that work, the new v12 pre-releases and raw fork are alpha, but will be greatly improved, mainly merging scripts into 2 scripts, and upgrading, and adding options...
 1. the output is saying it can find fallout4...
 ```
-    Fallout4_Path:
-        E:\GamesVR\Fallout4_163\f4se_loader.exe
+Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: b
+Error: f4se_loader.exe not found at E:\GamesVR\Fallout4_163\f4se_loader.exe
+Check game path and Script Extender presence.
 ```
 ...and clearly its at the relevant location...
 ```
@@ -13,12 +14,12 @@ D:\GamesVR\Fallout4_163>dir *.exe
 08/22/2023  05:50 AM        65,319,936 Fallout4.exe
 ...
 ```
-...however, when I select b from the menu...
+...clearly the scripts do know the correct path...
 ```
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: b
-Error: f4se_loader.exe not found at E:\GamesVR\Fallout4_163\f4se_loader.exe
-Check game path and Script Extender presence.
+    Fallout4_Path:
+        E:\GamesVR\Fallout4_163\f4se_loader.exe
 ```
+...wait a second, why is it looking on E:? its supposed to be D:, where did it get E: from?
 <br>2. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 <br>3. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
 <br>4. Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
