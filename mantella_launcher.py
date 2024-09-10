@@ -16,6 +16,10 @@ lmstudio_api_url = "http://localhost:1234/v1/models"
 microphone_enabled = False
 CONFIG_INI_PATH = ''
 DOCUMENTS_FOLDER = ''
+Skyrim_Folder_Path = "Not_Installed"
+SkyrimVR_Folder_Path = "Not_Installed"
+Fallout4_Folder_Path = "Not_Installed"
+Fallout4VR_Folder_Path = "Not_Installed"
 
 # Initialization
 def verbose_print(message):
@@ -33,6 +37,26 @@ def set_config_ini_path():
     DOCUMENTS_FOLDER = get_documents_folder()
     CONFIG_INI_PATH = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
     verbose_print(f"CONFIG_INI_PATH set to: {CONFIG_INI_PATH}")
+def read_game_paths_from_registry():
+    global Skyrim_Folder_Path, SkyrimVR_Folder_Path, Fallout4_Folder_Path, Fallout4VR_Folder_Path
+    
+    def get_registry_value(key_path, value_name):
+        try:
+            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path)
+            value, _ = winreg.QueryValueEx(key, value_name)
+            winreg.CloseKey(key)
+            return value
+        except WindowsError:
+            return "Not_Installed"
+
+    Skyrim_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path")
+    SkyrimVR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path")
+    Fallout4_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path")
+    Fallout4VR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path")
+    verbose_print(f"Skyrim Folder Path: {Skyrim_Folder_Path}")
+    verbose_print(f"SkyrimVR Folder Path: {SkyrimVR_Folder_Path}")
+    verbose_print(f"Fallout4 Folder Path: {Fallout4_Folder_Path}")
+    verbose_print(f"Fallout4VR Folder Path: {Fallout4VR_Folder_Path}")
 
 # Optimization presets
 optimization_presets = {
@@ -89,10 +113,9 @@ def get_config_from_file():
         return None, None
 
 
-
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
-    global game, optimization, custom_token_count, game_folders, mod_folders, microphone_enabled
+    global game, optimization, custom_token_count, game_folders, mod_folders, microphone_enabled, llm_api
     config = configparser.ConfigParser()
 
     try:
@@ -107,29 +130,30 @@ def read_config():
 
     # Fetch paths based on sections and keys
     game_folders = {
-        "skyrim": config.get("Paths", "skyrim_folder", fallback="Not set"),
-        "skyrimvr": config.get("Paths", "skyrimvr_folder", fallback="Not set"),
-        "fallout4": config.get("Paths", "fallout4_folder", fallback="Not set"),
-        "fallout4vr": config.get("Paths", "fallout4vr_folder", fallback="Not set"),
+        "skyrim": config.get("Game", "skyrim_folder", fallback="Not set"),
+        "skyrimvr": config.get("Game", "skyrimvr_folder", fallback="Not set"),
+        "fallout4": config.get("Game", "fallout4_folder", fallback="Not set"),
+        "fallout4vr": config.get("Game", "fallout4vr_folder", fallback="Not set"),
     }
 
     mod_folders = {
-        "skyrim": config.get("Paths", "skyrim_mod_folder", fallback="Not set"),
-        "skyrimvr": config.get("Paths", "skyrim_mod_folder", fallback="Not set"),
-        "fallout4": config.get("Paths", "fallout4_mod_folder", fallback="Not set"),
-        "fallout4vr": config.get("Paths", "fallout4vr_mod_folder", fallback="Not set"),
+        "skyrim": config.get("Game", "skyrim_mod_folder", fallback="Not set"),
+        "skyrimvr": config.get("Game", "skyrimvr_mod_folder", fallback="Not set"),
+        "fallout4": config.get("Game", "fallout4_mod_folder", fallback="Not set"),
+        "fallout4vr": config.get("Game", "fallout4vr_mod_folder", fallback="Not set"),
     }
 
     # Set xVASynth folder
-    xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="Not set")
+    global xvasynth_folder
+    xvasynth_folder = config.get("TTS", "xvasynth_folder", fallback="Not set")
 
     # Fetch Language Model settings
-    custom_token_count = int(config.get("LanguageModel.Advanced", "custom_token_count", fallback="2048"))
+    custom_token_count = int(config.get("LLM", "custom_token_count", fallback="4096"))
 
     # Check for optimization preset
-    max_tokens = int(config.get("LanguageModel.Advanced", "max_tokens", fallback="250"))
-    max_response_sentences = int(config.get("LanguageModel", "max_response_sentences", fallback="999"))
-    temperature = float(config.get("LanguageModel.Advanced", "temperature", fallback="1.0"))
+    max_tokens = int(config.get("LLM", "max_tokens", fallback="250"))
+    max_response_sentences = int(config.get("LLM", "max_response_sentences", fallback="4"))
+    temperature = float(config.get("LLM", "temperature", fallback="1.0"))
 
     for preset, values in optimization_presets.items():
         if (
@@ -144,6 +168,9 @@ def read_config():
 
     # Read microphone setting
     microphone_enabled = config.getboolean("Microphone", "microphone_enabled", fallback=False)
+
+    # Read LLM API
+    llm_api = config.get("LLM", "llm_api", fallback="Not set")
 
     verbose_print(f"Read Keys: config.ini.")
     delay(2)
@@ -425,8 +452,8 @@ def check_game():
 
     if not game_running:
         verbose_print(f"{game_exe} is not running. Starting {game}...")
-        game_folder = game_folders.get(game.lower(), "")
-        if not game_folder:
+        game_folder = globals().get(f"{game}_Folder_Path", "")
+        if game_folder == "Not_Installed":
             verbose_print(f"Game folder not set for {game}")
             return False
 
@@ -439,7 +466,7 @@ def check_game():
 
         if not os.path.exists(os.path.join(game_folder, script_extender)):
             verbose_print(f"Error: {script_extender} not found at {game_folder}")
-            verbose_print("Check, config.ini game path and Script Extender presence.")
+            verbose_print("Check the game path and Script Extender presence.")
             return False
 
         subprocess.Popen([os.path.join(game_folder, script_extender)], cwd=game_folder)
@@ -483,10 +510,23 @@ def display_title():
     print("")
 
 def display_menu_and_handle_input():
-    global game, optimization, custom_token_count, microphone_enabled, model_id
+    global game, optimization, custom_token_count, microphone_enabled, model_id, llm_api
     while True:
         display_title()
         game_key = game.lower().replace(" ", "")
+        game_path = globals().get(f"{game}_Folder_Path", "Not set")
+        print(f"    Model Loaded:")
+        print(f"        {model_id}")
+        print(f"    Config Path:")
+        print(f"        {CONFIG_INI_PATH}")
+        print(f"    {game}_Path:")
+        print(f"        {game_path}")
+        print(f"    xVAsynth Path:")
+        print(f"        {xvasynth_folder}")
+        print(f"    LLM API:")
+        print(f"        {llm_api}")        
+        print(f"")
+        print("-" * 119) 
         print(f"")
         print(f"    1. Select Game Used")
         print(f"        ({game})")
@@ -496,17 +536,6 @@ def display_menu_and_handle_input():
         print(f"        ({optimization})")
         print(f"    4. Model Token Count")
         print(f"        ({custom_token_count})")
-        print(f"")
-        print("-" * 119) 
-        print(f"")
-        print(f"    Model Loaded:")
-        print(f"        {model_id}")
-        print(f"    Config Path:")
-        print(f"        {CONFIG_INI_PATH}")
-        print(f"    {game}_Path:")
-        print(f"        {game_folders.get(game_key, 'Not set')}")
-        print(f"    xVAsynth Path:")
-        print(f"        {xvasynth_folder}")
         print(f"")
         print("=" * 119)
 
@@ -553,6 +582,7 @@ def display_menu_and_handle_input():
 
 # Main Function
 def main():
+    read_game_paths_from_registry()
     verbose_print("Entering main function")
     try:
         set_config_ini_path()  # Call the new function to set CONFIG_INI_PATH
