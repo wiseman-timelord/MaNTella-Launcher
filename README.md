@@ -19,9 +19,7 @@ D:\GamesVR\Fallout4_163>dir *.exe
     Fallout4_Path:
         E:\GamesVR\Fallout4_163\f4se_loader.exe
 ```
-...it looking on E:? its supposed to be D:, where did it get E: from? The registry key shows `D:\GamesVR\SkyrimAE_163\` for the game path, clearly there is some kind of corruption of the path going on in the script, that is forcing the drive as E instead of using the drive letter it got, but otherwise the folder path and exe part is correct.
-
-
+...I figured it out, it looking on E:? its supposed to be D:, where did it get E: from? The registry key shows `D:\GamesVR\SkyrimAE_163\` for the game path, clearly there is some kind of corruption of the path going on in the script, that is forcing the drive as E instead of using the drive letter it got, but otherwise the folder path and exe part is correct.
 <br>2. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 <br>3. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
 <br>4. Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
