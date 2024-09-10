@@ -1,6 +1,10 @@
 # Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
 Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are, alpha and greatly improved...
-1. It needs to merge the path from the registry with the relating script extender exe for the relevant game, falling back on the original game exe if it cant find the script extender exe. This is important for the launch command.
+1. It needs to merge the path from the registry with the relating script extender exe for the relevant game, falling back on the original game exe if it cant find the script extender exe. This is important for the launch command. As shown here...
+```
+Fallout4_Path:
+        E:\GamesVR\Fallout4_163\
+```
 1. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
 2. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
 3. when 100% working version with 2 files, then make into release.
@@ -24,34 +28,34 @@ Status: There are Pre-release for v11.4 that work, the new v12 pre-releases are,
 ### Preview
 - The `Mantella-Local-Launcher` provides simplified, configuration and optimization...
 ```
-========================================================================================================================
-    Installer-Setup
-========================================================================================================================
+=======================================================================================================================
+    MaNTella-Local-Launcher
+-----------------------------------------------------------------------------------------------------------------------
 
 
-    1. Install `.\requirements.txt`
+    1. Select Game Used
+        (Fallout4)
+    2. Microphone Status
+        (False)
+    3. Prompt Optimization
+        (Default)
+    4. Model Token Count
+        (4096)
 
-    2. Install Torch[CPU]
+-----------------------------------------------------------------------------------------------------------------------
 
-    3. First Run Setup
-
-    4. Upgrade Pip Version
-
-    5. Check Dependency Conflicts
-
-    6. File Integrity Test
-
-------------------------------------------------------------------------------------------------------------------------
-
-    Python Path:
-        C:\Users\Mastar\AppData\Local\Programs\Python\Python311\python.exe
-
-    Config File:
-        F:\Documents\My Games\Mantella\config.ini
+    Fallout4_Path:
+        E:\GamesVR\Fallout4_163\
+    xVAsynth Path:
+        D:\GamesVR\xVASynth
+    LLM API:
+        http://localhost:1234/v1/
+    Model Loaded:
+        uncensored-frank-llama-3-8b.q6_k
 
 
-========================================================================================================================
-Selection; Menu Options = 1-6, Back to Main = B:
+=======================================================================================================================
+Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
 - The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
