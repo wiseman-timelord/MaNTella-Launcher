@@ -140,7 +140,7 @@ Faster: max_tokens = 100, max_response_sentences = 1, temperature = 0.4
 Regular: max_tokens = 150, max_response_sentences = 2, temperature = 0.5
 Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 ```
-- The System Prompt on your Model Server, should be something like "You are, to requirement, an AI, role-player and text processor, you will be instructed to either be, roleplaying with the Player/NPCs."...
+- The System Prompt, on your Model Server (LM Studio) or that you used to install the model (Ollama), should be something like "You are, to requirement, an AI, role-player and text processor, you will be instructed to either be, roleplaying with the Player/NPCs."...
 <img src="./media/lm_studio_prompt_mantella.jpg" align="center" alt="no image" width="313" height="315">.
 - If you are using one graphics card for, game and model, then ensure to use nVidia/Amd control panels to monitor free ram when fallout 4 is running, the amount of free space with small additional amount for runnings, determines what size of model you will be using.
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then 12GB GPU is suggested, or maybe you have heard of things like PhyOp AI Enhanced Textures.
