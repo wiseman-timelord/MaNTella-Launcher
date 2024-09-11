@@ -144,7 +144,8 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 <img src="./media/lm_studio_prompt_mantella.jpg" align="center" alt="no image" width="313" height="315">
 - If you are using one graphics card for, game and model, then ensure to use nVidia/Amd control panels to monitor free ram when fallout 4 is running, the amount of free space with small additional amount for runnings, determines what size of model you will be using.
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then 12GB GPU is suggested, or maybe you have heard of things like PhyOp AI Enhanced Textures.
-- There is also my mod collection specifically designed for Mantella, [MWO2 - Mantella Wasteland Operator](https://www.youtube.com/watch?v=ayZmcOqZ8iY), in that, initially the mods from MWO1 that had issues with Mantella were removed. 
+- There is also my mod collection specifically designed for Mantella, [MWO2 - Mantella Wasteland Operator](https://www.youtube.com/watch?v=ayZmcOqZ8iY), in that, initially the mods from MWO1 that had issues with Mantella were removed.
+- If you are looking for the v11.4 files, there is a specific, setup-install and run-mantella, batches, that are separate to the launcher, the latest versions of those are the files I intended for Mantella team to incorporate into Mantella Mod, as I could not push batches to main...which explains why so many programs on github dont have simple batches to take care of basic issues for windows users.  
 
 # Development
 1. All features need double checking. 
