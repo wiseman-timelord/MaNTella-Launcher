@@ -29,9 +29,9 @@ Status: Working.
 
 
 
-    1. Just Run Mantella
+    1. Mantella-Local-Launcher
 
-    2. Mantella-Local-Launcher
+    2. Just Run Mantella
 
     3. Installer-Setup
 
@@ -123,12 +123,14 @@ Selection; Menu Options = 1-6, Back to Main = B:
 7. **LM Studio or Ollama**: Obtain model folder/name and foolproofs api config, Mantella-Local-Launcer will not work on non-local model host services.
 
 # Usage / Install
-1. Ensure the, [Fallout 4 Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) or [Skyrim SE/AE Mantella Mod](https://www.nexusmods.com/skyrimspecialedition/mods/98631), is installed for from the Nexus mods site, ensure to skim through the relating guides, this will require install [Mantella 11.4](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.11.4) to a suitable directory.
-2. Download the [Latest Release](https://github.com/wiseman-timelord/Mantella-Local-Launcher/releases) of the launcher, and drag the, file(S) and folder(s), from the zip into the main Mantella folder.
-3. Run `Installer-Setup`, this will ensure you have installed the requirements to the correct install of python. If, you are getting Torch errors and/or you do not have suitable GPU, then install `Torch[Cpu]`.
-4. Ensure that you have ran `First Run Setup`
-4. For LM Studio, to Quote "In config.ini, set llm_api = http://localhost:1234/v1/. This is the URL that LM Studio is running your model on.", other server methods are detailed in the Official guides. 
-5. Run `Mantella-Local-Launcher.Bat` for the Launcher, configure your optimizations, and when done then select "B" for begin. In future you should run `Mantella_No_Launcher.Bat`, unless you wish to alter the optimizations.
+1. Ensure the, [Fallout 4 Mantella Mod](https://www.nexusmods.com/fallout4/mods/79747) or [Skyrim SE/AE Mantella Mod](https://www.nexusmods.com/skyrimspecialedition/mods/98631), is installed for from the Nexus mods site to relevantly, fallout 4 or skyrim SE/AEm, and ensure to skim through the relating guides, this will require install [Mantella v12](https://github.com/art-from-the-machine/Mantella/releases/tag/v0.12) to a suitable directory.
+2. Download the most recent version of [Mantella-Local-Launcher](https://github.com/wiseman-timelord/Mantella-Local-Launcher/releases), and drag the, file(S) and folder(s), from the zip into the main Mantella folder.
+3. Run `Mantella-Launcher.Bat`, and ensure to select `3. Installer-Setup`, to assist in the processes of installing requirements compitently, or if you had issues with the instructions in the guide, this may help you with certain parts of the process. Also ensure that you have ran `First Run Setup`, and filled in the `Mantella Webui Configuration` appropriately in the browser that will pop up. 
+<br>3a. For Ollama, if, you are getting Torch errors and/or you do not have suitable GPU, then install `Torch[Cpu]`, to ensure Ollama uses CPU libraries instead. 
+<br>3b. For LM Studio, to Quote "In config.ini, set llm_api = http://localhost:1234/v1/. This is the URL that LM Studio is running your model on.".
+<br>3c. For Other methods of hosting models, they are detailed in the Official guides, I cannot confirm they will work, they probably wont. 
+5. Go back to the main menu in `Mantella-Launcher.Bat`, select `1. Mantella-Local-Launcher` for the Game Launcher, therein, configure your preferences from options 1-4, and when done then select "B" for begin. 
+- If for some reasoning there are issues with mantella or mantella crashes, then you can at any point, close the mantella window, and run `Mantella-Launcher.Bat`, and instead select `2. Just Run Mantella`, to re-start mantella, which I found works to fix issues of mantella having issues where the User is somehow locked into a conversation, and unable to start new conversations.
   
 ## Notes
 - all options for Optimization are shown...
