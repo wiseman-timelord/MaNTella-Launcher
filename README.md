@@ -1,32 +1,5 @@
-# Mantella-Local-Launcher ([Mantella v11.4](https://github.com/art-from-the-machine/Mantella/releases))
-Status: There are Pre-release for v11.4 that work, the new v12 pre-releases and raw fork are alpha, but will be greatly improved, mainly merging scripts into 2 scripts, and upgrading, and adding options...
-- Waiting for claude refresh. Script too big for GPT4o <_<, feel free to kofi me towards better AI capabilities.
-1. the output is saying it can find fallout4...
-```
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: b
-Beginning Mantella/xVASynth/Fallout4...
-Missing Files: Fallout4.exe or f4se_loader.exe
-```
-...and clearly its at the relevant location...
-```
-D:\GamesVR\Fallout4_163>dir *.exe
-...
-06/21/2022  02:39 AM           224,256 f4se_loader.exe
-08/22/2023  05:50 AM        65,319,936 Fallout4.exe
-...
-```
-...clearly the scripts do know the correct path...
-```
-    Fallout4_Path:
-        D:\GamesVR\Fallout4_163\f4se_loader.exe
-```
-<br>2. Scripts have been merged, all features ned testing and fixing while old scripts are around. 
-<br>3. Ensure working for v12...2a. debug til working, 2b. Clean up and test.
-<br>4. Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
-<br>5. when 100% working version with 2 files, then make into release.
-<br>6. Update relevant media.
-
-- There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
+# Mantella-Local-Launcher ([Mantella v12](https://github.com/art-from-the-machine/Mantella/releases))
+Status: Working.
 
 ### Description
 - a Windows Launcher/Optimizer for Mantella for, Fallout 4 and Skyrim, specifically only for local models on Windows, not online models but maybe later. Mantella was optimized for 8K on GPT, so, Mantella-Launcher instead optimizes Mantella for Local Models. The script facilitates pre-launch, configuration management and optimization, launches, xVASynth and your chosen game, if they are not already running, then it launches Mantella, by making use of the settings already present in `config.ini`, so you do still need to configure that first. Mantella-Launcher also performs various tasks such as, cleaning configuration files and optimizing the mantella prompts. The Batch file manages the, communication between and launching, of the relevant programs/scripts, while the Python component of the script handles the heavy work, and displays an interactive menu for user selection of game and optimization options. 
@@ -40,6 +13,7 @@ D:\GamesVR\Fallout4_163>dir *.exe
 - **Auto-Optimize Prompts**: Prompts are upgraded/streamlined, character sheets will be optimized based on context, but that part is still being worked on.
 - **Auto-Environment Selection**: Code enables python location to be found, and correct version of python to be used. 
 - **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length. Current drop-in file is 1 sentence I think.
+- 
 
 ### Preview
 - The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
@@ -169,41 +143,17 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 <img src="./media/lm_studio_prompt_mantella.jpg" align="center" alt="no image" width="313" height="315">
 - If you are using one graphics card for, game and model, then ensure to use nVidia/Amd control panels to monitor free ram when fallout 4 is running, the amount of free space with small additional amount for runnings, determines what size of model you will be using.
 - a Llama 3 Q3_m model with fallout 4 dlc & ~300 mods including PhyOp performance texture pack, utilizes all of the 8GB on a single card, if you want to use =>Q4 and/or hd textures, then 12GB GPU is suggested, or maybe you have heard of things like PhyOp AI Enhanced Textures.
-- this project will not replace the impressive new configuration interface coming in v12, but as a result of my launcher the user will probably just use that the first time.
-- No GPT/Online support! Despite loving GPT for other things, GPT will always be filtered response, despite being fast. I cant see it being used when there are local models able to produce SFW AND NSFW contents in one model and process text, I consider, Fallout4 and Skyrim, to be *Ahem* Offline Games with a little tweaking, unless you have like of achievements otherwise known as character profiling.
 - There is also my mod collection specifically designed for Mantella, [MWO2 - Mantella Wasteland Operator](https://www.youtube.com/watch?v=ayZmcOqZ8iY), in that, initially the mods from MWO1 that had issues with Mantella were removed. 
 
 # Development
-- documents config path merge code, here are notes...
-```
-The specific registry key is: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders, within this key, the value name you're looking for is: Personal; this "Personal" value will contain the current path to the user's Documents folder, for example `F:\Documents` regardless of whether it has been moved from its default location or not.
-```
-- Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference?
-- to do dynamic processing of characters.csv, to match the context length option, though for now this controls the context length saved in the config.ini file.
-- For v12 compatibility, there are not the keys "fallout4_folder" and "skyrim_Folder", need to ensure the launcher understands how many keys it will be retrieving. the solution is to use similar code to what is in the batch to detect what version of mantella is running...
-```
-if exist ".\config.ini" (
-    set "mantella_version=v11.4"
-    set "config_folder=.\"
-) else if exist "%USERPROFILE%\Documents\My Games\Mantella\config.ini" (
-    set "mantella_version=v12"
-    set "config_folder=%USERPROFILE%\Documents\My Games\Mantella"
-) else (
-    echo Error: File Missing: config.ini
-    timeout /t 5 >nul
-    goto :end_of_file
-)
-```
-...then just dont run fallout 4 in v12, however, later on I will implement the proper way to do it would be the registry keys, this would however take extra making sures, and system backups, I dont want to have to reinstall..
-- Next version is merge of Batch and Python scripts, pushin batch into the python script, its turning out complicated, but is mostly there, and optimized to 500 lines, I expect that to grow to 550-600 before everything is fixed. 
-- Ensure the launcher is future proof, by having alternate method to update the relevant config prompts, this will involve acceesing the new config scripts, there are multiple look in the src folder.
-- Character sheet must be backed up  "gamename_characters.bak", and then backup must be used to dynamically in relevance to the context size chosen, be filtered to contain, 2048 = 1 sentences, 4096 = 2 sentences, 8192 = 4 sentences, context lengths should be either, 2048, 4096, 8192, process the gamename_characters.csv according to the current context settings for context, and over-write any existing csv file. 
-- There needs to be a Yaml ".\data\temporary_launcher.yaml", to remember the user's selection of drive for the models, then it will just use that entry from then on. 
-- Now have skyrim again, and will be able to test/auto-optimize the character sheets based on context for, skyrim and fallout.
-- get all of the code accurately into the python script, and compile into exe, and upload to nexus. 
+1. All features need double checking. 
+2. Clean up redundancy and optimize, and re-test (scripts are large).
+3. Now have skyrim again, and will be able to test/auto-optimize the character sheets based on context for, skyrim and fallout.
+-Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
+<br>6. Update relevant media. Character sheet must be backed up  "gamename_characters.bak", and then backup must be used to dynamically in relevance to the context size chosen, be filtered to contain, 2048 = 1 sentences, 4096 = 2 sentences, 8192 = 4 sentences, context lengths should be either, 2048, 4096, 8192, process the gamename_characters.csv according to the current context settings for context, and over-write any existing csv file. either like that or based on the other default/faster/regular/quality optimization
+- There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
+- Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference? (or would this be too many windows?
 3. requires re-assessment of what is a "Required number of Tokens" for llama 3 level, as noticed it was generating at 1 token per word.
-4. Launcher GUI.
-
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
