@@ -148,6 +148,7 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 - If you are looking for the v11.4 files, there is a specific, setup-install and run-mantella, batches, that are separate to the launcher, the latest versions of those are the files I intended for Mantella team to incorporate into Mantella Mod, as I could not push batches to main...which explains why so many programs on github dont have simple batches to take care of basic issues for windows users.  
 
 # Development
+1. Need to update the prompts to incorporate the new chat options brought in by v12.
 1. All features need double checking. 
 2. Clean up redundancy and optimize, and re-test (scripts are large).
 3. Now have skyrim again, and will be able to test/auto-optimize the character sheets based on context for, skyrim and fallout.
