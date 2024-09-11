@@ -81,9 +81,9 @@ echo.
 echo.
 echo.
 echo.
-echo     1. Just Run Mantella
+echo     1. Mantella-Local-Launcher
 echo.
-echo     2. Mantella-Local-Launcher
+echo     2. Just Run Mantella
 echo.
 echo     3. Installer-Setup
 echo.
@@ -98,8 +98,8 @@ echo.
 echo ========================================================================================================================
 set /p "choice=Selection; Menu Options = 1-3, Exit Batch = X: "
 
-if "%choice%"=="1" goto run_mantella
-if "%choice%"=="2" goto mantella_launcher
+if "%choice%"=="1" goto mantella_launcher
+if "%choice%"=="2" goto run_mantella
 if "%choice%"=="3" goto installer_menu
 if /i "%choice%"=="X" goto end_script
 
