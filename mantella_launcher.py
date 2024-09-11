@@ -4,23 +4,24 @@
 import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg  # built-in libraries 
 
 # Global variables
-PERSISTENCE_TXT_PATH = '.\\data\\temporary_batch.txt'
-game_selection = "Skyrim"
-optimization = "Default"
-game_paths_list = {}
-mod_folders_list = {}
-xvasynth_folder = ""
-model_id = ""
-game_path = ""
-custom_token_count = 8192    # Default value
-lmstudio_api_url = "http://localhost:1234/v1/models"
-microphone_enabled = False
+PERSISTENCE_TXT_PATH = '.\\data\\persistence.txt'
+PERSISTENCE_JSON_PATH = '.\\data\\persistence.json'
 CONFIG_INI_PATH = ''
 DOCUMENTS_FOLDER = ''
+xvasynth_folder = ""
+game_path = ""
 Skyrim_Folder_Path = "Not_Installed"
 SkyrimVR_Folder_Path = "Not_Installed"
 Fallout4_Folder_Path = "Not_Installed"
 Fallout4VR_Folder_Path = "Not_Installed"
+model_id = ""
+lmstudio_api_url = "http://localhost:1234/v1/models"
+microphone_enabled = False
+game_selection = "Skyrim"
+optimization = "Default"
+custom_token_count = 8192
+game_paths_list = {}
+mod_folders_list = {}
 
 # Global Maps
 game_exe_map = {
@@ -64,14 +65,27 @@ def read_game_paths_list_from_registry():
         except WindowsError:
             return "Not_Installed"
 
-    Skyrim_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path"), script_extender_map["Skyrim"])
-    SkyrimVR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path"), script_extender_map["SkyrimVR"])
-    Fallout4_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path"), script_extender_map["Fallout4"])
-    Fallout4VR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path"), script_extender_map["Fallout4VR"])
+    Skyrim_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path")
+    SkyrimVR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path")
+    Fallout4_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path")
+    Fallout4VR_Folder_Path = get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path")
+
     verbose_print(f"Skyrim Folder Path: {Skyrim_Folder_Path}")
     verbose_print(f"SkyrimVR Folder Path: {SkyrimVR_Folder_Path}")
     verbose_print(f"Fallout4 Folder Path: {Fallout4_Folder_Path}")
     verbose_print(f"Fallout4VR Folder Path: {Fallout4VR_Folder_Path}")
+
+    # Update game_paths_list with the new paths
+    global game_paths_list
+    game_paths_list = {
+        "skyrim": Skyrim_Folder_Path,
+        "skyrimvr": SkyrimVR_Folder_Path,
+        "fallout4": Fallout4_Folder_Path,
+        "fallout4vr": Fallout4VR_Folder_Path
+    }
+
+    verbose_print("Game paths updated from registry")
+    delay(2)
 
 # Optimization presets
 optimization_presets = {
@@ -111,6 +125,47 @@ def get_or_set_models_drive():
     verbose_print(f"Saved models drive: {models_drive_letter}")
     return models_drive_letter
 
+def load_persistence():
+    global game_selection, optimization, custom_token_count, microphone_enabled
+    if not os.path.exists(PERSISTENCE_JSON_PATH):
+        verbose_print("Persistence file not found. Creating with default values.")
+        save_persistence()
+        return
+
+    try:
+        with open(PERSISTENCE_JSON_PATH, 'r') as f:
+            data = json.load(f)
+            game_selection = data.get('game_selection', game_selection)
+            optimization = data.get('optimization', optimization)
+            custom_token_count = data.get('custom_token_count', custom_token_count)
+            microphone_enabled = data.get('microphone_enabled', microphone_enabled)
+    except json.JSONDecodeError:
+        verbose_print("Error reading persistence file. Using default values and recreating file.")
+        save_persistence()
+
+def save_persistence():
+    data = {
+        'game_selection': game_selection,
+        'optimization': optimization,
+        'custom_token_count': custom_token_count,
+        'microphone_enabled': microphone_enabled
+    }
+    os.makedirs(os.path.dirname(PERSISTENCE_JSON_PATH), exist_ok=True)
+    with open(PERSISTENCE_JSON_PATH, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def get_python_exe():
+    try:
+        with open('.\\data\\persistence.txt', 'r') as f:
+            for line in f:
+                if line.startswith('PYTHON_EXE_TO_USE='):
+                    return line.split('=', 1)[1].strip()
+    except FileNotFoundError:
+        verbose_print("persistence.txt not found. Using system Python.")
+    except Exception as e:
+        verbose_print(f"Error reading persistence.txt: {str(e)}")
+    return sys.executable
+
 def get_config_from_file():
     txt_file_path = os.path.join("data", "config_paths.txt")  # Path to your text file
     try:
@@ -126,7 +181,6 @@ def get_config_from_file():
     except FileNotFoundError:
         verbose_print(f"Config paths file not found: {txt_file_path}")
         return None, None
-
 
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
@@ -500,16 +554,21 @@ def check_xvasynth():
 
 # Launch Mantella-Local
 def launch_mantella_sequence():
-    global game_path, xvasynth_folder
+    global xvasynth_folder
 
     # Check if game and script extender exist
     game_exe = game_exe_map[game_selection]
+    print(f"game_exe: {game_exe}")
     script_extender = script_extender_map[game_selection]
-    game_folder = os.path.dirname(game_path)
+    print(f"script_extender: {script_extender}")
+    game_folder = globals().get(f"{game_selection}_Folder_Path", "Not set")
+    print(f"game_folder: {game_folder}")
     game_exe_path = os.path.join(game_folder, game_exe)
+    print(f"game_exe_path: {game_exe_path}")
     script_extender_path = os.path.join(game_folder, script_extender)
-
-    if not os.path.exists(game_exe_path) or not os.path.exists(script_extender_path):
+    print(f"script_extender_path: {script_extender_path}")
+    
+    if game_folder == "Not set" or not os.path.exists(game_exe_path) or not os.path.exists(script_extender_path):
         verbose_print(f"Missing Files: {game_exe} or {script_extender}")
         verbose_print(f"Check {game_selection} path and Script Extender presence.")
         delay(3)
@@ -549,10 +608,8 @@ def launch_mantella_sequence():
     verbose_print("Running Mantella...")
     delay(1)
     try:
-        if python_exe:
-            subprocess.run([python_exe, ".\\main.py"], check=True)
-        else:
-            subprocess.run([sys.executable, ".\\main.py"], check=True)
+        python_exe = get_python_exe()
+        subprocess.run([python_exe, ".\\main.py"], check=True)
     except subprocess.CalledProcessError as e:
         verbose_print(f"Error occurred while running main.py: {e}")
         verbose_print("Returning to menu in 5 seconds...")
@@ -568,7 +625,7 @@ def exit_and_save():
     write_config()
     verbose_print("Saved File: config.ini")
     write_output_file(1)
-    verbose_print("Saved File: .\\data\\temporary_batch.txt")
+    verbose_print("Saved File: .\\data\\persistence.txt")
     verbose_print("Exiting Launcher/Optimizer...") 
     return 1, xvasynth_folder
 
@@ -633,17 +690,19 @@ def display_menu_and_handle_input():
         elif choice == 'B':
             print(f"Beginning Mantella/xVASynth/{game_selection}...")
             delay(2)
-            if launch_mantella_sequence():  # Remove the game_path argument
+            if launch_mantella_sequence():
                 return display_menu_and_handle_input()
             else:
                 continue
         elif choice == 'X':
             print(f"Exiting Mantella-Local{game_selection}...")
             delay(2)
-            return exit_and_save()
+            save_persistence()
+            return
         else:
             verbose_print("Invalid selection. Please try again.")
         
+        save_persistence()
         delay()
 
 # Main Function
@@ -651,49 +710,25 @@ def main():
     read_game_paths_list_from_registry()
     verbose_print("Entering main function")
     try:
-        # Read the Python executable path from the temporary file
-        python_exe = None
-        try:
-            with open('.\\data\\temporary_batch.txt', 'r') as f:
-                lines = f.readlines()
-                python_exe = next((line.split('=')[1].strip() for line in lines if line.startswith('PYTHON_EXE_TO_USE=')), None)
-        except FileNotFoundError:
-            verbose_print("Warning: temporary_batch.txt not found. Using system Python.")
-        except Exception as e:
-            verbose_print(f"Error reading temporary_batch.txt: {str(e)}")
-
-        if not python_exe:
-            verbose_print("Warning: Python executable path not found. Using system Python.")
-
-        set_config_ini_path()  # Call the function to set CONFIG_INI_PATH
-
+        set_config_ini_path()
+        load_persistence()
         read_config()
 
         model_server = check_lm_ollama()
         if not model_server:
-            return 1, ""
+            return
 
         if model_server == "lmstudio":
             fetch_model_details_lmstudio()
         elif model_server == "ollama":
             fetch_model_details_ollama()
 
-        while True:
-            exit_code, xvasynth_folder = display_menu_and_handle_input()
-            
-            if exit_code == 0:
-                if launch_mantella_sequence(python_exe):
-                    break
-            else:
-                break
+        display_menu_and_handle_input()
 
-        return exit_code, xvasynth_folder
     except Exception as e:
         verbose_print(f"An unexpected error occurred: {str(e)}")
         verbose_print("Traceback:")
         verbose_print(traceback.format_exc())
-        write_output_file(1)
-        return 1, ""
 
 # Entry Point
 if __name__ == "__main__":
