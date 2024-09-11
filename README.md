@@ -1,4 +1,4 @@
-# Mantella-Local-Launcher for ([Mantella](https://github.com/art-from-the-machine/Mantella/releases))
+# Mantella-Local-Launcher for [Mantella](https://github.com/art-from-the-machine/Mantella/releases)
 Status: Working.
 
 ### Description
@@ -114,11 +114,11 @@ Selection; Menu Options = 1-6, Back to Main = B:
 
 ## Requirements
 1. **Powerful Computer**: Running Fallout 4/Skyrim and interference on models can be intensive.
+4. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
 2. **Python Environment**: "Mantella-Local-Launcher requires Python 3.11", but Ensure that it was installed to the default directory or the default directory for all users.
 3. **Python Libraries**: The same libraries as Mantella listed in `requirements.txt`.
 3. **Language Model**: Search [HuggingFace](https://huggingface.co) for a `.Gguf` model such as, llama 3 or llama 3.1, 4.xGB VRam Free for Q3 or 5.xGB VRam free for Q4, and for shared GPU this is in addition to whatever Fallout 4 consumes of your Vram.
-4. **Operating System**: Compatible with Windows 7 through Windows 11; administrative privileges may be needed.
-5. **Mantella Installation**: It was made for the v12, other versions will work likely unless they change the key names. The files from Nexus are likely always going to be compatible, as long as the github files work.
+5. **Mantella Installation**: It was made for the v12 version on [Github](https://github.com/art-from-the-machine/Mantella/releases), other versions will work likely unless they change the key names. The files from Nexus are likely always going to be compatible, heres the link for, [Fallout 4](https://www.nexusmods.com/fallout4/mods/79747) and [Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/98631).
 5. **xVASynth Installation**: Must be installed and correctly configured in the specified directory.
 6. **Configuration File**: Requires a `config.ini` with `Game`, `Paths`, and `LanguageModel.Advanced` sections.
 7. **LM Studio or Ollama**: Obtain model folder/name and foolproofs api config, Mantella-Local-Launcer will not work on non-local model host services.
