@@ -5,7 +5,6 @@ import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg 
 
 # Global variables
 PERSISTENCE_TXT_PATH = '.\\data\\persistence.txt'
-PERSISTENCE_JSON_PATH = '.\\data\\persistence.json'
 CONFIG_INI_PATH = ''
 DOCUMENTS_FOLDER = ''
 xvasynth_folder = ""
@@ -184,7 +183,7 @@ def get_config_from_file():
 
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
-    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, microphone_enabled, llm_api
+    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, microphone_enabled, llm_api, auto_launch_ui
     config = configparser.ConfigParser()
 
     try:
@@ -243,12 +242,15 @@ def read_config():
     # Read LLM API
     llm_api = config.get("LLM", "llm_api", fallback="Not set")
 
+    # Read WebUI auto launch setting
+    auto_launch_ui = config.getboolean("WebUI", "auto_launch_ui", fallback=False)
+
     verbose_print(f"Read Keys: config.ini.")
     delay(2)
 
 def write_config():
     verbose_print("Writing config file...")
-    global microphone_enabled
+    global microphone_enabled, auto_launch_ui
     config = configparser.ConfigParser()
     
     try:
@@ -277,8 +279,12 @@ def write_config():
     
     if "Microphone" not in config:
         config["Microphone"] = {}
-    config["Microphone"]["microphone_enabled"] = str(int(microphone_enabled))
+    config["Microphone"]["microphone_enabled"] = str(microphone_enabled)
     
+    if "WebUI" not in config:
+        config["WebUI"] = {}
+    config["WebUI"]["auto_launch_ui"] = str(auto_launch_ui)
+
     # Add the Speech section and tts_service key
     if "Speech" not in config:
         config["Speech"] = {}
@@ -578,7 +584,7 @@ def launch_mantella_sequence():
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
     if game_running:
         # Alert the user and prompt for action
-        print(f"Game is Already Running! Close Existing Processes First, then Run or Just Bypass Game?")
+        print(f"Game Already Running! Close Processes then Run or Just Bypass the Game?")
         user_input = input("Selection; Close Processes = C, Bypass Game = B: ").strip().lower()
 
         if user_input == 'c':
@@ -586,7 +592,7 @@ def launch_mantella_sequence():
             subprocess.run(['taskkill', '/F', '/IM', game_exe], capture_output=True)
             delay(2)
         elif user_input == 'b':
-            verbose_print("Bypassing game launch. Proceeding without closing the game.")
+            verbose_print("Bypassing, using running game.")
         else:
             verbose_print("Invalid selection. Exiting.")
             delay(2)
@@ -651,12 +657,11 @@ def display_title():
     print("")
 
 def display_menu_and_handle_input():
-    global game_selection, optimization, custom_token_count, microphone_enabled, model_id, llm_api
+    global game_selection, optimization, custom_token_count, microphone_enabled, model_id, llm_api, auto_launch_ui
     while True:
         display_title()
         game_key = game_selection.lower().replace(" ", "")
         game_path = globals().get(f"{game_selection}_Folder_Path", "Not set")
-        print(f"")
         print(f"    1. Select Game Used")
         print(f"        ({game_selection})")
         print(f"    2. Microphone Status")
@@ -665,6 +670,8 @@ def display_menu_and_handle_input():
         print(f"        ({optimization})")
         print(f"    4. Model Token Count")
         print(f"        ({custom_token_count})")
+        print(f"    5. Launch WebUI")
+        print(f"        ({'True' if auto_launch_ui else 'False'})")
         print(f"")
         print("-" * 119)
         print(f"")
@@ -676,10 +683,10 @@ def display_menu_and_handle_input():
         print(f"        {llm_api}")                
         print(f"    Model Loaded:")
         print(f"        {model_id}")
-        print(f"\n")
+        print(f"")
         print("=" * 119)
 
-        choice = input("Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: ").strip().upper()
+        choice = input("Selection, Program Options = 1-5, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X: ").strip().upper()
         
         if choice == '1':
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
@@ -692,6 +699,8 @@ def display_menu_and_handle_input():
         elif choice == '4':
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
+        elif choice == '5':
+            auto_launch_ui = not auto_launch_ui
         elif choice == 'R':
             print(f"Refreshing Display...")
             delay(2)
@@ -703,7 +712,7 @@ def display_menu_and_handle_input():
             continue
         elif choice == 'B':
             print(f"Beginning Mantella/xVASynth/{game_selection}...")
-            save_persistence()
+            write_config()
             delay(2)
             if launch_mantella_sequence():
                 return display_menu_and_handle_input()
@@ -711,13 +720,13 @@ def display_menu_and_handle_input():
                 continue
         elif choice == 'X':
             print(f"Exiting Mantella-Local{game_selection}...")
-            save_persistence()
+            write_config()
             delay(2)
             return
         else:
             verbose_print("Invalid selection. Please try again.")
         
-        save_persistence()
+        write_config()
         delay()
 
 # Main Function
@@ -726,7 +735,6 @@ def main():
     verbose_print("Entering main function")
     try:
         set_config_ini_path()
-        load_persistence()
         read_config()
 
         model_server = check_lm_ollama()
@@ -756,4 +764,5 @@ if __name__ == "__main__":
         verbose_print(traceback.format_exc())
     finally:
         verbose_print("Script execution ended")
+        write_config()
         delay(2)
