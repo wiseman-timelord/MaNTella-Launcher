@@ -53,7 +53,6 @@ Selection; Menu Options = 1-3, Exit Batch = X:
     MaNTella-Local-Launcher
 -----------------------------------------------------------------------------------------------------------------------
 
-
     1. Select Game Used
         (Fallout4)
     2. Microphone Status
@@ -62,21 +61,22 @@ Selection; Menu Options = 1-3, Exit Batch = X:
         (Default)
     4. Model Token Count
         (4096)
+    5. Launch WebUI
+        (False)
 
 -----------------------------------------------------------------------------------------------------------------------
 
     Fallout4_Path:
-        E:\GamesVR\Fallout4_163\
+        D:\GamesVR\Fallout4_163\
     xVAsynth Path:
-        D:\GamesVR\xVASynth
+        D:\GamesVR\xVASynth\xVASynth.exe
     LLM API:
-        http://localhost:1234/v1/
+        http://localhost:1234/v1
     Model Loaded:
         uncensored-frank-llama-3-8b.q6_k
 
-
 =======================================================================================================================
-Selection, Program Options = 1-4, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
+Selection, Program Options = 1-5, Refresh Display = R, Begin Mantella/xVASynth/Fallout4 = B, Exit and Save = X:
 
 ```
 - The `Installer-Setup`, to install requirements compitently...
