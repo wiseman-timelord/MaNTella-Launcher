@@ -5,12 +5,13 @@ import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg 
 
 # Global variables
 PERSISTENCE_TXT_PATH = '.\\data\\temporary_batch.txt'
-game = "Skyrim"
+game_selection = "Skyrim"
 optimization = "Default"
-game_paths = {}
-mod_folders = {}
+game_paths_list = {}
+mod_folders_list = {}
 xvasynth_folder = ""
 model_id = ""
+game_path = ""
 custom_token_count = 8192    # Default value
 lmstudio_api_url = "http://localhost:1234/v1/models"
 microphone_enabled = False
@@ -22,13 +23,13 @@ Fallout4_Folder_Path = "Not_Installed"
 Fallout4VR_Folder_Path = "Not_Installed"
 
 # Global Maps
-game_exe = {
+game_exe_map = {
     "Fallout4": "Fallout4.exe",
     "Fallout4VR": "Fallout4VR.exe",
     "Skyrim": "SkyrimSE.exe",
     "SkyrimVR": "SkyrimVR.exe"
 }
-script_extender = {
+script_extender_map = {
     "Fallout4": "f4se_loader.exe",
     "Fallout4VR": "f4sevr_loader.exe",
     "Skyrim": "skse64_loader.exe",
@@ -51,7 +52,7 @@ def set_config_ini_path():
     DOCUMENTS_FOLDER = get_documents_folder()
     CONFIG_INI_PATH = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
     verbose_print(f"CONFIG_INI_PATH set to: {CONFIG_INI_PATH}")
-def read_game_paths_from_registry():
+def read_game_paths_list_from_registry():
     global Skyrim_Folder_Path, SkyrimVR_Folder_Path, Fallout4_Folder_Path, Fallout4VR_Folder_Path
     
     def get_registry_value(key_path, value_name):
@@ -63,10 +64,10 @@ def read_game_paths_from_registry():
         except WindowsError:
             return "Not_Installed"
 
-    Skyrim_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path"), script_extender["Skyrim"])
-    SkyrimVR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path"), script_extender["SkyrimVR"])
-    Fallout4_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path"), script_extender["Fallout4"])
-    Fallout4VR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path"), script_extender["Fallout4VR"])
+    Skyrim_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim Special Edition", "Installed Path"), script_extender_map["Skyrim"])
+    SkyrimVR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim VR", "Installed Path"), script_extender_map["SkyrimVR"])
+    Fallout4_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout4", "Installed Path"), script_extender_map["Fallout4"])
+    Fallout4VR_Folder_Path = os.path.join(get_registry_value(r"SOFTWARE\WOW6432Node\Bethesda Softworks\Fallout 4 VR", "Installed Path"), script_extender_map["Fallout4VR"])
     verbose_print(f"Skyrim Folder Path: {Skyrim_Folder_Path}")
     verbose_print(f"SkyrimVR Folder Path: {SkyrimVR_Folder_Path}")
     verbose_print(f"Fallout4 Folder Path: {Fallout4_Folder_Path}")
@@ -129,7 +130,7 @@ def get_config_from_file():
 
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
-    global game, optimization, custom_token_count, game_paths, mod_folders, microphone_enabled, llm_api
+    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, microphone_enabled, llm_api
     config = configparser.ConfigParser()
 
     try:
@@ -139,18 +140,18 @@ def read_config():
         delay(3)
         return
 
-    # Get the game name
-    game = config.get("Game", "game", fallback="Skyrim")
+    # Get the game_selection name
+    game_selection = config.get("Game", "game", fallback="Skyrim")
 
     # Fetch paths based on sections and keys
-    game_paths = {
+    game_paths_list = {
         "skyrim": config.get("Game", "skyrim_folder", fallback="Not set"),
         "skyrimvr": config.get("Game", "skyrimvr_folder", fallback="Not set"),
         "fallout4": config.get("Game", "fallout4_folder", fallback="Not set"),
         "fallout4vr": config.get("Game", "fallout4vr_folder", fallback="Not set"),
     }
 
-    mod_folders = {
+    mod_folders_list = {
         "skyrim": config.get("Game", "skyrim_mod_folder", fallback="Not set"),
         "skyrimvr": config.get("Game", "skyrimvr_mod_folder", fallback="Not set"),
         "fallout4": config.get("Game", "fallout4_mod_folder", fallback="Not set"),
@@ -205,7 +206,7 @@ def write_config():
     
     if "Game" not in config:
         config["Game"] = {}
-    config["Game"]["game"] = game
+    config["Game"]["game"] = game_selection
     
     if "LLM.Advanced" not in config:
         config["LLM.Advanced"] = {}
@@ -247,12 +248,12 @@ def write_config():
 def write_output_file(exit_code):
     verbose_print(f"Writing output file")
     try:
-        game_key = game.lower().replace(" ", "")
-        game_path = game_paths.get(game_key, "Not set")
+        game_key = game_selection.lower().replace(" ", "")
+        game_path = game_paths_list.get(game_key, "Not set")
         with open(PERSISTENCE_TXT_PATH, 'w') as f:
             f.write(f"exit_code={exit_code}\n")
             f.write(f"xvasynth_folder={xvasynth_folder}\n")  # Updated from the text file
-            f.write(f"game={game}\n")
+            f.write(f"game_selection={game_selection}\n")
             f.write(f"game_path={game_path}")
         verbose_print(f"Output file written successfully: {PERSISTENCE_TXT_PATH}")
     except Exception as e:
@@ -439,40 +440,44 @@ def check_lm_ollama():
 
     if lm_running and ollama_running:
         verbose_print("Error: Multiple Model Servers")
-        verbose_print("Please run, Ollama or LM Studio, not both")
+        verbose_print("Run, Ollama or LM Studio, not Both")
+        time.sleep(5)
         return False
     elif lm_running:
         verbose_print("LM Studio Status: Running")
+        time.sleep(3)
         return "lmstudio"
     elif ollama_running:
         verbose_print("Ollama Status: Running")
+        time.sleep(3)
         return "ollama"
     else:
-        verbose_print("Error: Neither LM Studio nor Ollama is running.")
-        verbose_print("Load one of the Language Models and try again.")
+        verbose_print("Not Rnning: LM Studio nor Ollama.")
+        verbose_print("Load a Models and try again.")
+        time.sleep(5)
         return False
 
 def check_game():
-    if game not in game_exe:
+    if game_selection not in game_exe_map:
         verbose_print(f"Unknown game: {game}")
         return False
 
-    game_path = globals().get(f"{game}_Folder_Path", "")
+    game_path = globals().get(f"{game_selection}_Folder_Path", "")
     if game_path == "Not_Installed":
-        verbose_print(f"Game folder not set for {game}")
+        verbose_print(f"Game folder not set for {game_selection}")
         return False
 
-    full_game_path = os.path.join(os.path.dirname(game_path), game_exe[game])
-    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe[game]}'], capture_output=True, text=True).stdout.lower().count(game_exe[game].lower()) > 0
+    full_game_path = os.path.join(os.path.dirname(game_path), game_exe_map[game_selection])
+    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe_map[game_selection]}'], capture_output=True, text=True).stdout.lower().count(game_exe_map[game_selection].lower()) > 0
 
     if game_running:
-        verbose_print(f"{game_exe[game]} is running. Closing it...")
-        subprocess.run(['taskkill', '/F', '/IM', game_exe[game]], capture_output=True)
+        verbose_print(f"{game_exe_map[game_selection]} is running. Closing it...")
+        subprocess.run(['taskkill', '/F', '/IM', game_exe_map[game_selection]], capture_output=True)
         time.sleep(2)
 
-    verbose_print(f"Starting {game}...")
+    verbose_print(f"Starting {game_selection}...")
     subprocess.Popen([game_path], cwd=os.path.dirname(game_path))
-    verbose_print(f"Started {script_extender[game]}")
+    verbose_print(f"Started {script_extender_map[game_selection]}")
     time.sleep(3)  # Wait for the game to start
 
     return True
@@ -493,42 +498,37 @@ def check_xvasynth():
 
     return True
 
-def launch_mantella_sequence(game_path):
-    global xvasynth_folder
+# Launch Mantella-Local
+def launch_mantella_sequence():
+    global game_path, xvasynth_folder
 
-    # Check if the provided full path exists    
-    print(f"Checking: {game_path}")
-    if not os.path.exists(game_path):
-        verbose_print(f"Missing Files: {game_path}")
-        verbose_print(f"Check {game} path and Script Extender presence.")
+    # Check if game and script extender exist
+    game_exe = game_exe_map[game_selection]
+    script_extender = script_extender_map[game_selection]
+    game_folder = os.path.dirname(game_path)
+    game_exe_path = os.path.join(game_folder, game_exe)
+    script_extender_path = os.path.join(game_folder, script_extender)
+
+    if not os.path.exists(game_exe_path) or not os.path.exists(script_extender_path):
+        verbose_print(f"Missing Files: {game_exe} or {script_extender}")
+        verbose_print(f"Check {game_selection} path and Script Extender presence.")
         delay(3)
         return False
 
-    # Check if game is running (using the filename from the path)
-    game_exe_name = os.path.basename(game_path)
-
-    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe_name}'], capture_output=True, text=True).stdout.lower().count(game_exe_name.lower()) > 0
-
+    # Check if game is running and close it
+    game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
     if game_running:
-        verbose_print(f"{game_exe_name} is already running. Closing it...")
-        subprocess.run(['taskkill', '/F', '/IM', game_exe_name], capture_output=True)
+        verbose_print(f"{game_exe} is already running. Closing it...")
+        subprocess.run(['taskkill', '/F', '/IM', game_exe], capture_output=True)
         delay(2)
 
-    verbose_print(f"Starting {game_exe_name} from path: {game_path}...")
-    subprocess.Popen([game_path], cwd=os.path.dirname(game_path))
-    verbose_print(f"Started {game_exe_name}")
+    # Launch game via script extender
+    verbose_print(f"Starting {game_selection} via {script_extender}...")
+    subprocess.Popen([script_extender_path], cwd=game_folder)
+    verbose_print(f"Started {script_extender}")
     delay(3)
 
-    # Check if the provided full path exists    
-    print(f"Checking: {xvasynth_folder}")
-    if not os.path.exists(xvasynth_folder):
-        verbose_print(f"Missing Files: {xvasynth_folder}")
-        verbose_print("Check xVASynth path and exe presence.")
-        delay(3)
-        return False
-
     # Check xVASynth
-    print(f"Checking: {game_path}")
     xvasynth_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq xVASynth.exe'], capture_output=True, text=True).stdout.lower().count('xvasynth.exe') > 0
 
     if not xvasynth_running:
@@ -542,14 +542,17 @@ def launch_mantella_sequence(game_path):
             verbose_print("Check xvasynth folder path validity.")
             delay(3)
             return False
-
-    delay(1)
+    else:
+        verbose_print("xVASynth is already running. Continuing...")
 
     # Run Mantella
     verbose_print("Running Mantella...")
     delay(1)
     try:
-        subprocess.run([sys.executable, "main.py"], check=True)
+        if python_exe:
+            subprocess.run([python_exe, ".\\main.py"], check=True)
+        else:
+            subprocess.run([sys.executable, ".\\main.py"], check=True)
     except subprocess.CalledProcessError as e:
         verbose_print(f"Error occurred while running main.py: {e}")
         verbose_print("Returning to menu in 5 seconds...")
@@ -557,7 +560,7 @@ def launch_mantella_sequence(game_path):
         return False
 
     verbose_print("Mantella Exited.")
-    delay(1)
+    delay(2)
     return True
 
 def exit_and_save():
@@ -577,14 +580,14 @@ def display_title():
     print("")
 
 def display_menu_and_handle_input():
-    global game, optimization, custom_token_count, microphone_enabled, model_id, llm_api
+    global game_selection, optimization, custom_token_count, microphone_enabled, model_id, llm_api
     while True:
         display_title()
-        game_key = game.lower().replace(" ", "")
-        game_path = globals().get(f"{game}_Folder_Path", "Not set")
+        game_key = game_selection.lower().replace(" ", "")
+        game_path = globals().get(f"{game_selection}_Folder_Path", "Not set")
         print(f"")
         print(f"    1. Select Game Used")
-        print(f"        ({game})")
+        print(f"        ({game_selection})")
         print(f"    2. Microphone Status")
         print(f"        ({'True' if microphone_enabled else 'False'})")
         print(f"    3. Prompt Optimization")
@@ -594,7 +597,7 @@ def display_menu_and_handle_input():
         print(f"")
         print("-" * 119)
         print(f"")
-        print(f"    {game}_Path:")
+        print(f"    {game_selection}_Path:")
         print(f"        {game_path}")
         print(f"    xVAsynth Path:")
         print(f"        {xvasynth_folder}")
@@ -609,7 +612,7 @@ def display_menu_and_handle_input():
         
         if choice == '1':
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
-            game = games[(games.index(game) + 1) % len(games)]
+            game_selection = games[(games.index(game_selection) + 1) % len(games)]
         elif choice == '2':
             microphone_enabled = not microphone_enabled
         elif choice == '3':
@@ -619,6 +622,8 @@ def display_menu_and_handle_input():
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
         elif choice == 'R':
+            print(f"Refreshing Display...")
+            delay(2)
             server_choice = read_temp_file()
             if server_choice == "lmstudio":
                 fetch_model_details_lmstudio()
@@ -626,11 +631,15 @@ def display_menu_and_handle_input():
                 fetch_model_details_ollama()
             continue
         elif choice == 'B':
-            if launch_mantella_sequence(game_path):  # Pass the game_path to the function
+            print(f"Beginning Mantella/xVASynth/{game_selection}...")
+            delay(2)
+            if launch_mantella_sequence():  # Remove the game_path argument
                 return display_menu_and_handle_input()
             else:
                 continue
         elif choice == 'X':
+            print(f"Exiting Mantella-Local{game_selection}...")
+            delay(2)
             return exit_and_save()
         else:
             verbose_print("Invalid selection. Please try again.")
@@ -639,10 +648,24 @@ def display_menu_and_handle_input():
 
 # Main Function
 def main():
-    read_game_paths_from_registry()
+    read_game_paths_list_from_registry()
     verbose_print("Entering main function")
     try:
-        set_config_ini_path()  # Call the new function to set CONFIG_INI_PATH
+        # Read the Python executable path from the temporary file
+        python_exe = None
+        try:
+            with open('.\\data\\temporary_batch.txt', 'r') as f:
+                lines = f.readlines()
+                python_exe = next((line.split('=')[1].strip() for line in lines if line.startswith('PYTHON_EXE_TO_USE=')), None)
+        except FileNotFoundError:
+            verbose_print("Warning: temporary_batch.txt not found. Using system Python.")
+        except Exception as e:
+            verbose_print(f"Error reading temporary_batch.txt: {str(e)}")
+
+        if not python_exe:
+            verbose_print("Warning: Python executable path not found. Using system Python.")
+
+        set_config_ini_path()  # Call the function to set CONFIG_INI_PATH
 
         read_config()
 
@@ -659,7 +682,7 @@ def main():
             exit_code, xvasynth_folder = display_menu_and_handle_input()
             
             if exit_code == 0:
-                if launch_mantella_sequence():
+                if launch_mantella_sequence(python_exe):
                     break
             else:
                 break
@@ -676,15 +699,11 @@ def main():
 if __name__ == "__main__":
     verbose_print("Script execution started")
     try:
-        exit_code, xvasynth_path = main()
-        print(f"{exit_code},{xvasynth_path}", file=sys.stdout)
-        sys.stdout.flush()
-        verbose_print(f"Final output: exit_code={exit_code}, xvasynth_path={xvasynth_path}")
+        main()
     except Exception as e:
         verbose_print(f"An unexpected error occurred in the main execution: {str(e)}")
         verbose_print("Traceback:")
         verbose_print(traceback.format_exc())
-        print("1,", file=sys.stdout)
-        sys.stdout.flush()
-    verbose_print("Script execution ended")
-    sys.exit(0)   # Always exit with code 0
+    finally:
+        verbose_print("Script execution ended")
+        delay(2)

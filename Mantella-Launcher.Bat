@@ -141,6 +141,7 @@ call :check_config
 echo Saving CONFIG_INI_PATH and model_service_used to temporary_batch.txt...
 echo CONFIG_INI_PATH=%CONFIG_INI_PATH% > .\data\temporary_batch.txt
 echo model_service_used=standalone >> .\data\temporary_batch.txt
+echo PYTHON_EXE_TO_USE=%PYTHON_EXE_TO_USE% >> .\data\temporary_batch.txt
 timeout /t 1 >nul
 echo Running Mantella Local Launcher...
 "%PYTHON_EXE_TO_USE%" .\mantella_launcher.py
