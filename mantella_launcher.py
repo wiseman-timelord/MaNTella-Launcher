@@ -1,7 +1,7 @@
 # Script: .\mantella_launcher.py
 
 # Imports
-import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg  # built-in libraries 
+import os, sys, time, shutil, traceback, subprocess, configparser, json, winreg, atexit
 
 # Global variables
 PERSISTENCE_TXT_PATH = '.\\data\\persistence.txt'
@@ -19,8 +19,12 @@ microphone_enabled = False
 game_selection = "Skyrim"
 optimization = "Default"
 custom_token_count = 8192
+auto_launch_ui = False
+pause_threshold = 1
 game_paths_list = {}
 mod_folders_list = {}
+main_process = None
+llm_api = "Not set"
 
 # Global Maps
 game_exe_map = {
@@ -85,6 +89,17 @@ def read_game_paths_list_from_registry():
 
     verbose_print("Game paths updated from registry")
     delay(2)
+def terminate_main_process():
+    global main_process
+    if main_process:
+        verbose_print("Terminating main.py process...")
+        main_process.terminate()
+        try:
+            main_process.wait(timeout=5)  # Wait for up to 5 seconds for the process to terminate
+        except subprocess.TimeoutExpired:
+            verbose_print("main.py process didn't terminate gracefully. Killing it.")
+            main_process.kill()
+        verbose_print("main.py process terminated.")
 
 # Optimization presets
 optimization_presets = {
@@ -183,7 +198,7 @@ def get_config_from_file():
 
 def read_config():
     verbose_print(f"Reading config file from: {CONFIG_INI_PATH}")
-    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, microphone_enabled, llm_api, auto_launch_ui
+    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, llm_api, auto_launch_ui, pause_threshold
     config = configparser.ConfigParser()
 
     try:
@@ -193,10 +208,10 @@ def read_config():
         delay(3)
         return
 
-    # Get the game_selection name
+    # Read all settings from config.ini
     game_selection = config.get("Game", "game", fallback="Skyrim")
 
-    # Fetch paths based on sections and keys
+    # Corrected dictionary for game paths
     game_paths_list = {
         "skyrim": config.get("Game", "skyrim_folder", fallback="Not set"),
         "skyrimvr": config.get("Game", "skyrimvr_folder", fallback="Not set"),
@@ -204,6 +219,7 @@ def read_config():
         "fallout4vr": config.get("Game", "fallout4vr_folder", fallback="Not set"),
     }
 
+    # Read mod folders
     mod_folders_list = {
         "skyrim": config.get("Game", "skyrim_mod_folder", fallback="Not set"),
         "skyrimvr": config.get("Game", "skyrimvr_mod_folder", fallback="Not set"),
@@ -211,16 +227,17 @@ def read_config():
         "fallout4vr": config.get("Game", "fallout4vr_mod_folder", fallback="Not set"),
     }
 
-    # Set xVASynth folder
+    # Assign pause_threshold separately
+    pause_threshold = int(config.get("VoiceInput", "pause_threshold", fallback="1"))
+
     global xvasynth_folder
     xvasynth_folder = config.get("TTS", "xvasynth_folder", fallback="Not set")
     if xvasynth_folder != "Not set":
         xvasynth_folder = os.path.join(xvasynth_folder, "xVASynth.exe")
-
-    # Fetch Language Model settings
+    
     custom_token_count = int(config.get("LLM", "custom_token_count", fallback="4096"))
 
-    # Check for optimization preset
+    # Read optimization settings
     max_tokens = int(config.get("LLM", "max_tokens", fallback="250"))
     max_response_sentences = int(config.get("LLM", "max_response_sentences", fallback="4"))
     temperature = float(config.get("LLM", "temperature", fallback="1.0"))
@@ -236,13 +253,7 @@ def read_config():
     else:
         optimization = "Default"
 
-    # Read microphone setting
-    microphone_enabled = config.getboolean("Microphone", "microphone_enabled", fallback=False)
-
-    # Read LLM API
     llm_api = config.get("LLM", "llm_api", fallback="Not set")
-
-    # Read WebUI auto launch setting
     auto_launch_ui = config.getboolean("WebUI", "auto_launch_ui", fallback=False)
 
     verbose_print(f"Read Keys: config.ini.")
@@ -250,7 +261,10 @@ def read_config():
 
 def write_config():
     verbose_print("Writing config file...")
-    global microphone_enabled, auto_launch_ui
+    
+    # Declare globals at the top of the function
+    global game_selection, optimization, custom_token_count, model_id, llm_api, auto_launch_ui, pause_threshold
+    
     config = configparser.ConfigParser()
     
     try:
@@ -260,41 +274,37 @@ def write_config():
         delay(3)
         return
     
+    # Update all sections with current global values
     if "Game" not in config:
         config["Game"] = {}
     config["Game"]["game"] = game_selection
+    game_key = game_selection.lower().replace(" ", "")
+    config["Game"][f"{game_key}_folder"] = game_paths_list.get(game_key, "Not set")
     
-    if "LLM.Advanced" not in config:
-        config["LLM.Advanced"] = {}
-    config["LLM.Advanced"]["custom_token_count"] = str(custom_token_count)
-    
-    preset = optimization_presets[optimization]
-    config["LLM.Advanced"]["max_tokens"] = str(preset["max_tokens"])
-    config["LLM.Advanced"]["temperature"] = str(preset["temperature"])
+    if "TTS" not in config:
+        config["TTS"] = {}
+    config["TTS"]["xvasynth_folder"] = os.path.dirname(xvasynth_folder) if xvasynth_folder != "Not set" else "Not set"
     
     if "LLM" not in config:
         config["LLM"] = {}
-    config["LLM"]["max_response_sentences"] = str(preset["max_response_sentences"])
-    config["LLM"]["model"] = model_id
+    config["LLM"]["custom_token_count"] = str(custom_token_count)
+    config["LLM"]["llm_api"] = llm_api
     
-    if "Microphone" not in config:
-        config["Microphone"] = {}
-    config["Microphone"]["microphone_enabled"] = str(microphone_enabled)
+    preset = optimization_presets[optimization]
+    config["LLM"]["max_tokens"] = str(preset["max_tokens"])
+    config["LLM"]["max_response_sentences"] = str(preset["max_response_sentences"])
+    config["LLM"]["temperature"] = str(preset["temperature"])
     
     if "WebUI" not in config:
         config["WebUI"] = {}
     config["WebUI"]["auto_launch_ui"] = str(auto_launch_ui)
 
-    # Add the Speech section and tts_service key
-    if "Speech" not in config:
-        config["Speech"] = {}
-    config["Speech"]["tts_service"] = "xVASynth"
-
-    # Add the LM Studio API key
-    if "LLM.Advanced" not in config:
-        config["LLM.Advanced"] = {}
-    config["LLM.Advanced"]["llm_api"] = "http://localhost:1234/v1"
+    if "VoiceInput" not in config:
+        config["VoiceInput"] = {}
     
+    # Fix pause_threshold assignment
+    config["VoiceInput"]["pause_threshold"] = str(pause_threshold)
+
     try:
         os.makedirs(os.path.dirname(CONFIG_INI_PATH), exist_ok=True)
         with open(CONFIG_INI_PATH, 'w') as configfile:
@@ -304,6 +314,7 @@ def write_config():
         verbose_print(f"Error writing config: {str(e)}")
         delay(3)
     delay(2)
+
 
 def write_output_file(exit_code):
     verbose_print(f"Writing output file")
@@ -560,7 +571,13 @@ def check_xvasynth():
 
 # Launch Mantella-Local
 def launch_mantella_sequence():
-    global xvasynth_folder
+    global xvasynth_folder, main_process, game_selection
+
+    clear_screen()
+    print("=" * 119)
+    print(f"    Launching {game_selection}/xVASynth/Mantella...")
+    print("-" * 119)
+    print("")
 
     # Check if game and script extender exist
     game_exe = game_exe_map[game_selection]
@@ -629,8 +646,12 @@ def launch_mantella_sequence():
     delay(1)
     try:
         python_exe = get_python_exe()
-        subprocess.run([python_exe, ".\\main.py"], check=True)
-    except subprocess.CalledProcessError as e:
+        main_process = subprocess.Popen([python_exe, ".\\main.py"])
+        verbose_print("Mantella (main.py) is running...")
+        
+        # Wait for the main process to finish
+        main_process.wait()
+    except Exception as e:
         verbose_print(f"Error occurred while running main.py: {e}")
         verbose_print("Returning to menu in 5 seconds...")
         delay(5)
@@ -639,6 +660,8 @@ def launch_mantella_sequence():
     verbose_print("Mantella Exited.")
     delay(2)
     return True
+
+
 
 def exit_and_save():
     display_title()
@@ -657,25 +680,25 @@ def display_title():
     print("")
 
 def display_menu_and_handle_input():
-    global game_selection, optimization, custom_token_count, microphone_enabled, model_id, llm_api, auto_launch_ui
+    global game_selection, optimization, custom_token_count, model_id, llm_api, auto_launch_ui, pause_threshold
     while True:
         display_title()
         game_key = game_selection.lower().replace(" ", "")
-        game_path = globals().get(f"{game_selection}_Folder_Path", "Not set")
+        game_path = game_paths_list.get(game_key, "Not set")
         print(f"    1. Select Game Used")
         print(f"        ({game_selection})")
-        print(f"    2. Microphone Status")
-        print(f"        ({'True' if microphone_enabled else 'False'})")
-        print(f"    3. Prompt Optimization")
+        print(f"    2. Prompt Optimization")
         print(f"        ({optimization})")
-        print(f"    4. Model Token Count")
+        print(f"    3. Model Token Count")
         print(f"        ({custom_token_count})")
-        print(f"    5. Launch WebUI")
+        print(f"    4. Voice Input Cutoff")
+        print(f"        ({pause_threshold}s)")
+        print(f"    5. Launch WebUI Config")
         print(f"        ({'True' if auto_launch_ui else 'False'})")
         print(f"")
         print("-" * 119)
         print(f"")
-        print(f"    {game_selection}_Path:")
+        print(f"    {game_selection} Path:")
         print(f"        {game_path}")
         print(f"    xVAsynth Path:")
         print(f"        {xvasynth_folder}")
@@ -692,13 +715,13 @@ def display_menu_and_handle_input():
             games = ["Skyrim", "SkyrimVR", "Fallout4", "Fallout4VR"]
             game_selection = games[(games.index(game_selection) + 1) % len(games)]
         elif choice == '2':
-            microphone_enabled = not microphone_enabled
-        elif choice == '3':
             optimizations = list(optimization_presets.keys())
             optimization = optimizations[(optimizations.index(optimization) + 1) % len(optimizations)]
-        elif choice == '4':
+        elif choice == '3':
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
+        elif choice == '4':
+            pause_threshold = pause_threshold % 3 + 1
         elif choice == '5':
             auto_launch_ui = not auto_launch_ui
         elif choice == 'R':
@@ -712,7 +735,7 @@ def display_menu_and_handle_input():
             continue
         elif choice == 'B':
             print(f"Beginning Mantella/xVASynth/{game_selection}...")
-            write_config()
+            write_config()  # Save configuration before launching
             delay(2)
             if launch_mantella_sequence():
                 return display_menu_and_handle_input()
@@ -720,22 +743,22 @@ def display_menu_and_handle_input():
                 continue
         elif choice == 'X':
             print(f"Exiting Mantella-Local{game_selection}...")
-            write_config()
+            write_config()  # Save configuration before exiting
             delay(2)
             return
         else:
             verbose_print("Invalid selection. Please try again.")
         
-        write_config()
         delay()
 
 # Main Function
 def main():
+    atexit.register(terminate_main_process)
     read_game_paths_list_from_registry()
     verbose_print("Entering main function")
     try:
         set_config_ini_path()
-        read_config()
+        read_config()  # Read configuration at startup
 
         model_server = check_lm_ollama()
         if not model_server:
@@ -764,5 +787,4 @@ if __name__ == "__main__":
         verbose_print(traceback.format_exc())
     finally:
         verbose_print("Script execution ended")
-        write_config()
         delay(2)
