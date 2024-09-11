@@ -574,20 +574,34 @@ def launch_mantella_sequence():
         delay(3)
         return False
 
-    # Check if game is running and close it
+    # Check if game is running
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
     if game_running:
-        verbose_print(f"{game_exe} is already running. Closing it...")
-        subprocess.run(['taskkill', '/F', '/IM', game_exe], capture_output=True)
-        delay(2)
+        # Alert the user and prompt for action
+        print(f"Game is Already Running! Close Existing Processes First, then Run or Just Bypass Game?")
+        user_input = input("Selection; Close Processes = C, Bypass Game = B: ").strip().lower()
 
-    # Launch game via script extender
-    verbose_print(f"Starting {game_selection} via {script_extender}...")
-    subprocess.Popen([script_extender_path], cwd=game_folder)
-    verbose_print(f"Started {script_extender}")
-    delay(3)
+        if user_input == 'c':
+            verbose_print(f"Closing {game_exe}...")
+            subprocess.run(['taskkill', '/F', '/IM', game_exe], capture_output=True)
+            delay(2)
+        elif user_input == 'b':
+            verbose_print("Bypassing game launch. Proceeding without closing the game.")
+        else:
+            verbose_print("Invalid selection. Exiting.")
+            delay(2)
+            return False
+    else:
+        verbose_print(f"{game_exe} is not running.")
 
-    # Check xVASynth
+    # Launch game via script extender if not bypassed
+    if not game_running or user_input == 'c':
+        verbose_print(f"Starting {game_selection} via {script_extender}...")
+        subprocess.Popen([script_extender_path], cwd=game_folder)
+        verbose_print(f"Started {script_extender}")
+        delay(3)
+
+    # Check if xVASynth is running
     xvasynth_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq xVASynth.exe'], capture_output=True, text=True).stdout.lower().count('xvasynth.exe') > 0
 
     if not xvasynth_running:
@@ -598,7 +612,7 @@ def launch_mantella_sequence():
             delay(3)
         else:
             verbose_print("Error: xVASynth.exe not found.")
-            verbose_print("Check xvasynth folder path validity.")
+            verbose_print("Check xVASynth folder path validity.")
             delay(3)
             return False
     else:
@@ -689,6 +703,7 @@ def display_menu_and_handle_input():
             continue
         elif choice == 'B':
             print(f"Beginning Mantella/xVASynth/{game_selection}...")
+            save_persistence()
             delay(2)
             if launch_mantella_sequence():
                 return display_menu_and_handle_input()
@@ -696,8 +711,8 @@ def display_menu_and_handle_input():
                 continue
         elif choice == 'X':
             print(f"Exiting Mantella-Local{game_selection}...")
-            delay(2)
             save_persistence()
+            delay(2)
             return
         else:
             verbose_print("Invalid selection. Please try again.")
