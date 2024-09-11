@@ -151,10 +151,10 @@ Quality: max_tokens = 200, max_response_sentences = 3, temperature = 0.6
 2. Clean up redundancy and optimize, and re-test (scripts are large).
 3. Now have skyrim again, and will be able to test/auto-optimize the character sheets based on context for, skyrim and fallout.
 -Add new optimization to automatically downsize the character CSV files on launch to the specified size of default(uneditied)/1/2/3 sentences, depending upon, `fast/regular/quality` optimization. This requires digging up of the original characters.csv conversion tool, or making a new one.
-<br>6. Update relevant media. Character sheet must be backed up  "gamename_characters.bak", and then backup must be used to dynamically in relevance to the context size chosen, be filtered to contain, 2048 = 1 sentences, 4096 = 2 sentences, 8192 = 4 sentences, context lengths should be either, 2048, 4096, 8192, process the gamename_characters.csv according to the current context settings for context, and over-write any existing csv file. either like that or based on the other default/faster/regular/quality optimization
+4. Update relevant media. Character sheet must be backed up  "gamename_characters.bak", and then backup must be used to dynamically in relevance to the context size chosen, be filtered to contain, 2048 = 1 sentences, 4096 = 2 sentences, 8192 = 4 sentences, context lengths should be either, 2048, 4096, 8192, process the gamename_characters.csv according to the current context settings for context, and over-write any existing csv file. either like that or based on the other default/faster/regular/quality optimization. 
 - There is also work on Llama-Legacy-Serve, this will be able hopefully to merge with Mantella-Local-Launcher, `https://github.com/wiseman-timelord/Llama-Legacy-Serve`.
 - Idea: possibly mantella could also open in a new window, and then the window for the launcher could be data visualization through libraries designed for that, relating to ollama/lm studio interference? (or would this be too many windows?
-3. requires re-assessment of what is a "Required number of Tokens" for llama 3 level, as noticed it was generating at 1 token per word.
+
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
