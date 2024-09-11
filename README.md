@@ -54,24 +54,24 @@ Selection; Menu Options = 1-3, Exit Batch = X:
 -----------------------------------------------------------------------------------------------------------------------
 
     1. Select Game Used
-        (Fallout4)
-    2. Microphone Status
-        (False)
-    3. Prompt Optimization
-        (Default)
-    4. Model Token Count
+        (Fallout4VR)
+    2. Prompt Optimization
+        (Regular)
+    3. Model Token Count
         (4096)
-    5. Launch WebUI
+    4. Voice Input Cutoff
+        (2s)
+    5. Launch WebUI Config
         (False)
 
 -----------------------------------------------------------------------------------------------------------------------
 
-    Fallout4_Path:
-        D:\GamesVR\Fallout4_163\
+    Fallout4VR_Path:
+        C:\Games\Steam\steamapps\common\Fallout4VR
     xVAsynth Path:
-        D:\GamesVR\xVASynth\xVASynth.exe
+        C:\Games\Steam\steamapps\common\xVASynth\xVASynth.exe
     LLM API:
-        http://localhost:1234/v1
+        OpenRouter
     Model Loaded:
         uncensored-frank-llama-3-8b.q6_k
 
