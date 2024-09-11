@@ -630,7 +630,7 @@ def exit_and_save():
     return 1, xvasynth_folder
 
 def display_title():
-    # clear_screen()
+    clear_screen()
     print("=" * 119)
     print("    MaNTella-Local-Launcher")
     print("-" * 119)
