@@ -12,8 +12,7 @@ Status: Working.
 - **LM Studio / Ollama Support **: Switch models to similar one with different name, and it is handled by the launcher in `config.ini`.
 - **Auto-Optimize Prompts**: Prompts are upgraded/streamlined, character sheets will be optimized based on context, but that part is still being worked on.
 - **Auto-Environment Selection**: Code enables python location to be found, and correct version of python to be used. 
-- **Standardized Character Details**: Standardizes character data is being worked on, it will autop optimize character details to, 1, 2, 3, 4, sentence length. Current drop-in file is 1 sentence I think.
-- 
+- **Persistent Settings**: The scripts create/use, `.\data\persistence.txt` and `.\data\persistence.json`, your settings are saved.
 
 ### Preview
 - The `Pre-Launch Configuration` options of `Mantella-Launcher.Bat`...
