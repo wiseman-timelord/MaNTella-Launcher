@@ -163,7 +163,7 @@ echo.
 echo.
 echo     1. Install `.\requirements.txt`
 echo.
-echo     2 First Run Setup ^(Run Once^)
+echo     2. First Run Setup ^(Run Once^)
 echo.
 echo     3. Fix Ollama Non-Cuda/Non-Rocm GPU 
 echo.
