@@ -39,6 +39,12 @@ script_extender_map = {
     "Skyrim": "skse64_loader.exe",
     "SkyrimVR": "sksevr_loader.exe"
 }
+optimization_presets = {
+    "Default": {"max_tokens": 250, "max_response_sentences": 999, "temperature": 1.0},
+    "Faster": {"max_tokens": 100, "max_response_sentences": 1, "temperature": 0.4},
+    "Regular": {"max_tokens": 150, "max_response_sentences": 2, "temperature": 0.5},
+    "Quality": {"max_tokens": 200, "max_response_sentences": 3, "temperature": 0.6}
+}
 
 # System Section...
 def verbose_print(message):
@@ -56,6 +62,17 @@ def set_config_ini_path():
     DOCUMENTS_FOLDER = get_documents_folder()
     CONFIG_INI_PATH = os.path.join(DOCUMENTS_FOLDER, "My Games", "Mantella", "config.ini")
     verbose_print(f"CONFIG_INI_PATH set to: {CONFIG_INI_PATH}")
+def terminate_main_process():
+    global main_process
+    if main_process:
+        verbose_print("Terminating main.py process...")
+        main_process.terminate()
+        try:
+            main_process.wait(timeout=5)  # Wait for up to 5 seconds for the process to terminate
+        except subprocess.TimeoutExpired:
+            verbose_print("main.py process didn't terminate gracefully. Killing it.")
+            main_process.kill()
+        verbose_print("main.py process terminated.")    
 def read_game_paths_list_from_registry():
     global Skyrim_Folder_Path, SkyrimVR_Folder_Path, Fallout4_Folder_Path, Fallout4VR_Folder_Path
     
@@ -80,17 +97,6 @@ def read_game_paths_list_from_registry():
 
     verbose_print("Game paths updated from registry")
     delay(2)
-def terminate_main_process():
-    global main_process
-    if main_process:
-        verbose_print("Terminating main.py process...")
-        main_process.terminate()
-        try:
-            main_process.wait(timeout=5)  # Wait for up to 5 seconds for the process to terminate
-        except subprocess.TimeoutExpired:
-            verbose_print("main.py process didn't terminate gracefully. Killing it.")
-            main_process.kill()
-        verbose_print("main.py process terminated.")
 
 # Config related section...
 def get_python_exe():
@@ -103,7 +109,7 @@ def get_python_exe():
         verbose_print("persistence.txt not found. Using system Python.")
     except Exception as e:
         verbose_print(f"Error reading persistence.txt: {str(e)}")
-    return sys.executable
+    return sys.executable    
 def get_config_from_file():
     txt_file_path = os.path.join("data", "config_paths.txt")  # Path to your text file
     try:
@@ -120,8 +126,7 @@ def get_config_from_file():
         verbose_print(f"Config paths file not found: {txt_file_path}")
         return None, None
 def read_config():
-    # Read config file
-    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, llm_api, auto_launch_ui, pause_threshold
+    global game_selection, optimization, custom_token_count, game_paths_list, mod_folders_list, llm_api, auto_launch_ui, pause_threshold, xvasynth_folder
     config = configparser.ConfigParser()
 
     try:
@@ -131,35 +136,45 @@ def read_config():
         delay(3)
         return
 
-    # Define config mappings
-    config_mappings = {
-        ("Game", "game"): ("game_selection", str),
-        ("LLM", "custom_token_count"): ("custom_token_count", int),
-        ("LLM", "llm_api"): ("llm_api", str),
-        ("WebUI", "auto_launch_ui"): ("auto_launch_ui", lambda x: x.lower() == 'true'),
-        ("VoiceInput", "pause_threshold"): ("pause_threshold", int)
-    }
+    # Game settings
+    game_selection = config.get("Game", "game", fallback="Skyrim")
+    
+    # LLM settings
+    custom_token_count = config.getint("LLM", "custom_token_count", fallback=8192)
+    llm_api = config.get("LLM", "llm_api", fallback="Not set")
 
-    # Read config values
-    for (section, key), (var_name, type_func) in config_mappings.items():
-        try:
-            globals()[var_name] = type_func(config.get(section, key))
-        except (configparser.NoSectionError, configparser.NoOptionError):
-            verbose_print(f"Missing config: {section}.{key}")
+    # WebUI settings
+    auto_launch_ui = config.getboolean("WebUI", "auto_launch_ui", fallback=False)
 
-    # Read game paths
-    game_paths_list = {game: config.get("Game", f"{game}_folder", fallback="Not set") for game in ["skyrim", "skyrimvr", "fallout4", "fallout4vr"]}
+    # VoiceInput settings
+    pause_threshold = config.getint("VoiceInput", "pause_threshold", fallback=1)
 
-    # Read mod folders
-    mod_folders_list = {game: config.get("Game", f"{game}_mod_folder", fallback="Not set") for game in ["skyrim", "skyrimvr", "fallout4", "fallout4vr"]}
+    # xVASynth settings
+    xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="")
+
+    # Read game paths and mod folders
+    for game in ["skyrim", "skyrimvr", "fallout4", "fallout4vr"]:
+        game_paths_list[game] = config.get("Game", f"{game}_folder", fallback="Not set")
+        mod_folders_list[game] = config.get("Game", f"{game}_mod_folder", fallback="Not set")
 
     # Set optimization
-    set_optimization(config)
+    max_tokens = config.getint("LLM", "max_tokens", fallback=250)
+    max_response_sentences = config.getint("LLM", "max_response_sentences", fallback=999)
+    temperature = config.getfloat("LLM", "temperature", fallback=1.0)
+
+    global optimization
+    for preset, values in optimization_presets.items():
+        if (max_tokens == values["max_tokens"] and
+            max_response_sentences == values["max_response_sentences"] and
+            abs(temperature - values["temperature"]) < 0.01):
+            optimization = preset
+            break
+    else:
+        optimization = "Default"
 
     verbose_print("Config read successfully")
     delay(2)
 def write_config():
-    # Write config file
     verbose_print("Writing config file...")
     
     config = configparser.ConfigParser()
@@ -171,24 +186,32 @@ def write_config():
         delay(3)
         return
 
-    # Define config mappings
-    config_mappings = {
-        ("Game", "game"): ("game_selection", str),
-        ("LLM", "custom_token_count"): ("custom_token_count", str),
-        ("LLM", "llm_api"): ("llm_api", str),
-        ("WebUI", "auto_launch_ui"): ("auto_launch_ui", str),
-        ("VoiceInput", "pause_threshold"): ("pause_threshold", str)
-    }
-
-    # Write config values
-    for (section, key), (var_name, _) in config_mappings.items():
+    # Ensure all sections exist
+    for section in ["Game", "LLM", "WebUI", "VoiceInput", "Paths"]:
         if section not in config:
             config[section] = {}
-        config[section][key] = str(globals()[var_name])
 
-    # Write game paths
+    # Game settings
+    config["Game"]["game"] = game_selection
+
+    # LLM settings
+    config["LLM"]["custom_token_count"] = str(custom_token_count)
+    config["LLM"]["llm_api"] = llm_api
+
+    # WebUI settings
+    config["WebUI"]["auto_launch_ui"] = str(auto_launch_ui)
+
+    # VoiceInput settings
+    config["VoiceInput"]["pause_threshold"] = str(pause_threshold)
+
+    # xVASynth settings
+    config["Paths"]["xvasynth_folder"] = xvasynth_folder
+
+    # Write game paths and mod folders
     for game, path in game_paths_list.items():
         config["Game"][f"{game}_folder"] = path
+    for game, path in mod_folders_list.items():
+        config["Game"][f"{game}_mod_folder"] = path
 
     # Write optimization settings
     preset = optimization_presets[optimization]
@@ -219,22 +242,7 @@ def write_output_file(exit_code):
         verbose_print(f"Output file written successfully: {PERSISTENCE_TXT_PATH}")
     except Exception as e:
         verbose_print(f"Error writing output file: {str(e)}")
-def load_persistence():
-    global game_selection, optimization, custom_token_count, microphone_enabled
-    if not os.path.exists(PERSISTENCE_JSON_PATH):
-        verbose_print("Persistence file not found. Creating with default values.")
-        save_persistence()
-def save_persistence():
-    data = {
-        'game_selection': game_selection,
-        'optimization': optimization,
-        'custom_token_count': custom_token_count,
-        'microphone_enabled': microphone_enabled
-    }
-    os.makedirs(os.path.dirname(PERSISTENCE_JSON_PATH), exist_ok=True)
-    with open(PERSISTENCE_JSON_PATH, 'w') as f:
-        json.dump(data, f, indent=4)
-
+        
 # Model Related section...
 def get_or_set_models_drive():
     json_file_path = os.path.join("data", "temporary_launcher.json")
@@ -465,28 +473,33 @@ def launch_mantella_sequence():
     
     # Check if game and script extender exist
     game_exe = game_exe_map[game_selection]
-    print(f"game_exe: {game_exe}")
     script_extender = script_extender_map[game_selection]
-    print(f"script_extender: {script_extender}")
-    game_folder = globals().get(f"{game_selection}_Folder_Path", "Not set")
-    print(f"game_folder: {game_folder}")
+    game_folder = game_paths_list.get(game_selection.lower().replace(" ", ""), "Not set")
     game_exe_path = os.path.join(game_folder, game_exe)
-    print(f"game_exe_path: {game_exe_path}")
     script_extender_path = os.path.join(game_folder, script_extender)
-    print(f"script_extender_path: {script_extender_path}")
+    xvasynth_exe_path = os.path.join(xvasynth_folder, "xVASynth.exe")
     
-    if game_folder == "Not set" or not os.path.exists(game_exe_path) or not os.path.exists(script_extender_path):
-        verbose_print(f"Missing Files: {game_exe} or {script_extender}")
-        verbose_print(f"Check {game_selection} path and Script Extender presence.")
+    # Check all required files
+    missing_files = []
+    if not os.path.exists(game_exe_path):
+        missing_files.append(game_exe)
+    if not os.path.exists(script_extender_path):
+        missing_files.append(script_extender)
+    if not os.path.exists(xvasynth_exe_path):
+        missing_files.append("xVASynth.exe")
+    
+    if missing_files:
+        verbose_print(f"Missing Files: {', '.join(missing_files)}")
+        verbose_print(f"Check {game_selection} path, Script Extender, and xVASynth presence.")
         delay(3)
         return False
 
     # Check if game is running
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
     if game_running:
-        # Alert the user and prompt for action
-        print(f"Game Already Running! Close Processes then Run or Just Bypass the Game?")
-        user_input = input("Selection; Close Processes = C, Bypass Game = B: ").strip().lower()
+        print(f"Game Already Running!")         
+        print(f"This could be Redundant Processes or A Running Game..")
+        user_input = input("Selection; Close Processes and Start = C, Just Begin Mantella = B: ").strip().lower()
 
         if user_input == 'c':
             verbose_print(f"Closing {game_exe}...")
@@ -498,8 +511,6 @@ def launch_mantella_sequence():
             verbose_print("Invalid selection. Exiting.")
             delay(2)
             return False
-    else:
-        verbose_print(f"{game_exe} is not running.")
 
     # Launch game via script extender if not bypassed
     if not game_running or user_input == 'c':
@@ -508,22 +519,13 @@ def launch_mantella_sequence():
         verbose_print(f"Started {script_extender}")
         delay(3)
 
-    # Check if xVASynth is running
+    # Check and start xVASynth if not running
     xvasynth_running = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq xVASynth.exe'], capture_output=True, text=True).stdout.lower().count('xvasynth.exe') > 0
-
     if not xvasynth_running:
-        verbose_print("xVASynth.exe is not running. Starting xVASynth...")
-        if os.path.exists(xvasynth_folder):
-            subprocess.Popen([xvasynth_folder], cwd=os.path.dirname(xvasynth_folder))
-            verbose_print("Started xVASynth")
-            delay(3)
-        else:
-            verbose_print("Error: xVASynth.exe not found.")
-            verbose_print("Check xVASynth folder path validity.")
-            delay(3)
-            return False
-    else:
-        verbose_print("xVASynth is already running. Continuing...")
+        verbose_print("Starting xVASynth...")
+        subprocess.Popen([xvasynth_exe_path], cwd=xvasynth_folder)
+        verbose_print("Started xVASynth")
+        delay(3)
 
     # Run Mantella
     verbose_print("Running Mantella...")
@@ -544,41 +546,28 @@ def launch_mantella_sequence():
     verbose_print("Mantella Exited.")
     delay(2)
     return True
+def set_optimization():
+    global optimization
+    config = configparser.ConfigParser()
+    config.read(CONFIG_INI_PATH)
 
-# Optimization presets
-optimization_presets = {
-    "Default": {"max_tokens": 250, "max_response_sentences": 999, "temperature": 1.0},
-    "Faster": {"max_tokens": 100, "max_response_sentences": 1, "temperature": 0.4},
-    "Regular": {"max_tokens": 150, "max_response_sentences": 2, "temperature": 0.5},
-    "Quality": {"max_tokens": 200, "max_response_sentences": 3, "temperature": 0.6}
-}
-        return
+    preset = optimization_presets[optimization]
+    
+    if "LLM" not in config:
+        config["LLM"] = {}
+
+    config["LLM"]["max_tokens"] = str(preset["max_tokens"])
+    config["LLM"]["max_response_sentences"] = str(preset["max_response_sentences"])
+    config["LLM"]["temperature"] = str(preset["temperature"])
 
     try:
-        with open(PERSISTENCE_JSON_PATH, 'r') as f:
-            data = json.load(f)
-            game_selection = data.get('game_selection', game_selection)
-            optimization = data.get('optimization', optimization)
-            custom_token_count = data.get('custom_token_count', custom_token_count)
-            microphone_enabled = data.get('microphone_enabled', microphone_enabled)
-    except json.JSONDecodeError:
-        verbose_print("Error reading persistence file. Using default values and recreating file.")
-        save_persistence()
-def set_optimization(config):
-    # Set optimization based on config
-    global optimization
-    max_tokens = config.getint("LLM", "max_tokens", fallback=250)
-    max_response_sentences = config.getint("LLM", "max_response_sentences", fallback=4)
-    temperature = config.getfloat("LLM", "temperature", fallback=1.0)
-
-    for preset, values in optimization_presets.items():
-        if (max_tokens == values["max_tokens"] and
-            max_response_sentences == values["max_response_sentences"] and
-            abs(temperature - values["temperature"]) < 0.01):
-            optimization = preset
-            break
-    else:
-        optimization = "Default"
+        with open(CONFIG_INI_PATH, 'w') as configfile:
+            config.write(configfile)
+        verbose_print(f"Optimization preset '{optimization}' applied and saved to config.")
+    except Exception as e:
+        verbose_print(f"Error writing optimization settings to config: {str(e)}")
+    
+    delay(1)
 
 # Menus and Interfaces Section
 def display_title():
@@ -628,6 +617,7 @@ def display_menu_and_handle_input():
         elif choice == '2':
             optimizations = list(optimization_presets.keys())
             optimization = optimizations[(optimizations.index(optimization) + 1) % len(optimizations)]
+            set_optimization()
         elif choice == '3':
             context_lengths = [2048, 4096, 8192]
             custom_token_count = context_lengths[(context_lengths.index(custom_token_count) + 1) % len(context_lengths)]
@@ -661,7 +651,7 @@ def display_menu_and_handle_input():
             verbose_print("Invalid selection. Please try again.")
         
         delay()
-
+        
 # Entry/Main/Exit Points
 if __name__ == "__main__":
     verbose_print("Script execution started")
