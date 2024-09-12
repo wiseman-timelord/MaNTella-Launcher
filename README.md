@@ -2,7 +2,7 @@
 Status: Under Development, Today release, and mods back on nexus, one is hoping....
 - Patching up some unforseen differences between v11.4 and v12. 
 - Re-Structuring of script, sorting out sections into themes of code is important for large scripts. 
-- Optimization through intellgent code and merging functions, possibly involving additional global for function program.
+- Optimization through intellgent code and merging functions, possibly involving additional global for function program pre-configuration.
 - Logic and sanity checks, general checkovers of code.
 
 ### Description
