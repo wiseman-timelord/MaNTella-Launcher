@@ -92,7 +92,7 @@ Selection, Program Options = 1-5, Refresh Display = R, Begin Mantella/xVASynth/F
 
     1. Install `.\requirements.txt`
 
-    2 First Run Setup (Run Once)
+    2. First Run Setup (Run Once)
 
     3. Fix Ollama Non-Cuda/Non-Rocm GPU
 
