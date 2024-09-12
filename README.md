@@ -6,9 +6,9 @@ Status: Under Development, Today release, and mods back on nexus, one is hoping.
 - Logic and sanity checks, general checkovers of code.
 - Has adapted Fallout 4 Runner-esque code as shown here, text will be refined...
 ```
-Game Already Running!
-This could be Redundant Processes or A Running Game..
-Close Processes and Start = C, Just Begin Mantella = B:
+Detected Game Already Running!
+Is this a, Redundant Process or Running Game?
+Selection; Close Game Processes = C, Use Running Game = G: 
 ```
 
 ### Description
