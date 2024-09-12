@@ -136,20 +136,12 @@ def read_config():
         delay(3)
         return
 
-    # Game settings
+    # Keys...
     game_selection = config.get("Game", "game", fallback="Skyrim")
-    
-    # LLM settings
     custom_token_count = config.getint("LLM", "custom_token_count", fallback=8192)
     llm_api = config.get("LLM", "llm_api", fallback="Not set")
-
-    # WebUI settings
     auto_launch_ui = config.getboolean("WebUI", "auto_launch_ui", fallback=False)
-
-    # VoiceInput settings
     pause_threshold = config.getint("VoiceInput", "pause_threshold", fallback=1)
-
-    # xVASynth settings
     xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="")
 
     # Read game paths and mod folders
@@ -429,17 +421,14 @@ def cycle_game_selection():
     global game_selection
     available_games = get_available_games()
     verbose_print(f"Available games: {available_games}")
-    
     if not available_games:
         verbose_print("No games detected. Please check your game installations.")
         return
-    
     try:
         current_index = available_games.index(game_selection.lower())
     except ValueError:
         verbose_print(f"Current game {game_selection} not in available games. Resetting to first available game.")
         current_index = -1
-    
     next_index = (current_index + 1) % len(available_games)
     game_selection = available_games[next_index].capitalize()
     verbose_print(f"Game selection changed to: {game_selection}")
@@ -447,31 +436,25 @@ def check_game():
     if game_selection not in game_exe_map:
         verbose_print(f"Unknown game: {game}")
         return False
-
     game_path = globals().get(f"{game_selection}_Folder_Path", "")
     if game_path == "Not_Installed":
         verbose_print(f"Game folder not set for {game_selection}")
         return False
-
     full_game_path = os.path.join(os.path.dirname(game_path), game_exe_map[game_selection])
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe_map[game_selection]}'], capture_output=True, text=True).stdout.lower().count(game_exe_map[game_selection].lower()) > 0
-
     if game_running:
         verbose_print(f"{game_exe_map[game_selection]} is running. Closing it...")
         subprocess.run(['taskkill', '/F', '/IM', game_exe_map[game_selection]], capture_output=True)
         time.sleep(2)
-
     verbose_print(f"Starting {game_selection}...")
     subprocess.Popen([game_path], cwd=os.path.dirname(game_path))
     verbose_print(f"Started {script_extender_map[game_selection]}")
     time.sleep(3)  # Wait for the game to start
-
     return True
 def launch_mantella_sequence():
     global xvasynth_folder, main_process, game_selection
     display_title()
-    
-    # Check if game and script extender exist
+
     game_exe = game_exe_map[game_selection]
     script_extender = script_extender_map[game_selection]
     game_folder = game_paths_list.get(game_selection.lower().replace(" ", ""), "Not set")
@@ -487,7 +470,6 @@ def launch_mantella_sequence():
         missing_files.append(script_extender)
     if not os.path.exists(xvasynth_exe_path):
         missing_files.append("xVASynth.exe")
-    
     if missing_files:
         verbose_print(f"Missing Files: {', '.join(missing_files)}")
         verbose_print(f"Check {game_selection} path, Script Extender, and xVASynth presence.")
@@ -497,15 +479,14 @@ def launch_mantella_sequence():
     # Check if game is running
     game_running = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {game_exe}'], capture_output=True, text=True).stdout.lower().count(game_exe.lower()) > 0
     if game_running:
-        print(f"Game Already Running!")         
-        print(f"This could be Redundant Processes or A Running Game..")
-        user_input = input("Selection; Close Processes and Start = C, Just Begin Mantella = B: ").strip().lower()
-
+        print(f"Detected Game Already Running!")         
+        print(f"Is this a, Redundant Process or Running Game?")
+        user_input = input("Selection; Close Game Processes = C, Use Running Game = G: ").strip().lower()
         if user_input == 'c':
             verbose_print(f"Closing {game_exe}...")
             subprocess.run(['taskkill', '/F', '/IM', game_exe], capture_output=True)
             delay(2)
-        elif user_input == 'b':
+        elif user_input == 'g':
             verbose_print("Bypassing, using running game.")
         else:
             verbose_print("Invalid selection. Exiting.")
