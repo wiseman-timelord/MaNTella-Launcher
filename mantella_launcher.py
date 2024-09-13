@@ -136,13 +136,15 @@ def read_config():
         delay(3)
         return
 
-    # Keys...
+    # Existing keys...
     game_selection = config.get("Game", "game", fallback="Skyrim")
-    custom_token_count = config.getint("LLM", "custom_token_count", fallback=8192)
     llm_api = config.get("LLM", "llm_api", fallback="Not set")
+    xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="")
+
+    # New keys...
+    custom_token_count = config.getint("LLM", "custom_token_count", fallback=8192)
     auto_launch_ui = config.getboolean("WebUI", "auto_launch_ui", fallback=False)
     pause_threshold = config.getint("VoiceInput", "pause_threshold", fallback=1)
-    xvasynth_folder = config.get("Paths", "xvasynth_folder", fallback="")
 
     # Read game paths and mod folders
     for game in ["skyrim", "skyrimvr", "fallout4", "fallout4vr"]:
@@ -165,6 +167,62 @@ def read_config():
         optimization = "Default"
 
     verbose_print("Config read successfully")
+    delay(2)
+
+def write_config():
+    verbose_print("Writing config file...")
+    
+    config = configparser.ConfigParser()
+    
+    try:
+        config.read(CONFIG_INI_PATH)
+    except configparser.Error as e:
+        verbose_print(f"Config read error: {e}")
+        delay(3)
+        return
+
+    # Ensure all sections exist
+    for section in ["Game", "LLM", "WebUI", "VoiceInput", "Paths"]:
+        if section not in config:
+            config[section] = {}
+
+    # Game settings
+    config["Game"]["game"] = game_selection
+
+    # LLM settings
+    config["LLM"]["custom_token_count"] = str(custom_token_count)
+    config["LLM"]["llm_api"] = llm_api
+
+    # WebUI settings
+    config["WebUI"]["auto_launch_ui"] = str(auto_launch_ui)
+
+    # VoiceInput settings
+    config["VoiceInput"]["pause_threshold"] = str(pause_threshold)
+
+    # xVASynth settings
+    config["Paths"]["xvasynth_folder"] = xvasynth_folder
+
+    # Write game paths and mod folders
+    for game, path in game_paths_list.items():
+        config["Game"][f"{game}_folder"] = path
+    for game, path in mod_folders_list.items():
+        config["Game"][f"{game}_mod_folder"] = path
+
+    # Write optimization settings
+    preset = optimization_presets[optimization]
+    config["LLM"]["max_tokens"] = str(preset["max_tokens"])
+    config["LLM"]["max_response_sentences"] = str(preset["max_response_sentences"])
+    config["LLM"]["temperature"] = str(preset["temperature"])
+
+    try:
+        os.makedirs(os.path.dirname(CONFIG_INI_PATH), exist_ok=True)
+        with open(CONFIG_INI_PATH, 'w') as configfile:
+            config.write(configfile)
+        verbose_print("Config file updated successfully.")
+    except Exception as e:
+        verbose_print(f"Config write error: {e}")
+        delay(3)
+
     delay(2)
 def write_config():
     verbose_print("Writing config file...")
@@ -221,47 +279,26 @@ def write_config():
         delay(3)
 
     delay(2)
-def write_output_file(exit_code):
-    verbose_print(f"Writing output file")
-    try:
-        game_key = game_selection.lower().replace(" ", "")
-        game_path = game_paths_list.get(game_key, "Not set")
-        with open(PERSISTENCE_TXT_PATH, 'w') as f:
-            f.write(f"exit_code={exit_code}\n")
-            f.write(f"xvasynth_folder={xvasynth_folder}\n")  # Updated from the text file
-            f.write(f"game_selection={game_selection}\n")
-            f.write(f"game_path={game_path}")
-        verbose_print(f"Output file written successfully: {PERSISTENCE_TXT_PATH}")
-    except Exception as e:
-        verbose_print(f"Error writing output file: {str(e)}")
         
 # Model Related section...
 def get_or_set_models_drive():
-    json_file_path = os.path.join("data", "temporary_launcher.json")
+    config = configparser.ConfigParser()
+    config.read(CONFIG_INI_PATH)
     
-    # Ensure the data directory exists
-    os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
+    if 'Paths' not in config:
+        config['Paths'] = {}
     
-    try:
-        # Try to read the existing JSON file
-        with open(json_file_path, 'r') as f:
-            data = json.load(f)
-            models_drive_letter = data.get('models_drive_letter')
-        
-        if models_drive_letter:
-            verbose_print(f"Using saved models drive: {models_drive_letter}")
-            return models_drive_letter
-    except FileNotFoundError:
-        verbose_print("No saved models drive found.")
-    except json.JSONDecodeError:
-        verbose_print("Error reading JSON file. Will create a new one.")
+    if 'models_drive_letter' in config['Paths']:
+        models_drive_letter = config['Paths']['models_drive_letter']
+        verbose_print(f"Using saved models drive: {models_drive_letter}")
+        return models_drive_letter
     
-    # If we couldn't get the drive letter from the file, ask the user
     models_drive_letter = input("Enter the drive letter where your models are stored (e.g., C, D, E): ").upper()
     
-    # Save the drive letter to the JSON file
-    with open(json_file_path, 'w') as f:
-        json.dump({'models_drive_letter': models_drive_letter}, f)
+    config['Paths']['models_drive_letter'] = models_drive_letter
+    
+    with open(CONFIG_INI_PATH, 'w') as configfile:
+        config.write(configfile)
     
     verbose_print(f"Saved models drive: {models_drive_letter}")
     return models_drive_letter
