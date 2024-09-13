@@ -4,6 +4,7 @@ Status: Under Development, Today release, and mods back on nexus, one is hoping.
 - Re-Structuring of script, sorting out sections into themes of code is important for large scripts. 
 - Optimization through intellgent code and merging functions, possibly involving additional global for function program pre-configuration.
 - Logic and sanity checks, general checkovers of code.
+- Some globals/Variables were made to have safer names. 
 - Has adapted Fallout 4 Runner-esque code as shown here, text will be refined...
 ```
 Detected Game Already Running!
